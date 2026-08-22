@@ -1,0 +1,91 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Gerfaut",
+  "colors": {
+    "primary": "#0E7490",
+    "light": "#7DD3E8",
+    "dark": "#0A5D75"
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "https://gerfaut-wallet.com"
+  },
+  "favicon": "/favicon.svg",
+  "appearance": {
+    "default": "light"
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "fonts": {
+    "family": "Instrument Sans",
+    "heading": {
+      "family": "Bricolage Grotesque"
+    }
+  },
+  "background": {
+    "color": {
+      "light": "#F4F7F9",
+      "dark": "#0B0F14"
+    }
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Getting started",
+        "pages": [
+          "getting-started/what-is-gerfaut",
+          "getting-started/install-android",
+          "getting-started/install-desktop",
+          "getting-started/verify-your-download"
+        ]
+      },
+      {
+        "group": "Wallets",
+        "pages": [
+          "wallets/add-a-wallet",
+          "wallets/watch-an-address",
+          "wallets/wallet-types"
+        ]
+      },
+      {
+        "group": "Everyday use",
+        "pages": [
+          "everyday-use/balances-and-history",
+          "everyday-use/transaction-details",
+          "everyday-use/utxos",
+          "everyday-use/receive-addresses"
+        ]
+      },
+      {
+        "group": "Settings",
+        "pages": [
+          "settings/backends-and-your-own-node",
+          "settings/tor",
+          "settings/units-and-fiat",
+          "settings/appearance"
+        ]
+      },
+      {
+        "group": "Premium",
+        "pages": [
+          "premium/overview"
+        ]
+      },
+      {
+        "group": "Help",
+        "pages": [
+          "help/faq",
+          "help/contact"
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/gerfaut-wallet"
+    }
+  }
+}

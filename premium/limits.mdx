@@ -3,7 +3,7 @@ title: "Limits"
 description: "Know every ceiling of the Gerfaut Premium service, from the wallets one key watches to the messages sent per hour, and what the server answers past each one."
 ---
 
-The service has a few ceilings, listed here in full. Most sit far above what the apps do: they only stop a runaway script. Two are within reach of a person, and both are about messages.
+The service has a few ceilings, listed here in full. Most sit far above what the apps do: they only stop a runaway script. Two are within reach of a person, and both are about messages. Every refusal that a wait can lift carries a `Retry-After` header with the seconds to wait, so a script can back off instead of guessing.
 
 ## What one key can do
 
@@ -20,7 +20,7 @@ The service has a few ceilings, listed here in full. Most sit far above what the
 |---|---|---|
 | Messages on demand, per key | Five an hour, tests and confirmation e-mails together | The server refuses the test or the confirmation until the hour has passed. |
 | E-mail alerts, per key | 20 per day | Alerts by e-mail wait for the next day; the other channels are untouched. |
-| E-mail confirmation code | Good for one hour, five wrong tries | Add the channel again for a new code. |
+| E-mail confirmation code | Good for one hour, five wrong tries | Add the channel again for a new code. This refusal carries no `Retry-After`: no wait lifts it. |
 | Telegram link code | Good for one hour | Add the channel again for a new code. |
 
 The server as a whole also sends a bounded number of e-mails a day; an address that keeps refusing them does not spend anyone's share.

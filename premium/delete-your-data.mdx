@@ -1,0 +1,36 @@
+---
+title: "Delete your data"
+description: "Remove a wallet from the Gerfaut Premium server, or delete the whole account with its wallets, channels and log, and know when the server deletes it on its own."
+---
+
+Everything the server holds about you belongs to a key: the wallets it watches, the channels it tells, the log of alerts. You can take any of it back from the app, and the server deletes what is left on its own once the paid time is long gone.
+
+## Remove one wallet from the server
+
+Open **Settings** > **Premium** and select the switch of the wallet under `Watched wallets`. The server forgets the wallet at once: its descriptor, its addresses and what it saw on them. Removing the wallet from Gerfaut altogether, in **Settings** > **Wallets**, does the same on the server.
+
+## Remove a channel
+
+Under `Channels`, select the menu of the channel line, then **Remove**. An ntfy topic, a Telegram link or an e-mail address is dropped with it.
+
+## Delete the account
+
+<Steps>
+  <Step title="Select Forget this key">
+    In the `Licence` card of **Settings** > **Premium**, select **Forget this key**. A note explains that forgetting the key alone stops the watch on this device, not on the server.
+  </Step>
+  <Step title="Tick Also delete everything on the server">
+    The note turns to the full consequence: the server deletes the account this key opens, the wallets it watches, the channels and the log, and the key stops working here and anywhere else it was entered. Whatever paid time the key had left goes with it and is not refunded.
+  </Step>
+  <Step title="Confirm">
+    Select **Delete the account** on desktop, or **Delete and forget** on Android. Gerfaut deletes on the server first and forgets the key on this device only once the server confirmed, so a failed call leaves the key in place and says so.
+  </Step>
+</Steps>
+
+## Forget the key on this device only
+
+Select **Forget this key** and confirm without ticking the box. The wallets stay registered on the server and keep being watched until you remove them, and the same key activates the service again on any device.
+
+## Let the server delete on its own
+
+The server deletes an account with everything it owns 90 days after its paid time ended, or 30 days after it was created if it was never paid for.

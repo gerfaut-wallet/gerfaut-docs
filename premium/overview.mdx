@@ -1,6 +1,52 @@
 ---
-title: "Overview"
-description: "What Gerfaut Premium adds to the free application"
+title: "Gerfaut Premium"
+sidebarTitle: "Overview"
+description: "Learn what the Gerfaut Premium server watches for you, what it tells you, what it keeps, and what it costs, before you buy a key."
 ---
 
-Gerfaut Premium adds optional services on top of the free application.
+The apps show a balance when you open them, and nothing happens in between. Gerfaut Premium adds a server that watches the wallets you choose around the clock, from its own Bitcoin node, and tells you within seconds when coins move. You buy a key, enter it in the app, switch a wallet on: there is no account.
+
+## Get told when something happens
+
+The server sends an alert on these events:
+
+- **Coins move:** A transaction spending from the wallet reaches the node's mempool, and a second alert follows when it confirms. Coins arriving are announced the same way.
+- **The daily rescan finds something:** Once a day the server rescans the UTXO set and reports coins gone without the spend being seen live.
+- **A timelock opens:** For a wallet with a recovery path behind a timelock, an alert 30 days, 7 days and 1 day before the path becomes spendable, then again the day it opens.
+- **The watch starts:** The first scan of a wallet you switched on is done.
+
+Alerts reach the ntfy app, Telegram, an e-mail address, or a webhook you run. An ntfy, Telegram or e-mail alert names the wallet and says what happened, and carries no address, no amount and no transaction id. A webhook posts to your own machine, so it carries the whole event. The app lists the last 20 alerts under `Recent alerts`, and shows a red banner on the home screen when the server itself stops answering.
+
+## Know what the server keeps
+
+Watch-only stays watch-only: the server holds no key, can see coins move and cannot move them.
+
+Kept on the server:
+
+- The descriptors of the wallets you register, and the names you gave them.
+- The addresses derived from those descriptors, with the coins and movements seen on them.
+- The channels you add: an ntfy topic, a Telegram link, an e-mail address or a webhook URL, and the name Telegram gives a chat you link.
+- A hash of your key. The key itself is never stored.
+
+Never kept: your e-mail unless you add one as a channel, your IP address, or any request log. Stop watching a wallet, or remove a watched wallet from the app, and its data leaves the server with it: see [Delete your data](/premium/delete-your-data).
+
+The app talks to `api.gerfaut-wallet.com` over HTTPS. When your backend is a `.onion` address, those calls go through Tor too: see [Tor](/settings/tor).
+
+## Pay for time, not for an account
+
+One plan covers every service. You prepay time: 1 month for 5 €, 6 months for 24 € or 1 year for 36 €, paid in bitcoin over Ark, Lightning or on-chain. Paid time adds to the end of what you already have, and one key watches up to 21 wallets. After the paid time ends, alerts continue for 7 days, then stop until you add time.
+
+<CardGroup cols={2}>
+  <Card title="Get a key" icon="key-round" href="/premium/get-a-key">
+    Buy a key on gerfaut-wallet.com and activate it in the app.
+  </Card>
+  <Card title="Watch a wallet" icon="radar" href="/premium/watch-a-wallet">
+    Switch a wallet on and let the server follow it.
+  </Card>
+  <Card title="Channels" icon="bell-ring" href="/premium/channels">
+    Send the alerts to ntfy, Telegram, e-mail or a webhook.
+  </Card>
+  <Card title="Limits" icon="gauge" href="/premium/limits">
+    Every ceiling of the service and what the server answers past it.
+  </Card>
+</CardGroup>

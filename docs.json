@@ -77,7 +77,12 @@
       {
         "group": "Premium",
         "pages": [
-          "premium/overview"
+          "premium/overview",
+          "premium/get-a-key",
+          "premium/watch-a-wallet",
+          "premium/channels",
+          "premium/limits",
+          "premium/delete-your-data"
         ]
       },
       {

@@ -29,3 +29,7 @@ Every push to `main` triggers a deployment through the Mintlify GitHub App. Ther
 - `docs.json` holds the site configuration: branding, colors, fonts, and navigation.
 - Each page is a single MDX file, sorted into one folder per section.
 - `logo/` and `favicon.svg` come from the Gerfaut brand kit.
+
+## License
+
+The text of this documentation is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International](LICENSE) license (CC BY-SA 4.0). The Gerfaut name and logo are not covered by it.

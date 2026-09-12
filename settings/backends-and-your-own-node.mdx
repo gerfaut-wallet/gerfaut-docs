@@ -15,6 +15,19 @@ The `Network` card offers `Mainnet`, `Signet`, `Testnet 4` and `Regtest`. Only t
 
 The `Backend` card opens on `Public API`: free, keyless servers with no setup. The operator that answers can see the addresses of your wallets.
 
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="The chain data source is chosen per network: a public server, or an Esplora or Electrum instance on a personal node.">
+      <img src="/images/desktop/settings-node.webp" alt="The Network section of the desktop settings: the network picker with Signet selected, the Backend card with Public API and blockstream.info as the server, My own Esplora, My own Electrum server and Save backend." />
+    </Frame>
+  </Tab>
+  <Tab title="Android">
+    <Frame caption="Each network has its own backend: a public server, or an Esplora or Electrum instance on a personal node.">
+      <img src="/images/android/settings-node.webp" alt="The Network section on Android: the network picker with Signet selected and the Backend card with Public API, My own Esplora, My own Electrum server, the Server list on Automatic and Save backend." width="360" />
+    </Frame>
+  </Tab>
+</Tabs>
+
 Under `Server`, `Automatic` tries every public Esplora instance of the network in turn until one answers. Select an operator instead to make it the only server asked, for instance `mempool.space`, `blockstream.info` or `mempool.emzy.de` over Esplora, or one of the listed Electrum servers. The list says which Electrum servers sign their own certificate: Gerfaut shows you the fingerprint before it connects, see [Certificates](/settings/certificates).
 
 <Note>

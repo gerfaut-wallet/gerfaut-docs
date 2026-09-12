@@ -16,12 +16,25 @@ Verify the address on your signing device before you share it. Gerfaut only watc
     On desktop, select **Receive** in the sidebar. On Android, select **Receive** at the bottom of the wallet page.
   </Step>
   <Step title="Read the address">
-    The card reads `Next unused address · index N`, the full address, and its `Derivation path`, such as `m/84'/0'/0'/0/5`. Select the QR code to enlarge it.
+    The card reads `Next unused address · index N`, the full address, and its `Derivation path`, such as `m/84'/0'/0'/0/5`, or `m/0/5` for a key added without its origin. Select the QR code to enlarge it.
   </Step>
   <Step title="Copy it">
     Select **Copy address**. The button reads `Copied` for a moment.
   </Step>
 </Steps>
+
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="Receiving means sharing an address Gerfaut derived; the page insists on checking it against the signing device first.">
+      <img src="/images/desktop/receive.webp" alt="The Receive page on desktop: the QR code, the next unused address at index 36 with its derivation path, the Copy address and Next address buttons, the warning to verify on a signing device, and the External and Change address tables." />
+    </Frame>
+  </Tab>
+  <Tab title="Android">
+    <Frame caption="Receive shows the next unused address, its QR code and the reminder to verify it on the signing device.">
+      <img src="/images/android/receive.webp" alt="The Receive screen on Android: the QR code, the derivation path, the next unused address, Copy address and Next address, the warning and the External address list with Used pills." width="360" />
+    </Frame>
+  </Tab>
+</Tabs>
 
 Select **Next address** to skip ahead one unused address at a time; the label then reads `Unused address · index N`. Select **First unused** to come back. Skipping retires nothing: an address only counts as used once the chain shows a transaction on it.
 
@@ -38,4 +51,4 @@ Two cards follow the receive block:
 - **External:** The receive addresses, in derivation order.
 - **Change:** The internal addresses used by outgoing transactions. The card reads `No change addresses revealed yet.` until one exists.
 
-Each row shows the index, the address as a chip to copy, a `Used` or `Fresh` pill, and the balance the address holds, or a dash at zero. The card header counts the rows and the used ones. Each card shows five rows: select **Show all** to unfold it, **Show less** to fold it back. Each list stops at the first 200 addresses of its keychain.
+Each row shows the index, the address as a chip to copy, a `Used` or `Fresh` pill, and the balance the address holds, or a dash at zero. The card header counts the rows, and on desktop the used ones. Each card shows five rows: select **Show all** to unfold it, **Show less** to fold it back. Each list stops at the first 200 addresses of its keychain.

@@ -13,6 +13,19 @@ Gerfaut signs nothing, but it can hand a transaction that your signing device si
   </Step>
   <Step title="Give Gerfaut the transaction">
     Paste a PSBT (base64 or hex) or a raw transaction (hex) in the field, or select **Import a file** for a `.psbt`, `.txn` or `.tx` file written by a signing device, or **Scan a QR code** for a `crypto-psbt` UR or a BBQr code, animated or not. Then select **Preview**.
+
+    <Tabs>
+      <Tab title="Desktop">
+        <Frame caption="Broadcasting starts from a transaction signed elsewhere; Gerfaut previews it and never signs.">
+          <img src="/images/desktop/broadcast.webp" alt="The Broadcast page on desktop, empty: the Signed transaction field, the accepted formats, the Import a file and Scan a QR code buttons and the Preview button." />
+        </Frame>
+      </Tab>
+      <Tab title="Android">
+        <Frame caption="Broadcast takes a finished transaction and hands it to the network without ever signing.">
+          <img src="/images/android/broadcast.webp" alt="The Broadcast screen on Android, empty: the Signed transaction or PSBT field, the Import a file and Scan a QR code buttons and the Preview button." width="360" />
+        </Frame>
+      </Tab>
+    </Tabs>
   </Step>
   <Step title="Read the preview">
     The card shows the transaction id, a `PSBT` or `Raw transaction` pill, and whether the transaction can go: `Ready to broadcast`, or `Unsigned` on desktop and `Not fully signed` on Android. Then the diagram, the cautions under `Before you send`, the `Inputs` and `Outputs` with the wallets they touch, and the `Technical` facts with the fee and the fee rate.

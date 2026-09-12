@@ -5,6 +5,10 @@ description: "Find out what Gerfaut watches, what it never does with your keys, 
 
 Gerfaut is a watch-only Bitcoin wallet for Windows, macOS, Linux and Android. You give it the public side of a wallet: a descriptor, an extended public key or an address. It shows the balance, the history and the coins of that wallet.
 
+<Frame caption="One page shows what the wallet holds, what it is worth, where the data comes from and how the balance moved over time.">
+  <img src="/images/desktop/overview.webp" alt="The Gerfaut desktop overview of a wallet named Cold storage, with its balance in BTC and euros, the bitcoin price, a balance history chart, the watch status and the latest activity." />
+</Frame>
+
 ## Watch without ever holding a key
 
 Gerfaut contains no code that generates keys, handles seeds or signs transactions. There is no Send button. Anything you paste that contains a private key or a seed phrase is refused and never stored.
@@ -16,6 +20,10 @@ What you can do with a watched wallet:
 - Get the next receive addresses with their QR code, the used ones marked.
 - Read the spending policy of a Miniscript descriptor, path by path, with each timelock counted down.
 - Broadcast a transaction that a signing device signed elsewhere, after Gerfaut reads it back in plain words.
+
+<Frame caption="The Android home screen lists every watched wallet with its balance, one network at a time.">
+  <img src="/images/android/home.webp" alt="The Gerfaut Android home screen with a Signet chip, two wallet cards named Cold storage and Timelock vault with their balances, and an Add a wallet button." width="360" />
+</Frame>
 
 Gerfaut talks to public servers by default, or to your own node over Esplora or Electrum, and reaches a `.onion` address with the Tor client it carries. Your wallet list is stored encrypted on the device, behind an optional PIN or password, and travels to another device as an encrypted backup file or an animated QR code.
 

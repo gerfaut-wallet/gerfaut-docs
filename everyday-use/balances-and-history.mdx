@@ -26,9 +26,10 @@ A note replaces that line when the figure cannot be trusted:
 - `Sync failed: nothing fetched yet.` when the first sync failed.
 - `Sync failed: showing the last known balance.` when a later sync failed.
 
-On desktop, the Overview adds four cards around the balance:
+On desktop, three links under the figure count the wallet's UTXOs, transactions and keys and open the matching page, and the Overview adds five cards around the balance:
 
 - **Bitcoin price:** The price in your currency, with the change over `1D`, `1W`, `1M` or `1Y`.
+- **Shortcuts:** `Backup & sync` and `Manage wallets`, two links into the settings.
 - **Watch status:** `Last sync`, `Backend` and `Block`.
 - **Balance history:** The balance of the wallet over time, as a chart.
 - **Latest activity:** The five latest transactions.
@@ -57,9 +58,17 @@ A sync only looks at the addresses Gerfaut already revealed. For coins received 
 <Tabs>
   <Tab title="Desktop">
     Select **Transactions** in the sidebar. Each row reads `Received` or `Sent`, the date or the truncated transaction id while it is not mined, a status pill and the signed amount.
+
+    <Frame caption="Every transaction of the wallet is listed with its direction, date, status and value.">
+      <img src="/images/desktop/transactions.webp" alt="The Transactions page on desktop: 268 rows, each with a direction, a date, a Confirmed pill and the amount in BTC and euros." />
+    </Frame>
   </Tab>
   <Tab title="Android">
     Open the `Transactions` tab of the wallet page. Each row shows the direction arrow, the date, a status glyph and the signed amount.
+
+    <Frame caption="The wallet page keeps the balance on top and the full history right under it.">
+      <img src="/images/android/wallet.webp" alt="A wallet page on Android with the total balance, the Transactions and UTXOs tabs with their counts, the transaction rows and the Receive button." width="360" />
+    </Frame>
   </Tab>
 </Tabs>
 

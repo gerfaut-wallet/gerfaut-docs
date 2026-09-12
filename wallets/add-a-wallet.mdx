@@ -31,9 +31,22 @@ Gerfaut is watch-only. Anything that contains a private key or a seed phrase is 
     Then select **Continue**. A refused input says why, in one sentence under the field.
   </Step>
   <Step title="Check what Gerfaut recognized">
-    The card reads `Recognized as` followed by the kind of input and, for a descriptor, its script type. Under it, `First address` is the first address Gerfaut derives. Compare it with the first address your wallet shows: the two must match.
+    The card reads `Recognized as` followed by the kind of input and, when the input carries one, its script type. Under it, `First address` is the first address Gerfaut derives. Compare it with the first address your wallet shows: the two must match.
 
-    An extended public key that carries no script type shows the caution `This key carries no script type. Check the one selected below.` and a `Script type` list. Select the type your wallet uses, and check the first address again. [Wallet types](/wallets/wallet-types) lists the types and the address they produce.
+    An extended public key also shows a `Script type` list. A key with a SLIP-132 prefix such as `zpub` or `vpub` arrives with its type selected and the notice `The SLIP-132 prefix was converted to a standard extended key.`; a key that carries no script type shows the caution `This key carries no script type. Check the one selected below.` Select the type your wallet uses, and check the first address again. [Wallet types](/wallets/wallet-types) lists the types and the address they produce.
+
+    <Tabs>
+      <Tab title="Desktop">
+        <Frame caption="Pasting a public key is enough: Gerfaut recognizes the format, derives the first address to compare, and asks only for a name.">
+          <img src="/images/desktop/add-wallet.webp" alt="The Add a wallet dialog on desktop after pasting an extended public key: the Recognized as card with the first address, the SLIP-132 notice, the Script type list, the Name and Network fields and the Add wallet button." />
+        </Frame>
+      </Tab>
+      <Tab title="Android">
+        <Frame caption="Gerfaut recognizes the pasted descriptor and shows the first address before anything is stored.">
+          <img src="/images/android/add-wallet.webp" alt="The Add a wallet screen on Android after pasting a descriptor: the Recognized as card with the first address, the Name field, the network buttons and the Add wallet button." width="360" />
+        </Frame>
+      </Tab>
+    </Tabs>
   </Step>
   <Step title="Name the wallet and pick its network">
     Enter a name in the `Name` field. Under `Network`, the list only opens when the input fits more than one network. Then select **Add wallet**.
@@ -54,5 +67,18 @@ Open **Settings** > **Wallets**. Each wallet has its own row with these actions:
 - **Icon:** Picks one of seven icons: `Wallet`, `Key`, `Shield`, `Pin`, `Snowflake`, `Landmark` or `Piggy bank`.
 - **Rescan:** Looks at the wallet again from its first address, for coins received beyond the gap limit. The result reads `Rescanned` with the number of new transactions.
 - **Remove:** Stops watching the wallet after you confirm with **Remove wallet**. Nothing moves on chain.
+
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="Wallets are managed in one list: rescan, rename, reorder or remove, with the gap limit above.">
+      <img src="/images/desktop/settings-wallets.webp" alt="The Wallets section of the desktop settings: the gap limit field and two wallet rows, each with Icon, Rescan, Rename and Remove actions and a drag handle." />
+    </Frame>
+  </Tab>
+  <Tab title="Android">
+    <Frame caption="Settings groups everything into eight sections, with the current state under each title.">
+      <img src="/images/android/settings.webp" alt="The Settings list on Android: General, Network, Wallets, Security, Notifications, Backup & sync, About and Premium, each with a summary line." width="360" />
+    </Frame>
+  </Tab>
+</Tabs>
 
 To reorder the list, drag a wallet by its handle on either platform. On desktop, **Move up** and **Move down** do the same from the keyboard, and the wallet switcher lets you drag rows too. On Android, a long press on a card of the home screen also moves it.

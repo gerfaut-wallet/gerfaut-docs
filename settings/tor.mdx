@@ -16,11 +16,19 @@ Open **Settings** > **Network** and find the `Tor` card under the backend.
     - **Automatic:** The Tor already running on this machine if it answers, the built-in one otherwise. This is the default.
     - **System Tor:** Only the Tor on this machine, at the `SOCKS address` you enter. Empty means `127.0.0.1:9050`; the Tor Browser listens on `9150`.
     - **Built-in:** Only the built-in Tor. The first connection takes a little longer while it starts.
+
+    <Frame caption="Any .onion backend goes through Tor, either the one already on the machine or the built-in one.">
+      <img src="/images/desktop/settings-tor.webp" alt="The Tor card of the Network section on desktop: Automatic, System Tor and Built-in, the SOCKS address field and the Test the connection button." />
+    </Frame>
   </Tab>
   <Tab title="Android">
     - **Automatic:** The built-in Tor. This is the default. Gerfaut uses a Tor app on the phone only when you select it below, because on a phone any app can answer on the Tor port and pose as Tor.
     - **System Tor:** Only a Tor app running on the phone, such as Orbot.
     - **Built-in:** Only the built-in Tor. The first connection takes a little longer while it starts.
+
+    <Frame caption="Any .onion backend goes through Tor, either built in or the one already on the device.">
+      <img src="/images/android/settings-tor.webp" alt="The Tor card on Android: the Automatic, System Tor and Built-in buttons and the Test the connection button." width="360" />
+    </Frame>
   </Tab>
 </Tabs>
 

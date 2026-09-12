@@ -1,6 +1,41 @@
 ---
 title: "Receive addresses"
-description: "Get fresh addresses for your wallets"
+description: "Get the next unused address of a wallet in Gerfaut with its QR code, skip ahead when you need to, and audit every address the wallet revealed."
 ---
 
-Gerfaut derives fresh receive addresses from your wallet, so you never have to reuse an address.
+Gerfaut derives the next unused receive address of a wallet from its descriptor, so you never hand out the same address twice. The same page lists every address the wallet has revealed, used or fresh.
+
+<Warning>
+Verify the address on your signing device before you share it. Gerfaut only watches: it never holds the keys behind an address, and a compromised computer or phone could show you a different one.
+</Warning>
+
+## Get an address
+
+<Steps>
+  <Step title="Open the Receive page">
+    On desktop, select **Receive** in the sidebar. On Android, select **Receive** at the bottom of the wallet page.
+  </Step>
+  <Step title="Read the address">
+    The card reads `Next unused address · index N`, the full address, and its `Derivation path`, such as `m/84'/0'/0'/0/5`. Select the QR code to enlarge it.
+  </Step>
+  <Step title="Copy it">
+    Select **Copy address**. The button reads `Copied` for a moment.
+  </Step>
+</Steps>
+
+Select **Next address** to skip ahead one unused address at a time; the label then reads `Unused address · index N`. Select **First unused** to come back. Skipping retires nothing: an address only counts as used once the chain shows a transaction on it.
+
+<Note>
+Past the gap limit, an amber note warns that other wallet software may not detect coins received that far ahead. The gap limit is 20 by default and applies to every wallet: change it in **Settings** > **Wallets**.
+</Note>
+
+A wallet added from a single address shows `Watched address` and the one address it watches.
+
+## Audit the revealed addresses
+
+Two cards follow the receive block:
+
+- **External:** The receive addresses, in derivation order.
+- **Change:** The internal addresses used by outgoing transactions. The card reads `No change addresses revealed yet.` until one exists.
+
+Each row shows the index, the address as a chip to copy, a `Used` or `Fresh` pill, and the balance the address holds, or `—` at zero. The card header counts the rows and the used ones. Each card shows five rows: select **Show all** to unfold it, **Show less** to fold it back. Each list stops at the first 200 addresses of its keychain.

@@ -91,6 +91,13 @@
           "help/faq",
           "help/contact"
         ]
+      },
+      {
+        "group": "Changelog",
+        "pages": [
+          "changelog/desktop",
+          "changelog/android"
+        ]
       }
     ]
   },

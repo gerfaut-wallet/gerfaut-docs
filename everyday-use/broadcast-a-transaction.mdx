@@ -17,7 +17,7 @@ Gerfaut signs nothing, but it can hand a transaction that your signing device si
   <Step title="Read the preview">
     The card shows the transaction id, a `PSBT` or `Raw transaction` pill, and whether the transaction can go: `Ready to broadcast`, or `Unsigned` on desktop and `Not fully signed` on Android. Then the diagram, the cautions under `Before you send`, the `Inputs` and `Outputs` with the wallets they touch, and the `Technical` facts with the fee and the fee rate.
 
-    The cautions come from Gerfaut's reading of the transaction: inputs without a signature, an input already spent or unknown to the backend, a fee rate far above what the chain asks for, a fee that takes more than 10% of the inputs, outputs below 546 sats, a locktime the network has not reached. None of them blocks you: the transaction is yours.
+    The cautions come from Gerfaut's reading of the transaction. They cover inputs without a signature, an input already spent or unknown to the backend, a fee rate far above what the chain asks for, a fee above 10% of the inputs, outputs below 546 sats, and a locktime the network has not reached. None of them blocks you: the transaction is yours.
   </Step>
   <Step title="Confirm">
     Select **Broadcast**, then read the confirmation and select **Broadcast** again. The button stays disabled while the transaction is not fully signed: such a transaction has to go back to the signer.

@@ -78,7 +78,7 @@ E-mail alerts stop at 20 a day per key; past that they leave the next day instea
 </Steps>
 
 <Note>
-The host of a webhook must be, and resolve to, a public address. The server refuses a loopback, private, link-local or carrier-grade NAT address, a `192.168` address on your home network or the `100.64` address of a tailnet for instance, when you add the channel and again at each delivery, and follows no redirect. Give your receiver a public name, or take ntfy instead: there your machine subscribes to a topic rather than waiting to be called.
+The host of a webhook must be, and resolve to, a public address. The server refuses a loopback, private, link-local or carrier-grade NAT address: a `192.168` address on your home network, or the `100.64` address of a tailnet, for instance. It checks when you add the channel and again at each delivery, and follows no redirect. Give your receiver a public name, or take ntfy instead: there your machine subscribes to a topic rather than waiting to be called.
 </Note>
 
 The `kind` of an event is `spend_detected`, `spend_confirmed`, `coins_gone`, `receive_detected`, `receive_confirmed`, `timelock_due` or `wallet_registered`. A `timelock_due` event carries the `branch_id`, the `label`, the `milestone` (`30d`, `7d`, `1d` or `open`), the `remaining_seconds` and whether the path is `spendable_now`.

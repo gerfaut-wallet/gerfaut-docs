@@ -1,6 +1,78 @@
 ---
 title: "Install on desktop"
-description: "Get Gerfaut on Windows, macOS, or Linux"
+description: "Download the Gerfaut installer for Windows, macOS or Linux from the release page and get past the first-launch notice each system shows."
 ---
 
-Gerfaut runs on Windows, macOS, and Linux.
+Gerfaut for desktop ships as installers on the [GitHub release page](https://github.com/gerfaut-wallet/gerfaut-desktop/releases/latest), which the [download page](https://gerfaut-wallet.com/download) also lists. The builds carry no code-signing certificate, so Windows and macOS hold them at arm's length once, on the first launch.
+
+<Tip>
+Check the installer against the signed hash list before you run it. [Verify your download](/getting-started/verify-your-download) takes two commands.
+</Tip>
+
+## Install Gerfaut
+
+<Tabs>
+  <Tab title="Windows">
+    <Steps>
+      <Step title="Download the installer">
+        Get the `-setup.exe` file, or the `.msi` package if you prefer one, from the release page.
+      </Step>
+      <Step title="Open it and pass the SmartScreen notice">
+        Windows shows a SmartScreen notice because the installer is not signed. Select **More info**, then **Run anyway**.
+      </Step>
+      <Step title="Complete the installer">
+        Gerfaut appears in the Start menu once the installer finishes.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="macOS">
+    <Steps>
+      <Step title="Download the disk image">
+        Get the `.dmg` file from the release page and open it.
+      </Step>
+      <Step title="Drag Gerfaut to your Applications folder">
+        Then eject the disk image.
+      </Step>
+      <Step title="Open Gerfaut once and let macOS refuse it">
+        macOS refuses an app that is not notarized. Close the notice.
+      </Step>
+      <Step title="Allow it in System Settings">
+        Open **System Settings** > **Privacy & Security** and select **Open Anyway**, the button that appears there after the refusal. Open Gerfaut again: macOS asks once more, and opens it from then on.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Linux">
+    Get the package that fits your distribution from the release page.
+
+    - **AppImage:** A portable build. Make it executable, then run it:
+
+      ```bash
+      chmod +x <file>.AppImage
+      ./<file>.AppImage
+      ```
+
+    - **Debian and Ubuntu:** Install the `.deb` package:
+
+      ```bash
+      sudo apt install ./<file>.deb
+      ```
+
+    - **Fedora and openSUSE:** Install the `.rpm` package:
+
+      ```bash
+      sudo dnf install ./<file>.rpm
+      ```
+
+    Gerfaut then appears in your application menu.
+  </Tab>
+</Tabs>
+
+## Take the welcome tour
+
+On its first launch Gerfaut opens an empty vault and shows a four-page welcome tour: what it watches, how to add a wallet, which servers it talks to, and how to keep it yours. Select **Next** to read it or **Skip** to close it. You can replay it later from **Settings** > **About** > **Show the welcome tour**.
+
+The canvas then reads `No wallets watched yet`. Select **Add a wallet** and continue with [Add a wallet](/wallets/add-a-wallet).
+
+## Update Gerfaut
+
+Gerfaut never checks for a new version on its own. To check, open **Settings** > **About** and select **Check for updates**. When a newer release exists, a **Get** button opens its release page, where you download and run the new installer over the current one.

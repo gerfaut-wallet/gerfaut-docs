@@ -1,6 +1,41 @@
 ---
 title: "What is Gerfaut"
-description: "An overview of Gerfaut, a watch-only Bitcoin wallet"
+description: "Find out what Gerfaut watches, what it never does with your keys, and where to start on a computer or on an Android phone."
 ---
 
-Gerfaut watches your Bitcoin wallets and alerts you when funds move, without ever touching your keys.
+Gerfaut is a watch-only Bitcoin wallet for Windows, macOS, Linux and Android. You give it the public side of a wallet, a descriptor, an extended public key or an address, and it shows the balance, the history and the coins of that wallet.
+
+## Watch without ever holding a key
+
+Gerfaut contains no code that generates keys, handles seeds or signs transactions. There is no Send button. Anything you paste that contains a private key or a seed phrase is refused and never stored.
+
+What you can do with a watched wallet:
+
+- Read its balance, its transaction history and the unspent outputs behind the balance, with the fiat value beside each amount if you turn it on.
+- Open any transaction as a diagram: inputs on the left, outputs on the right, the fee on its own branch.
+- Get the next receive addresses with their QR code, the used ones marked.
+- Read the spending policy of a Miniscript descriptor, path by path, with each timelock counted down.
+- Broadcast a transaction that a signing device signed elsewhere, after Gerfaut reads it back in plain words.
+
+Gerfaut talks to public servers by default, or to your own node over Esplora or Electrum, and reaches a `.onion` address with the Tor client it carries. Your wallet list is stored encrypted on the device, behind an optional PIN or password, and travels to another device as an encrypted backup file or an animated QR code.
+
+## Add alerts with Gerfaut Premium
+
+The apps are free and complete on their own. [Gerfaut Premium](/premium/overview) adds a server that watches the wallets you choose around the clock and tells you within seconds when coins move, over ntfy, Telegram, e-mail or a webhook. It works with a key you buy, without an account, and it is paid in bitcoin.
+
+## Start here
+
+<CardGroup cols={2}>
+  <Card title="Install on desktop" icon="monitor" href="/getting-started/install-desktop">
+    Get Gerfaut on Windows, macOS or Linux.
+  </Card>
+  <Card title="Install on Android" icon="smartphone" href="/getting-started/install-android">
+    Get the APK on your phone or tablet.
+  </Card>
+  <Card title="Add a wallet" icon="wallet" href="/wallets/add-a-wallet">
+    Start watching a wallet from its descriptor, xpub or address.
+  </Card>
+  <Card title="Gerfaut Premium" icon="gem" href="/premium/overview">
+    Get an alert when coins move.
+  </Card>
+</CardGroup>

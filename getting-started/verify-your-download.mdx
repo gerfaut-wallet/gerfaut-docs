@@ -1,6 +1,64 @@
 ---
 title: "Verify your download"
-description: "Check that a Gerfaut release is authentic"
+description: "Check that a Gerfaut installer or APK is the file the author published, with the signed hash list that ships with every release."
 ---
 
-Every Gerfaut release comes with a signature, so you can check that your download is authentic before installing it.
+Every Gerfaut release carries a `SHA256SUMS` file listing the hash of each installer and APK, and a `SHA256SUMS.minisig` signature made with the author's [minisign](https://jedisct1.github.io/minisign/) key. Two commands prove that the list comes from the author and that your file matches it.
+
+The author's minisign public key is:
+
+```
+RWTz3c4gUmglCX5Uvjthigz1ts3TS3ZSdhRNpFgOJRW/Wr4XjGlqTR3O
+```
+
+## Verify a file
+
+<Steps>
+  <Step title="Install minisign">
+    Get it from the [minisign page](https://jedisct1.github.io/minisign/) or from your package manager.
+  </Step>
+  <Step title="Download the hash list and its signature">
+    Take `SHA256SUMS` and `SHA256SUMS.minisig` from the same release page as your file, and put all three in one folder.
+  </Step>
+  <Step title="Check the signature of the hash list">
+    From that folder, run:
+
+    ```bash
+    minisign -Vm SHA256SUMS -P RWTz3c4gUmglCX5Uvjthigz1ts3TS3ZSdhRNpFgOJRW/Wr4XjGlqTR3O
+    ```
+
+    minisign prints `Signature and comment signature verified` when the list comes from the author. Any other answer means the list was altered or signed by someone else: do not use the file.
+  </Step>
+  <Step title="Check that your file matches the list">
+    <Tabs>
+      <Tab title="Linux">
+        ```bash
+        sha256sum --check SHA256SUMS --ignore-missing
+        ```
+
+        The command prints `OK` after the name of your file.
+      </Tab>
+      <Tab title="macOS">
+        ```bash
+        shasum -a 256 --check SHA256SUMS --ignore-missing
+        ```
+
+        The command prints `OK` after the name of your file.
+      </Tab>
+      <Tab title="Windows">
+        In PowerShell, compute the hash of your file and find its line in the list:
+
+        ```powershell
+        (Get-FileHash .\<file>).Hash
+        Select-String <file> SHA256SUMS
+        ```
+
+        The two hashes must be identical, letter for letter.
+      </Tab>
+    </Tabs>
+  </Step>
+</Steps>
+
+## Go further on Android
+
+Android checks the APK signature on its own when it installs the file. To compare the signing certificate with the one every release uses, or to rebuild a release from source and check that only the signature differs, see [Install on Android](/getting-started/install-android#check-the-signing-certificate).

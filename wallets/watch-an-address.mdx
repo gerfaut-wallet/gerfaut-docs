@@ -1,6 +1,27 @@
 ---
 title: "Watch an address"
-description: "Track a single Bitcoin address"
+description: "Watch a single Bitcoin address in Gerfaut when you have no descriptor or extended public key, and see what an address can and cannot show."
 ---
 
-You can watch a single Bitcoin address without importing a full wallet.
+A single address is enough to follow the coins that sit on it. Gerfaut watches it like any wallet, with the balance, the history and the unspent outputs, minus what only a descriptor can give: the next addresses and a spending policy.
+
+## Watch the address
+
+Follow [Add a wallet](/wallets/add-a-wallet) and paste the address instead of a descriptor. The confirmation card reads `Recognized as Single address` with the address under it. Name it and select **Add wallet**.
+
+<Tip>
+Give the wallet the `Pin` icon in **Settings** > **Wallets** so that the list tells a watched address from a descriptor wallet at a glance.
+</Tip>
+
+## Know what an address cannot show
+
+- **Receive:** The page shows `Watched address`, the one address and its QR code. There is no next address to hand out.
+- **Policy:** The page reads `An address has no policy Gerfaut can read.`
+- **Electrum servers:** An Electrum server cannot serve a single-address wallet. Keep the `Public API` backend on `Automatic` or on an Esplora server, or point Gerfaut at your own Esplora. See [Backends and your own node](/settings/backends-and-your-own-node).
+- **Gerfaut Premium:** The server watches descriptors only, so a single address cannot be switched on in [Watch a wallet](/premium/watch-a-wallet).
+
+## Load a long history
+
+A very active address loads its history in rounds of 1,000 transactions. When more remain, the end of the list shows **Load older transactions** and the note `This address has a long history: it loads in rounds. The balance above already covers all of it.` Select the button to fetch the next round.
+
+The CSV export only includes the transactions loaded so far: load every round before you export a complete file.

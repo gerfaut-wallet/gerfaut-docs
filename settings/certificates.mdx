@@ -1,0 +1,38 @@
+---
+title: "Certificates"
+description: "Trust the self-signed certificate of your own Electrum server by its fingerprint in Gerfaut, and decide what to do when a server's certificate changes."
+---
+
+Most home nodes serve Electrum over TLS with a certificate they signed themselves. Gerfaut shows you that certificate, lets you compare its fingerprint with the one your server prints, and once you accept it, refuses any other certificate from that host.
+
+An Esplora endpoint over `https://` and a public Electrum server vouched for by a public authority never ask: only a certificate no authority vouches for does.
+
+## Accept your server's certificate
+
+When you save a backend, or connect to it for the first time, Gerfaut opens `This server signs its own certificate`.
+
+<Steps>
+  <Step title="Print the fingerprint on your server">
+    On the machine that runs the server, run the command the dialog shows, with the path of the server's certificate file:
+
+    ```bash
+    openssl x509 -noout -fingerprint -sha256 -in cert.pem
+    ```
+  </Step>
+  <Step title="Compare it with the one Gerfaut shows">
+    The dialog shows the SHA-256 fingerprint of the certificate it received, in the same colon-separated form, along with the certificate's subject, its expiry and why the question is asked, such as `self-signed, or signed by an authority this machine does not know`. The two fingerprints must match byte for byte.
+  </Step>
+  <Step title="Select Accept and save">
+    Gerfaut records the fingerprint for that host and saves the backend. Select **Cancel** to save nothing and trust nothing.
+  </Step>
+</Steps>
+
+## Decide when a certificate changes
+
+If the host later presents another certificate, Gerfaut stops and opens `This server's certificate changed`, with the two fingerprints labelled `Accepted before` and `Presented now`. Either whoever runs the server replaced the certificate, or something is answering in its place. **Cancel** is the default: nothing is saved and nothing is trusted until you say so.
+
+Ask whoever runs the server before you accept the new certificate. To accept it, select **Trust the new certificate**, then confirm with **Yes, trust the new certificate** on desktop or **Trust it anyway** on Android.
+
+## Forget a certificate
+
+Open **Settings** > **Network**. The `Trusted certificates` card lists each host you accepted with its fingerprint, and only exists while there is one. Select **Forget** on a line, then confirm: Gerfaut asks again the next time it connects to that host, and refuses until the certificate is accepted.

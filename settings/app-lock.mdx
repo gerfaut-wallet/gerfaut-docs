@@ -1,0 +1,59 @@
+---
+title: "App lock"
+description: "Lock Gerfaut behind a PIN or a password, unlock it with biometrics on Android, and hide it behind a working calculator on your phone's launcher."
+---
+
+The vault that holds your wallet list is encrypted either way. The app lock is the curtain in front of it: what stops someone at your unlocked computer or holding your unlocked phone. It replaces the whole app rather than covering it, so nothing of a wallet shows before you unlock.
+
+Open **Settings** > **Security**.
+
+## Turn on the app lock
+
+<Steps>
+  <Step title="Select the App lock switch">
+    A dialog titled `Turn on the app lock` opens.
+  </Step>
+  <Step title="Pick the kind of secret">
+    Under `Kind`, select `PIN` (4 to 12 digits) or `Password` (at least 8 characters). Only a PIN can open the calculator disguise on Android.
+  </Step>
+  <Step title="Enter the secret twice">
+    Fill `New PIN` or `New password`, then `Confirm`, and select **Turn on**.
+  </Step>
+</Steps>
+
+Gerfaut asks for the secret when it opens. What happens next depends on the platform:
+
+<Tabs>
+  <Tab title="Desktop">
+    The window stays unlocked until you close it. To lock it before then, press `Ctrl+L`, select **Lock** at the bottom of the sidebar, or select **Lock now** in the `Security` card.
+  </Tab>
+  <Tab title="Android">
+    Gerfaut asks again every time it comes back from the background. A file picker or a share sheet that Gerfaut opened itself does not count. Select **Lock now** in the `Security` card to lock it by hand.
+  </Tab>
+</Tabs>
+
+The lock screen reads `Locked`. Enter the secret and select **Unlock**. After three wrong attempts, Gerfaut waits 5 seconds before the next one, doubles the wait at each failure up to 5 minutes, and counts it down on screen. Restarting the app does not shorten it.
+
+<Note>
+On Android, a lock also keeps the task switcher and screenshots from capturing Gerfaut.
+</Note>
+
+## Change or turn off the lock
+
+In the `Security` card, select **Change PIN** or **Change password**: the dialog asks for the current secret, then the new one twice. Select the `App lock` switch again to turn the lock off; the dialog `Turn off the app lock` asks for the secret once.
+
+## Unlock with biometrics on Android
+
+When the phone can ask for a fingerprint or a face, the `Security` card shows `Unlock with biometrics`. Select the switch, enter your PIN or password, then confirm the system prompt. The lock screen then offers **Use fingerprint or face** and fires the prompt on its own. Gerfaut never sees the biometric itself.
+
+## Disguise the app as a calculator on Android
+
+With a PIN lock in place, select `Disguise the app` in the `Security` card and read the sheet: the launcher shows a calculator named `Calculator` instead of Gerfaut, notifications and home-screen widgets are turned off, and `Settings` > `Apps` on the phone still lists Gerfaut. Select **Turn on the disguise**, then clear your recent apps once, because Android may keep an older Gerfaut thumbnail.
+
+To open the wallet, type your PIN on the calculator and press `=`. A wrong PIN shows the number like any calculator would, with no hint. The calculator is real: four operations, percentage, sign and decimal point.
+
+To drop the disguise, open **Settings** > **Security** and select the `Disguise the app` switch again, or turn the app lock off: both bring Gerfaut back to the launcher.
+
+<Note>
+Forget the PIN and the app cannot be opened: with the disguise on, the PIN is the only way in. A backup made with Gerfaut brings the wallets back into a fresh install, see [Backup and sync](/settings/backup-and-sync).
+</Note>

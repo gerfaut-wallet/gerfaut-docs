@@ -1,6 +1,33 @@
 ---
 title: "Tor"
-description: "Which connections go through Tor"
+description: "Reach a backend on a .onion address from Gerfaut with the Tor client it carries or the one already on your device, and test the route."
 ---
 
-Gerfaut reaches a backend whose address ends in .onion through Tor, and every other address directly. The Premium calls follow the backend you set: with a .onion backend they go through Tor as well, with any other backend they go out directly.
+Gerfaut reaches a backend whose address ends in `.onion` through Tor, and every other address directly. Both apps carry their own Tor client, so a hidden service works with nothing else to install.
+
+The Premium calls follow the backend you set: with a `.onion` backend they go through Tor as well, with any other backend they go out directly. A call that needs Tor and cannot reach it fails; it never falls back to the clear.
+
+## Choose which Tor Gerfaut uses
+
+Open **Settings** > **Network** and find the `Tor` card under the backend.
+
+<Tabs>
+  <Tab title="Desktop">
+    - **Automatic:** The Tor already running on this machine if it answers, the built-in one otherwise. This is the default.
+    - **System Tor:** Only the Tor on this machine, at the `SOCKS address` you enter. Empty means `127.0.0.1:9050`; the Tor Browser listens on `9150`.
+    - **Built-in:** Only the built-in Tor. The first connection takes a little longer while it starts.
+  </Tab>
+  <Tab title="Android">
+    - **Automatic:** The built-in Tor. This is the default. A Tor app on the phone is used only when you choose it below, because on a phone any app can answer on the Tor port and pose as Tor.
+    - **System Tor:** Only a Tor app running on the phone, such as Orbot.
+    - **Built-in:** Only the built-in Tor. The first connection takes a little longer while it starts.
+  </Tab>
+</Tabs>
+
+## Test the route
+
+Select **Test the connection**. While the built-in client starts, the card reads `Starting the built-in Tor…` with a percentage; a cold start takes up to about a minute and a half. The result reads `Reached through the built-in Tor.` or `Reached through the system Tor.`, or the error in Gerfaut's own words.
+
+<Tip>
+Point the backend at your node's `.onion` address first, in [Backends and your own node](/settings/backends-and-your-own-node): a scanned `.onion` address says `A Tor hidden service: reached through Tor only.` under the field.
+</Tip>

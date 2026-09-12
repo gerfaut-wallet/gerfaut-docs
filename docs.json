@@ -65,9 +65,13 @@
         "group": "Settings",
         "pages": [
           "settings/backends-and-your-own-node",
+          "settings/certificates",
           "settings/tor",
           "settings/units-and-fiat",
-          "settings/appearance"
+          "settings/appearance",
+          "settings/app-lock",
+          "settings/backup-and-sync",
+          "settings/notifications"
         ]
       },
       {

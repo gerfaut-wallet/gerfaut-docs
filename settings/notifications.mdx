@@ -1,0 +1,37 @@
+---
+title: "Notifications"
+description: "Get a notification from Gerfaut when a sync finds a new transaction, check your wallets on a schedule, and put the price or a balance on your Android home screen."
+---
+
+Gerfaut can tell you when a sync finds a transaction you have not seen. The notification comes from the sync itself: it talks to the same servers as always, and nothing else.
+
+Open **Settings** > **Notifications**. Both settings are off by default.
+
+## Get notified about new transactions
+
+Select the `New transactions` switch. The system asks for permission the first time; if it refuses, the card reads `Notifications are off for Gerfaut in the system settings.`
+
+A notification names the wallet and says `Received 0.01000000 BTC` or `0.00200000 BTC left this wallet`, with `· pending` while the transaction has no block. While amounts are hidden, it only says `New transaction`. Gerfaut sends at most three per wallet per sync, then one line that counts the rest.
+
+## Check on a schedule
+
+<Tabs>
+  <Tab title="Desktop">
+    Under `Check while open`, select `5 min`, `15 min` or `1 hour`. Gerfaut syncs every wallet on that rhythm while its window is open.
+  </Tab>
+  <Tab title="Android">
+    Under `Check in the background`, select `Every 15 min`, `Every hour` or `Every 6 hours`. Gerfaut syncs even when it is closed. Android checks at most every 15 minutes and may delay a check to save battery.
+  </Tab>
+</Tabs>
+
+The schedule stays greyed out while `New transactions` is off.
+
+## Put a widget on your Android home screen
+
+Hold an empty spot on your home screen, select **Widgets** and pick Gerfaut. Three widgets exist:
+
+- **Bitcoin price:** The price in your chosen currency, as of the last refresh.
+- **Balance:** The total of your wallets and up to four of them by name. Balances stay masked as `•••••` until you select `Show balances on widgets` in the `Widgets` card, and whenever amounts are hidden in the app.
+- **Network:** The block height as of the last sync.
+
+A widget never syncs on its own: it refreshes when you open Gerfaut and with the background check above. Nothing private reaches it: a name, a balance, a price, a height, never an address or a transaction id. Widgets are off while the app is disguised as a calculator.

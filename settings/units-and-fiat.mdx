@@ -1,6 +1,32 @@
 ---
 title: "Units and fiat"
-description: "Pick your display unit and fiat currency"
+description: "Show every amount in Gerfaut in BTC or in sats, and add its value in one of 30 fiat currencies from CoinGecko, Kraken or mempool.space."
 ---
 
-Choose between BTC and sats, and pick the fiat currency shown next to amounts.
+One unit applies to every amount in the app. The fiat value is off by default and appears under each amount once you turn it on.
+
+Open **Settings** > **General**. The settings sit in the `Display` card.
+
+## Switch between BTC and sats
+
+Under `Unit`, select `BTC` or `sats`. Amounts in BTC always show eight decimals; amounts in sats show none. The default is `BTC`.
+
+## Show the fiat value
+
+<Steps>
+  <Step title="Turn on Fiat value">
+    Select the `Fiat value` switch. Every amount gains a second line with its value, and the desktop Overview shows the `Bitcoin price` card.
+  </Step>
+  <Step title="Pick the currency">
+    Under `Currency`, the list has two groups. `Every source` holds the seven currencies every price source quotes: EUR, USD, GBP, CHF, JPY, CAD and AUD. `CoinGecko only` holds 23 more, from INR and BRL to KRW and NZD. The default is EUR.
+  </Step>
+  <Step title="Pick the price source">
+    Under `Price source`, select `CoinGecko`, `Kraken` or `mempool.space`. A source that does not quote the chosen currency is greyed out, and picking a currency from the `CoinGecko only` group switches the source to CoinGecko on its own. The default is CoinGecko.
+  </Step>
+</Steps>
+
+Under the controls, a line reads the current rate as `1 BTC =` followed by the value in your currency and the time of the last update. When the source does not answer, amounts show without fiat until it does.
+
+<Note>
+Each price request reaches the source you picked from your own IP address. It carries no wallet data.
+</Note>

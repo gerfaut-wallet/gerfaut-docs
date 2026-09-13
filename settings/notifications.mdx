@@ -1,19 +1,30 @@
 ---
 title: "Notifications"
-description: "Get a notification from Gerfaut when a sync finds a new transaction, check your wallets on a schedule, and put the price or a balance on your Android home screen."
+description: "Get a notification when a sync finds a new transaction, check your wallets on a schedule, and put the price or a balance on your Android home screen."
 ---
 
-Gerfaut can tell you when a sync finds a transaction you have not seen. The notification comes from the sync itself: it talks to the same servers as always, and nothing else.
+Gerfaut tells you when a sync finds a transaction you have not seen. The notification comes from the sync itself, which talks to the same servers as always and nothing else.
 
 Open **Settings** > **Notifications**. Both settings are off by default.
 
 ## Get notified about new transactions
 
-Select the `New transactions` switch. The system asks for permission the first time; if it refuses, the card reads `Notifications are off for Gerfaut in the system settings.`
+<Steps>
+  <Step title="Select the New transactions switch">
+    The system asks for permission the first time. If it refuses, the card reads `Notifications are off for Gerfaut in the system settings.`
+  </Step>
+  <Step title="Read the notification">
+    It names the wallet and says `Received 0.01000000 BTC` or `0.00200000 BTC left this wallet`, with `· pending` while the transaction has no block. While amounts are hidden, it only says `New transaction`.
+  </Step>
+</Steps>
 
-A notification names the wallet and says `Received 0.01000000 BTC` or `0.00200000 BTC left this wallet`, with `· pending` while the transaction has no block. While amounts are hidden, it only says `New transaction`. Gerfaut sends at most three per wallet per sync, then one line that counts the rest.
+<Tip>
+Gerfaut sends at most three notifications per wallet per sync, then one line that counts the rest.
+</Tip>
 
 ## Check on a schedule
+
+The schedule stays greyed out while `New transactions` is off.
 
 <Tabs>
   <Tab title="Desktop">
@@ -24,18 +35,27 @@ A notification names the wallet and says `Received 0.01000000 BTC` or `0.0020000
   </Tab>
 </Tabs>
 
-The schedule stays greyed out while `New transactions` is off.
-
 ## Put a widget on your Android home screen
 
-Hold an empty spot on your home screen, select **Widgets** and pick Gerfaut. Three widgets exist:
-
-- **Bitcoin price:** The price in your chosen currency, as of the last refresh.
-- **Balance:** The total of your wallets and up to four of them by name. Balances stay masked as `•••••` until you select `Show balances on widgets` in the `Widgets` card, and whenever amounts are hidden in the app.
-- **Network:** The block height as of the last sync.
+<Steps>
+  <Step title="Hold an empty spot on your home screen">
+    Select **Widgets** and pick Gerfaut.
+  </Step>
+  <Step title="Pick one of the three widgets">
+    - **Bitcoin price:** The price in your chosen currency, as of the last refresh.
+    - **Balance:** The total of your wallets and up to four of them by name. Balances stay masked as `•••••` until you tick `Show balances on widgets` in the `Widgets` card, and whenever amounts are hidden in Gerfaut.
+    - **Network:** The block height as of the last sync.
+  </Step>
+</Steps>
 
 <Frame caption="Home-screen widgets show the price, the block height and the wallet balances, masked by default.">
   <img src="/images/android/widget.webp" alt="An Android launcher with the three Gerfaut widgets: Bitcoin price, Balance with masked amounts per wallet, and Network with the block height." width="360" />
 </Frame>
 
-A widget never syncs on its own: it refreshes when you open Gerfaut and with the background check above. Nothing private reaches it: a name, a balance, a price, a height, never an address or a transaction id. Widgets are off while the app is disguised as a calculator.
+<Tip>
+Nothing private reaches a widget: a name, a balance, a price, a height, never an address or a transaction id.
+</Tip>
+
+<Accordion title="When a widget refreshes">
+  A widget never syncs on its own. It refreshes when you open Gerfaut and with the background check above. Widgets are off while Gerfaut is disguised as a calculator, see [App lock](/settings/app-lock).
+</Accordion>

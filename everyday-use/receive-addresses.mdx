@@ -1,22 +1,25 @@
 ---
-title: "Receive addresses"
-description: "Get the next unused address of a wallet in Gerfaut with its QR code, skip ahead when you need to, and audit every address the wallet revealed."
+title: "Receive"
+description: "Get the next unused address of a wallet in Gerfaut with its QR code, skip ahead to another address, and audit every address the wallet revealed."
 ---
 
-Gerfaut derives the next unused receive address of a wallet from its descriptor, so you never hand out the same address twice. The same page lists every address the wallet has revealed, used or fresh.
+Get the next unused receive address of a wallet, with its QR code, and audit every address the wallet revealed. Gerfaut derives each address from the descriptor, so you never hand out the same one twice.
 
 <Warning>
-Verify the address on your signing device before you share it. Gerfaut only watches: it never holds the keys behind an address, and a compromised computer or phone could show you a different one.
+Verify the address on your signing device before you share it. Gerfaut never holds the keys behind an address, and a compromised computer or phone could show you a different one.
 </Warning>
 
 ## Get an address
 
 <Steps>
   <Step title="Open the Receive page">
-    On desktop, select **Receive** in the sidebar. On Android, select **Receive** at the bottom of the wallet page.
+    <Tabs>
+      <Tab title="Desktop">Select **Receive** in the sidebar.</Tab>
+      <Tab title="Android">Select **Receive** at the bottom of the wallet page.</Tab>
+    </Tabs>
   </Step>
   <Step title="Read the address">
-    The card reads `Next unused address · index N`, the full address, and its `Derivation path`, such as `m/84'/0'/0'/0/5`, or `m/0/5` for a key added without its origin. Select the QR code to enlarge it.
+    The card reads `Next unused address · index N`, the full address, and its `Derivation path`, such as `m/84'/0'/0'/0/5`. Select the QR code to enlarge it.
   </Step>
   <Step title="Copy it">
     Select **Copy address**. The button reads `Copied` for a moment.
@@ -25,7 +28,7 @@ Verify the address on your signing device before you share it. Gerfaut only watc
 
 <Tabs>
   <Tab title="Desktop">
-    <Frame caption="Receiving means sharing an address Gerfaut derived; the page insists on checking it against the signing device first.">
+    <Frame caption="Receiving means sharing an address Gerfaut derived, after checking it against the signing device.">
       <img src="/images/desktop/receive.webp" alt="The Receive page on desktop: the QR code, the next unused address at index 36 with its derivation path, the Copy address and Next address buttons, the warning to verify on a signing device, and the External and Change address tables." />
     </Frame>
   </Tab>
@@ -36,13 +39,24 @@ Verify the address on your signing device before you share it. Gerfaut only watc
   </Tab>
 </Tabs>
 
-Select **Next address** to skip ahead one unused address at a time; the label then reads `Unused address · index N`. Select **First unused** to come back. Skipping retires nothing: an address only counts as used once the chain shows a transaction on it.
+<AccordionGroup>
+  <Accordion title="Read the path of a key added without its origin">
+    The `Derivation path` then reads from the key itself, such as `m/0/5`.
+  </Accordion>
+  <Accordion title="Receive on a wallet added from a single address">
+    The card reads `Watched address` and shows the one address it watches.
+  </Accordion>
+</AccordionGroup>
+
+## Skip to another address
+
+Select **Next address** to skip ahead one unused address at a time. The label then reads `Unused address · index N`. Select **First unused** to come back.
+
+Skipping retires nothing. An address only counts as used once the chain shows a transaction on it.
 
 <Note>
 Past the gap limit, an amber note warns that other wallet software may not detect coins received that far ahead. The gap limit is 20 by default and applies to every wallet: change it in **Settings** > **Wallets**.
 </Note>
-
-A wallet added from a single address shows `Watched address` and the one address it watches.
 
 ## Audit the revealed addresses
 
@@ -51,4 +65,6 @@ Two cards follow the receive block:
 - **External:** The receive addresses, in derivation order.
 - **Change:** The internal addresses used by outgoing transactions. The card reads `No change addresses revealed yet.` until one exists.
 
-Each row shows the index, the address as a chip to copy, a `Used` or `Fresh` pill, and the balance the address holds, or a dash at zero. The card header counts the rows, and on desktop the used ones. Each card shows five rows: select **Show all** to unfold it, **Show less** to fold it back. Each list stops at the first 200 addresses of its keychain.
+Each row shows the index, the address as a chip to copy, a `Used` or `Fresh` pill, and the balance the address holds, or a dash at zero. The card header counts the rows, and on desktop the used ones.
+
+Each card shows five rows. Select **Show all** to unfold it and **Show less** to fold it back. Each list stops at the first 200 addresses of its keychain.

@@ -1,11 +1,13 @@
 ---
 title: "Channels"
-description: "Send Gerfaut Premium alerts to the ntfy app, Telegram, an e-mail address or a webhook you run, test each channel, and verify a webhook's signature."
+description: "Send Gerfaut Premium alerts to the ntfy app, Telegram, an e-mail address or a webhook you run, test each channel, and verify a webhook signature."
 ---
 
-A channel is where an alert goes. You can add up to 10 per key, in **Settings** > **Premium**, under `Channels`. Gerfaut sends a test through the first channel you add, and each channel can be tested again from its menu.
+A channel is where an alert goes. You add up to ten per Premium licence key in **Settings** > **Premium**, under `Channels`, and Gerfaut sends a test through the first one you add.
 
+<Tip>
 An ntfy, Telegram or e-mail alert names the wallet and says what happened, never an address, an amount or a transaction id. A webhook carries the whole event.
+</Tip>
 
 ## Add an ntfy channel
 
@@ -13,8 +15,8 @@ An ntfy, Telegram or e-mail alert names the wallet and says what happened, never
   <Step title="Select Add a channel, then ntfy">
     Gerfaut draws a random topic of 24 characters and registers it. Only someone who knows the topic can read the alerts, so keep it to yourself.
   </Step>
-  <Step title="Subscribe to the topic in the ntfy app">
-    Select **Open in ntfy** to add the subscription in the ntfy app, or select **Copy** and paste the address, `https://ntfy.gerfaut-wallet.com/` followed by the topic, as a new subscription in the app. Then select **Done**.
+  <Step title="Subscribe to the topic and select Done">
+    Select **Open in ntfy** to add the subscription in the ntfy app. Otherwise select **Copy** and paste the address, `https://ntfy.gerfaut-wallet.com/` followed by the topic, as a new subscription in the app. The line then reads `Linked`.
   </Step>
 </Steps>
 
@@ -22,10 +24,10 @@ An ntfy, Telegram or e-mail alert names the wallet and says what happened, never
 
 <Steps>
   <Step title="Select Add a channel, then Telegram">
-    Gerfaut shows a link code and the bot's name, `@GerfautAlertsBot`.
+    Gerfaut shows a link code and the bot's name, `@GerfautAlertsBot`. The code is good for one hour.
   </Step>
   <Step title="Select Open Telegram and press Start">
-    Telegram opens the bot with the code in place. Press **Start**: the code is sent for you, and the line in Gerfaut turns to `Linked` with the name of your chat. The code is good for one hour; past that, remove the channel and add it again.
+    Telegram opens the bot with the code in place and sends it for you. The line in Gerfaut then reads `Linked` with the name of your chat. Past the hour, remove the channel and add it again.
   </Step>
 </Steps>
 
@@ -33,23 +35,21 @@ An ntfy, Telegram or e-mail alert names the wallet and says what happened, never
 
 <Steps>
   <Step title="Select Add a channel, then E-mail">
-    Enter the address and select **Add channel** on desktop, or **Add e-mail** on Android. The address receives one e-mail with a six-digit code, and nothing else until you confirm it.
+    Enter the address, then select **Add channel** on desktop or **Add e-mail** on Android. The address receives one e-mail with a six-digit code, and nothing else until you confirm it.
   </Step>
-  <Step title="Enter the code">
-    Type the six digits in `Code` and select **Confirm**. The code expires in an hour, and five wrong codes void it: add the channel again for a new one.
+  <Step title="Enter the code and select Confirm">
+    Type the six digits in `Code`. The code expires in an hour, and five wrong codes void it, so add the channel again for a new one. The line then reads `Linked`.
   </Step>
 </Steps>
 
-E-mail alerts stop at 20 a day per key; past that they leave the next day instead of being dropped, and the other channels are untouched.
-
-## Add a webhook
+## Add a webhook channel
 
 <Steps>
   <Step title="Select Add a channel, then Webhook">
-    Enter the `https://` URL of your receiver and, if you want signed deliveries, a `Secret`. Select **Add channel** on desktop, or **Add webhook** on Android.
+    Enter the `https://` URL of your receiver and, for signed deliveries, a `Secret`. Select **Add channel** on desktop or **Add webhook** on Android.
   </Step>
   <Step title="Receive the deliveries">
-    The server posts one JSON body per event, with a signature when you set a secret:
+    The server posts one JSON body per event, with the headers `X-Gerfaut-Timestamp` and `X-Gerfaut-Signature` when you set a secret. The line then reads `Linked`.
 
     ```json
     {
@@ -60,13 +60,21 @@ E-mail alerts stop at 20 a day per key; past that they leave the next day instea
       "data": { "txid": "<the transaction id>", "value_sats": 31000, "height": null }
     }
     ```
-
-    `data` also carries the inputs and outputs of a spend, the outpoints of coins gone, or the details of a timelock, depending on the kind of event.
-
-    Two headers come with it: `X-Gerfaut-Timestamp`, in unix seconds, and `X-Gerfaut-Signature`, as `sha256=` followed by the hex HMAC-SHA256 of the string `<timestamp>.<body>` under your secret.
   </Step>
-  <Step title="Verify the signature on your side">
-    Compute the HMAC of the timestamp, a dot and the raw body, and compare it with the header:
+</Steps>
+
+<Note>
+The host of a webhook must be, and resolve to, a public address. The server refuses a loopback, private, link-local or carrier-grade NAT address, such as `192.168` on your home network or `100.64` on a tailnet. It checks when you add the channel and again at each delivery, and follows no redirect.
+</Note>
+
+<AccordionGroup>
+  <Accordion title="Read the kind of an event">
+    The `kind` is `spend_detected`, `spend_confirmed`, `coins_gone`, `receive_detected`, `receive_confirmed`, `timelock_due` or `wallet_registered`. Depending on the kind, `data` also carries the inputs and outputs of a spend, the outpoints of coins gone, or the details of a timelock.
+
+    A `timelock_due` event carries the `branch_id`, the `label`, the `milestone` (`30d`, `7d`, `1d` or `open`), the `remaining_seconds` and whether the path is `spendable_now`.
+  </Accordion>
+  <Accordion title="Verify the signature on your side">
+    `X-Gerfaut-Timestamp` is in unix seconds. `X-Gerfaut-Signature` is `sha256=` followed by the hex HMAC-SHA256 of the string `<timestamp>.<body>` under your secret. Compute the HMAC of the timestamp, a dot and the raw body, then compare it with the header:
 
     ```python
     import hmac, hashlib
@@ -74,17 +82,20 @@ E-mail alerts stop at 20 a day per key; past that they leave the next day instea
     expected = hmac.new(secret, f"{timestamp}.{body}".encode(), hashlib.sha256).hexdigest()
     valid = hmac.compare_digest("sha256=" + expected, signature_header)
     ```
-  </Step>
-</Steps>
+  </Accordion>
+  <Accordion title="Receive on a machine without a public name">
+    Take ntfy instead of a webhook. There your machine subscribes to a topic rather than waiting to be called.
+  </Accordion>
+</AccordionGroup>
 
-<Note>
-The host of a webhook must be, and resolve to, a public address. The server refuses a loopback, private, link-local or carrier-grade NAT address: a `192.168` address on your home network, or the `100.64` address of a tailnet, for instance. It checks when you add the channel and again at each delivery, and follows no redirect. Give your receiver a public name, or take ntfy instead: there your machine subscribes to a topic rather than waiting to be called.
-</Note>
-
-The `kind` of an event is `spend_detected`, `spend_confirmed`, `coins_gone`, `receive_detected`, `receive_confirmed`, `timelock_due` or `wallet_registered`. A `timelock_due` event carries the `branch_id`, the `label`, the `milestone` (`30d`, `7d`, `1d` or `open`), the `remaining_seconds` and whether the path is `spendable_now`.
+<Frame caption="Every channel sits under Channels, with a menu to test it or remove it.">
+  <img src="/images/android/settings-premium.webp" alt="The Premium section on Android with the Watched wallets, Channels and Recent alerts cards." width="360" />
+</Frame>
 
 ## Test or remove a channel
 
-Select the menu of a channel line, then **Send a test** or **Remove**. A test needs a linked channel, and the server accepts five messages on demand per hour and per key, tests and confirmation e-mails together.
+Select the menu of a channel line, then **Send a test** or **Remove**. A test needs a linked channel, and the server accepts five messages on demand per hour and per licence key, tests and confirmation e-mails together.
 
-A channel the server turned off reads `Not delivering`: a webhook whose host is not reachable from the internet, for instance. Remove it and add one with a public address.
+- **`Not delivering`:** The server turned the channel off, for instance a webhook whose host is not reachable from the internet. Remove it and add one with a public address.
+- **E-mail alerts:** They stop at 20 a day per licence key. Past that they leave the next day instead of being dropped, and the other channels are untouched.
+- **Other ceilings:** See [Limits](/premium/limits).

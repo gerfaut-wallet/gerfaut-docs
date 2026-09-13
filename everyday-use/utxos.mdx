@@ -1,9 +1,9 @@
 ---
 title: "UTXOs"
-description: "List the unspent outputs behind a wallet's balance in Gerfaut, with the outpoint, the address, the status and the amount of each coin."
+description: "List the unspent outputs behind a wallet's balance in Gerfaut and read the outpoint, the address, the status and the amount of each coin."
 ---
 
-A balance is the sum of coins, and each coin is an unspent transaction output. Gerfaut lists them so you can see exactly what sits behind a figure.
+List the coins behind a balance to see exactly what sits behind the figure. Each coin is an unspent transaction output.
 
 ## Open the list
 
@@ -16,13 +16,15 @@ A balance is the sum of coins, and each coin is an unspent transaction output. G
     </Frame>
   </Tab>
   <Tab title="Android">
-    Open the `UTXOs` tab of the wallet page. The tab carries the count of coins.
+    Select the `UTXOs` tab of the wallet page. The tab carries the count of coins.
 
     <Frame caption="The UTXOs tab lists each coin with its outpoint, address and confirmation state.">
       <img src="/images/android/utxos.webp" alt="The UTXOs tab on Android with six confirmed coins, each with an outpoint chip, an address chip and an amount." width="360" />
     </Frame>
   </Tab>
 </Tabs>
+
+While the wallet holds no coin, the page reads `No unspent outputs`.
 
 ## Read each coin
 
@@ -33,4 +35,6 @@ Each row is one coin:
 - **Status:** `Pending` until the transaction is in a block, then the number of confirmations, then `Confirmed` from six on.
 - **Amount:** The value in the display unit, with its fiat value when fiat is on.
 
-The list is read-only: Gerfaut has no coin selection, no freezing and no labels, because it never builds a transaction. While the wallet holds no coin, the page reads `No unspent outputs`.
+<Tip>
+The list is read-only. Gerfaut has no coin selection, no freezing and no labels, because it never builds a transaction.
+</Tip>

@@ -1,9 +1,9 @@
 ---
-title: "Verify your download"
-description: "Check that a Gerfaut installer or APK is the file the author published, with the signed hash list that ships with every release."
+title: "Verify a download"
+description: "Prove in two commands that a Gerfaut installer or APK is the file the author published, with the signed hash list that ships with every release."
 ---
 
-Every Gerfaut release carries a `SHA256SUMS` file listing the hash of each installer and APK, and a `SHA256SUMS.minisig` signature made with the author's [minisign](https://jedisct1.github.io/minisign/) key. Two commands prove that the list comes from the author and that your file matches it.
+Every Gerfaut release carries a `SHA256SUMS` file listing the hash of each installer and APK, and a `SHA256SUMS.minisig` signature made with the author's [minisign](https://jedisct1.github.io/minisign/) key. One command proves that the list comes from the author, a second one proves that your file matches it.
 
 The author's minisign public key is:
 
@@ -27,24 +27,14 @@ RWTz3c4gUmglCX5Uvjthigz1ts3TS3ZSdhRNpFgOJRW/Wr4XjGlqTR3O
     minisign -Vm SHA256SUMS -P RWTz3c4gUmglCX5Uvjthigz1ts3TS3ZSdhRNpFgOJRW/Wr4XjGlqTR3O
     ```
 
-    minisign prints `Signature and comment signature verified` when the list comes from the author. Any other answer means the list was altered or signed by someone else: do not use the file.
+    minisign prints `Signature and comment signature verified` when the list comes from the author.
+
+    <Warning>
+    Any other answer means the list was altered or signed by someone else. Do not use the file.
+    </Warning>
   </Step>
   <Step title="Check that your file matches the list">
     <Tabs>
-      <Tab title="Linux">
-        ```bash
-        sha256sum --check SHA256SUMS --ignore-missing
-        ```
-
-        The command prints `OK` after the name of your file.
-      </Tab>
-      <Tab title="macOS">
-        ```bash
-        shasum -a 256 --check SHA256SUMS --ignore-missing
-        ```
-
-        The command prints `OK` after the name of your file.
-      </Tab>
       <Tab title="Windows">
         In PowerShell, compute the hash of your file and find its line in the list:
 
@@ -55,10 +45,24 @@ RWTz3c4gUmglCX5Uvjthigz1ts3TS3ZSdhRNpFgOJRW/Wr4XjGlqTR3O
 
         The two hashes must be identical, letter for letter.
       </Tab>
+      <Tab title="macOS">
+        ```bash
+        shasum -a 256 --check SHA256SUMS --ignore-missing
+        ```
+
+        The command prints `OK` after the name of your file.
+      </Tab>
+      <Tab title="Linux">
+        ```bash
+        sha256sum --check SHA256SUMS --ignore-missing
+        ```
+
+        The command prints `OK` after the name of your file.
+      </Tab>
     </Tabs>
   </Step>
 </Steps>
 
-## Go further on Android
+## Compare the Android certificate
 
-Android checks the APK signature on its own when it installs the file. To compare the signing certificate with the one every release uses, or to rebuild a release from source and check that only the signature differs, see [Install on Android](/getting-started/install-android#check-the-signing-certificate).
+Android checks the APK signature on its own when it installs the file. To compare the signing certificate with the one every release uses, or to rebuild a release from source, open **Compare the signing certificate** in [Install on Android](/getting-started/install-android#install-gerfaut).

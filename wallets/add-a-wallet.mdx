@@ -1,13 +1,13 @@
 ---
 title: "Add a wallet"
-description: "Start watching a wallet in Gerfaut from its descriptor, extended public key or address, by pasting it, opening a file or scanning a QR code."
+description: "Start watching a wallet in Gerfaut from its descriptor, extended public key or address: paste it, open a file or scan a QR code, then check the first address."
 ---
 
 Gerfaut needs the public side of your wallet: the descriptor, extended public key or address that your signing device or wallet software exports. It shows what it recognized and waits for you to confirm before it stores anything.
 
-<Note>
+<Tip>
 Gerfaut is watch-only. Anything that contains a private key or a seed phrase is refused and never stored.
-</Note>
+</Tip>
 
 ## Add the wallet
 
@@ -26,14 +26,21 @@ Gerfaut is watch-only. Anything that contains a private key or a seed phrase is 
     Paste it in the `Descriptor, extended public key, or address` field, or bring it in another way:
 
     - **Import a file:** A `.txt`, `.json`, `.desc` or `.bsms` file, such as the export of another wallet or the BSMS record of a multisig.
-    - **Scan a QR code:** The code a signing device or wallet shows, as plain text, UR or BBQr, animated or not. Keep the camera on an animated code until the counter reaches its total. On Android the button reads **Scan**.
+    - **Scan a QR code:** The code a signing device or wallet software shows, as plain text, UR or BBQr, animated or not. Keep the camera on an animated code until the counter reaches its total. On Android the button reads **Scan**.
 
     Then select **Continue**. A refused input says why, in one sentence under the field.
   </Step>
-  <Step title="Check what Gerfaut recognized">
-    The card reads `Recognized as` followed by the kind of input and, when the input carries one, its script type. Under it, `First address` is the first address Gerfaut derives. Compare it with the first address your wallet shows: the two must match.
+  <Step title="Check the first address">
+    The card reads `Recognized as` followed by the kind of input and, when the input carries one, its script type. Under it, `First address` is the first address Gerfaut derives.
 
-    An extended public key also shows a `Script type` list. A key with a SLIP-132 prefix such as `zpub` or `vpub` arrives with its type selected and the notice `The SLIP-132 prefix was converted to a standard extended key.` The same conversion applies to such a key inside a descriptor, so a `wpkh(...vpub.../0/*)` export pastes as it is; a key that carries no script type shows the caution `This key carries no script type. Check the one selected below.` Select the type your wallet uses, and check the first address again. [Wallet types](/wallets/wallet-types) lists the types and the address they produce.
+    <Warning>
+    Compare `First address` with the first address your signing device or wallet software shows. A different address means Gerfaut watches another wallet, and coins sent to its addresses are not yours.
+    </Warning>
+
+    An extended public key also shows a `Script type` list:
+
+    - **SLIP-132 prefix:** A `zpub` or `vpub` key arrives with its type selected and the notice `The SLIP-132 prefix was converted to a standard extended key.` The same conversion applies inside a descriptor, so a `wpkh(...vpub.../0/*)` export pastes as it is.
+    - **No script type:** The card shows `This key carries no script type. Check the one selected below.` Select the type your wallet software uses, then check the first address again. [Wallet types](/wallets/wallet-types) lists the types and the address each one produces.
 
     <Tabs>
       <Tab title="Desktop">
@@ -51,13 +58,23 @@ Gerfaut is watch-only. Anything that contains a private key or a seed phrase is 
   <Step title="Name the wallet and pick its network">
     Enter a name in the `Name` field. Under `Network`, the list only opens when the input fits more than one network. Then select **Add wallet**.
   </Step>
+  <Step title="Watch the first sync">
+    Gerfaut switches to the new wallet and starts its first sync.
+
+    <Tabs>
+      <Tab title="Desktop">
+        The wallet opens on its Overview.
+      </Tab>
+      <Tab title="Android">
+        The wallet page opens with the balance and the `Transactions` and `UTXOs` tabs.
+      </Tab>
+    </Tabs>
+  </Step>
 </Steps>
 
-Gerfaut switches to the new wallet and starts its first sync. On desktop the wallet opens on its Overview; on Android its page opens with the balance and the `Transactions` and `UTXOs` tabs.
-
-<Tip>
-On a key used outside the usual derivation branches, open **Advanced** on the confirmation step and enter the `Receive path`, the `Change path` and the `Key origin`, then select **Apply**. The first address updates so you can check it.
-</Tip>
+<Accordion title="Use a custom derivation path">
+  For a key used outside the usual derivation branches, open **Advanced** on the confirmation step. Enter the `Receive path`, the `Change path` and the `Key origin`, then select **Apply**. The first address updates so you can check it again.
+</Accordion>
 
 ## Manage your wallets
 
@@ -66,7 +83,7 @@ Open **Settings** > **Wallets**. Each wallet has its own row with these actions:
 - **Rename:** Changes the name shown everywhere. Enter the new name and select **Save name**.
 - **Icon:** Picks one of seven icons: `Wallet`, `Key`, `Shield`, `Pin`, `Snowflake`, `Landmark` or `Piggy bank`.
 - **Rescan:** Looks at the wallet again from its first address, for coins received beyond the gap limit. The result reads `Rescanned` with the number of new transactions.
-- **Remove:** Stops watching the wallet after you confirm with **Remove wallet**. Nothing moves on chain.
+- **Remove:** Stops watching the wallet after you confirm with **Remove wallet**. Nothing moves on-chain.
 
 <Tabs>
   <Tab title="Desktop">
@@ -81,4 +98,15 @@ Open **Settings** > **Wallets**. Each wallet has its own row with these actions:
   </Tab>
 </Tabs>
 
-To reorder the list, drag a wallet by its handle on either platform. On desktop, **Move up** and **Move down** do the same from the keyboard, and the wallet switcher lets you drag rows too. On Android, a long press on a card of the home screen also moves it.
+## Reorder your wallets
+
+Drag a wallet by its handle in **Settings** > **Wallets**.
+
+<Tabs>
+  <Tab title="Desktop">
+    **Move up** and **Move down** do the same from the keyboard. The wallet switcher lets you drag rows too.
+  </Tab>
+  <Tab title="Android">
+    Hold a card on the home screen, then drag it.
+  </Tab>
+</Tabs>

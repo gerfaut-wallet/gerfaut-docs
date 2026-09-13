@@ -1,36 +1,54 @@
 ---
 title: "Delete your data"
-description: "Remove a wallet from the Gerfaut Premium server, or delete the whole account with its wallets, channels and log, and know when the server deletes it on its own."
+description: "Remove a wallet or a channel from the Gerfaut Premium server, delete the whole account with its wallets, channels and log, or let the server delete it."
 ---
 
-Everything the server holds about you belongs to a key: the wallets it watches, the channels it tells, the log of alerts. You can take any of it back from the app, and the server deletes what is left on its own once the paid time is long gone.
+Take back anything the Premium server holds under your Premium licence key: a wallet, a channel or the whole account. Everything happens in **Settings** > **Premium**, and the server deletes what is left on its own once the paid time is long gone.
 
 ## Remove one wallet from the server
 
-Open **Settings** > **Premium** and select the switch of the wallet under `Watched wallets`. The server forgets the wallet at once: its descriptor, its addresses, what it saw on them, and the alerts it sent about it. Removing the wallet from Gerfaut altogether, in **Settings** > **Wallets**, does the same on the server.
-
-## Remove a channel
-
-Under `Channels`, select the menu of the channel line, then **Remove**. An ntfy topic, a Telegram link or an e-mail address is dropped with it.
-
-## Delete the account
-
 <Steps>
-  <Step title="Select Forget this key">
-    In the `Licence` card of **Settings** > **Premium**, select **Forget this key**. A note explains that forgetting the key alone stops the watch on this device, not on the server.
+  <Step title="Select the switch of the wallet under Watched wallets">
+    An amber note under the row says that unwatching also deletes the wallet's alert history on the server.
   </Step>
-  <Step title="Tick Also delete everything on the server">
-    The note turns to the full consequence: the server deletes the account this key opens, the wallets it watches, the channels and the log, and the key stops working here and anywhere else it was entered. Whatever paid time the key had left goes with it and is not refunded.
-  </Step>
-  <Step title="Confirm">
-    Select **Delete the account** on desktop, or **Delete and forget** on Android. Gerfaut deletes on the server first and forgets the key on this device only once the server confirmed, so a failed call leaves the key in place and says so.
+  <Step title="Select Unwatch">
+    The server forgets the wallet at once: its descriptor, its addresses, what it saw on them and the alerts it sent about it.
   </Step>
 </Steps>
 
-## Forget the key on this device only
+Removing the wallet from Gerfaut altogether, in **Settings** > **Wallets**, does the same on the server. See [Watch a wallet](/premium/watch-a-wallet).
 
-Select **Forget this key** and confirm without ticking the box. The wallets stay registered on the server and keep being watched until you remove them, and the same key activates the service again on any device.
+## Remove a channel
+
+Under `Channels`, select the menu of the channel line, then **Remove**. The ntfy topic, the Telegram link or the e-mail address is dropped with it.
+
+## Delete the account
+
+<Note>
+Deleting the account stops the licence key everywhere it was entered, and whatever paid time it had left goes with it, without a refund.
+</Note>
+
+<Steps>
+  <Step title="Select Forget this key">
+    In the `Licence` card, select **Forget this key**. A note explains that forgetting the licence key alone stops the watch on this device, not on the server.
+  </Step>
+  <Step title="Tick Also delete everything on the server">
+    The note turns to the full consequence: the server deletes the account this licence key opens, the wallets it watches, the channels and the log.
+  </Step>
+  <Step title="Confirm">
+    <Tabs>
+      <Tab title="Desktop">Select **Delete the account**.</Tab>
+      <Tab title="Android">Select **Delete and forget**.</Tab>
+    </Tabs>
+    Gerfaut deletes on the server first and forgets the licence key on this device only once the server confirmed. A failed call leaves the licence key in place and says so.
+  </Step>
+</Steps>
+
+<Accordion title="Forget the licence key on this device only">
+  Select **Forget this key** and confirm without ticking the box. The wallets stay registered on the server and keep being watched until you remove them. The same licence key activates the service again on any device.
+</Accordion>
 
 ## Let the server delete on its own
 
-The server deletes an account with everything it owns 90 days after its paid time ended, or 30 days after it was created if it was never paid for.
+- **After the paid time:** The server deletes the account with everything it owns 90 days after its paid time ended.
+- **Never paid for:** The server deletes it 30 days after it was created.

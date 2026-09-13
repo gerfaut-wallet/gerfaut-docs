@@ -1,49 +1,59 @@
 ---
-title: "Backends and your own node"
-description: "Choose which network Gerfaut shows and where it reads the chain: the public servers, your own Esplora endpoint or your own Electrum server."
+title: "Backend"
+description: "Pick the network Gerfaut shows and where it reads the chain: the public servers, your own Esplora endpoint or your own Electrum server."
 ---
 
-Gerfaut reads the chain from public servers by default. Point it at your own node over Esplora or Electrum to keep your addresses to yourself. Each network has its own backend.
+Point Gerfaut at your own node to keep your addresses to yourself, or stay on the public servers. Each network keeps its own backend.
 
-Open the settings: on desktop, select **Settings** at the bottom of the sidebar; on Android, select **More**, then **Settings**. Then open **Network**.
+<Tabs>
+  <Tab title="Desktop">Select **Settings** at the bottom of the sidebar, then **Network**.</Tab>
+  <Tab title="Android">Select **More**, then **Settings**, then **Network**.</Tab>
+</Tabs>
 
 ## Pick the network
 
-The `Network` card offers `Mainnet`, `Signet`, `Testnet 4` and `Regtest`. Only the wallets of the selected network are shown, and a badge names the network everywhere except on Mainnet.
+In the `Network` card, select `Mainnet`, `Signet`, `Testnet 4` or `Regtest`. Gerfaut shows only the wallets of the selected network and names it in a badge everywhere except on Mainnet.
+
+<Tip>
+Regtest has no public server: run your own node and point Gerfaut at it, as below.
+</Tip>
 
 ## Use the public servers
 
-The `Backend` card opens on `Public API`: free, keyless servers with no setup. The operator that answers can see the addresses of your wallets.
+The `Backend` card opens on `Public API`: free servers with nothing to set up.
+
+<Warning>
+The operator of the public server that answers sees the addresses of your wallets.
+</Warning>
 
 <Tabs>
   <Tab title="Desktop">
-    <Frame caption="The chain data source is chosen per network: a public server, or an Esplora or Electrum instance on a personal node.">
+    <Frame caption="Each network keeps its own backend: a public server, or an Esplora or Electrum instance on your own node.">
       <img src="/images/desktop/settings-node.webp" alt="The Network section of the desktop settings: the network picker with Signet selected, the Backend card with Public API and blockstream.info as the server, My own Esplora, My own Electrum server and Save backend." />
     </Frame>
   </Tab>
   <Tab title="Android">
-    <Frame caption="Each network has its own backend: a public server, or an Esplora or Electrum instance on a personal node.">
+    <Frame caption="Each network keeps its own backend: a public server, or an Esplora or Electrum instance on your own node.">
       <img src="/images/android/settings-node.webp" alt="The Network section on Android: the network picker with Signet selected and the Backend card with Public API, My own Esplora, My own Electrum server, the Server list on Automatic and Save backend." width="360" />
     </Frame>
   </Tab>
 </Tabs>
 
-Under `Server`, `Automatic` tries every public Esplora instance of the network in turn until one answers. Select an operator instead to make it the only server asked, for instance `mempool.space`, `blockstream.info` or `mempool.emzy.de` over Esplora, or one of the listed Electrum servers. The list says which Electrum servers sign their own certificate: Gerfaut shows you the fingerprint before it connects, see [Certificates](/settings/certificates).
+Under `Server`, pick who answers:
 
-<Note>
-An Electrum server cannot serve a wallet added from a single address. Keep such a wallet on `Automatic` or on an Esplora server.
-</Note>
-
-Regtest has no public server: run your own node and point Gerfaut at it.
+- **`Automatic`:** Gerfaut tries every public Esplora instance of the network in turn until one answers.
+- **One operator:** Select it to make it the only server asked, such as `mempool.space`, `blockstream.info` or `mempool.emzy.de` over Esplora, or one of the listed Electrum servers.
+- **Self-signed Electrum servers:** The list says which ones sign their own certificate. Gerfaut shows you the fingerprint before it connects, see [Certificates](/settings/certificates).
+- **Single-address wallets:** An Electrum server cannot serve a wallet added from a single address. Keep such a wallet on `Automatic` or on an Esplora server.
 
 ## Connect your own Esplora
 
 <Steps>
   <Step title="Select My own Esplora">
-    The field `Server URL` appears, such as `https://node.example.org:3002/api`.
+    The `Server URL` field appears, for an address such as `https://node.example.org:3002/api`.
   </Step>
   <Step title="Enter the URL, or scan it">
-    Select **Scan** beside the field to read the QR code your node prints beside its Esplora app. The scan fills the field; nothing is saved yet.
+    Select **Scan** beside the field to read the QR code your node prints beside its Esplora app. The scan fills the field and saves nothing yet.
   </Step>
   <Step title="Select Save backend">
     The setting applies to the next sync.
@@ -52,23 +62,27 @@ Regtest has no public server: run your own node and point Gerfaut at it.
 
 ## Connect your own Electrum server
 
+<Warning>
+Leave `TLS` on. Without it everything travels in the clear, and anything on the path between your device and the server reads the addresses you watch.
+</Warning>
+
 <Steps>
   <Step title="Select My own Electrum server">
-    For electrs or Fulcrum, reachable over TLS or plain TCP.
+    Use it for electrs or Fulcrum, over TLS or plain TCP.
   </Step>
   <Step title="Enter the host and the port">
     Enter the `Host`, such as `node.example.org` or an `.onion` address, and the `Port`, `50002` by default. Or select **Scan** and point the camera at the QR code your node prints beside its Electrum app: it fills the host, the port and the `TLS` switch at once.
   </Step>
-  <Step title="Leave TLS on">
-    Without TLS everything travels in the clear: anything on the path between the device and the server reads the addresses being watched.
-  </Step>
   <Step title="Select Save backend">
-    Gerfaut checks the certificate first and the button reads `Checking the certificate…`. A server that signs its own certificate shows it to you before anything is saved: see [Certificates](/settings/certificates). A server that does not answer is saved anyway, and its certificate is checked on the first connection.
+    The button reads `Checking the certificate…` while Gerfaut checks the certificate. A server that signs its own certificate shows it to you before anything is saved, see [Certificates](/settings/certificates). A server that does not answer is saved anyway, and Gerfaut checks its certificate on the first connection.
   </Step>
 </Steps>
 
-An address that ends in `.onion` goes through Tor. The `Tor` card below the backend says which Tor client Gerfaut uses and lets you test it: see [Tor](/settings/tor).
-
-<Tip>
-A scanned QR code that names the other kind of backend switches the choice for you: an `https://` address read into the Electrum form selects `My own Esplora`.
-</Tip>
+<AccordionGroup>
+  <Accordion title="Reach your node over Tor">
+    A `Host` that ends in `.onion` goes through Tor. The `Tor` card under the backend says which Tor client Gerfaut uses and lets you test it, see [Tor](/settings/tor).
+  </Accordion>
+  <Accordion title="Scan a QR code of the other kind">
+    A scanned QR code that names the other kind of backend switches the choice for you: an `https://` address read into the Electrum form selects `My own Esplora`.
+  </Accordion>
+</AccordionGroup>

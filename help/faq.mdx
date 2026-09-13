@@ -1,7 +1,6 @@
 ---
-title: "Frequently asked questions"
-sidebarTitle: "FAQ"
-description: "Get short answers to the questions people ask most about Gerfaut, its privacy, its backups and the Premium service, with a link to the page that goes further."
+title: "FAQ"
+description: "Get short answers to the questions people ask most about Gerfaut, its privacy, its backups and Gerfaut Premium, each with the page that goes further."
 ---
 
 Short answers, each with the page that goes further.
@@ -10,54 +9,54 @@ Short answers, each with the page that goes further.
 
 <AccordionGroup>
   <Accordion title="Can Gerfaut spend my bitcoin?">
-    No. Gerfaut contains no code that generates keys, handles seeds or signs transactions, and it has no Send button. It watches descriptors, extended public keys and addresses, and refuses anything that contains a private key. See [What is Gerfaut](/getting-started/what-is-gerfaut).
+    No. Gerfaut contains no code that generates keys, handles seeds or signs transactions, has no Send button, and refuses anything that contains a private key. See [What is Gerfaut](/getting-started/what-is-gerfaut).
   </Accordion>
   <Accordion title="Which wallets can I watch?">
-    Any wallet you can export as a descriptor, an extended public key or an address: single-sig, multisig, Miniscript policies with timelocks, a BSMS record, the export file of another wallet. See [Wallet types](/wallets/wallet-types).
+    Any wallet you can export as a descriptor, an extended public key or an address. That covers single-sig, multisig, Miniscript policies with timelocks, a BSMS record and the export file of another wallet. See [Wallet types](/wallets/wallet-types).
   </Accordion>
   <Accordion title="Does it work with my signing device?">
-    Yes, as long as the device or its companion software exports the public side of the wallet. Gerfaut reads the descriptor as text, as a file or as the QR code the device shows, animated or not, and never asks the device for anything else. See [Add a wallet](/wallets/add-a-wallet).
+    Yes, as long as the device or its companion software exports the public side of the wallet. Gerfaut reads the descriptor as text, as a file or as the QR code the device shows, and never asks the device for anything else. See [Add a wallet](/wallets/add-a-wallet).
   </Accordion>
   <Accordion title="What does the public server see?">
-    The operator of the public server that answers sees the addresses of your wallets, and your IP address unless you go through Tor. Your own node over Esplora or Electrum sees nothing that is not already yours. See [Backends and your own node](/settings/backends-and-your-own-node) and [Tor](/settings/tor).
+    The operator of the public server sees the addresses of your wallets, and your IP address unless you go through Tor. Your own node over Esplora or Electrum sees nothing that is not already yours. See [Backend](/settings/backends-and-your-own-node) and [Tor](/settings/tor).
   </Accordion>
   <Accordion title="Where is my wallet list stored?">
-    Encrypted on the device. The key that opens the vault lives in the operating system's credential store: the Windows Credential Manager, the macOS Keychain, the Secret Service on Linux, or the secure storage of the phone. The app lock is a curtain in front of that vault, not the encryption itself. See [App lock](/settings/app-lock).
+    Encrypted on the device, with the key that opens the vault in the credential store of the operating system. The app lock is a curtain in front of that vault, not the encryption itself. See [App lock](/settings/app-lock).
   </Accordion>
   <Accordion title="How do I move my wallets to another device?">
-    Export an encrypted backup as a file or as an animated QR code, and restore it on the other device with the same password. See [Backup and sync](/settings/backup-and-sync).
+    Export an encrypted backup as a file or as an animated QR code, then restore it on the other device with the same password. See [Backup and sync](/settings/backup-and-sync).
   </Accordion>
   <Accordion title="I forgot my backup password. Can it be recovered?">
-    No. The backup is sealed with that password and nothing else, so nobody can open it without it. Your wallets are still on the device that made the backup: export a new one from there with a new password.
+    No, the backup is sealed with that password and nothing else. Your wallets are still on the device that made the backup, so export a new one from there with a new password. See [Backup and sync](/settings/backup-and-sync).
   </Accordion>
-  <Accordion title="Why does Gerfaut ask me to verify a receive address on my signing device?">
-    Because Gerfaut only derives addresses from the public keys you gave it. A compromised computer or phone could show you an address that is not yours; your signing device is the one place that can confirm it. See [Receive addresses](/everyday-use/receive-addresses).
+  <Accordion title="Why verify a receive address on my signing device?">
+    Because Gerfaut only derives addresses from the public keys you gave it. A compromised computer or phone could show you an address that is not yours, and your signing device is the one place that can confirm it. See [Receive](/everyday-use/receive-addresses).
   </Accordion>
 </AccordionGroup>
 
 ## Gerfaut Premium
 
 <AccordionGroup>
-  <Accordion title="I lost my key. Can you find it?">
-    No. The server stores a hash of your key, the way a website stores a password: the hash lets the server recognize the key when you type it, and lets nobody rebuild it. When the key is gone, the time on it is gone with it. See [Get a key](/premium/get-a-key).
+  <Accordion title="I lost my Premium licence key. Can you find it?">
+    No, because the Premium server stores a hash of your licence key, the way a website stores a password, so nobody can rebuild it. When the licence key is gone, the time on it is gone with it. See [Get a licence](/premium/get-a-key).
   </Accordion>
-  <Accordion title="What exactly does the server see?">
-    What a watch-only wallet sees: the descriptors you register, every address they derive, and the coins and transactions on those addresses. It also keeps the channels you add, with the name Telegram gives a chat you link. It never sees a private key, and it keeps no other name, no e-mail unless you add one as a channel, and no IP address. See [Gerfaut Premium](/premium/overview).
+  <Accordion title="What exactly does the Premium server see?">
+    What a watch-only wallet sees: the descriptors you register, every address they derive, the coins and transactions on those addresses, and the channels you add. It never sees a private key, and it keeps no name, no e-mail unless you add one as a channel, and no IP address. See [Gerfaut Premium](/premium/overview).
   </Accordion>
-  <Accordion title="Can I cancel, or get a refund?">
-    There is nothing to cancel: you prepay time, and it runs out on its own. The service starts the moment your payment is confirmed, so by paying you waive your right of withdrawal, and the payment is not refunded, unless the service is discontinued. The Terms of Sale on the Premium page say it in full.
+  <Accordion title="Can I cancel a Premium licence key, or get a refund?">
+    There is nothing to cancel: you prepay time, and it runs out on its own. The service starts the moment your payment is confirmed, so by paying you waive your right of withdrawal, and the payment is not refunded unless the service is discontinued. See [Get a licence](/premium/get-a-key).
   </Accordion>
-  <Accordion title="Which wallets can be watched?">
+  <Accordion title="Which wallets can Gerfaut Premium watch?">
     Any wallet Gerfaut imports from a descriptor on mainnet: single-sig, multisig, and Miniscript policies with timelocks. A wallet added from a single address cannot be watched. See [Watch a wallet](/premium/watch-a-wallet).
   </Accordion>
-  <Accordion title="Are there limits?">
-    Several, and two of them a person can meet: five messages on demand an hour, and 20 e-mail alerts a day. The others, 21 wallets and 10 channels per key and a request rate, only stop a runaway script. See [Limits](/premium/limits).
+  <Accordion title="What are the limits of a Premium licence key?">
+    Two of them a person can meet: five messages on demand an hour, and 20 e-mail alerts a day. The others, 21 wallets and ten channels per licence key and a request rate, only stop a runaway script. See [Limits](/premium/limits).
   </Accordion>
   <Accordion title="Can a webhook point at a machine on my own network?">
-    Only if the internet can reach it. The server refuses a URL whose host is, or resolves to, a loopback, private, link-local or carrier-grade NAT address. Give the receiver a public name, or take ntfy instead. See [Channels](/premium/channels).
+    Only if the internet can reach it, because the Premium server refuses a URL whose host is, or resolves to, a loopback, private, link-local or carrier-grade NAT address. Give the receiver a public name, or take ntfy instead. See [Channels](/premium/channels).
   </Accordion>
-  <Accordion title="Does it work over Tor?">
-    Yes, and it follows the backend you chose. When the backend set in the app is a `.onion` address, the calls to the server go through Tor too; with any other backend, they go out directly. Either way, the server keeps no IP address. See [Tor](/settings/tor).
+  <Accordion title="Does Gerfaut Premium work over Tor?">
+    Yes, and it follows the backend you chose: with a `.onion` backend the calls to the Premium server go through Tor too, with any other backend they go out directly. Either way, the Premium server keeps no IP address. See [Tor](/settings/tor).
   </Accordion>
 </AccordionGroup>
 

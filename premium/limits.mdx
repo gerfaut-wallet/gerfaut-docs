@@ -1,36 +1,42 @@
 ---
 title: "Limits"
-description: "Know every ceiling of the Gerfaut Premium service, from the wallets one key watches to the messages sent per hour, and what the server answers past each one."
+description: "Check every ceiling of the Gerfaut Premium service, from the wallets one licence key watches to the messages sent per hour, and what the server answers past it."
 ---
 
-The service has a few ceilings, listed here in full. Most sit far above what the apps do: they only stop a runaway script. Two are within reach of a person, and both are about messages. Every refusal that a wait can lift carries a `Retry-After` header with the seconds to wait, so a script can back off instead of guessing.
+Check the ceilings of the service before a script or a habit meets one. Most sit far above what Gerfaut does and only stop a runaway script, and the two within reach of a person are both about messages.
 
-## What one key can do
+<Tip>
+Every refusal that a wait can lift carries a `Retry-After` header with the seconds to wait, so a script can back off instead of guessing.
+</Tip>
+
+## What one licence key can do
 
 | Ceiling | Limit | Past the limit |
 |---|---|---|
-| Wallets watched by one key | 21 | The server refuses a new wallet with `a key watches at most 21 wallets; remove one first`. Updating a wallet already watched always works. |
-| Channels per key | 10 | The server refuses an eleventh channel. A duplicate answers `this channel already exists`. |
-| Requests per key | 60 per minute | The server answers `slow down: a key may send 60 requests per minute`. Refused requests are not counted, and the minute restarts on its own. |
-| Requests from one network address | 240 per minute, on every route | The server answers `slow down: an address may send 240 requests per minute` before it even reads the key. |
+| Wallets watched by one Premium licence key | 21 | The server refuses a new wallet with `a key watches at most 21 wallets; remove one first`. Updating a wallet already watched always works. |
+| Channels per licence key | 10 | The server refuses an eleventh channel. A duplicate answers `this channel already exists`. |
+| Requests per licence key | 60 per minute | The server answers `slow down: a key may send 60 requests per minute`. Refused requests are not counted, and the minute restarts on its own. |
+| Requests from one network address | 240 per minute, on every route | The server answers `slow down: an address may send 240 requests per minute` before it reads the licence key. |
 
 ## What the server sends
 
 | Ceiling | Limit | Past the limit |
 |---|---|---|
-| Messages on demand, per key | Five an hour, tests and confirmation e-mails together | The server refuses the test or the confirmation until the hour has passed. |
-| E-mail alerts, per key | 20 per day | Alerts by e-mail wait for the next day; the other channels are untouched. |
-| E-mail confirmation code | Good for one hour, five wrong tries | Add the channel again for a new code. This refusal carries no `Retry-After`: no wait lifts it. |
+| Messages on demand, per licence key | Five an hour, tests and confirmation e-mails together | The server refuses the test or the confirmation until the hour has passed. |
+| E-mail alerts, per licence key | 20 per day | Alerts by e-mail wait for the next day. The other channels are untouched. |
+| E-mail confirmation code | Good for one hour, five wrong tries | Add the channel again for a new code. This refusal carries no `Retry-After`, as no wait lifts it. |
 | Telegram link code | Good for one hour | Add the channel again for a new code. |
 
-The server as a whole also sends a bounded number of e-mails a day; an address that keeps refusing them does not spend anyone's share.
+The server as a whole also sends a bounded number of e-mails a day. An address that keeps refusing them does not spend anyone's share.
 
-## What happens after the paid time
+## What stops after the paid time
 
-Alerts continue for 7 days after the paid time ends, then stop until you add time. The daily scans and the timelock readings stop at the same point; reading the Premium section of the app keeps working. Registering or removing a wallet needs paid time left.
-
-An account is deleted with everything it owns 90 days after its paid time ended, or 30 days after it was created if it was never paid for. See [Delete your data](/premium/delete-your-data).
+- **Alerts:** They continue for seven days after the paid time ends, then stop until you add time.
+- **Daily scans and timelock readings:** They stop at the same point.
+- **The Premium section:** It stays readable in Gerfaut.
+- **Registering or removing a wallet:** It needs paid time left.
+- **Deletion:** The server deletes an account with everything it owns 90 days after its paid time ended. An account never paid for goes 30 days after it was created. See [Delete your data](/premium/delete-your-data).
 
 ## Where a refusal shows
 
-The app never hides a refusal in a toast: an amber note under the card concerned repeats the server's sentence, with a **Retry** button when trying again can change the answer.
+Gerfaut never hides a refusal in a toast. An amber note under the card concerned repeats the server's sentence, with a **Retry** button when trying again can change the answer.

@@ -1,19 +1,19 @@
 ---
 title: "Install on Android"
-description: "Download the Gerfaut APK that matches your phone's processor, allow the install, and check the signing certificate if you want to."
+description: "Download the Gerfaut APK that matches your processor, allow the install, take the welcome tour and update it later without losing your wallets."
 ---
 
-Gerfaut for Android is distributed as an APK on the [GitHub release page](https://github.com/gerfaut-wallet/gerfaut-mobile/releases/latest), which the [download page](https://gerfaut-wallet.com/download) also lists. It runs on Android 7.0 or newer.
+Download Gerfaut for Android as an APK from the [GitHub release page](https://github.com/gerfaut-wallet/gerfaut-mobile/releases/latest), which the [download page](https://gerfaut-wallet.com/download) also lists. It runs on Android 7.0 or newer.
 
-<Tip>
-Check the APK against the signed hash list before you install it. [Verify your download](/getting-started/verify-your-download) takes two commands.
-</Tip>
+<Note>
+Check the APK against the signed hash list before you install it. [Verify a download](/getting-started/verify-your-download) takes two commands.
+</Note>
 
 ## Install Gerfaut
 
 <Steps>
   <Step title="Download the APK for your processor">
-    Each release ships one APK per processor architecture. Take the one that matches your phone:
+    Each release ships one APK per processor architecture. Take the one that matches your device:
 
     | File | Processor | For |
     |---|---|---|
@@ -29,9 +29,23 @@ Check the APK against the signed hash list before you install it. [Verify your d
   </Step>
 </Steps>
 
+<Accordion title="Compare the signing certificate">
+  Every release is signed with the same certificate. To compare it, run `apksigner verify --print-certs` on the APK, from the Android SDK build tools. The SHA-256 digest of the certificate is:
+
+  ```
+  de91a0e0c151290a0c9b34507e58d0bd0e99cdd7db41adc65b60a7c68e0ff0a7
+  ```
+
+  <Warning>
+  A different digest means a different signer, whatever the file is called. Do not install that file.
+  </Warning>
+
+  The APKs are also built reproducibly. [REPRODUCIBLE-BUILDS.md](https://github.com/gerfaut-wallet/gerfaut-mobile/blob/main/docs/REPRODUCIBLE-BUILDS.md) explains how to rebuild a release yourself and compare it with the published file.
+</Accordion>
+
 ## Take the welcome tour
 
-On its first launch Gerfaut opens an empty vault and shows a four-page welcome tour: what it watches, how to add a wallet, which servers it talks to, and how to keep it yours. Select **Next** to read it or **Skip** to close it. You can replay it later from **Settings** > **About** > **Show the welcome tour**.
+On its first launch Gerfaut opens an empty vault and a four-page welcome tour: what it watches, how to add a wallet, which servers it talks to, and how to keep it yours. Select **Next** to read it or **Skip** to close it.
 
 <Frame caption="Gerfaut opens on a promise: it holds no key and signs nothing.">
   <img src="/images/android/onboarding.webp" alt="The first-run welcome screen of Gerfaut on Android, titled Watch, never spend, with Skip and Next." width="360" />
@@ -39,16 +53,22 @@ On its first launch Gerfaut opens an empty vault and shows a four-page welcome t
 
 The home screen then reads `No wallets yet`. Select **Add a wallet** and continue with [Add a wallet](/wallets/add-a-wallet).
 
-## Check the signing certificate
-
-Every release is signed with the same certificate. If you want to compare it, run `apksigner verify --print-certs` on the APK, from the Android SDK build tools. The SHA-256 digest of the certificate is:
-
-```
-de91a0e0c151290a0c9b34507e58d0bd0e99cdd7db41adc65b60a7c68e0ff0a7
-```
-
-A different digest means a different signer, whatever the file is called. The APKs are also built reproducibly: [REPRODUCIBLE-BUILDS.md](https://github.com/gerfaut-wallet/gerfaut-mobile/blob/main/docs/REPRODUCIBLE-BUILDS.md) explains how to rebuild a release yourself and compare it with the published file.
+<Tip>
+Replay the tour any time from **Settings** > **About** > **Show the welcome tour**.
+</Tip>
 
 ## Update Gerfaut
 
-Gerfaut never checks for a new version on its own. To check, open **Settings** > **About** and select **Check for updates**. When a newer release exists, a **Get** button opens its release page. Download the new APK and install it over the current one: Android keeps your data because the same certificate signs both versions.
+Gerfaut never checks for a new version on its own.
+
+<Steps>
+  <Step title="Open Settings > About">
+    Select **Check for updates**.
+  </Step>
+  <Step title="Select Get">
+    The button appears when a newer release exists and opens its release page.
+  </Step>
+  <Step title="Install the new APK">
+    Download the APK for your processor and install it over the current one. Android keeps your wallets because the same certificate signs both versions.
+  </Step>
+</Steps>

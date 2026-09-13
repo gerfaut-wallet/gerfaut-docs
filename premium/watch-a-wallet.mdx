@@ -1,40 +1,66 @@
 ---
 title: "Watch a wallet"
-description: "Switch a wallet on in Gerfaut so the Premium server follows its addresses and alerts you, read its first scan, and stop the watch when you want."
+description: "Switch a wallet on so the Premium server follows its addresses and alerts you, read its first scan and the alerts in Gerfaut, and stop the watch."
 ---
 
-Once your key is active, each wallet of the server's network has a switch in the Premium settings. Switching it on hands the server the descriptor and the name of the wallet. From then on the server follows every address of that wallet, present and future.
+Switch a wallet on and the Premium server follows every address of it, present and future. You need an active [Premium licence key](/premium/get-a-key) and a wallet on mainnet added from a descriptor or an extended public key.
+
+<Warning>
+Switching a wallet on sends its descriptor and its name to the Premium server. From then on the server knows every address of the wallet and sees when coins move on them.
+</Warning>
 
 ## Switch a wallet on
 
 <Steps>
   <Step title="Open Settings > Premium">
-    The `Watched wallets` card lists your wallets on the network the server watches, mainnet.
+    <Tabs>
+      <Tab title="Desktop">Select **Settings** in the sidebar, then **Premium**.</Tab>
+      <Tab title="Android">Select **More** > **Settings** > **Premium**.</Tab>
+    </Tabs>
+    The `Watched wallets` card lists your mainnet wallets. A wallet added from a single address is greyed out, as the server takes descriptors only.
   </Step>
-  <Step title="Select the switch of a wallet">
-    The first time, a page titled `Watch this wallet from the server` says what leaves the device: the descriptor, and the name you gave the wallet. It also says what the server learns: every address of the wallet, present and future, and when coins move, and nothing else. Read it, then select **Watch this wallet**. Gerfaut asks once per wallet.
+  <Step title="Select the switch of the wallet">
+    The first time, a page titled `Watch this wallet from the server` says what leaves the device and what the server learns. Read it, then select **Watch this wallet**. Gerfaut asks once per wallet.
   </Step>
   <Step title="Wait for the first scan">
-    The wallet line reads `First scan pending` while the server scans the UTXO set for the coins already on the addresses, which takes seconds to a few minutes. Then it reads `Watched since` with the date and the number of coins, and wears the `Watched` pill.
+    The line reads `First scan pending` while the server scans the UTXO set for the coins already on the addresses, for seconds to a few minutes. It then reads `Watched since` with the date and the number of coins, and wears the `Watched` pill. From then on the server announces a spend within seconds.
   </Step>
 </Steps>
 
-The server announces a spend of a coin it already knows within seconds. Coins that were on the addresses before you switched the wallet on are learnt by that first scan.
+<Frame caption="Each mainnet wallet has a switch under Watched wallets, and the alerts land under Recent alerts.">
+  <img src="/images/android/settings-premium.webp" alt="The Premium section on Android with the Watched wallets, Channels and Recent alerts cards." width="360" />
+</Frame>
 
-<Note>
-A wallet added from a single address cannot be watched: its line is greyed out. The server takes descriptors, so add the wallet from its descriptor or extended public key to watch it.
-</Note>
+## Read the alerts in Gerfaut
 
-## Read the alerts in the app
+The `Recent alerts` card lists the last 20 events, newest first. Each line gives the wallet name, what happened, such as `coins are moving` or `coins are gone`, and the time. Select a line to open the wallet. Alerts also go to every [channel](/premium/channels) you added.
 
-The `Recent alerts` card lists the last 20 events, newest first, each as the wallet name and what happened, such as `coins are moving` or `coins are gone`, with the time. Select a line to open the wallet. Alerts also go to every [channel](/premium/channels) you added.
+## Watch for the offline banner
 
-While a key is active and a wallet is watched, Gerfaut asks the server for a signed heartbeat when it opens and every 15 minutes. Two misses in a row raise a red banner on the Overview and on the Android home screen: `Gerfaut's watch is offline since` the time of the first miss, `Your wallets are not being monitored.` The banner stays until the heartbeat comes back or you select **Acknowledge**, which silences it for 24 hours. Your local syncs keep working as before.
+While a licence key is active and a wallet is watched, Gerfaut asks the server for a signed heartbeat when it opens and every 15 minutes.
+
+- **Two misses in a row:** A red banner shows on the Overview and on the Android home screen. It reads `Gerfaut's watch is offline since` the time of the first miss, then `Your wallets are not being monitored.`
+- **Acknowledge:** Select **Acknowledge** to silence the banner for 24 hours. It also goes away when the heartbeat comes back.
+- **Local syncs:** They keep working as before.
 
 ## Stop watching a wallet
 
-Select the switch of the wallet again. An amber note under the row says that unwatching also deletes the wallet's alert history on the server; select **Unwatch** to confirm, or **Cancel**. The switch only moves once the server has answered. Switching the wallet back on later shows the consent page again.
+<Steps>
+  <Step title="Select the switch of the wallet again">
+    An amber note under the row says that unwatching also deletes the wallet's alert history on the server.
+  </Step>
+  <Step title="Select Unwatch">
+    The switch moves once the server has answered. Select **Cancel** to keep the watch. Switching the wallet back on later shows the consent page again.
+  </Step>
+</Steps>
 
-Removing a wallet from Gerfaut, in **Settings** > **Wallets** > **Remove**, removes it from the server too. Gerfaut sends the request at once, or at the next contact with the server when the device is offline; until it lands, the server keeps watching and alerting on that wallet. The server deletes the wallet's alerts with it, so they leave the `Recent alerts` card as well: export or note what you want to keep before you remove the wallet.
+<AccordionGroup>
+  <Accordion title="Remove the wallet from Gerfaut altogether">
+    Removing a wallet in **Settings** > **Wallets** > **Remove** removes it from the server too. Gerfaut sends the request at once, or at the next contact with the server when the device is offline. Until it lands, the server keeps watching and alerting on that wallet.
 
-A wallet the server still watches without a counterpart on this device, because you registered it from another device or removed it with an older app, is listed under your wallets as `Removed from this device, still watched by the server.` Select **Unwatch**, then confirm under the row: its alert history on the server goes with it.
+    The server deletes the wallet's alerts with it, so they leave the `Recent alerts` card as well. Note what you want to keep before you remove the wallet.
+  </Accordion>
+  <Accordion title="Unwatch a wallet that is no longer on this device">
+    A wallet the server still watches without a counterpart on this device is listed under your wallets. Its line reads `Removed from this device, still watched by the server.` You get one when you registered it from another device or removed it with an older version of Gerfaut. Select **Unwatch**, then confirm under the row. Its alert history on the server goes with it.
+  </Accordion>
+</AccordionGroup>

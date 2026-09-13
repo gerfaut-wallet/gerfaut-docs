@@ -1,6 +1,6 @@
 ---
 title: "Wallet types"
-description: "See which wallet material Gerfaut accepts, from descriptors and extended public keys to multisig, BSMS records and export files, and how it reads each one."
+description: "See which wallet material Gerfaut accepts, from descriptors and extended public keys to multisig, BSMS records and export files, and what it refuses."
 ---
 
 Gerfaut turns everything you give it into an output descriptor, its single internal format. What you paste, open or scan decides how much Gerfaut knows on its own and what it asks you to check.
@@ -17,11 +17,21 @@ Gerfaut turns everything you give it into an output descriptor, its single inter
 | The export file of another wallet | `Wallet export file` | The descriptor the file holds. When it holds several account types, Gerfaut selects the preferred one and says so. |
 | A BSMS record (BIP-129) | `BSMS record` | The multisig descriptor in the record. Gerfaut derives the first address and refuses the file if it differs from the one the record promises. |
 
-Multisig wallets arrive as descriptors, whether pasted, scanned or read from a BSMS record: `wsh(sortedmulti(...))` is read as `Script (P2WSH)`. A descriptor that carries a Miniscript policy with timelocks gets a page of its own: see [Policy and timelocks](/wallets/policy-and-timelocks).
+Multisig wallets arrive as descriptors, whether pasted, scanned or read from a BSMS record: `wsh(sortedmulti(...))` is read as `Script (P2WSH)`.
+
+<Tip>
+A descriptor that carries a Miniscript policy with timelocks gets a page of its own. See [Read a policy](/wallets/policy-and-timelocks).
+</Tip>
 
 ## Pick the script type of a bare key
 
-A descriptor names its script type. A bare `xpub` does not, so Gerfaut reads it, in order, from a SLIP-132 prefix (`ypub` for Nested SegWit, `zpub` for Native SegWit), from the purpose of a key origin such as `[fingerprint/84'/0'/0']`, and otherwise defaults to Native SegWit with a caution. The `Script type` list on the confirmation step lets you pick another one:
+A descriptor names its script type. A bare `xpub` does not, so Gerfaut reads it in this order:
+
+- **SLIP-132 prefix:** `ypub` means Nested SegWit, `zpub` means Native SegWit.
+- **Key origin:** The purpose in an origin such as `[fingerprint/84'/0'/0']`.
+- **Neither:** Gerfaut defaults to Native SegWit and shows a caution.
+
+The `Script type` list on the confirmation step lets you pick another one:
 
 | Script type | Addresses start with |
 |---|---|
@@ -30,18 +40,24 @@ A descriptor names its script type. A bare `xpub` does not, so Gerfaut reads it,
 | `Native SegWit (P2WPKH)` | `bc1q` |
 | `Taproot (P2TR)` | `bc1p` |
 
-Each choice rebuilds the `First address` on the card. Compare it with the first address your wallet shows before you add the wallet.
+<Warning>
+Each choice rebuilds the `First address` on the card. Compare it with the first address your signing device or wallet software shows before you select **Add wallet**.
+</Warning>
 
-## Choose a network
+## Pick a network
 
-Gerfaut watches wallets on `Mainnet`, `Signet`, `Testnet 4` and `Regtest`. The input itself tells Gerfaut which networks it fits: a `tpub` or a `tb1` address is not a mainnet wallet. Only the wallets of the network selected in **Settings** > **Network** are shown.
+Gerfaut watches wallets on `Mainnet`, `Signet`, `Testnet 4` and `Regtest`. The input itself tells Gerfaut which networks it fits: a `tpub` or a `tb1` address is not a mainnet wallet.
 
-## Know what Gerfaut refuses
+<Note>
+Only the wallets of the network selected in **Settings** > **Network** are shown.
+</Note>
+
+## Read a refusal
 
 Each refusal names the input and says where it belongs:
 
-- Anything with private key material, such as an `xprv`, a WIF key or a seed phrase, is refused and never stored.
-- A `Ypub`, `Zpub`, `Upub` or `Vpub` key, whose prefix marks a multisig cosigner: import the full multisig descriptor instead.
-- A signed transaction or a PSBT: the [Broadcast page](/everyday-use/broadcast-a-transaction) sends it.
-- A Gerfaut backup: restore it from **Settings** > **Backup & sync**, see [Backup and sync](/settings/backup-and-sync).
-- One part of an animated QR code pasted as text: scan it with the camera.
+- **Private key material:** An `xprv`, a WIF key or a seed phrase is refused and never stored.
+- **Multisig cosigner key:** A `Ypub`, `Zpub`, `Upub` or `Vpub` prefix marks a cosigner. Import the full multisig descriptor instead.
+- **Signed transaction or PSBT:** [Broadcast](/everyday-use/broadcast-a-transaction) sends it.
+- **Gerfaut backup:** Restore it from **Settings** > **Backup & sync**. See [Backup and sync](/settings/backup-and-sync).
+- **One part of an animated QR code pasted as text:** Scan it with the camera.

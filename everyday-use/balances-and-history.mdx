@@ -1,15 +1,15 @@
 ---
-title: "Balances and history"
-description: "Read a wallet's balance, pending amounts and transaction history in Gerfaut, sync it by hand, hide every amount and export the history as CSV."
+title: "Balance and history"
+description: "Open a wallet in Gerfaut, read its balance and pending amounts, sync it, browse its transactions, hide every amount and export the history as CSV."
 ---
 
-Each wallet shows its balance in the unit you chose, the amounts still waiting for a block, and its transaction history, with the time of the last sync always in view.
+Open a wallet to read its balance, sync it and browse its transactions. The time of the last sync stays in view under the page title.
 
 ## Open a wallet
 
 <Tabs>
   <Tab title="Desktop">
-    Select the wallet switcher at the top of the sidebar and pick a wallet. The switcher lists every wallet of the selected network with its balance. The wallet opens on its Overview, and the sidebar pages (**Transactions**, **UTXOs**, **Policy**, **Receive**) all refer to it.
+    Select the wallet switcher at the top of the sidebar, then select a wallet. The switcher lists every wallet of the selected network with its balance. The wallet opens on its Overview, and **Transactions**, **UTXOs**, **Policy** and **Receive** in the sidebar all refer to it.
   </Tab>
   <Tab title="Android">
     Select a wallet card on the home screen. The wallet page opens with the balance on top and two tabs, `Transactions` and `UTXOs`, each with its count.
@@ -18,21 +18,23 @@ Each wallet shows its balance in the unit you chose, the amounts still waiting f
 
 ## Read the balance
 
-`Total balance` shows the balance in BTC or in sats, with the fiat value under it when you turned it on in [Units and fiat](/settings/units-and-fiat). When transactions are still outside a block, the total already counts them and an amber line under it shows what is in transit, such as `+0.00050000 BTC` or `−31 000 sats`.
+`Total balance` shows the balance in BTC or in sats, with the fiat value under it when you turned it on in [Units and fiat](/settings/units-and-fiat). The total already counts the transactions still outside a block. An amber line under it shows what is in transit, such as `+0.00050000 BTC` or `−31 000 sats`.
 
 A note replaces that line when the figure cannot be trusted:
 
-- `Not synced yet.` on a wallet that never synced.
-- `Sync failed: nothing fetched yet.` when the first sync failed.
-- `Sync failed: showing the last known balance.` when a later sync failed.
+- **`Not synced yet.`:** The wallet never synced.
+- **`Sync failed: nothing fetched yet.`:** The first sync failed.
+- **`Sync failed: showing the last known balance.`:** A later sync failed.
 
-On desktop, three links under the figure count the wallet's UTXOs, transactions and keys and open the matching page, and the Overview adds five cards around the balance:
+<Accordion title="Read the Overview cards on desktop">
+  Three links under the figure count the wallet's UTXOs, transactions and keys and open the matching page. Five cards surround the balance:
 
-- **Bitcoin price:** The price in your currency, with the change over `1D`, `1W`, `1M` or `1Y`.
-- **Shortcuts:** `Backup & sync` and `Manage wallets`, two links into the settings.
-- **Watch status:** `Last sync`, `Backend` and `Block`.
-- **Balance history:** The balance of the wallet over time, as a chart.
-- **Latest activity:** The five latest transactions.
+  - **Bitcoin price:** The price in your currency, with the change over `1D`, `1W`, `1M` or `1Y`.
+  - **Shortcuts:** `Backup & sync` and `Manage wallets`, two links into the settings.
+  - **Watch status:** `Last sync`, `Backend` and `Block`.
+  - **Balance history:** The balance of the wallet over time, as a chart.
+  - **Latest activity:** The five latest transactions.
+</Accordion>
 
 ## Sync a wallet
 
@@ -49,9 +51,9 @@ Gerfaut reads the chain when you ask it to, and on a schedule if you turn one on
 
 The line under the page title says where the figures come from: `Synced 2 min ago · mempool.space`, `Syncing…`, or `Sync failed` with the reason.
 
-<Tip>
+<Note>
 A sync only looks at the addresses Gerfaut already revealed. For coins received beyond the gap limit, open **Settings** > **Wallets** and select **Rescan** on the wallet.
-</Tip>
+</Note>
 
 ## Browse the history
 
@@ -64,7 +66,7 @@ A sync only looks at the addresses Gerfaut already revealed. For coins received 
     </Frame>
   </Tab>
   <Tab title="Android">
-    Open the `Transactions` tab of the wallet page. Each row shows the direction arrow, the date, a status glyph and the signed amount.
+    Select the `Transactions` tab of the wallet page. Each row shows the direction arrow, the date, a status glyph and the signed amount.
 
     <Frame caption="The wallet page keeps the balance on top and the full history right under it.">
       <img src="/images/android/wallet.webp" alt="A wallet page on Android with the total balance, the Transactions and UTXOs tabs with their counts, the transaction rows and the Receive button." width="360" />
@@ -72,9 +74,15 @@ A sync only looks at the addresses Gerfaut already revealed. For coins received 
   </Tab>
 </Tabs>
 
-Pending transactions come first, then the confirmed ones, newest first. The status pill reads `Pending` until the transaction is in a block, then `1 conf` to `5 conf`, then `Confirmed` from six confirmations on. Select a row to open it: see [Transaction details](/everyday-use/transaction-details).
+Pending transactions come first, then the confirmed ones, newest first. Select a row to open it, as described in [Open a transaction](/everyday-use/transaction-details).
 
-A very active watched address loads its history in rounds. Select **Load older transactions** at the end of the list to fetch the next one.
+- **`Pending`:** The transaction is not in a block yet.
+- **`1 conf` to `5 conf`:** The number of confirmations so far.
+- **`Confirmed`:** Six confirmations or more.
+
+<Accordion title="Load the history of a very active address">
+  A very active watched address loads its history in rounds. Select **Load older transactions** at the end of the list to fetch the next one.
+</Accordion>
 
 ## Hide every amount
 
@@ -91,23 +99,41 @@ Every amount becomes `•••••`: balances, transaction rows, the chart, n
 
 ## Rename a wallet
 
-On desktop, select the wallet name at the top of the Overview, type the new name and press Enter. On Android, select the wallet name in the app bar, or **More** > **Rename wallet**, then **Save**. **Settings** > **Wallets** > **Rename** does the same on both platforms.
-
-## Export the history as CSV
-
 <Tabs>
   <Tab title="Desktop">
-    Select **Export** in the sidebar.
+    Select the wallet name at the top of the Overview, enter the new name and press Enter.
   </Tab>
   <Tab title="Android">
-    On the wallet page, select **More**, then **Export CSV**.
+    Select the wallet name in the app bar, or **More** > **Rename wallet**, then select **Save**.
   </Tab>
 </Tabs>
 
-Set the filters, then export:
+**Settings** > **Wallets** > **Rename** does the same on both platforms.
 
-- **Date range:** Leave `From` and `To` empty to export the full history.
-- **Direction:** `All`, `Received` or `Sent`.
-- **Include pending:** Pending transactions have no date, so they only export without date bounds.
+## Export the history as CSV
 
-The counter reads how many transactions the filters keep. Select **Export CSV…** on desktop, or **Save file** or **Share** on Android. The file is named after the wallet, such as `cold-storage-transactions.csv`, with one row per transaction, oldest first: `txid`, `date_utc`, `block_height`, `confirmations`, `direction`, `amount_sats`, `amount_btc` and `fee_sats`. Everything stays on the device.
+<Steps>
+  <Step title="Open the export page">
+    <Tabs>
+      <Tab title="Desktop">Select **Export** in the sidebar.</Tab>
+      <Tab title="Android">On the wallet page, select **More**, then **Export CSV**.</Tab>
+    </Tabs>
+  </Step>
+  <Step title="Set the filters">
+    The counter reads how many transactions the filters keep.
+
+    - **Date range:** Leave `From` and `To` empty to export the full history.
+    - **Direction:** `All`, `Received` or `Sent`.
+    - **Include pending:** Pending transactions have no date, so they only export without date bounds.
+  </Step>
+  <Step title="Export the file">
+    <Tabs>
+      <Tab title="Desktop">Select **Export CSV…** and pick where to save the file.</Tab>
+      <Tab title="Android">Select **Save file** or **Share**.</Tab>
+    </Tabs>
+
+    The file is named after the wallet, such as `cold-storage-transactions.csv`, and stays on the device.
+  </Step>
+</Steps>
+
+The file holds one row per transaction, oldest first, with these columns: `txid`, `date_utc`, `block_height`, `confirmations`, `direction`, `amount_sats`, `amount_btc` and `fee_sats`.

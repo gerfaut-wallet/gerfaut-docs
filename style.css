@@ -1,0 +1,134 @@
+/* Gerfaut documentation: overrides on top of the Mintlify mint theme.
+   Colors follow the Gerfaut palette; every rule targets a documented
+   Mintlify selector. */
+
+:root {
+  --gf-tip: #116b41;
+  --gf-tip-surface: #dcf5e6;
+  --gf-tip-border: #a9dfc0;
+  --gf-note: #745400;
+  --gf-note-surface: #fdf0cf;
+  --gf-note-border: #ead79b;
+  --gf-warning: #b3261e;
+  --gf-warning-surface: #fde7e7;
+  --gf-warning-border: #f3b8b5;
+  --gf-border: #c7d2db;
+  --gf-surface-sunken: #ebf0f4;
+  --gf-text: #0d1317;
+  --gf-primary: #0e7490;
+}
+
+.dark {
+  --gf-tip: #50b771;
+  --gf-tip-surface: rgba(80, 183, 113, 0.14);
+  --gf-tip-border: rgba(80, 183, 113, 0.4);
+  --gf-note: #c1983a;
+  --gf-note-surface: rgba(193, 152, 58, 0.14);
+  --gf-note-border: rgba(193, 152, 58, 0.4);
+  --gf-warning: #ff706d;
+  --gf-warning-surface: rgba(255, 112, 109, 0.14);
+  --gf-warning-border: rgba(255, 112, 109, 0.4);
+  --gf-border: #2a3440;
+  --gf-surface-sunken: #1f2933;
+  --gf-text: #e6ecf2;
+  --gf-primary: #7dd3e8;
+}
+
+/* Callouts: three levels only.
+   Tip = green, no risk. Note = amber, moderate risk.
+   Warning = red, bitcoin or privacy at stake. */
+
+.callout[data-callout-type="tip"] {
+  background-color: var(--gf-tip-surface);
+  border-color: var(--gf-tip-border);
+}
+
+.callout[data-callout-type="tip"],
+.callout[data-callout-type="tip"] * {
+  color: var(--gf-tip);
+}
+
+.callout[data-callout-type="note"] {
+  background-color: var(--gf-note-surface);
+  border-color: var(--gf-note-border);
+}
+
+.callout[data-callout-type="note"],
+.callout[data-callout-type="note"] * {
+  color: var(--gf-note);
+}
+
+.callout[data-callout-type="warning"] {
+  background-color: var(--gf-warning-surface);
+  border-color: var(--gf-warning-border);
+}
+
+.callout[data-callout-type="warning"],
+.callout[data-callout-type="warning"] * {
+  color: var(--gf-warning);
+}
+
+.callout {
+  border-radius: 12px;
+}
+
+/* Previous / next: real buttons with a visible hover. */
+
+#pagination {
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+#pagination a {
+  flex: 1 1 0;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--gf-border);
+  border-radius: 12px;
+  background-color: transparent;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+#pagination a:hover {
+  background-color: var(--gf-surface-sunken);
+  border-color: var(--gf-primary);
+  color: var(--gf-primary);
+}
+
+#pagination a:hover span,
+#pagination a:hover svg {
+  color: var(--gf-primary);
+  stroke: var(--gf-primary);
+}
+
+#pagination a:focus-visible {
+  outline: 2px solid var(--gf-primary);
+  outline-offset: 2px;
+}
+
+#pagination a:last-child {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/* Phone screenshots: the device frame is part of the image, so the
+   Mintlify frame loses its card, grid and border and only centers it. */
+
+div.frame:has(img[width="360"]) {
+  background-color: transparent !important;
+  padding: 0;
+}
+
+div.frame:has(img[width="360"]) > div.absolute {
+  display: none;
+}
+
+div.frame:has(img[width="360"]) img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Desktop screenshots keep their card, with a hairline border. */
+
+div.frame:not(:has(img[width="360"])) {
+  border: 1px solid var(--gf-border);
+}

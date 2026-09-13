@@ -27,83 +27,128 @@
   },
   "background": {
     "color": {
-      "light": "#F4F7F9",
+      "light": "#FFFFFF",
       "dark": "#0B0F14"
     }
   },
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Getting started",
-        "pages": [
-          "getting-started/what-is-gerfaut",
-          "getting-started/install-android",
-          "getting-started/install-desktop",
-          "getting-started/verify-your-download"
+        "tab": "Guides",
+        "icon": "book-open",
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": [
+              "getting-started/what-is-gerfaut",
+              "getting-started/install-desktop",
+              "getting-started/install-android",
+              "getting-started/verify-your-download"
+            ]
+          },
+          {
+            "group": "Using Gerfaut",
+            "pages": [
+              {
+                "group": "Wallets",
+                "icon": "wallet",
+                "expanded": false,
+                "pages": [
+                  "wallets/add-a-wallet",
+                  "wallets/wallet-types",
+                  "wallets/watch-an-address",
+                  "wallets/policy-and-timelocks"
+                ]
+              },
+              {
+                "group": "Everyday use",
+                "icon": "activity",
+                "expanded": false,
+                "pages": [
+                  "everyday-use/balances-and-history",
+                  "everyday-use/transaction-details",
+                  "everyday-use/utxos",
+                  "everyday-use/receive-addresses",
+                  "everyday-use/broadcast-a-transaction"
+                ]
+              },
+              {
+                "group": "Settings",
+                "icon": "settings",
+                "expanded": false,
+                "pages": [
+                  "settings/backends-and-your-own-node",
+                  "settings/certificates",
+                  "settings/tor",
+                  "settings/units-and-fiat",
+                  "settings/appearance",
+                  "settings/app-lock",
+                  "settings/backup-and-sync",
+                  "settings/notifications"
+                ]
+              },
+              {
+                "group": "Premium",
+                "icon": "gem",
+                "expanded": false,
+                "pages": [
+                  "premium/overview",
+                  "premium/get-a-key",
+                  "premium/watch-a-wallet",
+                  "premium/channels",
+                  "premium/limits",
+                  "premium/delete-your-data"
+                ]
+              }
+            ]
+          }
         ]
       },
       {
-        "group": "Wallets",
-        "pages": [
-          "wallets/add-a-wallet",
-          "wallets/watch-an-address",
-          "wallets/wallet-types",
-          "wallets/policy-and-timelocks"
+        "tab": "Changelog",
+        "icon": "history",
+        "menu": [
+          {
+            "item": "Desktop",
+            "icon": "monitor",
+            "description": "Windows, macOS and Linux.",
+            "pages": [
+              "changelog/desktop"
+            ]
+          },
+          {
+            "item": "Android",
+            "icon": "smartphone",
+            "description": "The Android app.",
+            "pages": [
+              "changelog/android"
+            ]
+          }
         ]
       },
       {
-        "group": "Everyday use",
-        "pages": [
-          "everyday-use/balances-and-history",
-          "everyday-use/transaction-details",
-          "everyday-use/utxos",
-          "everyday-use/receive-addresses",
-          "everyday-use/broadcast-a-transaction"
-        ]
-      },
-      {
-        "group": "Settings",
-        "pages": [
-          "settings/backends-and-your-own-node",
-          "settings/certificates",
-          "settings/tor",
-          "settings/units-and-fiat",
-          "settings/appearance",
-          "settings/app-lock",
-          "settings/backup-and-sync",
-          "settings/notifications"
-        ]
-      },
-      {
-        "group": "Premium",
-        "pages": [
-          "premium/overview",
-          "premium/get-a-key",
-          "premium/watch-a-wallet",
-          "premium/channels",
-          "premium/limits",
-          "premium/delete-your-data"
-        ]
-      },
-      {
-        "group": "Help",
+        "tab": "Help",
+        "icon": "life-buoy",
+        "hidden": true,
         "pages": [
           "help/faq",
           "help/contact"
-        ]
-      },
-      {
-        "group": "Changelog",
-        "pages": [
-          "changelog/desktop",
-          "changelog/android"
         ]
       }
     ]
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/gerfaut-wallet"
+      "github": "https://github.com/gerfaut-wallet/gerfaut-docs"
     }
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Help",
+        "icon": "life-buoy",
+        "href": "/help/faq"
+      }
+    ]
   }
 }

@@ -72,10 +72,10 @@
   border-radius: 12px;
 }
 
-/* Header tabs (Guides, Changelog, Help) sit top right, like a menu. */
+/* The Home group holds one page: no header above it. */
 
-.nav-tabs {
-  margin-left: auto;
+#navigation-items > div:first-child .sidebar-group-header {
+  display: none;
 }
 
 /* Previous / next: real buttons with a visible hover. */

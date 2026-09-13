@@ -38,6 +38,12 @@
         "icon": "book-open",
         "groups": [
           {
+            "group": "Home",
+            "pages": [
+              "index"
+            ]
+          },
+          {
             "group": "Getting started",
             "pages": [
               "getting-started/what-is-gerfaut",
@@ -54,6 +60,7 @@
                 "icon": "wallet",
                 "expanded": false,
                 "pages": [
+                  "wallets/overview",
                   "wallets/add-a-wallet",
                   "wallets/wallet-types",
                   "wallets/watch-an-address",
@@ -65,6 +72,7 @@
                 "icon": "activity",
                 "expanded": false,
                 "pages": [
+                  "everyday-use/overview",
                   "everyday-use/balances-and-history",
                   "everyday-use/transaction-details",
                   "everyday-use/utxos",
@@ -77,6 +85,7 @@
                 "icon": "settings",
                 "expanded": false,
                 "pages": [
+                  "settings/overview",
                   "settings/backends-and-your-own-node",
                   "settings/certificates",
                   "settings/tor",
@@ -132,7 +141,7 @@
         "menu": [
           {
             "item": "FAQ",
-            "icon": "circle-help",
+            "icon": "circle-question-mark",
             "description": "Short answers to the questions people ask most.",
             "pages": [
               "help/faq"

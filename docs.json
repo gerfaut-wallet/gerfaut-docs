@@ -129,10 +129,23 @@
       {
         "tab": "Help",
         "icon": "life-buoy",
-        "hidden": true,
-        "pages": [
-          "help/faq",
-          "help/contact"
+        "menu": [
+          {
+            "item": "FAQ",
+            "icon": "circle-help",
+            "description": "Short answers to the questions people ask most.",
+            "pages": [
+              "help/faq"
+            ]
+          },
+          {
+            "item": "Contact",
+            "icon": "mail",
+            "description": "A question, a bug or a security report.",
+            "pages": [
+              "help/contact"
+            ]
+          }
         ]
       }
     ]
@@ -141,14 +154,5 @@
     "socials": {
       "github": "https://github.com/gerfaut-wallet/gerfaut-docs"
     }
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Help",
-        "icon": "life-buoy",
-        "href": "/help/faq"
-      }
-    ]
   }
 }

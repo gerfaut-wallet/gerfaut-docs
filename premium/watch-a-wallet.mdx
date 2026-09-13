@@ -33,8 +33,8 @@ While a key is active and a wallet is watched, Gerfaut asks the server for a sig
 
 ## Stop watching a wallet
 
-Select the switch of the wallet again. The server forgets the wallet at once, with no confirmation, and you can switch it back on later without the consent page.
+Select the switch of the wallet again. An amber note under the row says that unwatching also deletes the wallet's alert history on the server; select **Unwatch** to confirm, or **Cancel**. The switch only moves once the server has answered. Switching the wallet back on later shows the consent page again.
 
 Removing a wallet from Gerfaut, in **Settings** > **Wallets** > **Remove**, removes it from the server too. Gerfaut sends the request at once, or at the next contact with the server when the device is offline; until it lands, the server keeps watching and alerting on that wallet. The server deletes the wallet's alerts with it, so they leave the `Recent alerts` card as well: export or note what you want to keep before you remove the wallet.
 
-A wallet the server still watches without a counterpart on this device, because you registered it from another device or removed it with an older app, is listed under your wallets as `Removed from this device, still watched by the server.` Select **Unwatch** to stop it.
+A wallet the server still watches without a counterpart on this device, because you registered it from another device or removed it with an older app, is listed under your wallets as `Removed from this device, still watched by the server.` Select **Unwatch**, then confirm under the row: its alert history on the server goes with it.

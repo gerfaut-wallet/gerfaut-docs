@@ -33,7 +33,7 @@ Gerfaut is watch-only. Anything that contains a private key or a seed phrase is 
   <Step title="Check what Gerfaut recognized">
     The card reads `Recognized as` followed by the kind of input and, when the input carries one, its script type. Under it, `First address` is the first address Gerfaut derives. Compare it with the first address your wallet shows: the two must match.
 
-    An extended public key also shows a `Script type` list. A key with a SLIP-132 prefix such as `zpub` or `vpub` arrives with its type selected and the notice `The SLIP-132 prefix was converted to a standard extended key.`; a key that carries no script type shows the caution `This key carries no script type. Check the one selected below.` Select the type your wallet uses, and check the first address again. [Wallet types](/wallets/wallet-types) lists the types and the address they produce.
+    An extended public key also shows a `Script type` list. A key with a SLIP-132 prefix such as `zpub` or `vpub` arrives with its type selected and the notice `The SLIP-132 prefix was converted to a standard extended key.` The same conversion applies to such a key inside a descriptor, so a `wpkh(...vpub.../0/*)` export pastes as it is; a key that carries no script type shows the caution `This key carries no script type. Check the one selected below.` Select the type your wallet uses, and check the first address again. [Wallet types](/wallets/wallet-types) lists the types and the address they produce.
 
     <Tabs>
       <Tab title="Desktop">

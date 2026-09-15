@@ -12,7 +12,7 @@ Gerfaut turns everything you give it into an output descriptor, its single inter
 | An output descriptor (`wpkh`, `sh`, `wsh`, `tr`, `multi`, `sortedmulti`) | `Output descriptor` | The receive branch, and the change branch when the descriptor names it. |
 | A multipath descriptor with `<0;1>` | `Multipath descriptor (BIP-389)` | Both branches. |
 | Two descriptors on two lines | `Descriptor pair (receive + change)` | Both branches. |
-| An extended public key (`xpub`, `tpub`, or a SLIP-132 `ypub`, `zpub`, `upub`, `vpub`) | `Extended public key` | The `0/*` and `1/*` branches under the key. |
+| An extended public key (`xpub`, `tpub`, or a SLIP-132 `ypub`, `zpub`, `upub`, `vpub`) | `Extended public key` | The `0/*` and `1/*` branches under that extended public key. |
 | A single address | `Single address` | That address only. See [Watch an address](/wallets/watch-an-address). |
 | The export file of another wallet | `Wallet export file` | The descriptor the file holds. When it holds several account types, Gerfaut selects the preferred one and says so. |
 | A BSMS record (BIP-129) | `BSMS record` | The multisig descriptor in the record. Gerfaut derives the first address and refuses the file if it differs from the one the record promises. |
@@ -23,7 +23,7 @@ Multisig wallets arrive as descriptors, whether pasted, scanned or read from a B
 A descriptor that carries a Miniscript policy with timelocks gets a page of its own. See [Read a policy](/wallets/policy-and-timelocks).
 </Tip>
 
-## Pick the script type of a bare key
+## Pick the script type of a bare extended public key
 
 A descriptor names its script type. A bare `xpub` does not, so Gerfaut reads it in this order:
 

@@ -6,7 +6,7 @@ description: "Get the next unused address of a wallet in Gerfaut with its QR cod
 Get the next unused receive address of a wallet, with its QR code, and audit every address the wallet revealed. Gerfaut derives each address from the descriptor, so you never hand out the same one twice.
 
 <Warning>
-Verify the address on your signing device before you share it. Gerfaut never holds the keys behind an address, and a compromised computer or phone could show you a different one.
+Verify the address on your signing device before you share it. Gerfaut never holds the private keys behind an address, and a compromised computer or phone could show you a different one.
 </Warning>
 
 ## Get an address
@@ -40,8 +40,8 @@ Verify the address on your signing device before you share it. Gerfaut never hol
 </Tabs>
 
 <AccordionGroup>
-  <Accordion title="Read the path of a key added without its origin">
-    The `Derivation path` then reads from the key itself, such as `m/0/5`.
+  <Accordion title="Read the path of an extended public key added without its origin">
+    The `Derivation path` then reads from the extended public key itself, such as `m/0/5`.
   </Accordion>
   <Accordion title="Receive on a wallet added from a single address">
     The card reads `Watched address` and shows the one address it watches.

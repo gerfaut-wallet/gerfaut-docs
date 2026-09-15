@@ -8,17 +8,17 @@ A backup holds every wallet you watch, sealed with a password you pick, as a fil
 Open **Settings** > **Backup & sync**.
 
 <Tip>
-A backup holds descriptors, addresses, names and, if you ask, your node settings. It never holds a key, and never chain data: the other device syncs on its own.
+A backup holds descriptors, addresses, names and, if you ask, your node settings. It never holds a private key, and never chain data: the other device syncs on its own.
 </Tip>
 
 <Tabs>
   <Tab title="Desktop">
-    <Frame caption="A backup carries descriptors and addresses under a password, never a key, and moves wallets between desktop and phone.">
+    <Frame caption="A backup carries descriptors and addresses under a password, never a private key, and moves wallets between desktop and phone.">
       <img src="/images/desktop/settings-backup.webp" alt="The Backup & sync section of the desktop settings: the explanation and the Export and Restore buttons." />
     </Frame>
   </Tab>
   <Tab title="Android">
-    <Frame caption="A backup carries descriptors and addresses, encrypted with a password, never a key.">
+    <Frame caption="A backup carries descriptors and addresses, encrypted with a password, never a private key.">
       <img src="/images/android/settings-backup.webp" alt="The Backup & sync section on Android with the explanation and the Export and Restore buttons." width="360" />
     </Frame>
   </Tab>
@@ -68,7 +68,7 @@ There is no way to recover the password: you type it on the other device. The fi
 ## Move your wallets between two devices
 
 <Warning>
-On Android, the key that opens the vault lives in the phone's secure storage and never travels. A phone restored from a system backup comes back with the vault file and without the key. A Gerfaut backup is what brings the wallets back on a new phone.
+On Android, the encryption key that opens the vault lives in the phone's secure storage and never travels. A phone restored from a system backup comes back with the vault file and without that encryption key. A Gerfaut backup is what brings the wallets back on a new phone.
 </Warning>
 
 <Steps>

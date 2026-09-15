@@ -1,6 +1,6 @@
 ---
 title: "Read a policy"
-description: "Open the Policy page of a wallet in Gerfaut to see every spending path of its descriptor, which keys each path needs and how long its timelock runs."
+description: "Open a wallet's Policy page in Gerfaut to see each spending path of its descriptor, the signing keys it needs and how long its timelock runs."
 ---
 
 The Policy page reads a wallet's descriptor as spending paths: who can spend, under which condition, and when. A single-key wallet gets one line, a Miniscript descriptor with a recovery or inheritance path gets one card per path, with its timelock counted down.
@@ -23,7 +23,7 @@ The page opens on one sentence that states the policy: `One key signs. Any coin 
 Below it, one card per spending path, the primary path first and the timed paths by nearest lock:
 
 - **Path label:** `Primary`, `Recovery`, `Emergency`, or a numbered variant when a role appears twice.
-- **Condition:** The keys and locks the path needs, such as `Any 2 of Key A, Key B, Key C` or `Key B and a wait of 52 560 blocks` (`Key B and a coin having waited 52 560 blocks` on Android). Each key is a pill carrying its fingerprint.
+- **Condition:** The signing keys and locks the path needs, such as `Any 2 of Key A, Key B, Key C` or `Key B and a wait of 52 560 blocks` (`Key B and a coin having waited 52 560 blocks` on Android). Each signing key is a pill carrying its fingerprint.
 - **Locks:** One line per timelock, in blocks and in estimated time: `52 560 blocks after the coin arrives ≈ 1 year`, or `Block 900 000 ≈ in 4 months`. A lock the path does not depend on is marked `(optional)`.
 - **State pill:** `Spendable now`, `In 1 432 blocks ≈ 10 days`, `No coins yet`, `Needs a secret` for a path that requires a preimage, or `Locked` when nothing more is known.
 - **Per-coin count:** A relative lock is counted per coin: `3 of 7 coins unlocked · next in 12 days`, then `7 of 7 coins unlocked` once every coin is past it, where Android reads `Spendable now`.
@@ -31,13 +31,13 @@ Below it, one card per spending path, the primary path first and the timed paths
 
 <Tabs>
   <Tab title="Desktop">
-    <Frame caption="A spending policy is explained in words, with each path, its keys and the state of the timelock on the coins actually held.">
+    <Frame caption="A spending policy is explained in words, with each path, its signing keys and the state of the timelock on the coins actually held.">
       <img src="/images/desktop/policy.webp" alt="The Policy page on desktop for a wallet with a recovery path: the summary sentence, the Primary and Recovery cards, the Keys table and the collapsed Descriptor." />
     </Frame>
   </Tab>
   <Tab title="Android">
     <Frame caption="The Policy page turns a Miniscript descriptor into a plain sentence about who can spend and when.">
-      <img src="/images/android/policy.webp" alt="The Policy page on Android: the summary sentence, the Primary and Recovery cards with their keys and timelock, the Keys list and the Descriptor disclosure." width="360" />
+      <img src="/images/android/policy.webp" alt="The Policy page on Android: the summary sentence, the Primary and Recovery cards with their signing keys and timelock, the Keys list and the Descriptor disclosure." width="360" />
     </Frame>
   </Tab>
 </Tabs>
@@ -46,9 +46,9 @@ Below it, one card per spending path, the primary path first and the timed paths
 Estimated durations assume one block every 10 minutes and are always marked `≈`. A lock expressed in time is compared with the device clock, and the chain can lag by up to two hours. The page says so under the cards whenever such a lock exists.
 </Note>
 
-## Check the keys and the descriptor
+## Check the signing keys and the descriptor
 
-The `Keys` section at the bottom lists each key with its label, its fingerprint, its origin path and a shortened form of the key. Under it, the `Descriptor` disclosure shows the descriptor as you imported it, with a copy button, and its normalized policy with the keys named, such as `or(pk(Key A),and(pk(Key B),older(52560)))`.
+The `Keys` section at the bottom lists each signing key with its label, its fingerprint, its origin path and a shortened form of its extended public key. Under it, the `Descriptor` disclosure shows the descriptor as you imported it, with a copy button, and its normalized policy with the signing keys named, such as `or(pk(Key A),and(pk(Key B),older(52560)))`.
 
 - **Desktop:** The second block is labelled `Normalized policy`.
 - **Android:** The second block is labelled `Read as`.

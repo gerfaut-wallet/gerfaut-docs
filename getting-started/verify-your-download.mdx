@@ -74,7 +74,8 @@ Rebuild the Windows installer, the Linux packages or the Android APKs of a relea
       <Step title="Run the verification">
         ```bash
         git clone https://github.com/gerfaut-wallet/gerfaut-desktop
-        gerfaut-desktop/reproducible/verify.sh v0.1.0 --target windows --accept-microsoft-license
+        gerfaut-desktop/reproducible/verify.sh v0.1.0 \
+            --target windows --accept-microsoft-license
         ```
 
         With `--accept-microsoft-license`, you accept [Microsoft's licence terms](https://go.microsoft.com/fwlink/?LinkId=2086102) for its C runtime and Windows SDK. The build downloads them from Microsoft, about 310 MB.

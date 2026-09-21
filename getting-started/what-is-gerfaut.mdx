@@ -1,28 +1,27 @@
 ---
 title: "What is Gerfaut"
-description: "Gerfaut is a watch-only bitcoin wallet for desktop and Android that holds no private key: see what you can do with it and where to start today."
+description: "Gerfaut is a watch-only bitcoin wallet for desktop and Android that holds no private key. See what it does for the wallets you give it."
 ---
 
 Gerfaut is a watch-only bitcoin wallet for Windows, macOS, Linux and Android. Give it a descriptor, an extended public key or an address, and it shows the balance, the history and the coins of that wallet.
 
-<Frame caption="One page shows what the wallet holds, what it is worth, where the data comes from and how the balance moved over time.">
+<Frame caption="One page shows what the wallet holds, what it is worth, where the data comes from and how the balance moved.">
   <img src="/images/desktop/overview.webp" alt="The Gerfaut desktop overview of a wallet named Cold storage, with its balance in BTC and euros, the bitcoin price, a balance history chart, the watch status and the latest activity." />
 </Frame>
 
 ## Watch your wallets
 
-With a watched wallet, you can:
-
-- **Read the balance:** Open the [balance and history](/everyday-use/balances-and-history) and the [UTXOs](/everyday-use/utxos) behind it, with the fiat value beside each amount if you turn it on.
-- **Open a transaction:** See it as a diagram, inputs on the left, outputs on the right, the fee on its own branch. See [Open a transaction](/everyday-use/transaction-details).
-- **Receive:** Get the next receive addresses with their QR code, the used ones marked. See [Receive](/everyday-use/receive-addresses).
-- **Read a policy:** Read the spending paths of a Miniscript descriptor, with each timelock counted down. See [Read a policy](/wallets/policy-and-timelocks).
-- **Broadcast:** Send a transaction that your signing device signed elsewhere, after Gerfaut reads it back in plain words. See [Broadcast](/everyday-use/broadcast-a-transaction).
-- **Pick the backend:** Use the public servers set by default, your own node over Esplora or Electrum, or a `.onion` address over the [Tor](/settings/tor) client Gerfaut carries. See [Backend](/settings/backends-and-your-own-node).
-- **Keep it yours:** Your wallet list stays encrypted on the device, behind an optional [app lock](/settings/app-lock). Move it to another device with an encrypted [backup](/settings/backup-and-sync) file or an animated QR code.
+- **Read the balance:** See the [balance and history](/everyday-use/balances-and-history) and the [UTXOs](/everyday-use/utxos) behind it.
+- **Open a transaction:** Follow its inputs, outputs and fee on one diagram. See [Open a transaction](/everyday-use/transaction-details).
+- **Receive:** Hand out the next unused address with its QR code. See [Receive](/everyday-use/receive-addresses).
+- **Read a policy:** See every spending path of a Miniscript descriptor, with its timelock counted down. See [Read a policy](/wallets/policy-and-timelocks).
+- **Broadcast:** Send a transaction your signing device signed, after Gerfaut reads it back in plain words. See [Broadcast](/everyday-use/broadcast-a-transaction).
+- **Get notified:** Get a notification when a transaction reaches the mempool, and again when it confirms. See [Notifications](/settings/notifications).
+- **Pick the backend:** Stay on the public servers or point Gerfaut at your own node, `.onion` included. See [Backend](/settings/backends-and-your-own-node).
+- **Keep it yours:** Lock Gerfaut with an [app lock](/settings/app-lock) and move your wallets with an encrypted [backup](/settings/backup-and-sync).
 
 <Tip>
-Gerfaut contains no code that generates private keys, handles seeds or signs transactions, and it has no Send button. Anything you paste that contains a private key or a seed phrase is refused and never stored.
+Gerfaut contains no code that generates private keys, handles seeds or signs transactions. It refuses anything that contains a private key or a seed phrase.
 </Tip>
 
 <Frame caption="The Android home screen lists every watched wallet with its balance, one network at a time.">
@@ -31,4 +30,4 @@ Gerfaut contains no code that generates private keys, handles seeds or signs tra
 
 ## Get alerts with Gerfaut Premium
 
-The apps are free and complete on their own. [Gerfaut Premium](/premium/overview) adds a server that watches the wallets you choose around the clock and alerts you within seconds when coins move, over ntfy, Telegram, e-mail or a webhook. It runs on a Premium licence key that you buy in bitcoin, without an account.
+[Gerfaut Premium](/premium/overview) adds a server that watches the wallets you pick around the clock, even while your devices are off. It alerts you over ntfy, Telegram, e-mail or a webhook, and you pay for it in bitcoin with no account.

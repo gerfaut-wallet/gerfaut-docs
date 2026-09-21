@@ -1,11 +1,9 @@
 ---
 title: "Verify a download"
-description: "Prove in two commands that a Gerfaut installer or APK is the file the author published, with the signed hash list that ships with every release."
+description: "Prove that a Gerfaut installer or APK is the file the author published, with the signed hash list of the release, or rebuild it yourself from source."
 ---
 
-Every Gerfaut release carries a `SHA256SUMS` file listing the hash of each installer and APK, and a `SHA256SUMS.minisig` signature made with the author's [minisign](https://jedisct1.github.io/minisign/) key. One command proves that the list comes from the author, a second one proves that your file matches it.
-
-The author's minisign public key is:
+Check a downloaded file against `SHA256SUMS`, the hash list of its release, signed with the author's [minisign](https://jedisct1.github.io/minisign/) key. The author's public key is:
 
 ```
 RWTz3c4gUmglCX5Uvjthigz1ts3TS3ZSdhRNpFgOJRW/Wr4XjGlqTR3O
@@ -18,7 +16,7 @@ RWTz3c4gUmglCX5Uvjthigz1ts3TS3ZSdhRNpFgOJRW/Wr4XjGlqTR3O
     Get it from the [minisign page](https://jedisct1.github.io/minisign/) or from your package manager.
   </Step>
   <Step title="Download the hash list and its signature">
-    Take `SHA256SUMS` and `SHA256SUMS.minisig` from the same release page as your file, and put all three in one folder.
+    Take `SHA256SUMS` and `SHA256SUMS.minisig` from the release page of your file, and put all three in one folder.
   </Step>
   <Step title="Check the signature of the hash list">
     From that folder, run:
@@ -30,7 +28,7 @@ RWTz3c4gUmglCX5Uvjthigz1ts3TS3ZSdhRNpFgOJRW/Wr4XjGlqTR3O
     minisign prints `Signature and comment signature verified` when the list comes from the author.
 
     <Warning>
-    Any other answer means the list was altered or signed by someone else. Do not use the file.
+    Any other answer means someone altered the list or signed it in the author's place. Do not use the file.
     </Warning>
   </Step>
   <Step title="Check that your file matches the list">
@@ -63,6 +61,80 @@ RWTz3c4gUmglCX5Uvjthigz1ts3TS3ZSdhRNpFgOJRW/Wr4XjGlqTR3O
   </Step>
 </Steps>
 
-## Compare the Android certificate
+## Rebuild it yourself
 
-Android checks the APK signature on its own when it installs the file. To compare the signing certificate with the one every release uses, or to rebuild a release from source, open **Compare the signing certificate** in [Install on Android](/getting-started/install-android#install-gerfaut).
+Rebuild the Windows installer, the Linux packages or the Android APKs of a release from its source, on a Linux machine, and compare them with the published files. Replace `v0.1.0` with the tag of your release.
+
+<Tabs>
+  <Tab title="Windows">
+    <Steps>
+      <Step title="Prepare a Linux machine">
+        Install Docker or Podman, git and curl. Plan for 8 GB of free disk and 8 GB of memory for the container engine.
+      </Step>
+      <Step title="Run the verification">
+        ```bash
+        git clone https://github.com/gerfaut-wallet/gerfaut-desktop
+        gerfaut-desktop/reproducible/verify.sh v0.1.0 --target windows --accept-microsoft-license
+        ```
+
+        With `--accept-microsoft-license`, you accept [Microsoft's licence terms](https://go.microsoft.com/fwlink/?LinkId=2086102) for its C runtime and Windows SDK. The build downloads them from Microsoft, about 310 MB.
+      </Step>
+      <Step title="Read the verdict">
+        The script builds `Gerfaut_<version>_x64-setup.exe`, downloads the published one and ends on `==> VERIFIED` when the two are identical, byte for byte.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Linux">
+    <Steps>
+      <Step title="Prepare a Linux machine">
+        Install Docker or Podman, git and curl. Plan for 8 GB of free disk, 8 GB of memory for the container engine and about 20 minutes for a first build.
+      </Step>
+      <Step title="Run the verification">
+        ```bash
+        git clone https://github.com/gerfaut-wallet/gerfaut-desktop
+        gerfaut-desktop/reproducible/verify.sh v0.1.0
+        ```
+      </Step>
+      <Step title="Read the verdict">
+        The script builds the `.deb`, the `.rpm` and the `.AppImage`, downloads the published ones and ends on `==> VERIFIED` when all three are identical, byte for byte.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Android">
+    <Steps>
+      <Step title="Prepare a Linux machine">
+        Install Docker, git, Python 3 and the GitHub CLI, `gh`. Plan for 15 GB of free disk, 8 GB of memory for the container engine and about 30 minutes.
+      </Step>
+      <Step title="Rebuild the APKs">
+        ```bash
+        git clone https://github.com/gerfaut-wallet/gerfaut-mobile
+        git clone https://github.com/gerfaut-wallet/gerfaut-core
+        cd gerfaut-mobile
+        git checkout v0.1.0
+        git -C ../gerfaut-core checkout "$(cat reproducible/gerfaut-core.rev)"
+        reproducible/verify.sh
+        ```
+
+        The unsigned APKs land in `reproducible/out/`.
+      </Step>
+      <Step title="Compare with the published APK">
+        ```bash
+        gh release download v0.1.0 --pattern 'gerfaut-*arm64-v8a.apk'
+        python3 reproducible/compare.py --signed \
+            gerfaut-v0.1.0-android-arm64-v8a.apk \
+            reproducible/out/gerfaut-v0.1.0-android-arm64-v8a-unsigned.apk
+        ```
+
+        The script prints `payload identical, only the signature differs` when every file inside the two APKs matches. The signature cannot match, because the release key never leaves the author's machine.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+<Tip>
+With Podman on the desktop builds, put `GERFAUT_ENGINE=podman` in front of `verify.sh`.
+</Tip>
+
+<Accordion title="Read the full recipe">
+  Each repository explains what is pinned, how the build runs and what to do when the hashes differ: [gerfaut-desktop](https://github.com/gerfaut-wallet/gerfaut-desktop/blob/main/docs/REPRODUCIBLE-BUILDS.md) for Windows and Linux, [gerfaut-mobile](https://github.com/gerfaut-wallet/gerfaut-mobile/blob/main/docs/REPRODUCIBLE-BUILDS.md) for Android.
+</Accordion>

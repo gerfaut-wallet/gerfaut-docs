@@ -12,19 +12,15 @@ Point Gerfaut at your own node to keep your addresses to yourself, or stay on th
 
 ## Pick the network
 
-In the `Network` card, select `Mainnet`, `Signet`, `Testnet 4` or `Regtest`. Gerfaut shows only the wallets of the selected network and names it in a badge everywhere except on Mainnet.
-
-<Tip>
-Regtest has no public server: run your own node and point Gerfaut at it, as below.
-</Tip>
+In the `Network` card, select `Mainnet`, `Signet`, `Testnet 4` or `Regtest`. Gerfaut shows the wallets of that network only, and names it in a badge unless it is mainnet. Regtest has no public server, so point it at your own node.
 
 ## Use the public servers
-
-The `Backend` card opens on `Public API`: free servers with nothing to set up.
 
 <Warning>
 The operator of the public server that answers sees the addresses of your wallets.
 </Warning>
+
+The `Backend` card opens on `Public API`, with nothing to set up. Under `Server`, keep `Automatic` to let Gerfaut try the public servers of the network in turn, or select one operator, such as `mempool.space`, to ask only that one.
 
 <Tabs>
   <Tab title="Desktop">
@@ -39,13 +35,6 @@ The operator of the public server that answers sees the addresses of your wallet
   </Tab>
 </Tabs>
 
-Under `Server`, pick who answers:
-
-- **`Automatic`:** Gerfaut tries every public Esplora instance of the network in turn until one answers.
-- **One operator:** Select it to make it the only server asked, such as `mempool.space`, `blockstream.info` or `mempool.emzy.de` over Esplora, or one of the listed Electrum servers.
-- **Self-signed Electrum servers:** The list says which ones sign their own certificate. Gerfaut shows you the fingerprint before it connects, see [Certificates](/settings/certificates).
-- **Single-address wallets:** An Electrum server cannot serve a wallet added from a single address. Keep such a wallet on `Automatic` or on an Esplora server.
-
 ## Connect your own Esplora
 
 <Steps>
@@ -53,36 +42,31 @@ Under `Server`, pick who answers:
     The `Server URL` field appears, for an address such as `https://node.example.org:3002/api`.
   </Step>
   <Step title="Enter the URL, or scan it">
-    Select **Scan** beside the field to read the QR code your node prints beside its Esplora app. The scan fills the field and saves nothing yet.
+    Select **Scan** beside the field to read the QR code your node shows for its Esplora app.
   </Step>
   <Step title="Select Save backend">
-    The setting applies to the next sync.
+    Gerfaut uses it from the next sync.
   </Step>
 </Steps>
 
 ## Connect your own Electrum server
 
 <Warning>
-Leave `TLS` on. Without it everything travels in the clear, and anything on the path between your device and the server reads the addresses you watch.
+Leave `TLS` on. Without it, anyone on the path between your device and the server reads the addresses you watch.
 </Warning>
 
 <Steps>
   <Step title="Select My own Electrum server">
-    Use it for electrs or Fulcrum, over TLS or plain TCP.
+    Use it for electrs or Fulcrum.
   </Step>
   <Step title="Enter the host and the port">
-    Enter the `Host`, such as `node.example.org` or an `.onion` address, and the `Port`, `50002` by default. Or select **Scan** and point the camera at the QR code your node prints beside its Electrum app: it fills the host, the port and the `TLS` switch at once.
+    Enter the `Host`, such as `node.example.org` or a `.onion` address reached [through Tor](/settings/tor), and the `Port`, `50002` by default. **Scan** reads the QR code your node shows for its Electrum app and fills both.
   </Step>
   <Step title="Select Save backend">
-    The button reads `Checking the certificate…` while Gerfaut checks the certificate. A server that signs its own certificate shows it to you before anything is saved, see [Certificates](/settings/certificates). A server that does not answer is saved anyway, and Gerfaut checks its certificate on the first connection.
+    A server that signs its own certificate shows it to you before Gerfaut saves anything. See [Certificates](/settings/certificates).
   </Step>
 </Steps>
 
-<AccordionGroup>
-  <Accordion title="Reach your node over Tor">
-    A `Host` that ends in `.onion` goes through Tor. The `Tor` card under the backend says which Tor client Gerfaut uses and lets you test it, see [Tor](/settings/tor).
-  </Accordion>
-  <Accordion title="Scan a QR code of the other kind">
-    A scanned QR code that names the other kind of backend switches the choice for you: an `https://` address read into the Electrum form selects `My own Esplora`.
-  </Accordion>
-</AccordionGroup>
+<Note>
+An Electrum server cannot serve a wallet [added from a single address](/wallets/watch-an-address). Keep such a wallet on a network whose backend is `Public API` or your own Esplora.
+</Note>

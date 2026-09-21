@@ -3,22 +3,18 @@ title: "Backup and sync"
 description: "Save every wallet you watch in an encrypted Gerfaut backup file or an animated QR code, and restore it on another computer or phone."
 ---
 
-A backup holds every wallet you watch, sealed with a password you pick, as a file or as an animated QR code. Restore it on another computer or phone to move your wallets, with no server in between.
+Seal every wallet you watch in a backup under a password of your own, as a file or an animated QR code, and restore it on another computer or phone. A backup holds descriptors, addresses and names, never a private key or a seed.
 
 Open **Settings** > **Backup & sync**.
 
-<Tip>
-A backup holds descriptors, addresses, names and, if you ask, your node settings. It never holds a private key, and never chain data: the other device syncs on its own.
-</Tip>
-
 <Tabs>
   <Tab title="Desktop">
-    <Frame caption="A backup carries descriptors and addresses under a password, never a private key, and moves wallets between desktop and phone.">
+    <Frame caption="A backup carries descriptors and addresses under a password, never a private key or a seed, and moves wallets between desktop and phone.">
       <img src="/images/desktop/settings-backup.webp" alt="The Backup & sync section of the desktop settings: the explanation and the Export and Restore buttons." />
     </Frame>
   </Tab>
   <Tab title="Android">
-    <Frame caption="A backup carries descriptors and addresses, encrypted with a password, never a private key.">
+    <Frame caption="A backup carries descriptors and addresses under a password, never a private key or a seed.">
       <img src="/images/android/settings-backup.webp" alt="The Backup & sync section on Android with the explanation and the Export and Restore buttons." width="360" />
     </Frame>
   </Tab>
@@ -27,7 +23,7 @@ A backup holds descriptors, addresses, names and, if you ask, your node settings
 ## Export a backup
 
 <Warning>
-There is no way to recover the password: you type it on the other device. The file can be copied and guessed offline, so use a long passphrase of several words.
+Nobody can recover the password. Someone who copies the file can try passwords offline, so pick a long passphrase of several words.
 </Warning>
 
 <Steps>
@@ -35,13 +31,13 @@ There is no way to recover the password: you type it on the other device. The fi
     The dialog `Export a backup` opens.
   </Step>
   <Step title="Pick what goes in">
-    Under `Wallets`, keep `All wallets` or take only the wallets of the selected network. Tick `Include node settings` to add your backend choice, the certificates you accepted and the gap limit.
+    Keep `All wallets` or take only the wallets of the selected network. Tick `Include node settings` to add your backend, the certificates you accepted and the gap limit.
   </Step>
   <Step title="Pick a password">
-    Enter it in `Password` and `Confirm password`, eight characters at least, then select **Create backup**. The summary reads the number of wallets and the size of the backup.
+    Enter it in `Password` and `Confirm password`, then select **Create backup**.
   </Step>
   <Step title="Save the file or show the QR code">
-    Select **Save file** to write `gerfaut-backup-YYYY-MM-DD.gerfaut` where you want it. On Android, **Share** hands the file to another app. Select **Show QR code** to display the backup as an animated QR code for the other device.
+    Select **Save file** to write a `.gerfaut` file, or **Share** on Android. Select **Show QR code** to show the backup as an animated QR code.
   </Step>
 </Steps>
 
@@ -52,33 +48,19 @@ There is no way to recover the password: you type it on the other device. The fi
     The dialog `Restore a backup` opens.
   </Step>
   <Step title="Open the backup">
-    Select **Open a file** and pick the `.gerfaut` file, or **Scan a QR code** and keep the camera on the animated code until the counter reaches its total. The dialog then reads `Backup read from` the file or the QR code.
+    Select **Open a file** and pick the `.gerfaut` file, or **Scan a QR code** and keep the camera on the code until the counter reaches its total. One loop of the code is enough.
   </Step>
   <Step title="Enter the password">
     Select **Open backup**. A wrong password reads `Wrong password, or the file is damaged.`
   </Step>
   <Step title="Pick what to restore">
-    Each wallet of the backup is listed with its network and its kind, ticked unless this device already watches it, in which case it reads `Already watched`. When the backup carries node settings, tick `Apply node settings` to replace yours with them, and the dialog lists what changes.
+    Gerfaut ticks every wallet this device does not watch yet, and marks the others `Already watched`. Tick `Apply node settings` to replace your backend settings with those of the backup.
   </Step>
   <Step title="Select Restore">
-    Gerfaut switches to the network of the first restored wallet if none is on the selected one, then syncs.
+    Gerfaut adds the wallets and syncs them.
   </Step>
 </Steps>
 
-## Move your wallets between two devices
-
-<Warning>
-On Android, the encryption key that opens the vault lives in the phone's secure storage and never travels. A phone restored from a system backup comes back with the vault file and without that encryption key. A Gerfaut backup is what brings the wallets back on a new phone.
-</Warning>
-
-<Steps>
-  <Step title="Show the QR code on the first device">
-    Export a backup and select **Show QR code**. The code loops through its frames every 200 milliseconds, with a counter such as `3 / 8`, and stays on screen until you select **Done**.
-  </Step>
-  <Step title="Scan it on the second device">
-    Open **Settings** > **Backup & sync** > **Restore…**, select **Scan a QR code** and keep the camera on the code. It can start at any frame, and one loop is enough.
-  </Step>
-  <Step title="Enter the password and restore">
-    Enter the password you chose on the first device and select **Restore**.
-  </Step>
-</Steps>
+<Note>
+On Android, the encryption key of the vault never leaves the phone, so a system backup of the phone does not bring your wallets back. Keep a Gerfaut backup for a new phone.
+</Note>

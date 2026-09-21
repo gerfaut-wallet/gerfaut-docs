@@ -3,43 +3,39 @@ title: "Certificates"
 description: "Trust the self-signed certificate of your own Electrum server by its fingerprint, and decide what to do when a server's certificate changes."
 ---
 
-Gerfaut shows you the certificate of an Electrum server no authority vouches for, and once you accept it, refuses any other certificate from that host. The certificates you accepted live in **Settings** > **Network**, in the `Trusted certificates` card.
-
-<Tip>
-An Esplora endpoint over `https://` and a public Electrum server vouched for by a public authority never ask.
-</Tip>
+Accept the certificate of your own Electrum server once, by its fingerprint. Gerfaut then refuses any other certificate from that host until you decide.
 
 ## Accept your server's certificate
 
-Gerfaut opens `This server signs its own certificate` when you save the backend, or on the first connection to it.
+Gerfaut opens `This server signs its own certificate` when you save the backend, or on the first connection.
 
 <Steps>
   <Step title="Print the fingerprint on your server">
-    On the machine that runs the server, run the command the dialog shows, with the path of the server's certificate file:
+    On the machine that runs the server, run the command the dialog shows, with the path of the certificate file:
 
     ```bash
     openssl x509 -noout -fingerprint -sha256 -in cert.pem
     ```
   </Step>
   <Step title="Compare it with the one Gerfaut shows">
-    The dialog shows the SHA-256 fingerprint it received, in the same colon-separated form, with the certificate's subject, its expiry and the reason it asks, such as `self-signed, or signed by an authority this machine does not know`. The two fingerprints must match byte for byte.
+    The two SHA-256 fingerprints must match, character for character.
   </Step>
   <Step title="Select Accept and save">
-    Gerfaut records the fingerprint for that host and saves the backend. Select **Cancel** to save nothing and trust nothing.
+    Gerfaut records the fingerprint for that host and saves the backend.
   </Step>
 </Steps>
 
 ## Decide when a certificate changes
 
-When the host presents another certificate, Gerfaut stops and opens `This server's certificate changed`, with the two fingerprints labelled `Accepted before` and `Presented now`.
+When the host presents another certificate, Gerfaut stops and opens `This server's certificate changed`, with the fingerprints `Accepted before` and `Presented now`.
 
 <Warning>
-Either whoever runs the server replaced the certificate, or something is answering in its place and reads the addresses you watch. Ask whoever runs the server before you accept.
+Either whoever runs the server replaced the certificate, or something answers in its place and reads the addresses you watch. Ask whoever runs the server before you accept.
 </Warning>
 
 <Steps>
   <Step title="Check the new fingerprint with whoever runs the server">
-    **Cancel** is the default: Gerfaut saves nothing and trusts nothing until you say so.
+    Select **Cancel** if you cannot. Gerfaut then saves nothing and trusts nothing.
   </Step>
   <Step title="Select Trust the new certificate">
     Then confirm.
@@ -53,11 +49,4 @@ Either whoever runs the server replaced the certificate, or something is answeri
 
 ## Forget a certificate
 
-<Steps>
-  <Step title="Open the Trusted certificates card">
-    Open **Settings** > **Network**. The card lists each host you accepted with its fingerprint, and only exists while there is one.
-  </Step>
-  <Step title="Select Forget on the line, then confirm">
-    Gerfaut asks again the next time it connects to that host, and refuses until you accept the certificate.
-  </Step>
-</Steps>
+In **Settings** > **Network**, the `Trusted certificates` card lists each host you accepted. Select **Forget** on a line and confirm. Gerfaut asks again on the next connection to that host.

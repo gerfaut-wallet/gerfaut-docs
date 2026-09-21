@@ -1,50 +1,83 @@
 ---
 title: "Notifications"
-description: "Get a notification when a sync finds a new transaction, check your wallets on a schedule, and put the price or a balance on your Android home screen."
+description: "Get a notification when a transaction reaches the mempool and again when it confirms, keep Live running on Android, and add a widget to your home screen."
 ---
 
-Gerfaut tells you when a sync finds a transaction you have not seen. The notification comes from the sync itself, which talks to the same servers as always and nothing else.
+Get a notification within seconds when a transaction touches one of your wallets, and again at its first confirmation. Gerfaut watches the wallets of the network selected in **Settings** > **Network**.
 
-Open **Settings** > **Notifications**. Both settings are off by default.
+<Warning>
+Your backend's operator already sees your addresses at each sync. While notifications run, it also sees that Gerfaut stays connected, from which IP address and for how long. With the `Automatic` server, Gerfaut first connects to the Electrum server of an operator it already syncs with, Blockstream on mainnet.
+</Warning>
 
-## Get notified about new transactions
-
-<Steps>
-  <Step title="Select the New transactions switch">
-    The system asks for permission the first time. If it refuses, the card reads `Notifications are off for Gerfaut in the system settings.`
-  </Step>
-  <Step title="Read the notification">
-    It names the wallet and says `Received 0.01000000 BTC` or `0.00200000 BTC left this wallet`, with `· pending` while the transaction has no block. While amounts are hidden, it only says `New transaction`.
-  </Step>
-</Steps>
-
-<Tip>
-Gerfaut sends at most three notifications per wallet per sync, then one line that counts the rest.
-</Tip>
-
-## Check on a schedule
-
-The schedule stays greyed out while `New transactions` is off.
+## Turn on notifications
 
 <Tabs>
   <Tab title="Desktop">
-    Under `Check while open`, select `5 min`, `15 min` or `1 hour`. Gerfaut syncs every wallet on that rhythm while its window is open.
+    <Steps>
+      <Step title="Select the New transactions switch">
+        Open **Settings** > **Notifications**. The system may ask you to allow notifications.
+      </Step>
+      <Step title="Read the Live watch line">
+        The line reads `Connected · Electrum` with the server. Notifications then arrive within seconds. With an Esplora backend, the line reads `Polling every minute`.
+      </Step>
+      <Step title="Select Send a test notification">
+        A test notification appears. If nothing shows, allow notifications for Gerfaut in the system settings and turn off Do Not Disturb.
+      </Step>
+    </Steps>
+
+    Gerfaut watches while it is open, minimised or locked, and stops when you close it.
   </Tab>
   <Tab title="Android">
-    Under `Check in the background`, select `Every 15 min`, `Every hour` or `Every 6 hours`. Gerfaut syncs even when it is closed. Android checks at most every 15 minutes and may delay a check to save battery.
+    Live keeps a connection open. To save battery, select `Every 15 min`, `Every hour` or `Every 6 hours` in step 2 instead. Android then checks in the background, sometimes later than asked.
+
+    <Steps>
+      <Step title="Select the New transactions switch">
+        Open **Settings** > **Notifications**. Android asks you to allow notifications the first time.
+      </Step>
+      <Step title="Select Live under Check for transactions">
+        The `Live watch` sheet says what Live costs and what your server learns. Select **Turn on Live**.
+      </Step>
+      <Step title="Let Gerfaut run in the background">
+        Select **Ask Android** and allow Gerfaut to ignore battery optimisation. Live still runs if you refuse, less reliably.
+      </Step>
+      <Step title="Follow the steps for your phone">
+        On a Xiaomi, Huawei, Samsung or OnePlus phone, the sheet lists what to change in the phone's own battery manager. Change it, then select **Done**.
+      </Step>
+      <Step title="Read the status line">
+        The line under `Check for transactions` reads `Connected · Electrum` with the server. Android shows a permanent notification, `Watching for transactions`.
+      </Step>
+    </Steps>
   </Tab>
 </Tabs>
+
+## Keep Live running on Android
+
+Live keeps running when you leave Gerfaut, swipe it away from the recent apps or restart the phone. A check every 15 minutes stays scheduled under it, for whenever Live stops.
+
+- **Stop:** Select **Stop** on the permanent notification to turn Live off.
+- **Force stop:** Force-stopping Gerfaut in the Android settings ends Live until you open Gerfaut again.
+- **Disguise:** Live is not available while Gerfaut is [disguised as a calculator](/settings/app-lock#disguise-the-app-as-a-calculator-on-android). Turning the disguise on sets the checks back to every 15 minutes.
+- **`Stopped by Android. Tap to restart.`:** Select the line to start Live again.
+- **`Battery: restricted`:** Select **Fix** to ask Android for the battery exemption again.
+
+## Read a notification
+
+The notification names the wallet and says what happened, such as `Received 0.01000000 BTC · pending`, then `Received 0.01000000 BTC · confirmed`. Gerfaut sends at most three notifications per wallet at once, then one that counts the rest.
+
+- **Hidden amounts:** While [amounts are hidden](/everyday-use/balances-and-history#hide-every-amount), a notification reads like `New transaction · pending`, with no amount.
+- **Desktop, locked:** A notification names no wallet and no amount.
+- **Android, app lock set:** A notification carries no amount.
 
 ## Put a widget on your Android home screen
 
 <Steps>
   <Step title="Hold an empty spot on your home screen">
-    Select **Widgets** and pick Gerfaut.
+    Select **Widgets** and find Gerfaut.
   </Step>
-  <Step title="Pick one of the three widgets">
-    - **Bitcoin price:** The price in your chosen currency, as of the last refresh.
-    - **Balance:** The total of your wallets and up to four of them by name. Balances stay masked as `•••••` until you tick `Show balances on widgets` in the `Widgets` card, and whenever amounts are hidden in Gerfaut.
-    - **Network:** The block height as of the last sync.
+  <Step title="Drag one of the three widgets">
+    - **Bitcoin price:** The price in your currency.
+    - **Balance:** The total of your wallets and up to four of them by name.
+    - **Network:** The block height of the last sync.
   </Step>
 </Steps>
 
@@ -52,10 +85,4 @@ The schedule stays greyed out while `New transactions` is off.
   <img src="/images/android/widget.webp" alt="An Android launcher with the three Gerfaut widgets: Bitcoin price, Balance with masked amounts per wallet, and Network with the block height." width="360" />
 </Frame>
 
-<Tip>
-Nothing private reaches a widget: a name, a balance, a price, a height, never an address or a transaction id.
-</Tip>
-
-<Accordion title="When a widget refreshes">
-  A widget never syncs on its own. It refreshes when you open Gerfaut and with the background check above. Widgets are off while Gerfaut is disguised as a calculator, see [App lock](/settings/app-lock).
-</Accordion>
+The `Balance` widget shows `•••••` until you tick `Show balances on widgets` in the `Widgets` card of **Settings** > **Notifications**. A widget refreshes when you open Gerfaut and at each background check, and never shows an address or a transaction id.

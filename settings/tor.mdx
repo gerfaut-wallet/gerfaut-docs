@@ -3,26 +3,24 @@ title: "Tor"
 description: "Reach a backend on a .onion address through the Tor client built into Gerfaut or the one already on your device, then test the route."
 ---
 
-Gerfaut reaches a backend whose address ends in `.onion` through Tor, and every other address directly. Both apps carry their own Tor client, so a hidden service works with nothing else to install.
-
-Open **Settings** > **Network** and find the `Tor` card under the backend.
+Gerfaut reaches a backend whose address ends in `.onion` through Tor, with a Tor client built in, so a hidden service works with nothing else to install. Open **Settings** > **Network** and find the `Tor` card under the backend.
 
 ## Pick which Tor Gerfaut uses
 
 <Tabs>
   <Tab title="Desktop">
     - **`Automatic`:** The Tor already running on this machine if it answers, the built-in one otherwise. This is the default.
-    - **`System Tor`:** Only the Tor on this machine, at the `SOCKS address` you enter. Empty means `127.0.0.1:9050`, and the Tor Browser listens on `9150`.
-    - **`Built-in`:** Only the built-in Tor. The first connection takes a little longer while it starts.
+    - **`System Tor`:** Only the Tor on this machine, at the `SOCKS address` you enter. Empty means `127.0.0.1:9050`. The Tor Browser listens on `9150`.
+    - **`Built-in`:** Only the built-in Tor.
 
     <Frame caption="Any .onion backend goes through Tor, either the one already on the machine or the built-in one.">
       <img src="/images/desktop/settings-tor.webp" alt="The Tor card of the Network section on desktop: Automatic, System Tor and Built-in, the SOCKS address field and the Test the connection button." />
     </Frame>
   </Tab>
   <Tab title="Android">
-    - **`Automatic`:** The built-in Tor. This is the default. Gerfaut uses a Tor app on the phone only when you select it, because on a phone any app can answer on the Tor port and pose as Tor.
+    - **`Automatic`:** The built-in Tor. This is the default, because any app on a phone can answer on the Tor port.
     - **`System Tor`:** Only a Tor app running on the phone, such as Orbot.
-    - **`Built-in`:** Only the built-in Tor. The first connection takes a little longer while it starts.
+    - **`Built-in`:** Only the built-in Tor.
 
     <Frame caption="Any .onion backend goes through Tor, either built in or the one already on the device.">
       <img src="/images/android/settings-tor.webp" alt="The Tor card on Android: the Automatic, System Tor and Built-in buttons and the Test the connection button." width="360" />
@@ -34,16 +32,22 @@ Open **Settings** > **Network** and find the `Tor` card under the backend.
 
 <Steps>
   <Step title="Point the backend at your node's .onion address">
-    In [Backend](/settings/backends-and-your-own-node), a scanned `.onion` address reads `A Tor hidden service: reached through Tor only.` under the field.
+    Follow [Backend](/settings/backends-and-your-own-node) and enter the `.onion` address of your node.
   </Step>
   <Step title="Select Test the connection">
-    While the built-in client starts, the card reads `Starting the built-in Tor…` with a percentage. A cold start takes up to about a minute and a half.
+    The built-in Tor takes up to about a minute and a half to start the first time. Meanwhile, the card reads `Starting the built-in Tor…` with a percentage.
   </Step>
   <Step title="Read the result">
-    The card reads `Reached through the built-in Tor.` or `Reached through the system Tor.`, or the error in Gerfaut's own words.
+    The card reads `Reached through the built-in Tor.` or `Reached through the system Tor.`, or says what failed.
   </Step>
 </Steps>
 
-<Accordion title="Send the Premium calls through Tor">
-  The Premium calls follow the backend you set. With a `.onion` backend they go through Tor as well, with any other backend they go out directly. A call that needs Tor and cannot reach it fails, and never falls back to the clear.
-</Accordion>
+## Route other requests through Tor
+
+With a `.onion` backend, Gerfaut sends these requests through Tor too, and never around it:
+
+- **Premium calls:** They follow the backend you set. When Tor cannot be reached, the call fails.
+- **Update check:** It goes through Tor as soon as one of your backends is a `.onion` address. When Tor cannot be reached, Gerfaut sends nothing.
+- **Notifications:** The live connection goes to the backend itself, through Tor.
+
+Price requests for the fiat value always go straight to the price source. See [Units and fiat](/settings/units-and-fiat).

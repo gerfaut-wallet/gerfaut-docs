@@ -3,7 +3,7 @@ title: "Watch an address"
 description: "Watch a single bitcoin address in Gerfaut when you have no descriptor or extended public key, and see what an address alone cannot show."
 ---
 
-A single address is enough to follow the coins that sit on it. Gerfaut watches it like any wallet, with the balance, the history and the unspent outputs, minus what only a descriptor can give: the next addresses and a spending policy.
+Watch a single address to follow the coins on it, with its balance, history and UTXOs. An address alone gives no next address and no spending policy.
 
 ## Watch the address
 
@@ -12,28 +12,27 @@ A single address is enough to follow the coins that sit on it. Gerfaut watches i
     Follow [Add a wallet](/wallets/add-a-wallet) and paste the address instead of a descriptor.
   </Step>
   <Step title="Check the card">
-    The confirmation card reads `Recognized as Single address` with the address under it.
+    The card reads `Recognized as` followed by `Single address`, with the address under it.
   </Step>
   <Step title="Name it and select Add wallet">
-    Gerfaut opens the wallet and starts its first sync.
+    Gerfaut opens the wallet and runs its first sync.
   </Step>
 </Steps>
 
 <Tip>
-Give the wallet the `Pin` icon in **Settings** > **Wallets** so that the list tells a watched address from a descriptor wallet at a glance.
+Give the wallet the `Pin` icon in **Settings** > **Wallets**, so your list tells an address from a descriptor wallet at a glance.
 </Tip>
 
-## Know what an address cannot show
+## Know what an address cannot do
 
-- **Receive:** The page shows `Watched address`, the one address and its QR code. There is no next address to hand out.
-- **Policy:** The page reads `An address has no policy Gerfaut can read.`
-- **Electrum servers:** An Electrum server cannot serve a single-address wallet. Keep the `Public API` backend on `Automatic` or on an Esplora server, or point Gerfaut at your own Esplora. See [Backend](/settings/backends-and-your-own-node).
-- **Gerfaut Premium:** The Premium server watches descriptors only, so a single address cannot be switched on in [Watch a wallet](/premium/watch-a-wallet).
+- **Receive:** The Receive page shows the one address under `Watched address`, with no next address to hand out.
+- **Policy:** The Policy page reads `An address has no policy Gerfaut can read.`
+- **Electrum servers:** An Electrum server cannot serve a single address. Keep the `Public API` backend on `Automatic` or on an Esplora server, or use your own Esplora. See [Backend](/settings/backends-and-your-own-node).
 
 ## Load a long history
 
-A very active address loads its history in rounds of 1,000 transactions. When more remain, the end of the list shows **Load older transactions** and the note `This address has a long history: it loads in rounds. The balance above already covers all of it.` Select the button to fetch the next round.
+A very active address loads its history in rounds of 1,000 transactions, while its balance already covers all of it. When more remain, select **Load older transactions** at the end of the list.
 
 <Note>
-The CSV export only includes the transactions loaded so far. Load every round before you export a complete file.
+The CSV export only holds the transactions loaded so far. Load every round before you export a complete file.
 </Note>

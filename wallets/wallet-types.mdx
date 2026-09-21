@@ -3,7 +3,7 @@ title: "Wallet types"
 description: "See which wallet material Gerfaut accepts, from descriptors and extended public keys to multisig, BSMS records and export files, and what it refuses."
 ---
 
-Gerfaut turns everything you give it into an output descriptor, its single internal format. What you paste, open or scan decides how much Gerfaut knows on its own and what it asks you to check.
+Check what Gerfaut makes of what you paste, open or scan, and what to confirm before you add it.
 
 ## Give Gerfaut one of these inputs
 
@@ -14,24 +14,17 @@ Gerfaut turns everything you give it into an output descriptor, its single inter
 | Two descriptors on two lines | `Descriptor pair (receive + change)` | Both branches. |
 | An extended public key (`xpub`, `tpub`, or a SLIP-132 `ypub`, `zpub`, `upub`, `vpub`) | `Extended public key` | The `0/*` and `1/*` branches under that extended public key. |
 | A single address | `Single address` | That address only. See [Watch an address](/wallets/watch-an-address). |
-| The export file of another wallet | `Wallet export file` | The descriptor the file holds. When it holds several account types, Gerfaut selects the preferred one and says so. |
-| A BSMS record (BIP-129) | `BSMS record` | The multisig descriptor in the record. Gerfaut derives the first address and refuses the file if it differs from the one the record promises. |
+| The export file of another wallet | `Wallet export file` | The descriptor the file holds. When it holds several account types, Gerfaut picks the preferred one and says so. |
+| A BSMS record (BIP-129) | `BSMS record` | The multisig descriptor in the record. Gerfaut refuses the file if its first address differs from the one the record promises. |
 
-Multisig wallets arrive as descriptors, whether pasted, scanned or read from a BSMS record: `wsh(sortedmulti(...))` is read as `Script (P2WSH)`.
+A multisig wallet arrives as a descriptor, pasted, scanned or read from a BSMS record. A descriptor with a Miniscript policy and timelocks also gets a [Policy page](/wallets/policy-and-timelocks).
 
-<Tip>
-A descriptor that carries a Miniscript policy with timelocks gets a page of its own. See [Read a policy](/wallets/policy-and-timelocks).
-</Tip>
+## Pick the script type of an extended public key
 
-## Pick the script type of a bare extended public key
+A bare `xpub` does not name its script type. Gerfaut reads it from the SLIP-132 prefix (`ypub` for Nested SegWit, `zpub` for Native SegWit), then from a key origin such as `[fingerprint/84'/0'/0']`, and falls back to Native SegWit.
 
-A descriptor names its script type. A bare `xpub` does not, so Gerfaut reads it in this order:
-
-- **SLIP-132 prefix:** `ypub` means Nested SegWit, `zpub` means Native SegWit.
-- **Key origin:** The purpose in an origin such as `[fingerprint/84'/0'/0']`.
-- **Neither:** Gerfaut defaults to Native SegWit and shows a caution.
-
-The `Script type` list on the confirmation step lets you pick another one:
+- **SLIP-132 prefix:** The card reads `The SLIP-132 prefix was converted to a standard extended key.` The same conversion applies inside a descriptor.
+- **No script type:** The card reads `This key carries no script type. Check the one selected below.` Select the type your wallet software uses.
 
 | Script type | Addresses start with |
 |---|---|
@@ -41,23 +34,19 @@ The `Script type` list on the confirmation step lets you pick another one:
 | `Taproot (P2TR)` | `bc1p` |
 
 <Warning>
-Each choice rebuilds the `First address` on the card. Compare it with the first address your signing device or wallet software shows before you select **Add wallet**.
+Each script type gives other addresses. Compare the new `First address` with the one your signing device or wallet software shows before you select **Add wallet**.
 </Warning>
 
 ## Pick a network
 
-Gerfaut watches wallets on `Mainnet`, `Signet`, `Testnet 4` and `Regtest`. The input itself tells Gerfaut which networks it fits: a `tpub` or a `tb1` address is not a mainnet wallet.
-
-<Note>
-Only the wallets of the network selected in **Settings** > **Network** are shown.
-</Note>
+Gerfaut watches wallets on `Mainnet`, `Signet`, `Testnet 4` and `Regtest`. A `tpub` or a `tb1` address only fits the test networks. Gerfaut only shows the wallets of the network selected in **Settings** > **Network**.
 
 ## Read a refusal
 
 Each refusal names the input and says where it belongs:
 
-- **Private key material:** An `xprv`, a WIF key or a seed phrase is refused and never stored.
-- **Multisig cosigner key:** A `Ypub`, `Zpub`, `Upub` or `Vpub` prefix marks a cosigner. Import the full multisig descriptor instead.
-- **Signed transaction or PSBT:** [Broadcast](/everyday-use/broadcast-a-transaction) sends it.
-- **Gerfaut backup:** Restore it from **Settings** > **Backup & sync**. See [Backup and sync](/settings/backup-and-sync).
-- **One part of an animated QR code pasted as text:** Scan it with the camera.
+- **Private key material:** Gerfaut refuses an `xprv`, a WIF key or a seed phrase, and never stores it.
+- **Multisig cosigner key:** A `Ypub`, `Zpub`, `Upub` or `Vpub` key belongs to a multisig. Import the full multisig descriptor instead.
+- **Signed transaction or PSBT:** Send it from [Broadcast](/everyday-use/broadcast-a-transaction).
+- **Gerfaut backup:** Restore it from [Backup and sync](/settings/backup-and-sync).
+- **One part of an animated QR code pasted as text:** Scan the code with the camera.

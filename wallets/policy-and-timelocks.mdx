@@ -3,31 +3,28 @@ title: "Read a policy"
 description: "Open a wallet's Policy page in Gerfaut to see each spending path of its descriptor, the signing keys it needs and how long its timelock runs."
 ---
 
-The Policy page reads a wallet's descriptor as spending paths: who can spend, under which condition, and when. A single-key wallet gets one line, a Miniscript descriptor with a recovery or inheritance path gets one card per path, with its timelock counted down.
+Open a wallet's Policy page to see who can spend, under which condition, and when. A Miniscript descriptor with a recovery or inheritance path gets one card per path, with its timelock counted down.
 
 ## Open the Policy page
 
 <Tabs>
   <Tab title="Desktop">
-    Select **Policy** in the sidebar. The third link under `Total balance` on the Overview opens the same page and carries a digest of the policy, such as `2 of 3 keys` or `Recovery in 142 days`.
+    Select **Policy** in the sidebar. The Overview also shows a digest of the policy under `Total balance`, such as `2 of 3 keys` or `Recovery in 142 days`.
   </Tab>
   <Tab title="Android">
-    On the wallet page, select **More** (the vertical dots in the app bar), then **Policy**. The digest of the policy sits under the entry.
+    On the wallet page, select **More** (the vertical dots in the app bar), then **Policy**.
   </Tab>
 </Tabs>
 
 ## Read the spending paths
 
-The page opens on one sentence that states the policy: `One key signs. Any coin is spendable now.` for a single-sig wallet, `2 of 3 keys sign.` for a multisig, or `Key A signs. A recovery key can spend once a coin has waited about 1 year.` for a Miniscript descriptor.
+The page opens on one sentence that states the policy, such as `2 of 3 keys sign.` Each spending path then has a card, the primary path first:
 
-Below it, one card per spending path, the primary path first and the timed paths by nearest lock:
-
-- **Path label:** `Primary`, `Recovery`, `Emergency`, or a numbered variant when a role appears twice.
-- **Condition:** The signing keys and locks the path needs, such as `Any 2 of Key A, Key B, Key C` or `Key B and a wait of 52 560 blocks` (`Key B and a coin having waited 52 560 blocks` on Android). Each signing key is a pill carrying its fingerprint.
-- **Locks:** One line per timelock, in blocks and in estimated time: `52 560 blocks after the coin arrives ≈ 1 year`, or `Block 900 000 ≈ in 4 months`. A lock the path does not depend on is marked `(optional)`.
-- **State pill:** `Spendable now`, `In 1 432 blocks ≈ 10 days`, `No coins yet`, `Needs a secret` for a path that requires a preimage, or `Locked` when nothing more is known.
-- **Per-coin count:** A relative lock is counted per coin: `3 of 7 coins unlocked · next in 12 days`, then `7 of 7 coins unlocked` once every coin is past it, where Android reads `Spendable now`.
-- **Countdown:** For a waiting path, the next coin to unlock, its estimated date, and a progress bar of the wait done. The pill turns amber under 30 days.
+- **Path:** `Primary`, `Recovery` or `Emergency`, numbered when a role appears twice.
+- **Condition:** The signing keys and locks the path needs, such as `Any 2 of Key A, Key B, Key C`. Each signing key is a pill with its fingerprint.
+- **Locks:** Each timelock in blocks and in estimated time, such as `52 560 blocks after the coin arrives ≈ 1 year`.
+- **State:** `Spendable now`, a countdown such as `In 1 432 blocks ≈ 10 days`, `No coins yet`, `Needs a secret` or `Locked`.
+- **Coins:** A relative lock counts per coin, such as `3 of 7 coins unlocked · next in 12 days`, with a progress bar. The pill turns amber under 30 days.
 
 <Tabs>
   <Tab title="Desktop">
@@ -43,16 +40,13 @@ Below it, one card per spending path, the primary path first and the timed paths
 </Tabs>
 
 <Note>
-Estimated durations assume one block every 10 minutes and are always marked `≈`. A lock expressed in time is compared with the device clock, and the chain can lag by up to two hours. The page says so under the cards whenever such a lock exists.
+Estimated durations assume one block every 10 minutes and carry `≈`. A lock set in time follows the device clock. The chain can lag that clock by up to two hours.
 </Note>
 
 ## Check the signing keys and the descriptor
 
-The `Keys` section at the bottom lists each signing key with its label, its fingerprint, its origin path and a shortened form of its extended public key. Under it, the `Descriptor` disclosure shows the descriptor as you imported it, with a copy button, and its normalized policy with the signing keys named, such as `or(pk(Key A),and(pk(Key B),older(52560)))`.
-
-- **Desktop:** The second block is labelled `Normalized policy`.
-- **Android:** The second block is labelled `Read as`.
+The `Keys` section lists each signing key with its label, fingerprint, origin path and extended public key. Open `Descriptor` to copy the descriptor as you imported it, with its policy written out below, such as `or(pk(Key A),and(pk(Key B),older(52560)))`.
 
 ## Get warned before a path opens
 
-[Gerfaut Premium](/premium/overview) sends an alert 30 days, seven days and one day before a timed path becomes spendable, and again the day it opens.
+[Gerfaut Premium](/premium/overview) alerts you 30 days, seven days and one day before a timed path becomes spendable, and again the day it opens.

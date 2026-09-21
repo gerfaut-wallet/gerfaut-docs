@@ -3,11 +3,7 @@ title: "Add a wallet"
 description: "Start watching a wallet in Gerfaut from its descriptor, extended public key or address: paste it, open a file or scan a QR code, then check the first address."
 ---
 
-Gerfaut needs the public side of your wallet: the descriptor, extended public key or address that your signing device or wallet software exports. It shows what it recognized and waits for you to confirm before it stores anything.
-
-<Tip>
-Gerfaut is watch-only. Anything that contains a private key or a seed phrase is refused and never stored.
-</Tip>
+Give Gerfaut the public side of your wallet: the descriptor, extended public key or address your signing device or wallet software exports. Gerfaut refuses anything that contains a private key or a seed phrase.
 
 ## Add the wallet
 
@@ -15,36 +11,33 @@ Gerfaut is watch-only. Anything that contains a private key or a seed phrase is 
   <Step title="Open the add dialog">
     <Tabs>
       <Tab title="Desktop">
-        Select the wallet switcher at the top of the sidebar, then **Add a wallet**. With no wallet yet, the switcher itself reads **Add a wallet**.
+        Select the wallet switcher at the top of the sidebar, then **Add a wallet**.
       </Tab>
       <Tab title="Android">
         Select **Add a wallet** at the bottom of the home screen.
       </Tab>
     </Tabs>
   </Step>
-  <Step title="Give Gerfaut the wallet material">
-    Paste it in the `Descriptor, extended public key, or address` field, or bring it in another way:
+  <Step title="Paste, import or scan the wallet">
+    Paste it in `Descriptor, extended public key, or address`, then select **Continue**. Two other ways in:
 
-    - **Import a file:** A `.txt`, `.json`, `.desc` or `.bsms` file, such as the export of another wallet or the BSMS record of a multisig.
-    - **Scan a QR code:** The code a signing device or wallet software shows, as plain text, UR or BBQr, animated or not. Keep the camera on an animated code until the counter reaches its total. On Android the button reads **Scan**.
+    - **Import a file:** A `.txt`, `.json`, `.desc` or `.bsms` file, such as the export of another wallet.
+    - **Scan a QR code:** Plain text, UR or BBQr, animated or not. Keep the camera on an animated code until the counter reaches its total. On Android the button reads **Scan**.
 
-    Then select **Continue**. A refused input says why, in one sentence under the field.
+    A refused input says why, under the field.
   </Step>
   <Step title="Check the first address">
-    The card reads `Recognized as` followed by the kind of input and, when the input carries one, its script type. Under it, `First address` is the first address Gerfaut derives.
+    The card reads `Recognized as` with the kind of input, then `First address`, the first address Gerfaut derives.
 
     <Warning>
-    Compare `First address` with the first address your signing device or wallet software shows. A different address means Gerfaut watches another wallet, and coins sent to its addresses are not yours.
+    Compare `First address` with the first address your signing device or wallet software shows. A different address means Gerfaut watches another wallet.
     </Warning>
 
-    An extended public key also shows a `Script type` list:
-
-    - **SLIP-132 prefix:** A `zpub` or `vpub` key arrives with its type selected and the notice `The SLIP-132 prefix was converted to a standard extended key.` The same conversion applies inside a descriptor, so a `wpkh(...vpub.../0/*)` export pastes as it is.
-    - **No script type:** The card shows `This key carries no script type. Check the one selected below.` Select the type your wallet software uses, then check the first address again. [Wallet types](/wallets/wallet-types) lists the types and the address each one produces.
+    For an extended public key, check the `Script type` too: see [Wallet types](/wallets/wallet-types#pick-the-script-type-of-an-extended-public-key).
 
     <Tabs>
       <Tab title="Desktop">
-        <Frame caption="Pasting a public key is enough: Gerfaut recognizes the format, derives the first address to compare, and asks only for a name.">
+        <Frame caption="Gerfaut recognizes the format and derives the first address to compare before it stores anything.">
           <img src="/images/desktop/add-wallet.webp" alt="The Add a wallet dialog on desktop after pasting an extended public key: the Recognized as card with the first address, the SLIP-132 notice, the Script type list, the Name and Network fields and the Add wallet button." />
         </Frame>
       </Tab>
@@ -55,35 +48,24 @@ Gerfaut is watch-only. Anything that contains a private key or a seed phrase is 
       </Tab>
     </Tabs>
   </Step>
-  <Step title="Name the wallet and pick its network">
-    Enter a name in the `Name` field. Under `Network`, the list only opens when the input fits more than one network. Then select **Add wallet**.
-  </Step>
-  <Step title="Watch the first sync">
-    Gerfaut switches to the new wallet and starts its first sync.
-
-    <Tabs>
-      <Tab title="Desktop">
-        The wallet opens on its Overview.
-      </Tab>
-      <Tab title="Android">
-        The wallet page opens with the balance and the `Transactions` and `UTXOs` tabs.
-      </Tab>
-    </Tabs>
+  <Step title="Name the wallet and select Add wallet">
+    Enter a name in `Name`. The `Network` list only opens when the input fits more than one network. Gerfaut opens the wallet and runs its first sync.
   </Step>
 </Steps>
 
 <Accordion title="Use a custom derivation path">
-  For an extended public key used outside the usual derivation branches, open **Advanced** on the confirmation step. Enter the `Receive path`, the `Change path` and the `Key origin`, then select **Apply**. The first address updates so you can check it again.
+  For an extended public key used outside the usual derivation branches, open **Advanced** on the confirmation step. Enter the `Receive path`, the `Change path` and the `Key origin`, then select **Apply**. Check the new first address again.
 </Accordion>
 
 ## Manage your wallets
 
-Open **Settings** > **Wallets**. Each wallet has its own row with these actions:
+Open **Settings** > **Wallets**. Each wallet has its own row:
 
-- **Rename:** Changes the name shown everywhere. Enter the new name and select **Save name**.
-- **Icon:** Picks one of seven icons: `Wallet`, `Key`, `Shield`, `Pin`, `Snowflake`, `Landmark` or `Piggy bank`.
-- **Rescan:** Looks at the wallet again from its first address, for coins received beyond the gap limit. The result reads `Rescanned` with the number of new transactions.
-- **Remove:** Stops watching the wallet after you confirm with **Remove wallet**. Nothing moves on-chain.
+- **Rename:** Enter the new name and select **Save name**. Selecting the wallet name at the top of its page does the same.
+- **Icon:** Pick one of seven icons, such as `Key`, `Snowflake` or `Pin`.
+- **Rescan:** Look at the wallet again from its first address, for coins received beyond the gap limit. The row then reads `Rescanned` with the number of new transactions.
+- **Remove:** Stop watching the wallet once you confirm with **Remove wallet**. Nothing moves on-chain. A wallet that [Gerfaut Premium](/premium/watch-a-wallet) watches leaves the server too.
+- **Reorder:** Drag a wallet by its handle. On Android, you can also hold a card on the home screen and drag it.
 
 <Tabs>
   <Tab title="Desktop">
@@ -95,18 +77,5 @@ Open **Settings** > **Wallets**. Each wallet has its own row with these actions:
     <Frame caption="Settings groups everything into eight sections, with the current state under each title.">
       <img src="/images/android/settings.webp" alt="The Settings list on Android: General, Network, Wallets, Security, Notifications, Backup & sync, About and Premium, each with a summary line." width="360" />
     </Frame>
-  </Tab>
-</Tabs>
-
-## Reorder your wallets
-
-Drag a wallet by its handle in **Settings** > **Wallets**.
-
-<Tabs>
-  <Tab title="Desktop">
-    **Move up** and **Move down** do the same from the keyboard. The wallet switcher lets you drag rows too.
-  </Tab>
-  <Tab title="Android">
-    Hold a card on the home screen, then drag it.
   </Tab>
 </Tabs>

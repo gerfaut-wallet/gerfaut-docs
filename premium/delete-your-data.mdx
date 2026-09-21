@@ -3,52 +3,44 @@ title: "Delete your data"
 description: "Remove a wallet or a channel from the Gerfaut Premium server, delete the whole account with its wallets, channels and log, or let the server delete it."
 ---
 
-Take back anything the Premium server holds under your Premium licence key: a wallet, a channel or the whole account. Everything happens in **Settings** > **Premium**, and the server deletes what is left on its own once the paid time is long gone.
+Remove a wallet, a channel or the whole account from the Premium server, in **Settings** > **Premium**. The server also deletes an account on its own, some time after its paid time ends.
 
-## Remove one wallet from the server
+## Remove a wallet from the server
 
-<Steps>
-  <Step title="Select the switch of the wallet under Watched wallets">
-    An amber note under the row says that unwatching also deletes the wallet's alert history on the server.
-  </Step>
-  <Step title="Select Unwatch">
-    The server forgets the wallet at once: its descriptor, its addresses, what it saw on them and the alerts it sent about it.
-  </Step>
-</Steps>
-
-Removing the wallet from Gerfaut altogether, in **Settings** > **Wallets**, does the same on the server. See [Watch a wallet](/premium/watch-a-wallet).
+Select the switch of the wallet under `Watched wallets`, then **Unwatch**. The server forgets the wallet at once: its descriptor or address, what it saw on it and the alerts it sent about it. [Removing the wallet](/wallets/add-a-wallet#manage-your-wallets) from Gerfaut does the same.
 
 ## Remove a channel
 
-Under `Channels`, select the menu of the channel line, then **Remove**. The ntfy topic, the Telegram link or the e-mail address is dropped with it.
+Under `Channels`, select the menu of the channel line, then **Remove**. The server drops the ntfy topic, the Telegram link or the e-mail address with it.
 
 ## Delete the account
 
 <Note>
-Deleting the account stops the licence key everywhere it was entered, and whatever paid time it had left goes with it, without a refund.
+Deleting the account stops the licence key on every device, and its remaining paid time is lost.
 </Note>
 
 <Steps>
   <Step title="Select Forget this key">
-    In the `Licence` card, select **Forget this key**. A note explains that forgetting the licence key alone stops the watch on this device, not on the server.
+    The button sits in the `Licence` card.
   </Step>
   <Step title="Tick Also delete everything on the server">
-    The note turns to the full consequence: the server deletes the account this licence key opens, the wallets it watches, the channels and the log.
+    The note lists what goes: the account, the wallets it watches, the channels and the log.
   </Step>
   <Step title="Confirm">
     <Tabs>
       <Tab title="Desktop">Select **Delete the account**.</Tab>
       <Tab title="Android">Select **Delete and forget**.</Tab>
     </Tabs>
-    Gerfaut deletes on the server first and forgets the licence key on this device only once the server confirmed. A failed call leaves the licence key in place and says so.
+
+    Gerfaut forgets the licence key on this device once the server confirms the deletion.
   </Step>
 </Steps>
 
 <Accordion title="Forget the licence key on this device only">
-  Select **Forget this key** and confirm without ticking the box. The wallets stay registered on the server and keep being watched until you remove them. The same licence key activates the service again on any device.
+  Select **Forget this key** and confirm without ticking the box. The server keeps watching your wallets. The same licence key works again on any device.
 </Accordion>
 
 ## Let the server delete on its own
 
-- **After the paid time:** The server deletes the account with everything it owns 90 days after its paid time ended.
-- **Never paid for:** The server deletes it 30 days after it was created.
+- **After the paid time:** The server deletes the account and everything it owns 90 days after the paid time ends.
+- **Never paid for:** The server deletes the account 30 days after its creation.

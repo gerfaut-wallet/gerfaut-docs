@@ -3,7 +3,7 @@ title: "Channels"
 description: "Send Gerfaut Premium alerts to the ntfy app, Telegram, an e-mail address or a webhook you run, test each channel, and verify a webhook signature."
 ---
 
-A channel is where an alert goes. You add up to ten per Premium licence key in **Settings** > **Premium**, under `Channels`, and Gerfaut sends a test through the first one you add.
+Add up to ten channels per Premium licence key in **Settings** > **Premium**, under `Channels`. Gerfaut sends a test through the first one you add.
 
 <Tip>
 An ntfy, Telegram or e-mail alert names the wallet and says what happened, never an address, an amount or a transaction id. A webhook carries the whole event.
@@ -13,10 +13,10 @@ An ntfy, Telegram or e-mail alert names the wallet and says what happened, never
 
 <Steps>
   <Step title="Select Add a channel, then ntfy">
-    Gerfaut draws a random topic of 24 characters and registers it. Only someone who knows the topic can read the alerts, so keep it to yourself.
+    Gerfaut draws a random topic of 24 characters. Anyone who knows the topic can read the alerts, so keep it to yourself.
   </Step>
-  <Step title="Subscribe to the topic and select Done">
-    Select **Open in ntfy** to add the subscription in the ntfy app. Otherwise select **Copy** and paste the address, `https://ntfy.gerfaut-wallet.com/` followed by the topic, as a new subscription in the app. The line then reads `Linked`.
+  <Step title="Select Open in ntfy">
+    The ntfy app adds the subscription. Without the app on this device, select **Copy** and subscribe to the address in the ntfy app. The line then reads `Linked`.
   </Step>
 </Steps>
 
@@ -24,10 +24,10 @@ An ntfy, Telegram or e-mail alert names the wallet and says what happened, never
 
 <Steps>
   <Step title="Select Add a channel, then Telegram">
-    Gerfaut shows a link code and the bot's name, `@GerfautAlertsBot`. The code is good for one hour.
+    Gerfaut shows a link code for `@GerfautAlertsBot`, good for one hour.
   </Step>
   <Step title="Select Open Telegram and press Start">
-    Telegram opens the bot with the code in place and sends it for you. The line in Gerfaut then reads `Linked` with the name of your chat. Past the hour, remove the channel and add it again.
+    Telegram sends the code for you. The line then reads `Linked` with the name of your chat.
   </Step>
 </Steps>
 
@@ -35,21 +35,25 @@ An ntfy, Telegram or e-mail alert names the wallet and says what happened, never
 
 <Steps>
   <Step title="Select Add a channel, then E-mail">
-    Enter the address, then select **Add channel** on desktop or **Add e-mail** on Android. The address receives one e-mail with a six-digit code, and nothing else until you confirm it.
+    Enter the address, then select **Add channel** on desktop or **Add e-mail** on Android. The address receives a six-digit code, and nothing else until you confirm it.
   </Step>
   <Step title="Enter the code and select Confirm">
-    Type the six digits in `Code`. The code expires in an hour, and five wrong codes void it, so add the channel again for a new one. The line then reads `Linked`.
+    Type the code in `Code` within an hour. The line then reads `Linked`. After five wrong codes, add the channel again for a new one.
   </Step>
 </Steps>
 
 ## Add a webhook channel
+
+<Note>
+The host of a webhook must be, and resolve to, a public address. The server refuses a private address, such as `192.168.1.10` on your home network or `100.64.0.1` on a tailnet.
+</Note>
 
 <Steps>
   <Step title="Select Add a channel, then Webhook">
     Enter the `https://` URL of your receiver and, for signed deliveries, a `Secret`. Select **Add channel** on desktop or **Add webhook** on Android.
   </Step>
   <Step title="Receive the deliveries">
-    The server posts one JSON body per event, with the headers `X-Gerfaut-Timestamp` and `X-Gerfaut-Signature` when you set a secret. The line then reads `Linked`.
+    The server posts one JSON body per event. The line reads `Linked`.
 
     ```json
     {
@@ -63,18 +67,12 @@ An ntfy, Telegram or e-mail alert names the wallet and says what happened, never
   </Step>
 </Steps>
 
-<Note>
-The host of a webhook must be, and resolve to, a public address. The server refuses a loopback, private, link-local or carrier-grade NAT address, such as `192.168` on your home network or `100.64` on a tailnet. It checks when you add the channel and again at each delivery, and follows no redirect.
-</Note>
-
 <AccordionGroup>
   <Accordion title="Read the kind of an event">
-    The `kind` is `spend_detected`, `spend_confirmed`, `coins_gone`, `receive_detected`, `receive_confirmed`, `timelock_due` or `wallet_registered`. Depending on the kind, `data` also carries the inputs and outputs of a spend, the outpoints of coins gone, or the details of a timelock.
-
-    A `timelock_due` event carries the `branch_id`, the `label`, the `milestone` (`30d`, `7d`, `1d` or `open`), the `remaining_seconds` and whether the path is `spendable_now`.
+    The `kind` is `spend_detected`, `spend_confirmed`, `coins_gone`, `receive_detected`, `receive_confirmed`, `timelock_due`, `wallet_registered` or `wallet_refused`. A `timelock_due` event carries a `milestone` of `30d`, `7d`, `1d` or `open`. A `wallet_refused` event carries the server's sentence in `message`.
   </Accordion>
-  <Accordion title="Verify the signature on your side">
-    `X-Gerfaut-Timestamp` is in unix seconds. `X-Gerfaut-Signature` is `sha256=` followed by the hex HMAC-SHA256 of the string `<timestamp>.<body>` under your secret. Compute the HMAC of the timestamp, a dot and the raw body, then compare it with the header:
+  <Accordion title="Verify the signature of a delivery">
+    With a secret, each delivery carries `X-Gerfaut-Timestamp`, in unix seconds, and `X-Gerfaut-Signature`, which is `sha256=` followed by the hex HMAC-SHA256 of `<timestamp>.<body>` under your secret:
 
     ```python
     import hmac, hashlib
@@ -83,19 +81,19 @@ The host of a webhook must be, and resolve to, a public address. The server refu
     valid = hmac.compare_digest("sha256=" + expected, signature_header)
     ```
   </Accordion>
-  <Accordion title="Receive on a machine without a public name">
-    Take ntfy instead of a webhook. There your machine subscribes to a topic rather than waiting to be called.
+  <Accordion title="Receive alerts on a machine without a public name">
+    Use ntfy instead of a webhook. Your machine then subscribes to a topic rather than waiting to be called.
   </Accordion>
 </AccordionGroup>
+
+## Test or remove a channel
+
+Select the menu of a channel line, then **Send a test** or **Remove**. Tests and confirmation e-mails share a limit of five an hour per licence key.
+
+<Note>
+A line that reads `Not delivering` is a channel the server turned off, such as a webhook it cannot reach. Remove it and add a working one.
+</Note>
 
 <Frame caption="Every channel sits under Channels, with a menu to test it or remove it.">
   <img src="/images/android/settings-premium.webp" alt="The Premium section on Android with the Watched wallets, Channels and Recent alerts cards." width="360" />
 </Frame>
-
-## Test or remove a channel
-
-Select the menu of a channel line, then **Send a test** or **Remove**. A test needs a linked channel, and the server accepts five messages on demand per hour and per licence key, tests and confirmation e-mails together.
-
-- **`Not delivering`:** The server turned the channel off, for instance a webhook whose host is not reachable from the internet. Remove it and add one with a public address.
-- **E-mail alerts:** They stop at 20 a day per licence key. Past that they leave the next day instead of being dropped, and the other channels are untouched.
-- **Other ceilings:** See [Limits](/premium/limits).

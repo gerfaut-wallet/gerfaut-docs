@@ -1,48 +1,42 @@
 ---
 title: "Gerfaut Premium"
 sidebarTitle: "Overview"
-description: "See what the Gerfaut Premium server watches, what its alerts say, what it keeps and what it costs, before you buy a Premium licence key."
+description: "See what the Gerfaut Premium server watches, what its alerts say, what it keeps and how you pay for it, before you buy a Premium licence key."
 ---
 
-Gerfaut Premium adds a server that watches the wallets you pick around the clock, from its own bitcoin node, and alerts you within seconds when coins move. You buy a Premium licence key, enter it in Gerfaut and switch a wallet on, with no account to open.
+Gerfaut Premium adds a server that watches the wallets you pick around the clock, from its own bitcoin node, even while Gerfaut is closed. You buy a Premium licence key, enter it in Gerfaut and switch a wallet on, with no account to open.
 
 ## Get an alert when coins move
 
-The Premium server alerts you on these events:
+The Premium server alerts you when:
 
-- **Coins move:** A transaction spending from the wallet reaches the node's mempool, and a second alert follows when it confirms. Coins arriving are announced the same way.
-- **The daily rescan finds something:** Once a day the server rescans the UTXO set and reports coins gone without the spend being seen live.
-- **A timelock opens:** For a wallet with a recovery path behind a timelock, an alert comes 30 days, seven days and one day before the path becomes spendable. Another comes the day it opens.
-- **The watch starts:** The first scan of a wallet you switched on is done.
+- **Coins move:** A transaction that spends from the wallet or pays it reaches the mempool, then confirms.
+- **The daily scan finds coins gone:** Coins left the wallet without the server seeing the spend live.
+- **A timelock opens:** A recovery path becomes spendable in 30 days, seven days, one day, and on the day itself.
+- **The watch starts or stops:** The first scan of a wallet is done, or the server stops watching a wallet it [refuses](/premium/limits).
 
 ## Pick where alerts go
 
-Alerts reach the ntfy app, Telegram, an e-mail address or a webhook you run. Add them in [Channels](/premium/channels).
-
-- **ntfy, Telegram, e-mail:** The alert names the wallet and says what happened. It carries no address, no amount and no transaction id.
-- **Webhook:** The server posts to your own machine, so the delivery carries the whole event.
-- **In Gerfaut:** The `Recent alerts` card lists the last 20 alerts. A red banner on the home screen tells you when the server itself stops answering.
+Alerts reach the ntfy app, Telegram, an e-mail address or a webhook you run. See [Channels](/premium/channels). Gerfaut also lists the last 20 alerts in the `Recent alerts` card.
 
 ## Know what the server keeps
 
-Watch-only stays watch-only: the server holds no private key, sees coins move and cannot move them. It keeps these things under your licence key:
+The server holds no private key and cannot move your coins. Under your licence key, it keeps:
 
-- **Wallets:** The descriptors you register and the names you gave them.
-- **Addresses:** Every address derived from those descriptors, with the coins and movements seen on them.
-- **Channels:** An ntfy topic, a Telegram link, an e-mail address or a webhook URL, plus the name Telegram gives a chat you link.
-- **Licence key:** A hash of it. The licence key itself is never stored.
+- **Wallets:** The descriptor or address of each wallet you switch on, and its name.
+- **Addresses:** Every address of those wallets, with the coins and movements seen on them.
+- **Channels:** An ntfy topic, a Telegram chat, an e-mail address or a webhook URL.
+- **Licence key:** A hash of it, never the licence key itself.
 
-The server never keeps your e-mail unless you add one as a channel, your IP address or a request log. Stop watching a wallet, or remove it from Gerfaut, and its data leaves the server with it: see [Delete your data](/premium/delete-your-data).
+It keeps no e-mail unless you add one as a channel, no IP address and no request log. See [Delete your data](/premium/delete-your-data).
 
 ## Pay for time, not for an account
 
-One plan covers every service. You prepay one month for 5 €, six months for 24 € or one year for 36 €, in bitcoin over Ark, Lightning or on-chain. Paid time adds to the end of what you already have, and one licence key watches up to 21 wallets.
-
-After the paid time ends, alerts continue for seven days, then stop until you add time.
+Prepay one month, six months or one year, in bitcoin over Ark, Lightning or on-chain. The [Premium page](https://gerfaut-wallet.com/premium) shows the prices. Paid time adds to the end of what you already have, and alerts continue for seven days after it ends.
 
 <CardGroup cols={2}>
   <Card title="Get a licence" icon="key-round" href="/premium/get-a-key">
-    Buy a Premium licence key on gerfaut-wallet.com and activate it in Gerfaut.
+    Buy a Premium licence key and activate it in Gerfaut.
   </Card>
   <Card title="Watch a wallet" icon="radar" href="/premium/watch-a-wallet">
     Switch a wallet on and let the server follow it.
@@ -51,6 +45,9 @@ After the paid time ends, alerts continue for seven days, then stop until you ad
     Send the alerts to ntfy, Telegram, e-mail or a webhook.
   </Card>
   <Card title="Limits" icon="gauge" href="/premium/limits">
-    Every ceiling of the service and what the server answers past it.
+    Every ceiling of the service and what Gerfaut shows past it.
+  </Card>
+  <Card title="Delete your data" icon="trash-2" href="/premium/delete-your-data">
+    Remove a wallet, a channel or the whole account from the server.
   </Card>
 </CardGroup>

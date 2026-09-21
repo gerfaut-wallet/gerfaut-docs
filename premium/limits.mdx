@@ -11,9 +11,14 @@ Check the ceilings of your Premium licence key before a habit or a large wallet 
 |---|---|---|
 | Wallets watched | 21 per licence key | The server refuses a new wallet with `a key watches at most 21 wallets; remove one first`. |
 | Coins in one watched wallet | 5,000 | The server stops watching the wallet and says why, as below. |
-| Wallets switched on or changed | 30 an hour per licence key | Gerfaut says `Try again in` with the wait, such as `Try again in 42 s.` Renaming a wallet does not count. |
+| Wallets switched on or changed | 30 in any hour per licence key | The server refuses the next one with `slow down: a key may register or change 30 wallets per hour`. Renaming a wallet, or sending it again unchanged, does not count. |
 | Channels | 10 per licence key | The server refuses an eleventh channel, and a duplicate with `this channel already exists`. |
-| Requests | 60 a minute per licence key, 240 a minute per IP address | Gerfaut says `Try again in` with the wait. |
+| Requests | 60 a minute per licence key, 240 a minute per IP address | The server asks Gerfaut to wait. |
+
+When the server asks to wait, Gerfaut says for how long:
+
+- **Desktop:** `The server asks to wait. Try again in 42 s.`
+- **Android:** `The Gerfaut server asks for a pause. Try again in 42 s.`, in minutes from 90 seconds on.
 
 ## Watch a wallet with more than 5,000 coins again
 
@@ -21,9 +26,16 @@ When the first scan or a later payment takes a wallet past 5,000 coins, the serv
 
 `This wallet holds more than 5,000 coins, which is more than Gerfaut Premium watches.`
 
+<Note>
+For one hour after the refusal, the server refuses the same wallet again without scanning it, even switched off and on or added under another name.
+</Note>
+
 <Steps>
   <Step title="Bring the coins together">
     With your signing device or wallet software, consolidate the wallet's coins into fewer outputs.
+  </Step>
+  <Step title="Wait an hour after the refusal">
+    Check the time of the refusal in `Recent alerts`.
   </Step>
   <Step title="Switch the wallet off, then on again">
     In **Settings** > **Premium**, select the switch of the wallet, then **Unwatch**. Switch it on again. The server scans the wallet anew.

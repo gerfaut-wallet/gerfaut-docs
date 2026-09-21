@@ -3,7 +3,7 @@ title: "Open a transaction"
 description: "Open a transaction in Gerfaut to read its amount, follow its inputs and outputs on a diagram, check its fee and facts, and look it up on mempool.space."
 ---
 
-Open a transaction to read how much moved, when, from where to where, and then the technical facts.
+Open a transaction to see how much moved, when, and between which addresses.
 
 ## Open a transaction
 
@@ -11,15 +11,11 @@ Select a row on the `Transactions` page or tab, or under `Latest activity` on th
 
 <Tabs>
   <Tab title="Desktop">
-    The transaction opens in a dialog over the page.
-
     <Frame caption="A transaction opens as a flow: where the coins came from, where they went, and what the fee took.">
       <img src="/images/desktop/transaction-detail.webp" alt="A received transaction opened in a dialog on desktop: the amount, the Confirmed pill with its block, the transaction id, the flow diagram with an input, the TX node, an output and the fee, and the Technical table." />
     </Frame>
   </Tab>
   <Tab title="Android">
-    The transaction opens as a screen titled `Transaction`.
-
     <Frame caption="A transaction opens as a flow: inputs on the left, outputs on the right, fee below.">
       <img src="/images/android/transaction-detail.webp" alt="The Transaction screen on Android: the received amount, the Confirmed pill, the View on mempool.space button, the transaction id, the flow diagram, the inputs and outputs and the start of the Technical card." width="360" />
     </Frame>
@@ -28,54 +24,48 @@ Select a row on the `Transactions` page or tab, or under `Latest activity` on th
 
 ## Read the summary
 
-The top panel answers how much and when:
-
 - **Direction:** `Received`, `Sent`, `Sent to yourself` when every input and output belongs to the wallet, or `Block reward`.
-- **Amount:** The net amount, with the fiat value under it when fiat is on.
-- **Status:** `Pending`, the number of confirmations, or `Confirmed`, followed by the block height once mined.
-- **Transaction id:** A chip under the panel. Select it to copy it.
-- **Date and time:** Under the id, or `not yet mined`.
+- **Amount:** The net amount for the wallet.
+- **Status:** `Pending`, the number of confirmations, or `Confirmed` with the block height.
+- **Transaction id:** Select the chip to copy it.
+- **Date:** The time of the block, or `not yet mined`.
 
 ## Follow the coins on the diagram
 
-The diagram draws the inputs on the left, a `TX` node in the middle, the outputs on the right and the fee on a branch of its own below. Each box carries an icon for its role:
+The diagram draws the inputs on the left, the outputs on the right and the fee below. An icon marks the role of each box:
 
-- **Wallet icon:** An input spent from this wallet.
+- **Wallet:** An input spent from this wallet.
 - **Return arrow:** Change that comes back to this wallet.
-- **Incoming arrow:** An output received by this wallet.
+- **Incoming arrow:** An output this wallet receives.
 - **Outgoing arrow:** An input from elsewhere, or an output that leaves.
-- **Pickaxe:** Newly minted coins, in a coinbase transaction.
-- **Scroll:** An `OP_RETURN` output carrying data instead of coins.
+- **Pickaxe:** Newly mined coins.
+- **Scroll:** An `OP_RETURN` output that carries data.
 
-The full `Inputs` and `Outputs` lists follow the diagram, each with its count and total, an address chip to copy, and the same role icons.
-
-<Accordion title="Read a transaction with many inputs or outputs">
-  Above ten boxes on one side (five on Android), the rest fold into one box that reads `+N more inputs` or `+N more outputs`. The full lists under the diagram still show every one of them.
-</Accordion>
+The full `Inputs` and `Outputs` lists follow the diagram, with an address chip to copy on each line. Past ten boxes on one side, five on Android, the diagram folds the rest into one box, and the lists still show them all.
 
 ## Check the technical facts
 
-The `Technical` card lists `Confirmations`, `Block`, `Size`, `Virtual size`, `Weight`, `Version`, `Locktime`, `Sigops`, `Fee`, `Fee rate` in sat/vB, and `Flags`. Each flag is a chip with a tooltip:
+The `Technical` card lists the confirmations, block, size, virtual size, weight, version, locktime, sigops, fee and fee rate. Its flags carry a tooltip each:
 
-- **`RBF`:** The sender can still bump the fee (BIP-125). `Final` means no input signals it.
+- **`RBF`:** The sender can still bump the fee. `Final` means no input signals it.
 - **`SegWit` and `Taproot`:** What the inputs spend.
 - **`Locktime`:** The earliest block or time the transaction could be mined in.
-- **`Coinbase`:** Newly minted coins, with the mining pool when known.
-- **`OP_RETURN`:** The transaction carries data in an output.
+- **`Coinbase`:** Newly mined coins, with the mining pool when known.
+- **`OP_RETURN`:** An output carries data.
 
-Select `Raw transaction` at the bottom to show the transaction bytes, with a copy button.
+Select `Raw transaction` at the bottom to show and copy the transaction bytes.
 
 ## Look it up on mempool.space
 
 <Warning>
-The operator of mempool.space can link the transaction to your IP address. Go through a VPN or [Tor](/settings/tor) if that link matters to you.
+The operator of mempool.space can link the transaction to your IP address. Go through a VPN or Tor if that matters to you.
 </Warning>
 
 <Steps>
   <Step title="Select View on mempool.space">
-    The button sits in the summary panel. It is absent on regtest, which has no public explorer.
+    The button sits in the summary. Regtest has no public explorer, so it has no button.
   </Step>
   <Step title="Select Open explorer">
-    Gerfaut first asks you to confirm. Tick `Do not show this warning again` to skip the question next time. The transaction opens in your browser.
+    Tick `Do not show this warning again` to skip this question next time. The transaction opens in your browser.
   </Step>
 </Steps>

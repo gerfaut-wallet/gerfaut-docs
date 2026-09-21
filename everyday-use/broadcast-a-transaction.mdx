@@ -3,10 +3,10 @@ title: "Broadcast"
 description: "Hand a transaction signed on your signing device to the bitcoin network from Gerfaut, read what it does before it goes out, and follow it to confirmation."
 ---
 
-Hand a transaction that your signing device signed to the network, through the backend you configured. Gerfaut signs nothing and reads the transaction back in plain words before anything leaves.
+Send a transaction your signing device signed to the network, through your backend. Gerfaut reads it back in plain words before anything leaves.
 
 <Warning>
-Once the network has a transaction, nobody can take it back. Check the outputs and the fee on the preview before you confirm.
+Nobody can take a transaction back once the network has it. Check the outputs and the fee on the preview before you confirm.
 </Warning>
 
 ## Broadcast the transaction
@@ -22,7 +22,7 @@ Once the network has a transaction, nobody can take it back. Check the outputs a
         </Frame>
       </Tab>
       <Tab title="Android">
-        Select **More**, then **Broadcast**, on the home screen or on a wallet page.
+        Select **More**, then **Broadcast**.
 
         <Frame caption="Broadcast takes a finished transaction and hands it to the network without ever signing.">
           <img src="/images/android/broadcast.webp" alt="The Broadcast screen on Android, empty: the Signed transaction or PSBT field, the Import a file and Scan a QR code buttons and the Preview button." width="360" />
@@ -30,27 +30,22 @@ Once the network has a transaction, nobody can take it back. Check the outputs a
       </Tab>
     </Tabs>
   </Step>
-  <Step title="Give Gerfaut the transaction">
-    Paste a PSBT (base64 or hex) or a raw transaction (hex) in the field, then select **Preview**. Two other ways in:
-
-    - **Import a file:** A `.psbt`, `.txn` or `.tx` file written by a signing device.
-    - **Scan a QR code:** A `crypto-psbt` UR or a BBQr code, animated or not.
+  <Step title="Paste, import or scan the transaction">
+    Paste a PSBT (base64 or hex) or a raw transaction (hex), then select **Preview**. **Import a file** takes a `.psbt`, `.txn` or `.tx` file. **Scan a QR code** takes a `crypto-psbt` UR or a BBQr code.
   </Step>
   <Step title="Read the preview">
-    The card shows the transaction id, a `PSBT` or `Raw transaction` pill, and whether the transaction can go: `Ready to broadcast`, or `Unsigned` on desktop and `Not fully signed` on Android. Then come the diagram, the cautions under `Before you send`, the `Inputs` and `Outputs` with the wallets they touch, and the `Technical` facts with the fee and the fee rate.
+    Check the outputs, the fee and the cautions under `Before you send`. The pill reads `Ready to broadcast` when the transaction is fully signed. When the fee reads `as the PSBT claims`, no backend confirmed the coins it spends, so check the fee on your signing device.
   </Step>
-  <Step title="Confirm">
-    Select **Broadcast**, read the confirmation and select **Broadcast** again. A status card then appears with the transaction id and the backend that took it.
+  <Step title="Select Broadcast twice">
+    Select **Broadcast**, read the confirmation and select **Broadcast** again. A status card shows the transaction id and the backend that took it.
   </Step>
 </Steps>
 
-The button stays disabled while the transaction is not fully signed. Such a transaction has to go back to the signer.
-
 <AccordionGroup>
   <Accordion title="Read the cautions under Before you send">
-    The cautions come from Gerfaut's reading of the transaction. None of them blocks you: the transaction is yours.
+    None of them blocks the broadcast:
 
-    - **No signature:** An input has no signature.
+    - **No signature:** An input has no signature. Send the transaction back to the signer.
     - **Input spent or unknown:** The backend already saw the input spent, or does not know it.
     - **Fee rate:** Far above what the chain asks for.
     - **Fee:** Above 10% of the inputs.
@@ -58,20 +53,16 @@ The button stays disabled while the transaction is not fully signed. Such a tran
     - **Locktime:** The network has not reached it yet.
   </Accordion>
   <Accordion title="Read a refusal by the node">
-    The refusal appears under the preview as `The network refused this transaction.` followed by the node's own words.
+    The preview reads `The network refused this transaction.` followed by the node's own words.
   </Accordion>
 </AccordionGroup>
 
 ## Follow the transaction
 
-The status card shows the state of the transaction, refreshed every 30 seconds until it confirms:
+The status card checks the transaction every 30 seconds until it confirms:
 
-- **`Waiting to be mined`:** The backend has it, no block yet. Desktop reads `In the mempool`.
-- **`Confirmed`:** Mined in a block, with the number of confirmations.
-- **`Not seen`:** The backend does not have it. It may not have been relayed, or it was dropped or replaced. Broadcasting it again does no harm.
+- **`Waiting to be mined`:** The transaction is in the backend's mempool. Desktop reads `In the mempool`.
+- **`Confirmed`:** Mined, with the number of confirmations.
+- **`Not seen`:** The backend does not have it. Broadcasting it again does no harm.
 
-Select **Check** to ask the backend again. Select **View on mempool.space** to open it in the explorer, behind the same privacy warning as in [Open a transaction](/everyday-use/transaction-details#look-it-up-on-mempoolspace).
-
-## Review past broadcasts
-
-Gerfaut keeps the last ten broadcasts of each network on the page, under `Past broadcasts` on desktop and `Recent broadcasts` on Android. Select **Forget** to drop Gerfaut's local record of one. The transaction itself stays on the network, untouched.
+Select **Check** to ask the backend now. Gerfaut lists the last ten broadcasts of each network under `Past broadcasts` on desktop and `Recent broadcasts` on Android. **Forget** removes one from that list and leaves the transaction untouched.

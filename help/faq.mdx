@@ -9,28 +9,34 @@ Short answers, each with the page that goes further.
 
 <AccordionGroup>
   <Accordion title="Can Gerfaut spend my bitcoin?">
-    No. Gerfaut contains no code that generates private keys, handles seeds or signs transactions, has no Send button, and refuses anything that contains a private key. See [What is Gerfaut](/getting-started/what-is-gerfaut).
+    No. Gerfaut contains no code that generates private keys, handles seeds or signs transactions, and it refuses anything that contains a private key. See [What is Gerfaut](/getting-started/what-is-gerfaut).
   </Accordion>
   <Accordion title="Which wallets can I watch?">
-    Any wallet you can export as a descriptor, an extended public key or an address. That covers single-sig, multisig, Miniscript policies with timelocks, a BSMS record and the export file of another wallet. See [Wallet types](/wallets/wallet-types).
+    Any wallet you can export as a descriptor, an extended public key or an address: single-sig, multisig, Miniscript policies with timelocks, BSMS records and the export files of other wallets. See [Wallet types](/wallets/wallet-types).
   </Accordion>
   <Accordion title="Does it work with my signing device?">
-    Yes, as long as the device or its companion software exports the public side of the wallet. Gerfaut reads the descriptor as text, as a file or as the QR code the device shows, and never asks the device for anything else. See [Add a wallet](/wallets/add-a-wallet).
+    Yes, if the device or its companion software exports the public side of the wallet as text, a file or a QR code. See [Add a wallet](/wallets/add-a-wallet).
+  </Accordion>
+  <Accordion title="Do I need Gerfaut Premium to get notified?">
+    No, Gerfaut notifies you within seconds while it runs, on desktop while it is open and on Android with Live. Gerfaut Premium watches while your devices are off, warns you before a timelock opens and reaches ntfy, Telegram, e-mail or a webhook. See [Notifications](/settings/notifications).
   </Accordion>
   <Accordion title="What does the public server see?">
-    The operator of the public server sees the addresses of your wallets, and your IP address unless you go through Tor. Your own node over Esplora or Electrum sees nothing that is not already yours. See [Backend](/settings/backends-and-your-own-node) and [Tor](/settings/tor).
+    The addresses of your wallets and your IP address, unless you go through Tor, plus how long Gerfaut stays connected while notifications are on. Your own node sees nothing that is not already yours. See [Backend](/settings/backends-and-your-own-node).
+  </Accordion>
+  <Accordion title="Does Gerfaut check for updates on its own?">
+    Yes, at most once a day, without downloading anything. Turn the check off in **Settings** > **About**. See [Install on desktop](/getting-started/install-desktop#update-gerfaut).
   </Accordion>
   <Accordion title="Where is my wallet list stored?">
-    Encrypted on the device, with the encryption key that opens the vault in the credential store of the operating system. The app lock is a curtain in front of that vault, not the encryption itself. See [App lock](/settings/app-lock).
+    Encrypted on the device, with its encryption key in the credential store of the operating system. The app lock only hides the list from someone at your device. See [App lock](/settings/app-lock).
   </Accordion>
   <Accordion title="How do I move my wallets to another device?">
-    Export an encrypted backup as a file or as an animated QR code, then restore it on the other device with the same password. See [Backup and sync](/settings/backup-and-sync).
+    Export an encrypted backup as a file or an animated QR code, then restore it on the other device with the same password. See [Backup and sync](/settings/backup-and-sync).
   </Accordion>
   <Accordion title="I forgot my backup password. Can it be recovered?">
-    No, the backup is sealed with that password and nothing else. Your wallets are still on the device that made the backup, so export a new one from there with a new password. See [Backup and sync](/settings/backup-and-sync).
+    No. Your wallets are still on the device that made the backup, so export a new one there with a new password. See [Backup and sync](/settings/backup-and-sync).
   </Accordion>
   <Accordion title="Why verify a receive address on my signing device?">
-    Because Gerfaut only derives addresses from the public keys you gave it. A compromised computer or phone could show you an address that is not yours, and your signing device is the one place that can confirm it. See [Receive](/everyday-use/receive-addresses).
+    A compromised computer or phone could show you an address that is not yours. Your signing device is the one place that can confirm it. See [Receive](/everyday-use/receive-addresses).
   </Accordion>
 </AccordionGroup>
 
@@ -38,25 +44,25 @@ Short answers, each with the page that goes further.
 
 <AccordionGroup>
   <Accordion title="I lost my Premium licence key. Can you find it?">
-    No, because the Premium server stores a hash of your licence key, the way a website stores a password, so nobody can rebuild it. When the licence key is gone, the time on it is gone with it. See [Get a licence](/premium/get-a-key).
+    No. The Premium server stores only a hash of your licence key, so a lost licence key and its paid time are gone for good. See [Get a licence](/premium/get-a-key).
   </Accordion>
   <Accordion title="What exactly does the Premium server see?">
-    What a watch-only wallet sees: the descriptors you register, every address they derive, the coins and transactions on those addresses, and the channels you add. It never sees a private key, and it keeps no name, no e-mail unless you add one as a channel, and no IP address. See [Gerfaut Premium](/premium/overview).
+    What a watch-only wallet sees: the descriptors and addresses you switch on, the coins and transactions on them, and the channels you add. It never sees a private key, keeps no IP address, and keeps an e-mail address only as a channel. See [Gerfaut Premium](/premium/overview).
   </Accordion>
   <Accordion title="Can I cancel a Premium licence key, or get a refund?">
-    There is nothing to cancel: you prepay time, and it runs out on its own. The service starts the moment your payment is confirmed, so by paying you waive your right of withdrawal, and the payment is not refunded unless the service is discontinued. See [Get a licence](/premium/get-a-key).
+    Prepaid time runs out on its own, so there is nothing to cancel. Payments are final, except in the cases the [Terms of Sale](https://gerfaut-wallet.com/terms) list. See [Get a licence](/premium/get-a-key).
   </Accordion>
   <Accordion title="Which wallets can Gerfaut Premium watch?">
-    Any wallet Gerfaut imports from a descriptor on mainnet: single-sig, multisig, and Miniscript policies with timelocks. A wallet added from a single address cannot be watched. See [Watch a wallet](/premium/watch-a-wallet).
+    Any mainnet wallet in Gerfaut, single address included, that holds 5,000 coins or fewer. See [Watch a wallet](/premium/watch-a-wallet).
   </Accordion>
   <Accordion title="What are the limits of a Premium licence key?">
-    Two of them a person can meet: five messages on demand an hour, and 20 e-mail alerts a day. The others, 21 wallets and ten channels per licence key and a request rate, only stop a runaway script. See [Limits](/premium/limits).
+    Those a person can meet: 21 wallets, 30 wallets switched on or changed an hour, five tests or confirmation e-mails an hour, and 20 e-mail alerts a day. See [Limits](/premium/limits).
   </Accordion>
   <Accordion title="Can a webhook point at a machine on my own network?">
-    Only if the internet can reach it, because the Premium server refuses a URL whose host is, or resolves to, a loopback, private, link-local or carrier-grade NAT address. Give the receiver a public name, or take ntfy instead. See [Channels](/premium/channels).
+    Only if the internet can reach it, because the Premium server refuses a private or local address. Give the receiver a public name, or use ntfy instead. See [Channels](/premium/channels).
   </Accordion>
   <Accordion title="Does Gerfaut Premium work over Tor?">
-    Yes, and it follows the backend you chose: with a `.onion` backend the calls to the Premium server go through Tor too, with any other backend they go out directly. Either way, the Premium server keeps no IP address. See [Tor](/settings/tor).
+    Yes. With a `.onion` backend, the calls to the Premium server go through Tor too. See [Tor](/settings/tor).
   </Accordion>
 </AccordionGroup>
 

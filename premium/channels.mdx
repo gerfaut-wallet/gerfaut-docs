@@ -69,7 +69,7 @@ The host of a webhook must be, and resolve to, a public address. The server refu
 
 <AccordionGroup>
   <Accordion title="Read the kind of an event">
-    The `kind` is `spend_detected`, `spend_confirmed`, `coins_gone`, `receive_detected`, `receive_confirmed`, `timelock_due`, `wallet_registered` or `wallet_refused`. A `timelock_due` event carries a `milestone` of `30d`, `7d`, `1d` or `open`. A `wallet_refused` event carries the server's sentence in `message`.
+    The `kind` is `spend_detected`, `spend_confirmed`, `coins_gone`, `receive_detected`, `receive_confirmed`, `timelock_due`, `wallet_registered` or `wallet_refused`. A `timelock_due` event carries a `milestone` of `30d`, `7d`, `1d` or `open`. A `wallet_refused` event carries the server's sentence in `message`. The account events `device_connected`, `device_approved` and `key_changed` carry `null` in `wallet` and `wallet_name`, and the `device` and its `platform` in `data`.
   </Accordion>
   <Accordion title="Verify the signature of a delivery">
     With a secret, each delivery carries `X-Gerfaut-Timestamp`, in unix seconds, and `X-Gerfaut-Signature`, which is `sha256=` followed by the hex HMAC-SHA256 of `<timestamp>.<body>` under your secret:
@@ -88,7 +88,7 @@ The host of a webhook must be, and resolve to, a public address. The server refu
 
 ## Test or remove a channel
 
-Select the menu of a channel line, then **Send a test** or **Remove**. Tests and confirmation e-mails share a limit of five an hour per licence key.
+Select the menu of a channel line, then **Send a test** or **Remove**. Removing a channel asks you to [confirm with your app lock](/premium/devices#confirm-sensitive-actions). Tests and confirmation e-mails share a limit of five an hour per licence key.
 
 <Note>
 A line that reads `Not delivering` is a channel the server turned off, such as a webhook it cannot reach. Remove it and add a working one.

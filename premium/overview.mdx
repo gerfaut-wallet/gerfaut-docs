@@ -14,6 +14,7 @@ The Premium server alerts you when:
 - **The daily scan finds coins gone:** Coins left the wallet without the server seeing the spend live.
 - **A timelock opens:** A recovery path becomes spendable in 30 days, seven days, one day, and on the day itself.
 - **The watch starts or stops:** The first scan of a wallet is done, or the server stops watching a wallet it [refuses](/premium/limits).
+- **A device connects:** A new device uses your licence key, a device gets full access, or the licence key changes. See [Devices](/premium/devices).
 
 ## Pick where alerts go
 
@@ -27,6 +28,7 @@ The server holds no private key and cannot move your coins. Under your licence k
 - **Addresses:** Every address of those wallets, with the coins and movements seen on them.
 - **Channels:** An ntfy topic, a Telegram chat, an e-mail address or a webhook URL.
 - **Licence key:** A hash of it, never the licence key itself.
+- **Devices:** The kind of each device you connect, such as `Android phone` or `Mac`, when it connected and was approved, and a hash of its own access token.
 - **Refused wallets:** For one hour after refusing a wallet, a fingerprint of it keyed with a server secret, never the descriptor or address itself.
 
 It keeps no e-mail unless you add one as a channel, no IP address and no request log. See [Delete your data](/premium/delete-your-data).
@@ -38,6 +40,9 @@ Prepay one month, six months or one year, in bitcoin over Ark, Lightning or on-c
 <CardGroup cols={2}>
   <Card title="Get a licence" icon="key-round" href="/premium/get-a-key">
     Buy a Premium licence key and activate it in Gerfaut.
+  </Card>
+  <Card title="Devices" icon="smartphone" href="/premium/devices">
+    Approve each new device, and change the licence key if it leaks.
   </Card>
   <Card title="Watch a wallet" icon="radar" href="/premium/watch-a-wallet">
     Switch a wallet on and let the server follow it.

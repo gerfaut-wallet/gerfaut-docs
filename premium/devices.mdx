@@ -1,0 +1,124 @@
+---
+title: "Devices"
+description: "Connect your devices to a Premium licence key, approve or refuse each new one, change the licence key, and shut out anyone who got hold of it."
+---
+
+Connect each device you use to your Premium licence key, then approve every new one from a device that already has full access. A new device sees nothing and changes nothing for ten days, unless you approve it.
+
+## Connect a device
+
+Enter the licence key on the device, as in [Activate the licence key](/premium/get-a-key#activate-the-licence-key). What the device gets depends on the account:
+
+- **First device of the account:** It gets full access at once. The `Licence` card reads `Active until` with the date.
+- **Any later device:** It waits. A `Waiting for approval` card takes the place of `Watched wallets`, `Channels` and `Recent alerts`, with the date the device gets full access on its own.
+
+The Premium server announces every later device on all your channels, as `Gerfaut: a new device uses your Premium key`. While Gerfaut is open, your devices with full access also show a notification and a red banner: `A new device asks for access to your Premium account.`
+
+<Note>
+Only the first device an account ever has gets full access at once. If you forget the licence key on your only device, the next one you connect waits the full ten days, because no device is left to approve it.
+</Note>
+
+A licence key holds up to ten devices, waiting ones included. See [Limits](/premium/limits).
+
+## Approve a new device
+
+<Warning>
+Approve only a device you connected yourself a moment ago. Once approved, it sees your watched wallets, channels and alerts, and can change them.
+</Warning>
+
+<Steps>
+  <Step title="Open Devices on a device with full access">
+    <Tabs>
+      <Tab title="Desktop">Select **Review** on the red banner of the Overview, or select **Settings** in the sidebar, then **Premium**.</Tab>
+      <Tab title="Android">Select **Review** on the red banner of the home screen, or select **More** > **Settings** > **Premium**.</Tab>
+    </Tabs>
+
+    The `Devices` card sits below `Licence`. Each row names the kind of device, such as `Android phone` or `Windows computer`, and the day it connected.
+  </Step>
+  <Step title="Select Approve">
+    Select **Approve** on the row that reads `Waiting` with the days left. Read the note under the row, then select **Approve** again.
+  </Step>
+  <Step title="Confirm it's you">
+    Confirm with your app lock, as in [Confirm sensitive actions](#confirm-sensitive-actions). The row then reads `Full access`, and your channels receive `Gerfaut: a device got full access`.
+  </Step>
+  <Step title="Select Check again on the new device">
+    The `Watched wallets`, `Channels` and `Recent alerts` cards appear.
+  </Step>
+</Steps>
+
+Without approval, the new device gets full access on its own once the ten days are over.
+
+## Refuse or disconnect a device
+
+From a device with full access, in the `Devices` card, cut any other device off at once:
+
+- **A waiting device:** Select **Refuse** on its row, then **Refuse** again under the row. It never sees anything.
+- **A device with full access:** Select the menu of its row, then **Disconnect**, and **Disconnect** again under the row. To use Gerfaut Premium there again, enter the licence key on it and approve it.
+
+Gerfaut then asks you to [confirm with your app lock](#confirm-sensitive-actions). To disconnect the device you are holding, select **Forget this key** in its `Licence` card, or **Remove key from this device** while it waits.
+
+## Change the licence key
+
+<Note>
+Changing the licence key disconnects every other device. The old licence key stops working at once, on the website too.
+</Note>
+
+<Steps>
+  <Step title="Select Change key">
+    The button sits in the `Licence` card of a device with full access. Read the note in `Change your Premium key`, then select **Change key**.
+  </Step>
+  <Step title="Confirm it's you">
+    Confirm with your app lock, as in [Confirm sensitive actions](#confirm-sensitive-actions). Gerfaut then shows the new licence key under `Your new key`.
+  </Step>
+  <Step title="Save the new licence key">
+    Select **Copy** and save it in your password manager. Tick `I saved my new key`, then select **Done**.
+  </Step>
+  <Step title="Reconnect your other devices">
+    Each one reads `This device was disconnected from your Premium account.` Select **Connect again** and enter the new licence key when Gerfaut asks for it. Then approve the device from this one.
+  </Step>
+</Steps>
+
+Your channels receive `Gerfaut: your Premium key was changed`. From then on, [add time](/premium/get-a-key#add-time-to-a-licence-key) with the new licence key.
+
+## Confirm sensitive actions
+
+Gerfaut shows `Confirm it's you` before these actions:
+
+- **Devices:** Approve, refuse or disconnect a device, and change the licence key.
+- **Account:** Delete the account.
+- **Watch:** Stop watching a wallet, and remove a channel.
+
+<Tabs>
+  <Tab title="Desktop">
+    Enter your app lock PIN or password. Wrong attempts make you wait, as on the `Locked` screen. Without an app lock, Gerfaut offers **Set an app lock** instead. [Turn on the app lock](/settings/app-lock#turn-on-the-app-lock), then try again.
+  </Tab>
+  <Tab title="Android">
+    Enter your app lock PIN or password, or use biometrics if you turned them on. Without an app lock, Android asks for the phone's screen lock. On a phone with no screen lock, [turn on the app lock](/settings/app-lock#turn-on-the-app-lock) first.
+  </Tab>
+</Tabs>
+
+## Recover from a stolen licence key
+
+Act as soon as a channel shows `Gerfaut: a new device uses your Premium key` for a device you did not connect. That device sees nothing yet.
+
+<Steps>
+  <Step title="Refuse the device">
+    From a device with full access, select **Refuse** on its row, as in [Refuse or disconnect a device](#refuse-or-disconnect-a-device).
+  </Step>
+  <Step title="Change the licence key">
+    Follow [Change the licence key](#change-the-licence-key). The stolen licence key stops working, and every other device is disconnected.
+  </Step>
+  <Step title="Reconnect your own devices">
+    Enter the new licence key on each of them, then approve them from the device that changed it.
+  </Step>
+</Steps>
+
+If a channel shows `Gerfaut: a device got full access` and you approved nothing, follow the same steps, with **Disconnect** in place of **Refuse**.
+
+## Know what the wait does not cover
+
+The ten-day wait and the alerts leave these cases open:
+
+- **A licence key stolen before you ever entered it:** The thief's device is then the first one on the account, with full access at once. Enter the licence key in Gerfaut as soon as you have paid.
+- **All your devices lost, with a stranger's device already on the account:** The stranger's device gets full access before your new one, and can then refuse it or change the licence key. Keep a [second device](/premium/get-a-key#protect-your-premium-account) connected.
+- **A stolen device with full access, unlocked:** Whoever holds it can approve their own device. Turn on the [app lock](/settings/app-lock).

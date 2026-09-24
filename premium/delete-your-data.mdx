@@ -3,7 +3,7 @@ title: "Delete your data"
 description: "Remove a wallet or a channel from the Gerfaut Premium server, delete the whole account with its wallets, channels and log, or let the server delete it."
 ---
 
-Remove a wallet, a channel or the whole account from the Premium server, in **Settings** > **Premium**. The server also deletes an account on its own, some time after its paid time ends.
+Remove a wallet, a channel or the whole account from the Premium server, in **Settings** > **Premium** on a device with full access. Gerfaut asks you to [confirm with your app lock](/premium/devices#confirm-sensitive-actions) before it unwatches a wallet, removes a channel or deletes the account.
 
 ## Remove a wallet from the server
 
@@ -33,13 +33,14 @@ Deleting the account stops the Premium licence key on every device, and its rema
       <Tab title="Desktop">Select **Delete the account**.</Tab>
       <Tab title="Android">Select **Delete and forget**.</Tab>
     </Tabs>
-
-    Gerfaut forgets the licence key on this device once the server confirms the deletion.
+  </Step>
+  <Step title="Confirm it's you">
+    Confirm with your app lock, as in [Confirm sensitive actions](/premium/devices#confirm-sensitive-actions). Gerfaut forgets the licence key on this device once the server confirms the deletion.
   </Step>
 </Steps>
 
 <Accordion title="Forget the licence key on this device only">
-  Select **Forget this key** and confirm without ticking the box. The server keeps watching your wallets. The same licence key works again on any device.
+  Select **Forget this key** and confirm without ticking the box, or **Remove key from this device** on a device that waits for approval. The server disconnects the device and keeps watching your wallets. Entered again, the licence key connects the device as a new one, which waits ten days unless another device [approves it](/premium/devices#approve-a-new-device).
 </Accordion>
 
 ## Let the server delete on its own

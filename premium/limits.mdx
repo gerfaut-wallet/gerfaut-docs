@@ -1,6 +1,6 @@
 ---
 title: "Limits"
-description: "Check every ceiling of the Gerfaut Premium service, from the wallets and coins one licence key watches to the messages sent per hour, and what Gerfaut shows."
+description: "Check every ceiling of the Gerfaut Premium service, from the wallets, coins and devices of one licence key to the messages it sends, and what Gerfaut shows."
 ---
 
 Check the ceilings of your Premium licence key before a habit or a large wallet meets one. Gerfaut shows each refusal under the card concerned, in the Premium server's own words, with **Retry** when trying again can work.
@@ -13,9 +13,21 @@ Check the ceilings of your Premium licence key before a habit or a large wallet 
 | Coins in one watched wallet | 5,000 | The server stops watching the wallet and says why, as below. |
 | Wallets switched on or changed | 30 in any hour per licence key | The server refuses the next one with `slow down: a key may register or change 30 wallets per hour`. Renaming a wallet, or sending it again unchanged, does not count. |
 | Channels | 10 per licence key | The server refuses an eleventh channel, and a duplicate with `this channel already exists`. |
+| Devices | 10 per licence key, waiting ones included | The server refuses an eleventh device with `this key already has 10 devices; disconnect one from a device with full access`. |
+| Devices connected | Five in any hour per licence key | The server asks Gerfaut to wait. |
 | Requests | 60 a minute per licence key, 240 a minute per IP address | The server asks Gerfaut to wait. |
 
 When the server asks to wait, Gerfaut says for how long, such as `The server asks to wait. Try again in 42 s.`
+
+## Read the device messages
+
+A new device waits ten days before it sees or changes anything, unless a device with full access [approves it](/premium/devices#approve-a-new-device). Gerfaut shows the Premium server's sentence when a device has no access to the account:
+
+| The server says | Why | What to do |
+|---|---|---|
+| `this device is waiting for approval: approve it on another of your devices, or wait until it gets full access` | The device connected less than 10 days ago, and no device approved it. | Approve it from a device with full access, or wait for the date on its `Waiting for approval` card. |
+| `this device was disconnected from the Premium account` | A device with full access refused or disconnected it, or changed the licence key. | Select **Connect again**, with the new licence key if it changed, then approve the device. |
+| `connect this device with the Premium key first` | The device holds no connection to the account. | Enter the licence key in `Account key` and select **Activate**. |
 
 ## Watch a wallet with more than 5,000 coins again
 
@@ -44,7 +56,7 @@ For one hour after the refusal, the server refuses the same wallet again without
 | Ceiling | Limit | Past the limit |
 |---|---|---|
 | Tests and confirmation e-mails | Five an hour per licence key | The server refuses them until the hour has passed. |
-| E-mail alerts | 20 a day per licence key | E-mail alerts wait for the next day. The other channels are untouched. |
+| E-mail alerts | 50 a day per licence key | E-mail alerts wait for the next day. The other channels are untouched. |
 | E-mail confirmation code | One hour, five wrong tries | Add the channel again for a new code. |
 | Telegram link code | One hour | Add the channel again for a new code. |
 
@@ -53,4 +65,5 @@ For one hour after the refusal, the server refuses the same wallet again without
 - **Alerts:** They continue for seven days after the paid time ends, then stop until you add time.
 - **Daily scans and timelock alerts:** They stop at the same point.
 - **Watched wallets:** Switching a wallet on or off needs paid time left.
+- **Devices:** Managing them needs no paid time. You can still approve, refuse or disconnect a device and change the licence key, and the alerts about them still reach your channels.
 - **Your data:** The server deletes it after a while. See [Delete your data](/premium/delete-your-data#let-the-server-delete-on-its-own).

@@ -14,20 +14,22 @@ Check the ceilings of your Premium licence key before a habit or a large wallet 
 | Wallets switched on or changed | 30 in any hour per licence key | The server refuses the next one with `slow down: a key may register or change 30 wallets per hour`. Renaming a wallet, or sending it again unchanged, does not count. |
 | Channels | 10 per licence key | The server refuses an eleventh channel, and a duplicate with `this channel already exists`. |
 | Devices | 10 per licence key, waiting ones included | The server refuses an eleventh device with `this key already has 10 devices; disconnect one from a device with full access`. |
-| Devices connected | Five in any hour per licence key | The server asks Gerfaut to wait. |
+| Devices connected | Five in any hour and 10 in any day per licence key | The server asks Gerfaut to wait. |
 | Requests | 60 a minute per licence key, 240 a minute per IP address | The server asks Gerfaut to wait. |
 
 When the server asks to wait, Gerfaut says for how long, such as `The server asks to wait. Try again in 42 s.`
 
 ## Read the device messages
 
-A new device waits ten days before it sees or changes anything, unless a device with full access [approves it](/premium/devices#approve-a-new-device). Gerfaut shows the Premium server's sentence when a device has no access to the account:
+A new device waits ten days before it sees or changes anything, unless a device with full access [approves it](/premium/devices#approve-a-new-device). Gerfaut shows the Premium server's sentence when a device has no access to the account, or when connecting or changing the licence key fails:
 
 | The server says | Why | What to do |
 |---|---|---|
 | `this device is waiting for approval: approve it on another of your devices, or wait until it gets full access` | The device connected less than 10 days ago, and no device approved it. | Approve it from a device with full access, or wait for the date on its `Waiting for approval` card. |
 | `this device was disconnected from the Premium account` | A device with full access refused or disconnected it, or changed the licence key. | Select **Connect again**, with the new licence key if it changed, then approve the device. |
 | `connect this device with the Premium key first` | The device holds no connection to the account. | Enter the licence key in `Account key` and select **Activate**. |
+| `this token is already in use` | The access token this device drew to connect belongs to another account. | Select **Activate** or **Connect again** once more. Gerfaut draws a new token. |
+| `this key is already in use` | The new licence key Gerfaut drew for a key change belongs to another account. | Select **Change key** again. Gerfaut draws another licence key. |
 
 ## Watch a wallet with more than 5,000 coins again
 
@@ -57,6 +59,7 @@ For one hour after the refusal, the server refuses the same wallet again without
 |---|---|---|
 | Tests and confirmation e-mails | Five an hour per licence key | The server refuses them until the hour has passed. |
 | E-mail alerts | 50 a day per licence key | E-mail alerts wait for the next day. The other channels are untouched. |
+| E-mail alerts about devices and the licence key | Five a day per licence key, out of the 50 | These alerts reach only your other channels. |
 | E-mail confirmation code | One hour, five wrong tries | Add the channel again for a new code. |
 | Telegram link code | One hour | Add the channel again for a new code. |
 

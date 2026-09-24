@@ -44,7 +44,13 @@ Short answers, each with the page that goes further.
 
 <AccordionGroup>
   <Accordion title="I lost my Premium licence key. Can you find it?">
-    No. The Premium server stores only a hash of your licence key, so a lost licence key and its paid time are gone for good. See [Get a licence](/premium/get-a-key).
+    No. The Premium server stores only a hash of your licence key. If one of your devices still has full access, select **Change key** there to get a new one. Otherwise, the paid time is gone for good. See [Devices](/premium/devices#change-the-licence-key).
+  </Accordion>
+  <Accordion title="Someone else has my Premium licence key. What can they do?">
+    Connect a device, which the Premium server announces at once on all your channels. That device sees nothing and changes nothing for ten days, unless you approve it. Refuse it, then change your licence key. See [Devices](/premium/devices#recover-from-a-stolen-licence-key).
+  </Accordion>
+  <Accordion title="Can I use one Premium licence key on several devices?">
+    Yes, on up to ten. The first device gets full access at once. Approve each later one from a device with full access, or it waits ten days. See [Devices](/premium/devices).
   </Accordion>
   <Accordion title="What exactly does the Premium server see?">
     What a watch-only wallet sees: the descriptors and addresses you switch on, the coins and transactions on them, and the channels you add. It never sees a private key, keeps no IP address, and keeps an e-mail address only as a channel. See [Gerfaut Premium](/premium/overview).
@@ -56,7 +62,7 @@ Short answers, each with the page that goes further.
     Any mainnet wallet in Gerfaut, single address included, that holds 5,000 coins or fewer. See [Watch a wallet](/premium/watch-a-wallet).
   </Accordion>
   <Accordion title="What are the limits of a Premium licence key?">
-    Those a person can meet: 21 wallets, 30 wallets switched on or changed an hour, five tests or confirmation e-mails an hour, and 20 e-mail alerts a day. See [Limits](/premium/limits).
+    Those a person can meet: 21 wallets, ten devices, 30 wallets switched on or changed an hour, five tests or confirmation e-mails an hour, and 50 e-mail alerts a day. See [Limits](/premium/limits).
   </Accordion>
   <Accordion title="Can a webhook point at a machine on my own network?">
     Only if the internet can reach it, because the Premium server refuses a private or local address. Give the receiver a public name, or use ntfy instead. See [Channels](/premium/channels).

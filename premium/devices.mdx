@@ -12,7 +12,7 @@ Enter the licence key on the device, as in [Activate the licence key](/premium/g
 - **First device of the account:** It gets full access at once. The `Licence` card reads `Active until` with the date.
 - **Any later device:** It waits. A `Waiting for approval` card takes the place of `Watched wallets`, `Channels` and `Recent alerts`, with the date the device gets full access on its own.
 
-The Premium server announces every later device on all your channels, as `Gerfaut: a new device uses your Premium key`. While Gerfaut is open, your devices with full access also show a notification and a red banner: `A new device asks for access to your Premium account.`
+The Premium server announces every later device on all your channels, as `Gerfaut: a new device uses your Premium key`. While Gerfaut is open, your devices with full access also show a red banner: `A new device asks for access to your Premium account.` They show a notification too when [notifications](/settings/notifications#turn-on-notifications) are on.
 
 <Note>
 Only the first device an account ever has gets full access at once. If you forget the licence key on your only device, the next one you connect waits the full ten days, because no device is left to approve it.
@@ -41,8 +41,8 @@ Approve only a device you connected yourself a moment ago. Once approved, it see
   <Step title="Confirm it's you">
     Confirm with your app lock, as in [Confirm sensitive actions](#confirm-sensitive-actions). The row then reads `Full access`, and your channels receive `Gerfaut: a device got full access`.
   </Step>
-  <Step title="Select Check again on the new device">
-    The `Watched wallets`, `Channels` and `Recent alerts` cards appear.
+  <Step title="Check the new device">
+    The new device checks its status every five minutes, then shows the `Watched wallets`, `Channels` and `Recent alerts` cards on its own. Select **Check again** on it to see them at once.
   </Step>
 </Steps>
 
@@ -55,7 +55,7 @@ From a device with full access, in the `Devices` card, cut any other device off 
 - **A waiting device:** Select **Refuse** on its row, then **Refuse** again under the row. It never sees anything.
 - **A device with full access:** Select the menu of its row, then **Disconnect**, and **Disconnect** again under the row. To use Gerfaut Premium there again, enter the licence key on it and approve it.
 
-Gerfaut then asks you to [confirm with your app lock](#confirm-sensitive-actions). To disconnect the device you are holding, select **Forget this key** in its `Licence` card, or **Remove key from this device** while it waits.
+Gerfaut then asks you to [confirm with your app lock](#confirm-sensitive-actions). To disconnect the device you are holding, select **Forget this key** in its `Licence` card, or in its `Waiting for approval` card while it waits. On a device with full access, Gerfaut asks you to confirm this too, since using Gerfaut Premium there again takes an approval or ten days.
 
 ## Change the licence key
 
@@ -78,6 +78,8 @@ Changing the licence key disconnects every other device. The old licence key sto
   </Step>
 </Steps>
 
+If the connection drops during the change, the `Licence` card reads `The key change did not finish. Try again to complete it.` Select **Try again**. Gerfaut sends the same new licence key, so a lost answer never leaves you without a working one.
+
 Your channels receive `Gerfaut: your Premium key was changed`. From then on, [add time](/premium/get-a-key#add-time-to-a-licence-key) with the new licence key.
 
 ## Confirm sensitive actions
@@ -85,8 +87,10 @@ Your channels receive `Gerfaut: your Premium key was changed`. From then on, [ad
 Gerfaut shows `Confirm it's you` before these actions:
 
 - **Devices:** Approve, refuse or disconnect a device, and change the licence key.
+- **This device:** Forget the licence key on a device with full access. A waiting or disconnected device forgets it without asking.
 - **Account:** Delete the account.
-- **Watch:** Stop watching a wallet, and remove a channel.
+- **Watch:** Stop watching a wallet, or remove a watched wallet in **Settings** > **Wallets**.
+- **Channels:** Remove a channel, or add one while the app lock is on.
 
 <Tabs>
   <Tab title="Desktop">

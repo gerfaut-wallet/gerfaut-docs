@@ -9,7 +9,7 @@ Check what Gerfaut makes of what you paste, open or scan, and what to confirm be
 
 | Input | Recognized as | What Gerfaut watches |
 |---|---|---|
-| An output descriptor (`wpkh`, `sh`, `wsh`, `tr`, `multi`, `sortedmulti`) | `Output descriptor` | The receive branch, and the change branch when the descriptor names it. |
+| An output descriptor (`pkh`, `wpkh`, `sh`, `wsh`, `tr`, `multi`, `sortedmulti`) | `Output descriptor` | The receive branch, and the change branch when the descriptor names it. |
 | A multipath descriptor with `<0;1>` | `Multipath descriptor (BIP-389)` | Both branches. |
 | Two descriptors on two lines | `Descriptor pair (receive + change)` | Both branches. |
 | An extended public key (`xpub`, `tpub`, or a SLIP-132 `ypub`, `zpub`, `upub`, `vpub`) | `Extended public key` | The `0/*` and `1/*` branches under that extended public key. |
@@ -19,12 +19,16 @@ Check what Gerfaut makes of what you paste, open or scan, and what to confirm be
 
 A multisig wallet arrives as a descriptor, pasted, scanned or read from a BSMS record. A descriptor with a Miniscript policy and timelocks also gets a [Policy page](/wallets/policy-and-timelocks).
 
+<Note>
+A descriptor with a receive branch only, such as one ending in `/0/*`, shows `No change path was provided: change outputs will not be tracked.` Your balance then misses the change of every payment you send. Import the multipath descriptor (`/<0;1>/*`) or the pair of descriptors instead.
+</Note>
+
 ## Pick the script type of an extended public key
 
 A bare `xpub` does not name its script type. Gerfaut reads it from the SLIP-132 prefix (`ypub` for Nested SegWit, `zpub` for Native SegWit), then from a key origin such as `[fingerprint/84'/0'/0']`, and falls back to Native SegWit.
 
-- **SLIP-132 prefix:** The card reads `The SLIP-132 prefix was converted to a standard extended key.` The same conversion applies inside a descriptor.
-- **No script type:** The card reads `This key carries no script type. Check the one selected below.` Select the type your wallet software uses.
+- **SLIP-132 prefix:** A notice under the card reads `The SLIP-132 prefix was converted to a standard extended key.` The same conversion applies inside a descriptor.
+- **No script type:** A notice under the card reads `This key carries no script type. Check the one selected below.` Select the type your wallet software uses.
 
 | Script type | Addresses start with |
 |---|---|

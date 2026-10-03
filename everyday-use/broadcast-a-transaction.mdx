@@ -31,26 +31,38 @@ Nobody can take a transaction back once the network has it. Check the outputs an
     </Tabs>
   </Step>
   <Step title="Paste, import or scan the transaction">
-    Paste a PSBT (base64 or hex) or a raw transaction (hex), then select **Preview**. **Import a file** takes a `.psbt`, `.txn` or `.tx` file. **Scan a QR code** takes a `crypto-psbt` UR or a BBQr code.
+    Paste a PSBT (base64 or hex) or a raw transaction (hex), then select **Preview**. **Import a file** takes a `.psbt`, `.txn`, `.tx`, `.txt` or `.hex` file. **Scan a QR code** takes a `crypto-psbt` UR or a BBQr code.
   </Step>
   <Step title="Read the preview">
-    Check the outputs, the fee and the cautions under `Before you send`. The pill reads `Ready to broadcast` when the transaction is fully signed. When the fee reads `as the PSBT claims`, no backend confirmed the coins it spends, so check the fee on your signing device.
+    Check the outputs, the fee and every caution under `Before you send`, as in [Check the cautions before you send](#check-the-cautions-before-you-send). When the fee reads `as the PSBT claims`, no backend confirmed the coins it spends, so check the fee on your signing device.
   </Step>
   <Step title="Select Broadcast twice">
-    Select **Broadcast**, read the confirmation and select **Broadcast** again. A status card shows the transaction id and the backend that took it.
+    **Broadcast** stays disabled until every input is signed and the pill reads `Ready to broadcast`. Select **Broadcast**, read the confirmation and select **Broadcast** again. A status card shows the transaction id and the backend that took it.
   </Step>
 </Steps>
 
-<AccordionGroup>
-  <Accordion title="Read the cautions under Before you send">
-    None of them blocks the broadcast:
+## Check the cautions before you send
 
-    - **No signature:** An input has no signature. Send the transaction back to the signer.
-    - **Input spent or unknown:** The backend already saw the input spent, or does not know it.
-    - **Fee rate:** Far above what the chain asks for.
-    - **Fee:** Above 10% of the inputs.
-    - **Dust:** An output below 546 sats.
-    - **Locktime:** The network has not reached it yet.
+Gerfaut lists what it finds under `Before you send`, in red when your bitcoin is at stake and in amber otherwise.
+
+<Warning>
+The first two cautions below mean the transaction may not pay what your signing device showed you. Do not broadcast it.
+</Warning>
+
+- **Outputs left open:** An input is signed with `SIGHASH_NONE` or `SIGHASH_SINGLE`. Whoever relays or mines the transaction can then send that money elsewhere. Have your signing device sign it again over every output, with `SIGHASH_ALL`.
+- **Input not what the PSBT says:** The PSBT declares another amount or address for a coin than your wallet or the backend knows. The fee your signing device showed may not be the real one. Build the transaction again in your own wallet software.
+- **No signature:** An input carries no signature. The pill then reads `Unsigned` on desktop or `Not fully signed` on Android. Send the transaction back to your signing device.
+- **Input already spent:** The transaction went out before, or another one already took the coin.
+- **Fee rate:** Far above what the chain asks for, often because of a wrong unit in the signing software.
+- **Fee:** More than 10% of what the inputs bring.
+
+<AccordionGroup>
+  <Accordion title="Read the amber cautions">
+    - **Input not found or not checked:** The backend does not know the coin, or no backend answered. Check the amounts on your signing device.
+    - **Fee unknown:** Gerfaut cannot tell the value of an input, or the outputs pay more than the inputs bring.
+    - **Dust:** An output below 546 sats, which most nodes refuse.
+    - **Locktime:** The network does not accept the transaction before a later block or date.
+    - **Spends a watched wallet:** The transaction spends coins of a wallet you watch, named in the caution.
   </Accordion>
   <Accordion title="Read a refusal by the node">
     The preview reads `The network refused this transaction.` followed by the node's own words.
@@ -59,10 +71,19 @@ Nobody can take a transaction back once the network has it. Check the outputs an
 
 ## Follow the transaction
 
-The status card checks the transaction every 30 seconds until it confirms:
+The status card asks the backend about the transaction every 30 seconds until it confirms:
 
-- **`Waiting to be mined`:** The transaction is in the backend's mempool. Desktop reads `In the mempool`.
+- **`Waiting to be mined`:** The transaction is in the backend's mempool. The desktop pill reads `In the mempool`.
 - **`Confirmed`:** Mined, with the number of confirmations.
 - **`Not seen`:** The backend does not have it. Broadcasting it again does no harm.
 
-Select **Check** to ask the backend now. Gerfaut lists the last ten broadcasts of each network under `Past broadcasts` on desktop and `Recent broadcasts` on Android. **Forget** removes one from that list and leaves the transaction untouched.
+Gerfaut keeps your last ten broadcasts and lists those of the selected network on the Broadcast page. Forgetting one removes it from the list and leaves the transaction untouched.
+
+<Tabs>
+  <Tab title="Desktop">
+    Select **Refresh** to ask the backend now. Under `Past broadcasts`, select **Check** to follow an older transaction again, or **Forget** to remove it.
+  </Tab>
+  <Tab title="Android">
+    Select the **Check again** icon to ask the backend now. Under `Recent broadcasts`, select the **Forget this broadcast** icon to remove a transaction.
+  </Tab>
+</Tabs>

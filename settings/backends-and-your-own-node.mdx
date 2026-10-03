@@ -35,15 +35,20 @@ The `Backend` card opens on `Public API`, with nothing to set up. Under `Server`
   </Tab>
 </Tabs>
 
-<Accordion title="Sync a wallet with tens of thousands of transactions">
-  The first sync of a very large wallet, or of one with many large inscriptions, can fail on an Esplora backend. The line under the page title then reads `Sync failed` with a reason such as:
+<AccordionGroup>
+  <Accordion title="Sync a wallet with tens of thousands of transactions">
+    The first sync of a very large wallet, or of one with many large inscriptions, can fail on an Esplora backend. The line under the page title then reads `Sync failed` with a reason such as:
 
-  - `the server sent more than 256 MiB of transactions for one sync`
-  - `the server sent an answer longer than 64 MiB`
-  - `the server lists more than 10000 transactions for one address`
+    - `the server sent more than 256 MiB of transactions for one sync`
+    - `the server sent an answer longer than 64 MiB`
+    - `the server lists more than 10000 transactions for one address`
 
-  Switch that network to an Electrum server. Under `Server`, select one of the public Electrum servers, or [connect your own](#connect-your-own-electrum-server).
-</Accordion>
+    Switch that network to an Electrum server. Under `Server`, select one of the public Electrum servers, or [connect your own](#connect-your-own-electrum-server).
+  </Accordion>
+  <Accordion title="Fix a sync that reaches another network">
+    A sync that fails with `the server is on another network` reached a server of another chain, such as the signet port of your node entered for testnet4. Check which port your node serves for this network, then enter it again.
+  </Accordion>
+</AccordionGroup>
 
 ## Connect your own Esplora
 
@@ -74,5 +79,25 @@ Leave `TLS` on. Without it, anyone on the path between your device and the serve
   </Step>
   <Step title="Select Save backend">
     A server that signs its own certificate shows it to you before Gerfaut saves anything. See [Certificates](/settings/certificates).
+  </Step>
+</Steps>
+
+## Follow more addresses on your own node
+
+Live, the connection behind [notifications](/settings/notifications#make-live-follow-every-address), follows up to 2,000 addresses, 200 per wallet. On a server you run, it can follow 20,000, all of them for one wallet if needed.
+
+<Note>
+Leave the switch off for a server you do not run. A public server refuses most of the addresses past its own limit, so Live gains nothing there.
+</Note>
+
+<Steps>
+  <Step title="Connect your own server">
+    Follow [Connect your own Esplora](#connect-your-own-esplora) or [Connect your own Electrum server](#connect-your-own-electrum-server).
+  </Step>
+  <Step title="Select the This is my node switch">
+    It sits under the address of your server.
+  </Step>
+  <Step title="Select Save backend">
+    Live reconnects with the longer list.
   </Step>
 </Steps>

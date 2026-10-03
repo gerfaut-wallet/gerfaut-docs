@@ -42,7 +42,7 @@ Gerfaut syncs your wallets when it opens. With [notifications](/settings/notific
 The line under the page title then reads `Synced 2 min ago · mempool.space`, or `Sync failed` with the reason.
 
 <Note>
-A sync only looks at the addresses Gerfaut already revealed. For coins received further out, select **Rescan** on the wallet in **Settings** > **Wallets**.
+A sync also finds a payment to an address Gerfaut never showed, up to the gap limit past the last one it revealed. For coins further out, raise the `Gap limit` in **Settings** > **Wallets**, then select **Rescan** on the wallet.
 </Note>
 
 ## Browse the history

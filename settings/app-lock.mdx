@@ -39,7 +39,7 @@ Lock Gerfaut so that someone at your unlocked computer or phone sees nothing of 
     Press `Ctrl+L`, select **Lock** at the bottom of the sidebar, or select **Lock now** in **Settings** > **Security**. Otherwise Gerfaut stays unlocked until you close it.
   </Tab>
   <Tab title="Android">
-    Gerfaut locks each time it goes to the background. Select **Lock now** in **Settings** > **Security** to lock it by hand.
+    Gerfaut locks each time it goes to the background. Select **Lock now** in **Settings** > **Security** to lock it by hand. While a lock is set, Android keeps Gerfaut out of screenshots and shows a blank card in the recent apps.
   </Tab>
 </Tabs>
 
@@ -63,12 +63,12 @@ Select **Change PIN** or **Change password** to replace the secret. Select the `
 ## Disguise the app as a calculator on Android
 
 <Warning>
-With the disguise on, the PIN is the only way into Gerfaut. If you forget it, only a [backup](/settings/backup-and-sync) brings your wallets back into a fresh install.
+With the disguise on, the PIN is the only way into Gerfaut. If you forget it, only a [backup](#start-over-after-a-forgotten-pin-or-password) brings your wallets back.
 </Warning>
 
 <Steps>
   <Step title="Select Disguise the app">
-    It needs a PIN lock. The sheet lists what changes: the launcher shows `Calculator` instead of Gerfaut, and notifications, widgets and [Live](/settings/notifications) turn off.
+    It needs an app lock of the `PIN` kind. The sheet lists what changes: the launcher shows `Calculator` instead of Gerfaut, and notifications, widgets and [Live](/settings/notifications) turn off.
   </Step>
   <Step title="Select Turn on the disguise">
     Clear your recent apps once, because Android may keep an older Gerfaut thumbnail.
@@ -79,3 +79,46 @@ With the disguise on, the PIN is the only way into Gerfaut. If you forget it, on
 </Steps>
 
 To drop the disguise, select the `Disguise the app` switch again, or turn the app lock off.
+
+## Start over after a forgotten PIN or password
+
+Nobody can reset a forgotten PIN or password, since Gerfaut keeps no copy of it. Start Gerfaut again on an empty vault, then restore your last [backup](/settings/backup-and-sync#restore-a-backup).
+
+<Note>
+Only the wallets in your backup come back. Add any other wallet again from its descriptor, extended public key or address.
+</Note>
+
+<Tabs>
+  <Tab title="Desktop">
+    <Steps>
+      <Step title="Close Gerfaut">
+        Close every Gerfaut window.
+      </Step>
+      <Step title="Rename the Gerfaut data folder">
+        Rename `com.gerfautwallet.gerfaut`, for example to `com.gerfautwallet.gerfaut.old`. Gerfaut keeps it here:
+
+        - **Windows:** `%APPDATA%\com.gerfautwallet.gerfaut`
+        - **macOS:** `~/Library/Application Support/com.gerfautwallet.gerfaut`
+        - **Linux:** `~/.local/share/com.gerfautwallet.gerfaut`
+      </Step>
+      <Step title="Open Gerfaut and restore the backup">
+        Gerfaut opens on an empty vault, with no lock. Follow [Restore a backup](/settings/backup-and-sync#restore-a-backup).
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Android">
+    <Steps>
+      <Step title="Uninstall Gerfaut">
+        In the Android settings, open the list of apps, select Gerfaut and uninstall it.
+      </Step>
+      <Step title="Install Gerfaut again">
+        Follow [Install on Android](/getting-started/install-android).
+      </Step>
+      <Step title="Restore the backup">
+        Follow [Restore a backup](/settings/backup-and-sync#restore-a-backup).
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+A [Premium licence key](/premium/get-a-key) entered again connects the device as a new one, which waits ten days unless [another device approves it](/premium/devices#approve-a-new-device).

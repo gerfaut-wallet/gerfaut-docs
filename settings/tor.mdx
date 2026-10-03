@@ -35,7 +35,7 @@ Gerfaut reaches a backend whose address ends in `.onion` through Tor, with a Tor
     Follow [Backend](/settings/backends-and-your-own-node) and enter the `.onion` address of your node.
   </Step>
   <Step title="Select Test the connection">
-    The built-in Tor takes up to about a minute and a half to start the first time. Meanwhile, the card reads `Starting the built-in Tor…` with a percentage.
+    The built-in Tor takes up to about a minute and a half to start the first time. Meanwhile, the card reads `Starting the built-in Tor…` on desktop or `Starting…` on Android, with a percentage.
   </Step>
   <Step title="Read the result">
     The card reads `Reached through the built-in Tor.` or `Reached through the system Tor.`, or says what failed.
@@ -46,7 +46,7 @@ Gerfaut reaches a backend whose address ends in `.onion` through Tor, with a Tor
 
 With a `.onion` backend, Gerfaut sends these requests through Tor too, and never around it:
 
-- **Premium calls:** They follow the backend you set. When Tor cannot be reached, the call fails.
+- **Premium calls:** They go through Tor as soon as one of your backends is a `.onion` address, on any network. When Tor cannot be reached, the call fails.
 - **Update check:** It goes through Tor as soon as one of your backends is a `.onion` address. When Tor cannot be reached, Gerfaut sends nothing.
 - **Notifications:** The live connection goes to the backend itself, through Tor.
 

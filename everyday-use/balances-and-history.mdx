@@ -105,7 +105,14 @@ Every amount becomes `•••••`: balances, transactions, the chart, notif
     </Tabs>
   </Step>
   <Step title="Set the filters">
-    Leave `From` and `To` empty to export the full history. Under `Direction`, keep `All` or select `Received` or `Sent`. Pending transactions have no date, so `Include pending` only applies without dates.
+    Under `Date range`, leave `From` and `To` empty to export the full history, or set the first and last day:
+
+    <Tabs>
+      <Tab title="Desktop">Enter each day as `YYYY-MM-DD`, such as `2026-01-31`. Gerfaut reads whole days in UTC, the time zone of the dates in the file.</Tab>
+      <Tab title="Android">Select `From` or `To` and pick the day.</Tab>
+    </Tabs>
+
+    Under `Direction`, keep `All` or select `Received` or `Sent`. Pending transactions have no date, so `Include pending` only applies without dates.
   </Step>
   <Step title="Save the file">
     <Tabs>

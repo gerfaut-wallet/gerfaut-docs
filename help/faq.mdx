@@ -35,6 +35,16 @@ Short answers, each with the page that goes further.
   <Accordion title="I forgot my backup password. Can it be recovered?">
     No. Your wallets are still on the device that made the backup, so export a new one there with a new password. See [Backup and sync](/settings/backup-and-sync).
   </Accordion>
+  <Accordion title="I forgot my app lock PIN or password. Can it be reset?">
+    No. Start Gerfaut again on an empty vault, then restore your last backup. See [App lock](/settings/app-lock#start-over-after-a-forgotten-pin-or-password).
+  </Accordion>
+  <Accordion title="Gerfaut could not start. What can I do?">
+    Select **Try again** first. If the screen comes back, its title says why:
+
+    - **`Gerfaut is already open`:** Another Gerfaut window holds the vault. Switch to it, or close it.
+    - **`The vault could not be opened`:** On desktop, check that the credential store of your system lets Gerfaut read its vault key.
+    - **`Gerfaut could not start`:** On Android, `The vault is here, but the key that opens it is gone.` follows a phone restore or a move to a new phone. Select **Start over…**, then [restore your last backup](/settings/backup-and-sync#restore-a-backup). Gerfaut sets the old vault aside and deletes nothing.
+  </Accordion>
   <Accordion title="Why verify a receive address on my signing device?">
     A compromised computer or phone could show you an address that is not yours. Your signing device is the one place that can confirm it. See [Receive](/everyday-use/receive-addresses).
   </Accordion>

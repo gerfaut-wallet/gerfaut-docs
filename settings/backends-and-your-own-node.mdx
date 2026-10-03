@@ -101,3 +101,12 @@ Leave the switch off for a server you do not run. A public server refuses most o
     Live reconnects with the longer list.
   </Step>
 </Steps>
+
+<Accordion title="Raise the subscription limit of ElectrumX or electrs">
+  Some server software follows fewer addresses per connection than Live asks for on your own node:
+
+  - **ElectrumX:** Raise `COST_SOFT_LIMIT` and `COST_HARD_LIMIT`.
+  - **Blockstream's electrs:** Raise `--electrum-subscription-limit`, 10,000 by default.
+  - **mempool's electrs:** Raise `--electrum-max-subscriptions`, 100 by default.
+  - **Fulcrum, and electrs by romanz:** Nothing to change.
+</Accordion>

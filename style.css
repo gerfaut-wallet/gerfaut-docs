@@ -119,22 +119,22 @@
 /* Phone screenshots: the device frame is part of the image, so the
    Mintlify frame loses its card, grid and border and only centers it. */
 
-div.frame:has(img[width="360"]) {
+.frame:has(img[width="360"]) {
   background-color: transparent !important;
   padding: 0;
 }
 
-div.frame:has(img[width="360"]) > div.absolute {
+.frame:has(img[width="360"]) > div.absolute {
   display: none;
 }
 
-div.frame:has(img[width="360"]) img {
+.frame:has(img[width="360"]) img {
   margin-left: auto;
   margin-right: auto;
 }
 
 /* Desktop screenshots keep their card, with a hairline border. */
 
-div.frame:not(:has(img[width="360"])) {
+.frame:not(:has(img[width="360"])) {
   border: 1px solid var(--gf-border);
 }

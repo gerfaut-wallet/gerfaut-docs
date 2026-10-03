@@ -27,7 +27,7 @@ An ntfy, Telegram or e-mail alert names the wallet and says what happened, never
     Gerfaut shows a link code for `@GerfautAlertsBot`, good for one hour.
   </Step>
   <Step title="Select Open Telegram and press Start">
-    Telegram sends the code for you. The line then reads `Linked` with the name of your chat.
+    Telegram sends the code for you. The line then reads `Linked` with the name of your chat. When Gerfaut shows a `/start` line instead, select **Copy** and send that line to the bot.
   </Step>
 </Steps>
 
@@ -35,10 +35,17 @@ An ntfy, Telegram or e-mail alert names the wallet and says what happened, never
 
 <Steps>
   <Step title="Select Add a channel, then E-mail">
-    Enter the address, then select **Add channel** on desktop or **Add e-mail** on Android. The address receives a six-digit code, and nothing else until you confirm it.
+    Enter the address, then send it:
+
+    <Tabs>
+      <Tab title="Desktop">Select **Add channel**.</Tab>
+      <Tab title="Android">Select **Add e-mail**.</Tab>
+    </Tabs>
+
+    The address receives a six-digit code, and nothing else until you confirm it.
   </Step>
   <Step title="Enter the code and select Confirm">
-    Type the code in `Code` within an hour. The line then reads `Linked`. After five wrong codes, add the channel again for a new one.
+    Enter the code in `Code` within an hour. The line then reads `Linked`. After five wrong codes, add the channel again for a new one.
   </Step>
 </Steps>
 
@@ -52,7 +59,12 @@ The host of a webhook must be, and resolve to, a public address. The server refu
 
 <Steps>
   <Step title="Select Add a channel, then Webhook">
-    Enter the `https://` URL of your receiver and, for signed deliveries, a `Secret`. Select **Add channel** on desktop or **Add webhook** on Android.
+    Enter the `https://` URL of your receiver and, for signed deliveries, a `Secret`.
+
+    <Tabs>
+      <Tab title="Desktop">Select **Add channel**.</Tab>
+      <Tab title="Android">Select **Add webhook**.</Tab>
+    </Tabs>
   </Step>
   <Step title="Receive the deliveries">
     The server posts one JSON body per event. The line reads `Linked`.
@@ -71,7 +83,10 @@ The host of a webhook must be, and resolve to, a public address. The server refu
 
 <AccordionGroup>
   <Accordion title="Read the kind of an event">
-    The `kind` is `spend_detected`, `spend_confirmed`, `coins_gone`, `receive_detected`, `receive_confirmed`, `timelock_due`, `wallet_registered` or `wallet_refused`. A `timelock_due` event carries a `milestone` of `30d`, `7d`, `1d` or `open`. A `wallet_refused` event carries the server's sentence in `message`. The account events `device_connected`, `device_approved` and `key_changed` carry `null` in `wallet` and `wallet_name`, and the `device` and its `platform` in `data`.
+    The `kind` names what happened:
+
+    - **Wallet events:** `spend_detected`, `spend_confirmed`, `coins_gone`, `receive_detected`, `receive_confirmed`, `timelock_due`, `wallet_registered` or `wallet_refused`. A `timelock_due` event carries a `milestone` of `30d`, `7d`, `1d` or `open`. A `wallet_refused` event carries the server's sentence in `message`.
+    - **Account events:** `device_connected`, `device_approved` or `key_changed`, with `null` in `wallet` and `wallet_name`, and the `device` and its `platform` in `data`.
   </Accordion>
   <Accordion title="Verify the signature of a delivery">
     With a secret, each delivery carries `X-Gerfaut-Timestamp`, in unix seconds, and `X-Gerfaut-Signature`, which is `sha256=` followed by the hex HMAC-SHA256 of `<timestamp>.<body>` under your secret:
@@ -96,6 +111,6 @@ Select the menu of a channel line, then **Send a test** or **Remove**. Removing 
 A line that reads `Not delivering` is a channel the server turned off, such as a webhook it cannot reach. Remove it and add a working one.
 </Note>
 
-<Frame caption="Every channel sits under Channels, with a menu to test it or remove it.">
+<Frame caption="The Channels card fills once the Premium licence key is active.">
   <img src="/images/android/settings-premium.webp" alt="The Premium section on Android with the Watched wallets, Channels and Recent alerts cards." width="360" />
 </Frame>

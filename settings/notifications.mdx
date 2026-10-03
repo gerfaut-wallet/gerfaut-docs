@@ -18,7 +18,7 @@ Your backend's operator already sees your addresses at each sync. While notifica
         Open **Settings** > **Notifications**. The system may ask you to allow notifications.
       </Step>
       <Step title="Read the Live watch line">
-        The line reads `Connected · Electrum` with the server. Notifications then arrive within seconds. With an Esplora backend, the line reads `Polling every minute`.
+        The line reads `Connected · Electrum` or `Connected · mempool WebSocket`, followed by the server. Notifications then arrive within seconds. Another Esplora backend reads `Polling every minute` instead.
       </Step>
       <Step title="Select Send a test notification">
         A test notification appears. If nothing shows, allow notifications for Gerfaut in the system settings and turn off Do Not Disturb.
@@ -28,7 +28,11 @@ Your backend's operator already sees your addresses at each sync. While notifica
     Gerfaut watches while it is open, minimised or locked, and stops when you close it.
   </Tab>
   <Tab title="Android">
-    Live keeps a connection open. To save battery, select `Every 15 min`, `Every hour` or `Every 6 hours` in step 2 instead. Android then checks in the background, sometimes later than asked.
+    In step 2, pick how Gerfaut checks:
+
+    - **`Live`:** A connection kept open, with a notification within seconds.
+    - **`Every 15 min`, `Every hour` or `Every 6 hours`:** Android checks in the background to save battery, sometimes later than asked.
+    - **`Off`:** Gerfaut checks only while it is open.
 
     <Steps>
       <Step title="Select the New transactions switch">
@@ -41,10 +45,10 @@ Your backend's operator already sees your addresses at each sync. While notifica
         Select **Ask Android** and allow Gerfaut to ignore battery optimisation. Live still runs if you refuse, less reliably.
       </Step>
       <Step title="Follow the steps for your phone">
-        On a Xiaomi, Huawei, Samsung or OnePlus phone, the sheet lists what to change in the phone's own battery manager. Change it, then select **Done**.
+        On a Xiaomi, Redmi, POCO, Huawei, Honor, Samsung, OnePlus, Oppo or realme phone, the sheet lists what to change in the phone's own battery manager. Change it, then select **Done**.
       </Step>
       <Step title="Read the status line">
-        The line under `Check for transactions` reads `Connected · Electrum` with the server. Android shows a permanent notification, `Watching for transactions`.
+        The line under `Check for transactions` reads `Connected · Electrum` or `Connected · mempool`, followed by the server. Another Esplora backend reads `Polling every minute`. Android shows a permanent notification, `Watching for transactions`.
       </Step>
     </Steps>
   </Tab>
@@ -65,8 +69,9 @@ Live keeps running when you leave Gerfaut, swipe it away from the recent apps or
 The notification names the wallet and says what happened, such as `Received 0.01000000 BTC · pending`, then `Received 0.01000000 BTC · confirmed`. Gerfaut sends at most three notifications per wallet at once, then one that counts the rest.
 
 - **Hidden amounts:** While [amounts are hidden](/everyday-use/balances-and-history#hide-every-amount), a notification reads like `New transaction · pending`, with no amount.
-- **Desktop, locked:** A notification names no wallet and no amount.
-- **Android, app lock set:** A notification carries no amount.
+- **App lock:** A notification names no wallet and no amount, on desktop while Gerfaut is locked and on Android whenever an app lock is set.
+- **Payment no longer coming:** When a pending payment leaves the mempool and nothing replaces it, a notification says so, such as `A pending payment of 0.00150000 BTC is no longer coming`.
+- **Fee bump:** A payment Gerfaut already announced brings no new notification when its sender bumps the fee.
 
 ## Put a widget on your Android home screen
 

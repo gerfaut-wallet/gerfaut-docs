@@ -49,6 +49,8 @@ While notifications run, your backend's operator sees your addresses, how long G
         The line under `Check for transactions` reads `Connected · Electrum` or `Connected · mempool`, followed by the server. Another Esplora backend reads `Polling every minute`. Android shows a permanent notification, `Watching for transactions`.
       </Step>
     </Steps>
+
+    If `Notifications are off for Gerfaut in the system settings.` shows under `New transactions`, select **Open system settings** and allow notifications. Live waits meanwhile, and starts again when you come back to Gerfaut.
   </Tab>
 </Tabs>
 
@@ -64,6 +66,8 @@ While notifications run, your backend's operator sees your addresses, how long G
     | `Live` | Within seconds, with Gerfaut open, in the background, swiped away or after a phone restart. | Force-stopping Gerfaut, until you open it again. |
     | `Every 15 min`, `Every hour`, `Every 6 hours` | At the next background check, which Android runs at most every 15 minutes, once the phone is online and its battery is not low. | Force-stopping Gerfaut, until you open it again. |
     | `Off` | When Gerfaut syncs while open, at launch or when you sync by hand. | Leaving Gerfaut. |
+
+    While Gerfaut is [disguised as a calculator](/settings/app-lock#disguise-the-app-as-a-calculator-on-android), no notification arrives, whatever the mode. Gerfaut Premium alerts still reach your [channels](/premium/channels).
   </Tab>
 </Tabs>
 
@@ -119,7 +123,7 @@ Live keeps running when you leave Gerfaut, swipe it away from the recent apps or
 - **Stop:** Select **Stop** on the permanent notification to turn Live off.
 - **Force stop:** Force-stopping Gerfaut in the Android settings ends Live until you open Gerfaut again.
 - **Tor:** With a `.onion` backend, the built-in Tor client stays active for as long as Live runs, which costs battery.
-- **Disguise:** Live is not available while Gerfaut is [disguised as a calculator](/settings/app-lock#disguise-the-app-as-a-calculator-on-android). Turning the disguise on sets the checks back to every 15 minutes.
+- **Disguise:** Turning on the [calculator disguise](/settings/app-lock#disguise-the-app-as-a-calculator-on-android) stops Live. Select `Live` again once you [turn the disguise off](/settings/app-lock#turn-off-the-disguise).
 - **`Stopped by Android. Tap to restart.`:** Select the line to start Live again.
 - **`Battery: restricted`:** Select **Fix** to ask Android for the battery exemption again.
 
@@ -149,4 +153,4 @@ The notification names the wallet and says what happened, such as `Received 0.01
   <img src="/images/android/widget.webp" alt="An Android launcher with the three Gerfaut widgets: Bitcoin price, Balance with masked amounts per wallet, and Network with the block height." width="360" />
 </Frame>
 
-The `Balance` widget shows `•••••` until you tick `Show balances on widgets` in the `Widgets` card of **Settings** > **Notifications**. A widget refreshes when you open Gerfaut and at each background check, and never shows an address or a transaction id.
+The `Balance` widget shows `•••••` until you tick `Show balances on widgets` in the `Widgets` card of **Settings** > **Notifications**. A widget refreshes when you open Gerfaut and at each background check, and never shows an address or a transaction id. The widgets are off while Gerfaut is disguised as a calculator.

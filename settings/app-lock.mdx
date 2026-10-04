@@ -68,7 +68,7 @@ With the disguise on, the PIN is the only way into Gerfaut. If you forget it, on
 
 <Steps>
   <Step title="Select Disguise the app">
-    It needs an app lock of the `PIN` kind. The sheet lists what changes: the launcher shows `Calculator` instead of Gerfaut, and notifications, widgets and [Live](/settings/notifications) turn off.
+    It needs an app lock of the `PIN` kind. The sheet lists what changes, starting with the launcher, which shows `Calculator` instead of Gerfaut.
   </Step>
   <Step title="Select Turn on the disguise">
     Clear your recent apps once, because Android may keep an older Gerfaut thumbnail.
@@ -78,7 +78,18 @@ With the disguise on, the PIN is the only way into Gerfaut. If you forget it, on
   </Step>
 </Steps>
 
-To drop the disguise, select the `Disguise the app` switch again, or turn the app lock off.
+Turning the disguise on changes how Gerfaut tells you about transactions:
+
+- **Notifications:** Gerfaut posts none, and clears the ones already in the notification shade.
+- **Live:** Gerfaut turns Live off and sets `Check for transactions` to `Every 15 min`. These background checks post nothing either.
+- **Widgets:** Gerfaut turns its home-screen widgets off.
+- **Gerfaut Premium:** Alerts still reach your [channels](/premium/channels), since the Premium server sends them, not your phone.
+
+Gerfaut greys out `New transactions` and `Check for transactions` in **Settings** > **Notifications** until the disguise is off, and says why under the switch.
+
+## Turn off the disguise
+
+Select the `Disguise the app` switch again, or turn the app lock off. If you used [Live](/settings/notifications#turn-on-notifications), select `Live` again under `Check for transactions` in **Settings** > **Notifications**, because Gerfaut does not turn it back on by itself.
 
 ## Start over after a forgotten PIN or password
 

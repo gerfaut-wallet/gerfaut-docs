@@ -102,11 +102,12 @@ Leave the switch off for a server you do not run. A public server would refuse m
   </Step>
 </Steps>
 
-<Accordion title="Raise the subscription limit of ElectrumX or electrs">
-  Some server software follows fewer addresses per connection than Live asks for on your own node:
+<Accordion title="Raise the subscription limit of your Electrum server">
+  Some server software lets one client follow fewer addresses than Live asks for on your own node:
 
   - **ElectrumX:** Raise `COST_SOFT_LIMIT` and `COST_HARD_LIMIT`.
   - **Blockstream's electrs:** Raise `--electrum-subscription-limit`, 10,000 by default.
   - **mempool's electrs:** Raise `--electrum-max-subscriptions`, 100 by default.
-  - **Fulcrum, and electrs by romanz:** Nothing to change.
+  - **Fulcrum:** Nothing to change with the default `max_subs_per_ip` of 75,000. Raise it if your configuration sets it below 20,000.
+  - **electrs by romanz:** Nothing to change.
 </Accordion>

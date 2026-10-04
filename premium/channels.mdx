@@ -107,10 +107,19 @@ The host of a webhook must be, and resolve to, a public address. The server refu
 
 Select the menu of a channel line, then **Send a test** or **Remove**. Removing a channel asks you to [confirm with your app lock](/premium/devices#confirm-sensitive-actions). Tests and confirmation e-mails share a limit of five an hour and 20 a day per licence key.
 
-<Note>
-A line that reads `Not delivering` has received nothing for an hour or more, or the server turned it off. The note under the line says what went wrong. Fix what the channel points at, such as a blocked bot, then select **Send a test**, or remove the channel and add it again.
-</Note>
-
 <Frame caption="The Channels card fills once the Premium licence key is active.">
   <img src="/images/android/settings-premium.webp" alt="The Premium section on Android with the Watched wallets, Channels and Recent alerts cards." width="360" />
 </Frame>
+
+## Fix a channel that is not delivering
+
+A channel line reads `Not delivering` when every delivery to the channel has failed for an hour or more. The note under the line starts with `Nothing has reached this channel since` and the date, then says what to do:
+
+- **ntfy:** Select **Send a test** to try again, or remove the channel and add it again.
+- **Telegram:** If you blocked `@GerfautAlertsBot` in Telegram, unblock it, then select **Send a test**. Otherwise, remove the channel and add it again.
+- **E-mail:** Check that the address still receives mail, then select **Send a test**, or remove the channel and add it again.
+- **Webhook:** Check that your receiver answers at its URL, then select **Send a test**, or remove the channel and add it again.
+
+Under the note, Gerfaut shows the last error from the Premium server, such as `the channel could not be reached` or `the channel answered 403`.
+
+The Premium server turns off a webhook that the internet cannot reach. Its line reads `Not delivering` too, with a note that says why. Remove the webhook, then add it again with a public address.

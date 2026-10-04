@@ -86,8 +86,6 @@ In each wallet, Live takes the addresses most likely to move first:
 
 Between wallets, Live takes the first address of each wallet, then the second, and so on. [Pinned wallets](#pin-the-wallets-live-follows-first) come first, then the wallets that hold coins. A server can also refuse some addresses, which then wait for the next sync too.
 
-When Live leaves addresses to the syncs, a note under the Live status in **Settings** > **Notifications** says how many addresses of how many wallets wait. On your own node, the note names the software the node runs and, when Gerfaut knows it, the setting that lets it follow more.
-
 <Accordion title="Use Live with an Esplora backend">
   An Esplora backend pushes changes for fewer addresses than an Electrum server:
 
@@ -98,6 +96,25 @@ When Live leaves addresses to the syncs, a note under the Live status in **Setti
 
   With 300 addresses taking turns on a mempool instance, each one waits about 100 minutes between two reads. The next sync reads all of them.
 </Accordion>
+
+## See which wallets wait for the next sync
+
+When Live cannot follow every address, a note under the Live status in **Settings** > **Notifications** says how many addresses of how many wallets wait for the next sync. Off your own node, the note points to `This is my node` in **Settings** > **Network**. On your own node, it names the setting to raise when the node refuses addresses.
+
+Each wallet then carries a badge:
+
+- **`Live`:** Live follows every address of the wallet.
+- **`Partly live`:** Live follows the addresses that come first in [its order](#make-live-follow-every-address). The others wait for the next sync.
+- **`At next sync`:** Live follows none of the addresses of the wallet. A payment to it shows at the next sync.
+
+<Tabs>
+  <Tab title="Desktop">
+    The badge shows on the `Live watch` row of the `Watch status` card, on the wallet's Overview, with a count under it such as `40 addresses wait for the next sync.` It also shows on the wallet's row in **Settings** > **Wallets**.
+  </Tab>
+  <Tab title="Android">
+    The badge shows on the wallet's card on the home screen and on its row in **Settings** > **Wallets**. On the wallet page, it sits under the sync line, next to a count such as `40 addresses wait for the next sync.` The permanent notification reads `Connected to your server · some addresses wait for syncs`.
+  </Tab>
+</Tabs>
 
 ## Pin the wallets Live follows first
 

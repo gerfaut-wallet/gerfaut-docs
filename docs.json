@@ -95,20 +95,6 @@
                   "settings/backup-and-sync",
                   "settings/notifications"
                 ]
-              },
-              {
-                "group": "Premium",
-                "icon": "gem",
-                "expanded": false,
-                "pages": [
-                  "premium/overview",
-                  "premium/get-a-key",
-                  "premium/devices",
-                  "premium/watch-a-wallet",
-                  "premium/channels",
-                  "premium/limits",
-                  "premium/delete-your-data"
-                ]
               }
             ]
           }
@@ -160,6 +146,36 @@
       }
     ]
   },
+  "redirects": [
+    {
+      "source": "/premium/overview",
+      "destination": "/settings/notifications"
+    },
+    {
+      "source": "/premium/get-a-key",
+      "destination": "/settings/notifications"
+    },
+    {
+      "source": "/premium/devices",
+      "destination": "/settings/notifications"
+    },
+    {
+      "source": "/premium/watch-a-wallet",
+      "destination": "/settings/notifications"
+    },
+    {
+      "source": "/premium/channels",
+      "destination": "/settings/notifications"
+    },
+    {
+      "source": "/premium/limits",
+      "destination": "/settings/notifications"
+    },
+    {
+      "source": "/premium/delete-your-data",
+      "destination": "/settings/notifications"
+    }
+  ],
   "footer": {
     "socials": {
       "github": "https://github.com/gerfaut-wallet/gerfaut-docs"

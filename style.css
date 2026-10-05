@@ -133,8 +133,30 @@
   margin-right: auto;
 }
 
-/* Desktop screenshots keep their card, with a hairline border. */
+/* Phone clips: the device frame is part of the video too. The video
+   gets the corner radius and the shadow of the phone screenshots. */
 
-.frame:not(:has(img[width="360"])) {
+.frame:has(video.phone-video) {
+  background-color: transparent !important;
+  padding: 0;
+}
+
+.frame:has(video.phone-video) > div.absolute {
+  display: none;
+}
+
+video.phone-video {
+  display: block;
+  width: 338px;
+  max-width: 94%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 7.75% / 3.56%;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.35);
+}
+
+/* Desktop screenshots and clips keep their card, with a hairline border. */
+
+.frame:not(:has(img[width="360"])):not(:has(video.phone-video)) {
   border: 1px solid var(--gf-border);
 }

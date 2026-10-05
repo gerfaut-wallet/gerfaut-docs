@@ -59,6 +59,10 @@ While notifications run, your backend's operator sees your addresses, how long G
     </Frame>
 
     If `Notifications are off for Gerfaut in the system settings.` shows under `New transactions`, select **Open system settings** and allow notifications. Live waits meanwhile, and starts again when you come back to Gerfaut.
+
+    <Frame caption="Gerfaut says so in amber when Android blocks its notifications, with a button to the system settings.">
+      <img src="/images/android/settings-notifications-off.webp" alt="The Notifications screen on Android with New transactions on, the amber line Notifications are off for Gerfaut in the system settings, and the Open system settings button above Check for transactions." width="360" />
+    </Frame>
   </Tab>
 </Tabs>
 
@@ -67,6 +71,10 @@ While notifications run, your backend's operator sees your addresses, how long G
 <Tabs>
   <Tab title="Desktop">
     Gerfaut notifies you within seconds while it runs, open, minimised or locked. Once you close it, nothing arrives. When you open it again, its first sync notifies you of what came in meanwhile.
+
+    <Frame caption="The hint under New transactions says when Gerfaut notifies you: while it is open, minimised or locked.">
+      <img src="/images/desktop/settings-notifications.webp" alt="The Notifications section of the desktop settings: the New transactions switch, off, the Live watch line on Off, and the Send a test notification button." />
+    </Frame>
   </Tab>
   <Tab title="Android">
     | `Check for transactions` | When a notification arrives | What stops it |
@@ -78,6 +86,10 @@ While notifications run, your backend's operator sees your addresses, how long G
     Nothing arrives while the phone is off. Once it is back on, Gerfaut announces what came in meanwhile at its first check.
 
     While Gerfaut is [disguised as a calculator](/settings/app-lock#disguise-the-app-as-a-calculator-on-android), no notification arrives, whatever the mode.
+
+    <Frame caption="Under Live, a check every 15 minutes stays scheduled for whenever Android stops Live.">
+      <img src="/images/android/settings-notifications.webp" alt="The Notifications screen on Android: New transactions on, Live under Check for transactions, the line Connected · Electrum · mempool.space, an amber note about the addresses checked at the next sync, and the Widgets card." width="360" />
+    </Frame>
   </Tab>
 </Tabs>
 
@@ -133,6 +145,14 @@ Each wallet then carries a badge:
   </Tab>
   <Tab title="Android">
     The badge shows on the wallet's card on the home screen and on its row in **Settings** > **Wallets**. On the wallet page, it sits under the sync line, next to a count such as `40 addresses wait for the next sync.` The permanent notification reads `Connected to your server · some addresses wait for syncs`.
+
+    <Frame caption="Each card on the home screen says how much of the wallet Live follows.">
+      <img src="/images/android/home-live.webp" alt="The Android home screen with two wallet cards: Cold storage with a Partly live badge and Timelock vault with a Live badge." width="360" />
+    </Frame>
+
+    <Frame caption="The wallet page adds how many addresses wait for the next sync.">
+      <img src="/images/android/wallet-live.webp" alt="The Cold storage wallet page on Android: the sync line, the Partly live badge next to 78 addresses wait for the next sync, the total balance and the Transactions tab." width="360" />
+    </Frame>
   </Tab>
 </Tabs>
 
@@ -152,6 +172,19 @@ Pinned wallets go before every other wallet. Pinning several large wallets can l
     The switches sit under `Always watch live first`. Live picks its addresses again at once. Folded, the button reads `Advanced · 1 wallet watched live first`.
   </Step>
 </Steps>
+
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="Each switch under Always watch live first puts one wallet ahead of the others.">
+      <img src="/images/desktop/settings-wallets-advanced.webp" alt="The Wallets section of the desktop settings with Advanced unfolded: Always watch live first and a switch for each of the two wallets, both off." />
+    </Frame>
+  </Tab>
+  <Tab title="Android">
+    <Frame caption="Each switch under Always watch live first puts one wallet ahead of the others.">
+      <img src="/images/android/settings-wallets-advanced.webp" alt="The Wallets screen on Android with Advanced unfolded under the wallet rows: Always watch live first and a switch for each of the two wallets, both off." width="360" />
+    </Frame>
+  </Tab>
+</Tabs>
 
 ## Keep Live running on Android
 

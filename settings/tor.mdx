@@ -46,7 +46,6 @@ Gerfaut reaches a backend whose address ends in `.onion` through Tor, with a Tor
 
 With a `.onion` backend, Gerfaut sends these requests through Tor too, and never around it:
 
-- **Premium calls:** They go through Tor as soon as one of your backends is a `.onion` address, on any network. When Tor cannot be reached, the call fails.
 - **Update check:** It goes through Tor as soon as one of your backends is a `.onion` address. When Tor cannot be reached, Gerfaut sends nothing.
 - **Notifications:** The live connection goes to the backend itself, through Tor.
 - **Price:** The fiat value and the price chart go through Tor as soon as one of your backends is a `.onion` address. When Tor cannot be reached, the price line reads `Tor is not available, so no price was asked.` Amounts then show without fiat.

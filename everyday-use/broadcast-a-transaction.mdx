@@ -37,7 +37,7 @@ Nobody can take a transaction back once the network has it. Check the outputs an
     Check the outputs, the fee and every caution under `Before you send`, as in [Check the cautions before you send](#check-the-cautions-before-you-send). When the fee reads `as the PSBT claims`, no backend confirmed the coins it spends, so check the fee on your signing device.
   </Step>
   <Step title="Select Broadcast twice">
-    **Broadcast** stays disabled until every input is signed and the pill reads `Ready to broadcast`. Select **Broadcast**, read the confirmation and select **Broadcast** again. A status card shows the transaction id and the backend that took it.
+    **Broadcast** stays disabled until every input is signed and the pill reads `Ready to broadcast`. Select **Broadcast**, read the confirmation and select **Broadcast** again. A status card then follows the transaction, and names the backend that took it on desktop.
   </Step>
 </Steps>
 
@@ -84,7 +84,7 @@ The first two cautions below mean the transaction may not pay what your signing 
 
 ## Follow the transaction
 
-The status card asks the backend about the transaction every 30 seconds until it confirms:
+The status card asks the backend about the transaction every 30 seconds until it confirms, or until six confirmations on Android:
 
 - **`Waiting to be mined`:** The transaction is in the backend's mempool. The desktop pill reads `In the mempool`.
 - **`Confirmed`:** Mined, with the number of confirmations.

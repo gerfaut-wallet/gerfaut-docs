@@ -3,13 +3,13 @@ title: "Balance and history"
 description: "Open a wallet in Gerfaut, read its balance and pending amounts, sync it, browse its transactions, hide every amount and export the history as CSV."
 ---
 
-Open a wallet to read its balance, sync it and browse its transactions. The line under the page title says when the last sync ran and which server answered.
+Open a wallet to read its balance, sync it and browse its transactions.
 
 ## Open a wallet
 
 <Tabs>
   <Tab title="Desktop">
-    Select the wallet switcher at the top of the sidebar, then a wallet. It opens on its Overview. Every page of the sidebar then shows that wallet.
+    Select the wallet switcher at the top of the sidebar, then a wallet. Overview, Transactions, UTXOs, Policy, Receive and Export then show that wallet.
   </Tab>
   <Tab title="Android">
     Select a wallet card on the home screen. The wallet page opens with the balance on top, then the `Transactions` and `UTXOs` tabs.
@@ -27,9 +27,9 @@ A note replaces the amber line when the figure is not current:
 - **`Sync failed: showing the last known balance.`:** A later sync failed.
 
 <Accordion title="Read the Overview cards on desktop">
-  Three links under the balance count the UTXOs, the transactions and the signing keys, and open the matching page. Five cards surround the balance:
+  Three links under the balance count the UTXOs and the transactions, and sum up the policy, such as `2 of 3 keys`. Each one opens the matching page. Five cards surround the balance:
 
-  - **Bitcoin price:** The price in your currency, with its change over `1D`, `1W`, `1M`, `1Y` or `Max`.
+  - **Bitcoin price:** The price in your currency, with its change over `1D`, `1W`, `1M` or `1Y`. With mempool.space as the price source, only `1M` and `1Y`.
   - **Shortcuts:** `Backup & sync` and `Manage wallets`, two links into the settings.
   - **Watch status:** `Last sync`, `Backend` and `Block`, plus `Live watch` when [Live cannot follow every address](/settings/notifications#see-which-wallets-wait-for-the-next-sync).
   - **Balance history:** The balance of the wallet over time, as a chart.
@@ -38,18 +38,16 @@ A note replaces the amber line when the figure is not current:
 
 ## Sync a wallet
 
-Gerfaut syncs your wallets when it opens. With [notifications](/settings/notifications#check-when-notifications-arrive) on, it also syncs a wallet when Live hears a transaction on it, and at each background check on Android.
+Gerfaut syncs your wallets when it opens. With [notifications](/settings/notifications#check-when-notifications-arrive) on, it also syncs a wallet when Live hears a transaction on it, or at each background check on Android while Live is off.
 
 <Tabs>
   <Tab title="Desktop">
-    Select **Sync all** at the bottom of the sidebar to sync every wallet of the network now.
+    Select **Sync all** at the bottom of the sidebar to sync every wallet of the network now. The line under the title of Transactions and UTXOs then reads `Synced 2 min ago · mempool.space`, or starts with `Sync failed`. Point at a failure to read its reason, or see `Last sync` on the Overview.
   </Tab>
   <Tab title="Android">
-    Pull the home screen down, or select the sync button in the app bar.
+    Pull the home screen down, or select the sync button in the app bar. The line on the wallet page then reads `Synced 2 min ago · mempool.space`, or starts with `Sync failed`, with the reason below.
   </Tab>
 </Tabs>
-
-The line under the page title then reads `Synced 2 min ago · mempool.space`, or `Sync failed` with the reason.
 
 <Note>
 A sync also finds a payment to an address Gerfaut never showed, up to the gap limit past the last one it revealed. For coins further out, raise the `Gap limit` in **Settings** > **Wallets**, then select **Rescan** on the wallet.
@@ -59,14 +57,18 @@ A sync also finds a payment to an address Gerfaut never showed, up to the gap li
 
 <Tabs>
   <Tab title="Desktop">
-    Select **Transactions** in the sidebar.
+    Select **Transactions** in the sidebar. Each row shows its status:
+
+    - **`Pending`:** The transaction is not in a block yet.
+    - **`1 conf` to `5 conf`:** The number of confirmations so far.
+    - **`Confirmed`:** Six confirmations or more.
 
     <Frame caption="Every transaction of the wallet is listed with its direction, date, status and value.">
       <img src="/images/desktop/transactions.webp" alt="The Transactions page on desktop: 268 rows, each with a direction, a date, a Confirmed pill and the amount in BTC and euros." />
     </Frame>
   </Tab>
   <Tab title="Android">
-    Select the `Transactions` tab of the wallet page.
+    Select the `Transactions` tab of the wallet page. A clock marks a pending transaction, and a check mark a transaction in a block.
 
     <Frame caption="The wallet page keeps the balance on top and the full history right under it.">
       <img src="/images/android/wallet.webp" alt="A wallet page on Android with the total balance, the Transactions and UTXOs tabs with their counts, the transaction rows and the Receive button." width="360" />
@@ -74,13 +76,7 @@ A sync also finds a payment to an address Gerfaut never showed, up to the gap li
   </Tab>
 </Tabs>
 
-Pending transactions come first, then the others, newest first. Each row shows its status:
-
-- **`Pending`:** The transaction is not in a block yet.
-- **`1 conf` to `5 conf`:** The number of confirmations so far.
-- **`Confirmed`:** Six confirmations or more.
-
-Select a row to [open the transaction](/everyday-use/transaction-details).
+Pending transactions come first, then the others, newest first. Select a row to [open the transaction](/everyday-use/transaction-details).
 
 ## Hide every amount
 
@@ -93,7 +89,7 @@ Select a row to [open the transaction](/everyday-use/transaction-details).
   </Tab>
 </Tabs>
 
-Every amount becomes `•••••`: balances, transactions, the chart, notifications and the Android widgets.
+Every amount becomes `•••••`, on balances, transactions, the desktop chart and the Android widgets. Notifications leave the amount out.
 
 <Tabs>
   <Tab title="Desktop">

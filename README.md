@@ -1,6 +1,6 @@
 # Gerfaut documentation
 
-User guides for [Gerfaut](https://gerfaut-wallet.com), a watch-only Bitcoin wallet. [Mintlify](https://mintlify.com) builds the site, which is meant to be served at [gerfaut-wallet.com/docs](https://gerfaut-wallet.com/docs).
+User guides for [Gerfaut](https://gerfaut-wallet.com), a watch-only bitcoin wallet. [Mintlify](https://mintlify.com) builds the site, which is meant to be served at [gerfaut-wallet.com/docs](https://gerfaut-wallet.com/docs).
 
 ## Preview locally
 

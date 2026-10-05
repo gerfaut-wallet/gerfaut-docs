@@ -18,13 +18,13 @@ Open a wallet's Policy page to see who can spend, under which condition, and whe
 
 ## Read the spending paths
 
-The page opens on one sentence that states the policy, such as `2 of 3 keys sign.` Each spending path then has a card, the primary path first:
+The page opens on a plain statement of the policy, such as `2 of 3 keys sign.` A multisig or Miniscript wallet then gets one card per spending path:
 
-- **Path:** `Primary`, `Recovery` or `Emergency`, numbered when a role appears twice.
+- **Path:** `Primary`, `Recovery`, `Emergency` or `Other`. A second primary path reads `Primary B`, and a third timed path `Recovery 3`.
 - **Condition:** The signing keys and locks the path needs, such as `Any 2 of Key A, Key B, Key C`. Each signing key is a pill with its fingerprint.
 - **Locks:** Each timelock in blocks and in estimated time, such as `52 560 blocks after the coin arrives ≈ 1 year`.
 - **State:** `Spendable now`, a countdown such as `In 1 432 blocks ≈ 10 days`, `No coins yet`, `Needs a secret` or `Locked`.
-- **Coins:** A relative lock counts per coin, such as `3 of 7 coins unlocked · next in 12 days`, with a progress bar. The pill turns amber under 30 days.
+- **Coins:** A relative lock counts per coin, such as `3 of 7 coins unlocked · next in 12 days`, with a progress bar. A countdown turns amber when less than 30 days remain.
 
 <Tabs>
   <Tab title="Desktop">
@@ -40,7 +40,7 @@ The page opens on one sentence that states the policy, such as `2 of 3 keys sign
 </Tabs>
 
 <Note>
-Estimated durations assume one block every 10 minutes and carry `≈`. A lock set in time follows the device clock. The chain can lag that clock by up to two hours.
+Estimated durations assume one block every 10 minutes and carry `≈` or `about`. A lock set in time follows the device clock. The chain can lag that clock by up to two hours.
 </Note>
 
 ## Check the signing keys and the descriptor

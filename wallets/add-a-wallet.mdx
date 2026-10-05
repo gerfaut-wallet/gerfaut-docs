@@ -11,7 +11,7 @@ Give Gerfaut the public side of your wallet: the descriptor, extended public key
   <Step title="Open the add dialog">
     <Tabs>
       <Tab title="Desktop">
-        Select the wallet switcher at the top of the sidebar, then **Add a wallet**.
+        Select the wallet switcher at the top of the sidebar, then **Add a wallet**. Before your first wallet, the sidebar shows **Add a wallet** in its place.
       </Tab>
       <Tab title="Android">
         Select **Add a wallet** at the bottom of the home screen.
@@ -33,14 +33,14 @@ Give Gerfaut the public side of your wallet: the descriptor, extended public key
     Compare `First address` with the first address your signing device or wallet software shows. A different address means Gerfaut watches another wallet.
     </Warning>
 
-    For an extended public key, check the `Script type` too: see [Wallet types](/wallets/wallet-types#pick-the-script-type-of-an-extended-public-key).
+    For an extended public key, check the script type too: see [Wallet types](/wallets/wallet-types#pick-the-script-type-of-an-extended-public-key).
 
     When a QR code names no receive or change path, Gerfaut shows `This QR code carries no receive or change path, so Gerfaut assumes the usual 0/* and 1/*. Compare the first address with your signer.` If `First address` differs, select **Back**. Then paste or import the descriptor your signing device or wallet software exports, which names its paths.
 
     <Tabs>
       <Tab title="Desktop">
         <Frame caption="Gerfaut recognizes the format and derives the first address to compare before it stores anything.">
-          <img src="/images/desktop/add-wallet.webp" alt="The Add a wallet dialog on desktop after pasting an extended public key: the Recognized as card with the first address, the SLIP-132 notice, the Script type list, the Name and Network fields and the Add wallet button." />
+          <img src="/images/desktop/add-wallet.webp" alt="The Add a wallet dialog on desktop after pasting an extended public key: the Recognized as card with the first address, the SLIP-132 notice, the Advanced button, the Name and Network fields and the Add wallet button." />
         </Frame>
       </Tab>
       <Tab title="Android">
@@ -77,7 +77,7 @@ Give Gerfaut the public side of your wallet: the descriptor, extended public key
 Open **Settings** > **Wallets**. Each wallet has its own row:
 
 - **Rename:** Select **Rename**, enter the new name and select **Save name**. Selecting the wallet name at the top of its page does the same.
-- **Icon:** Pick one of seven icons, such as `Key`, `Snowflake` or `Pin`.
+- **Icon:** Pick one of seven icons, such as a key, a snowflake or a map pin.
 - **Rescan:** Read the wallet again from its first address, change included, up to the `Gap limit` at the top of the section. Raise that limit first for coins further out. Gerfaut then shows the result, such as `Rescanned · 2 new transactions`.
 - **Remove:** Stop watching the wallet once you confirm with **Remove wallet**. Nothing moves on-chain.
 - **Reorder:** Drag a wallet by its handle, or hold a wallet card on the Android home screen and drag it.

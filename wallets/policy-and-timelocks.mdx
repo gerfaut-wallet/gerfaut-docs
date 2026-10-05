@@ -48,3 +48,16 @@ Estimated durations assume one block every 10 minutes and carry `≈`. A lock se
 The `Keys` section lists each signing key with its label, fingerprint, origin path and extended public key.
 
 Open `Descriptor` to copy the descriptor, written as one `/<0;1>/*` descriptor when the wallet has a receive and a change branch. Gerfaut clears it from the clipboard after one minute. Its policy is written out below, such as `or(pk(Key A),and(pk(Key B),older(52560)))`.
+
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="The page shows one card per spending path, then the signing keys and the descriptor to copy.">
+      <video autoPlay muted loop playsInline preload="metadata" src="/videos/wallets/read-a-policy-desktop.mp4" aria-label="Reading a policy on desktop: Policy in the sidebar, the Primary and Recovery cards, the Keys table, then Descriptor opened on the descriptor and its normalized policy." />
+    </Frame>
+  </Tab>
+  <Tab title="Android">
+    <Frame caption="The page shows one card per spending path, then the signing keys and the descriptor to copy.">
+      <video autoPlay muted loop playsInline preload="metadata" className="phone-video" src="/videos/wallets/read-a-policy-android.mp4" aria-label="Reading a policy on Android: More, Policy, the Primary and Recovery cards, the Keys list, then Descriptor opened on the descriptor and its policy." />
+    </Frame>
+  </Tab>
+</Tabs>

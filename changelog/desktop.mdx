@@ -42,22 +42,11 @@ Gerfaut watches bitcoin wallets it cannot spend from. There is no key generation
 - Notifications are posted while Gerfaut is locked too. A notification posted then names no wallet and no amount, only that a transaction appeared or confirmed and whether it is outgoing.
 - A transaction is announced once when it appears and once when it confirms, whether the live watch or a sync you asked for saw it first, and across restarts.
 - A `Send a test notification` button, the one reliable way to know whether the system shows them.
-- A Premium section in Settings, for the alert service at gerfaut-wallet.com. Enter a Premium licence key, and Gerfaut verifies the licence offline from the certificate the vault holds. It shows whether the licence is active with no network at all.
-- Pick which wallets the server watches. Each one is agreed to explicitly, and the first scan shows as pending until the server has done it. A wallet removed from Gerfaut is unregistered from the server, at the next heartbeat if the server is out of reach. Wallets the server still watches for this account but this device no longer holds are listed, so they can be unregistered too.
-- Premium can watch a wallet that is a single address. The question asked before it leaves the device says `The address` for these wallets.
-- A wallet the Premium server refuses to watch says why, in the server's own sentence, under its row in `Watched wallets` and in `Recent alerts`. When the server asks to wait, the note says for how long.
-- The switch that takes a wallet off the server asks first, and so does removing a wallet the server watches. The server deletes the wallet's alert history along with it, and the confirmation says so.
-- Four kinds of channel: ntfy, Telegram, e-mail and webhook. An e-mail address receives nothing until its owner types back the six-digit code it was sent. A Telegram row names the chat it is linked to. A channel the server turned off shows as not delivering, with the reason, and a test is only offered on a channel the server would deliver to.
-- The recent alerts, and a banner on the Overview when the watch has gone offline.
-- Renewing opens the site with the licence key on the clipboard, never in the address bar.
-- Forget the licence key on this device, or delete the account on the server. The confirmation says everything that goes, the paid time included, and the button that cannot be undone is the red one.
-- A call that fails leaves a note under its card in the server's own words, never a toast. When the chain backend goes through Tor, these calls do too, and a Tor that cannot be reached is named as such.
-- Premium controls and the Premium settings entry use the Premium colour, so what belongs to the paid service reads as such at a glance.
 
 ### Keeping it yours
 
 - The wallet list is stored encrypted. Its encryption key lives in the credential store of the operating system: the Windows Credential Manager, the macOS Keychain or the Secret Service on Linux.
-- Lock Gerfaut with a PIN or a password. While it is locked, the vault answers nothing, and the window holds no descriptor, no balance and no licence key until a secret goes through. Unlocking lands on the same vault it left, on the same network.
+- Lock Gerfaut with a PIN or a password. While it is locked, the vault answers nothing, and the window holds no descriptor and no balance until a secret goes through. Unlocking lands on the same vault it left, on the same network.
 - Export every wallet you watch into a backup sealed with a password of your own, as a file or as an animated QR code. The same backup restores on another machine or on the phone. It holds descriptors and addresses, never a private key or a seed. The file can be copied and guessed offline, and Gerfaut says so where you pick the password.
 - Gerfaut says "private key" wherever it means one: on the Backup & sync card, the welcome tour, the empty home page and the Receive page. A backup does hold public keys, inside its descriptors.
 - Restoring a backup that carries node settings shows what applying them would put in place: the server every wallet of a network would then talk to, and the certificates it would pin. A backup written by a newer Gerfaut is refused by name, not mistaken for a wrong password.

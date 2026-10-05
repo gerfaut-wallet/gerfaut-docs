@@ -14,6 +14,19 @@ Point Gerfaut at your own node to keep your addresses to yourself, or stay on th
 
 In the `Network` card, select `Mainnet`, `Signet`, `Testnet 4` or `Regtest`. Gerfaut shows the wallets of that network only, and names it in a badge unless it is mainnet. Regtest has no public server, so point it at your own node.
 
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="Each network keeps its own backend: a public server, or an Esplora or Electrum instance on your own node.">
+      <img src="/images/desktop/settings-node.webp" alt="The Network section of the desktop settings: the network picker with Signet selected, the Backend card with Public API and blockstream.info as the server, My own Esplora, My own Electrum server and Save backend." />
+    </Frame>
+  </Tab>
+  <Tab title="Android">
+    <Frame caption="Each network keeps its own backend: a public server, or an Esplora or Electrum instance on your own node.">
+      <img src="/images/android/settings-node.webp" alt="The Network section on Android: the network picker with Signet selected and the Backend card with Public API, My own Esplora, My own Electrum server, the Server list on Automatic and Save backend." width="360" />
+    </Frame>
+  </Tab>
+</Tabs>
+
 ## Use the public servers
 
 <Warning>
@@ -24,13 +37,13 @@ The `Backend` card opens on `Public API`, with nothing to set up. Under `Server`
 
 <Tabs>
   <Tab title="Desktop">
-    <Frame caption="Each network keeps its own backend: a public server, or an Esplora or Electrum instance on your own node.">
-      <img src="/images/desktop/settings-node.webp" alt="The Network section of the desktop settings: the network picker with Signet selected, the Backend card with Public API and blockstream.info as the server, My own Esplora, My own Electrum server and Save backend." />
+    <Frame caption="Picking one server makes it the only one Gerfaut asks on that network.">
+      <video autoPlay muted loop playsInline preload="metadata" src="/videos/settings/pick-a-backend-desktop.mp4" aria-label="Picking a public server on desktop: the Server list on Automatic, mempool.space, then Save backend." />
     </Frame>
   </Tab>
   <Tab title="Android">
-    <Frame caption="Each network keeps its own backend: a public server, or an Esplora or Electrum instance on your own node.">
-      <img src="/images/android/settings-node.webp" alt="The Network section on Android: the network picker with Signet selected and the Backend card with Public API, My own Esplora, My own Electrum server, the Server list on Automatic and Save backend." width="360" />
+    <Frame caption="Picking one server makes it the only one Gerfaut asks on that network.">
+      <video autoPlay muted loop playsInline preload="metadata" className="phone-video" src="/videos/settings/pick-a-backend-android.mp4" aria-label="Picking a public server on Android: the Server list on Automatic, mempool.space, then Save backend and the Setting saved note." />
     </Frame>
   </Tab>
 </Tabs>

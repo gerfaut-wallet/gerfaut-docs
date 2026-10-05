@@ -87,14 +87,14 @@ In each wallet, Live takes the addresses most likely to move first:
 Between wallets, Live takes the first address of each wallet, then the second, and so on. [Pinned wallets](#pin-the-wallets-live-follows-first) come first, then the wallets that hold coins. A server can also refuse some addresses, which then wait for the next sync too.
 
 <Accordion title="Use Live with an Esplora backend">
-  An Esplora backend pushes changes for fewer addresses than an Electrum server:
+  An Esplora backend pushes changes for fewer addresses than an Electrum server. Each minute, Gerfaut reads a few of the other addresses, in turn:
 
-  - **A mempool instance:** A public instance, such as mempool.space, pushes changes for ten addresses per connection on mainnet, and several hundred on signet and testnet4. Gerfaut reads the others three a minute, in turn.
-  - **Another Esplora backend:** It pushes nothing. Gerfaut reads three addresses a minute, the first two of the order above every time and the others in turn.
-  - **Your own node:** Gerfaut reads 30 addresses a minute instead of three.
+  - **A mempool instance:** A public instance, such as mempool.space, pushes changes for ten addresses per connection on mainnet, and more than 1,000 on signet and testnet4. Gerfaut reads three of the others each minute. With N addresses taking turns, each one is read about every N/3 minutes.
+  - **Another Esplora backend:** It pushes nothing. Each minute, Gerfaut reads the two addresses Live takes first, and one of the others. With N addresses taking turns, each one is read about every N minutes.
+  - **Your own node:** Gerfaut reads 30 addresses a minute instead of three, so each one about every N/30 minutes on a mempool instance. On another Esplora backend, the first two still come every minute and 28 take turns, so about every N/28 minutes.
   - **A server that limits requests:** Each time it does, Gerfaut waits twice as long between two reads, up to ten minutes. It goes back to once a minute half an hour after the last limit.
 
-  With 300 addresses taking turns on a mempool instance, each one waits about 100 minutes between two reads. The next sync reads all of them.
+  With 300 addresses taking turns, each one waits about 100 minutes between two reads on a mempool instance, and about 300 minutes on another Esplora backend. The next sync reads all of them.
 </Accordion>
 
 ## See which wallets wait for the next sync

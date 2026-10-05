@@ -7,7 +7,7 @@ Accept the certificate of your own Electrum server once, by its fingerprint. Ger
 
 ## Accept your server's certificate
 
-Gerfaut opens `This server signs its own certificate` when you save the backend, or on the first connection.
+Gerfaut opens `This server signs its own certificate` when you select **Save backend** and the server answers. Until you accept the certificate, syncs to that server fail. A `.onion` server skips this step.
 
 <Steps>
   <Step title="Print the fingerprint on your server">
@@ -40,7 +40,7 @@ Gerfaut opens `This server signs its own certificate` when you save the backend,
 
 ## Decide when a certificate changes
 
-When the host presents another certificate, Gerfaut stops and opens `This server's certificate changed`, with the fingerprints `Accepted before` and `Presented now`.
+When the host presents another certificate, syncs fail with `the server's certificate changed`. Select **Save backend** in **Settings** > **Network** to open `This server's certificate changed`, with the fingerprints `Accepted before` and `Presented now`.
 
 <Warning>
 Either whoever runs the server replaced the certificate, or something answers in its place and reads the addresses you watch. Ask whoever runs the server before you accept.
@@ -62,4 +62,4 @@ Either whoever runs the server replaced the certificate, or something answers in
 
 ## Forget a certificate
 
-In **Settings** > **Network**, the `Trusted certificates` card lists each host you accepted. Select **Forget** on a line and confirm. Gerfaut asks again on the next connection to that host.
+In **Settings** > **Network**, the `Trusted certificates` card lists each host you accepted. Select **Forget** on a line and confirm. Syncs to that host then fail until you accept its certificate again with **Save backend**.

@@ -33,7 +33,7 @@ In the `Network` card, select `Mainnet`, `Signet`, `Testnet 4` or `Regtest`. Ger
 The operator of the public server that answers sees the addresses of your wallets.
 </Warning>
 
-The `Backend` card opens on `Public API`, with nothing to set up. Under `Server`, keep `Automatic` to let Gerfaut try the public servers of the network in turn, or select one operator, such as `mempool.space`, to ask only that one.
+The backend card, such as `Backend · Signet`, opens on `Public API`, with nothing to set up. Under `Server`, keep `Automatic` to let Gerfaut try the public Esplora servers of the network in turn. Select one operator, such as `mempool.space`, to ask only that one.
 
 <Tabs>
   <Tab title="Desktop">
@@ -50,7 +50,7 @@ The `Backend` card opens on `Public API`, with nothing to set up. Under `Server`
 
 <AccordionGroup>
   <Accordion title="Sync a wallet with tens of thousands of transactions">
-    The first sync of a very large wallet, or of one with many large inscriptions, can fail on an Esplora backend. The line under the page title then reads `Sync failed` with a reason such as:
+    The first sync of a very large wallet, or of one with many large inscriptions, can fail on an Esplora backend. Gerfaut then reports `Sync failed` with a reason such as:
 
     - `the server sent more than 256 MiB of transactions for one sync`
     - `the server sent an answer longer than 64 MiB`
@@ -91,7 +91,7 @@ Leave `TLS` on. Without it, anyone on the path between your device and the serve
     Enter the `Host`, such as `node.example.org` or a `.onion` address reached [through Tor](/settings/tor), and the `Port`, `50002` by default. **Scan** reads the QR code your node shows for its Electrum app and fills both.
   </Step>
   <Step title="Select Save backend">
-    A server that signs its own certificate shows it to you before Gerfaut saves anything. See [Certificates](/settings/certificates).
+    If the server answers and signs its own certificate, Gerfaut shows the certificate before it saves anything. See [Certificates](/settings/certificates).
   </Step>
 </Steps>
 
@@ -137,5 +137,5 @@ Leave the switch off for a server you do not run. A public server would refuse m
   - **Fulcrum:** Nothing to change with the default `max_subs_per_ip` of 75,000. Raise it if your configuration sets it below 20,000.
   - **electrs by romanz:** Nothing to change.
 
-  Then turn Live off and on again, so that Gerfaut asks your node for every address at once. After a cut from ElectrumX, it [never asks again on its own](/settings/notifications#make-live-follow-every-address).
+  Then turn Live off and on again, with the `New transactions` switch on desktop, so that Gerfaut asks your node for every address at once. After a cut from ElectrumX, it [asks for fewer addresses until Live starts over](/settings/notifications#make-live-follow-every-address).
 </Accordion>

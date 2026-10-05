@@ -18,7 +18,7 @@ Gerfaut reaches a backend whose address ends in `.onion` through Tor, with a Tor
     </Frame>
   </Tab>
   <Tab title="Android">
-    - **`Automatic`:** The built-in Tor. This is the default, because any app on a phone can answer on the Tor port.
+    - **`Automatic`:** Only the built-in Tor, because any app on a phone can answer on the Tor port. This is the default.
     - **`System Tor`:** Only a Tor app running on the phone, such as Orbot.
     - **`Built-in`:** Only the built-in Tor.
 
@@ -35,7 +35,7 @@ Gerfaut reaches a backend whose address ends in `.onion` through Tor, with a Tor
     Follow [Backend](/settings/backends-and-your-own-node) and enter the `.onion` address of your node.
   </Step>
   <Step title="Select Test the connection">
-    The built-in Tor takes up to about a minute and a half to start the first time. Meanwhile, the card reads `Starting the built-in Tor…` on desktop or `Starting…` on Android, with a percentage.
+    The built-in Tor takes up to about a minute and a half to start the first time. Meanwhile, the card reads `Starting the built-in Tor…` with a percentage on desktop, and the button reads `Connecting…` on Android.
   </Step>
   <Step title="Read the result">
     The card reads `Reached through the built-in Tor.` or `Reached through the system Tor.`, or says what failed.
@@ -61,5 +61,5 @@ With a `.onion` backend, Gerfaut sends these requests through Tor too, and never
 
 - **Update check:** It goes through Tor as soon as one of your backends is a `.onion` address. When Tor cannot be reached, Gerfaut sends nothing.
 - **Notifications:** The live connection goes to the backend itself, through Tor.
-- **Price:** The fiat value and the price chart go through Tor as soon as one of your backends is a `.onion` address. When Tor cannot be reached, the price line reads `Tor is not available, so no price was asked.` Amounts then show without fiat.
+- **Price:** The fiat value, and the price chart on desktop, go through Tor as soon as one of your backends is a `.onion` address. When Tor cannot be reached, the price line reads `Tor is not available, so no price was asked.` Amounts then show without fiat.
 - **Price widget on Android:** It never starts Tor for the price alone. While Gerfaut is closed, it fetches the price only through a Tor that already runs, such as the built-in one a sync started, or Orbot under `System Tor`. Otherwise it keeps the last price, with its date.

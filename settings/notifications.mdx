@@ -90,9 +90,9 @@ Between wallets, Live takes the first address of each wallet, then the second, a
   <Accordion title="Use Live with an Esplora backend">
     An Esplora backend pushes changes for fewer addresses than an Electrum server. Each minute, Gerfaut reads a few of the other addresses, in turn:
 
-    - **A mempool instance:** A public instance, such as mempool.space, pushes changes for ten addresses per connection on mainnet, and more than 1,000 on signet and testnet4. Gerfaut reads three of the others each minute. With N addresses taking turns, each one is read about every N/3 minutes.
-    - **Another Esplora backend:** It pushes nothing. Each minute, Gerfaut reads the two addresses Live takes first, and one of the others. With N addresses taking turns, each one is read about every N minutes.
-    - **Your own node:** Gerfaut reads 30 addresses a minute instead of three, so each one about every N/30 minutes on a mempool instance. On another Esplora backend, the first two still come every minute and 28 take turns, so about every N/28 minutes.
+    - **A mempool instance:** A public instance, such as mempool.space, pushes changes for ten addresses per connection on mainnet, and more than 1,000 on signet and testnet4. Gerfaut reads three of the others each minute. With N addresses taking turns, it reads each one about every N/3 minutes.
+    - **Another Esplora backend:** It pushes nothing. Each minute, Gerfaut reads the two addresses Live takes first, and one of the others. With N addresses taking turns, it reads each one about every N minutes.
+    - **Your own node:** Gerfaut reads 30 addresses a minute instead of three. On a mempool instance, it reads each one about every N/30 minutes. On another Esplora backend, it reads the first two every minute and each of the others about every N/28 minutes.
     - **A server that limits requests:** Each time it does, Gerfaut waits twice as long between two reads, up to ten minutes. It goes back to once a minute half an hour after the last limit.
 
     With 300 addresses taking turns, each one waits about 100 minutes between two reads on a mempool instance, and about 300 minutes on another Esplora backend. The next sync reads all of them.
@@ -182,6 +182,6 @@ The notification names the wallet and says what happened, such as `Received 0.01
 
 The `Bitcoin price` widget says when Gerfaut fetched the price, such as `as of 09:41`. A price from an earlier day shows its date too, such as `as of Oct 03, 09:41`, or `as of Oct 03` when the widget is too narrow for the time. With a `.onion` backend, the widget [never starts Tor](/settings/tor#route-other-requests-through-tor) for the price alone.
 
-The `Balance` widget shows `•••••` until you select the `Show balances on widgets` switch in the `Widgets` card of **Settings** > **Notifications**. While an [app lock](/settings/app-lock) is set, it shows no wallet name and no amount, and the switch is greyed out.
+The `Balance` widget shows `•••••` until you select the `Show balances on widgets` switch in the `Widgets` card of **Settings** > **Notifications**. While an [app lock](/settings/app-lock) is set, it shows no wallet name and no amount. Gerfaut greys out the switch until you remove the lock.
 
 A widget refreshes when you open Gerfaut and at each background check, and never shows an address or a transaction id. The widgets are off while Gerfaut is disguised as a calculator.

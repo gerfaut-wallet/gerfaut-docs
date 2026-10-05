@@ -1,11 +1,9 @@
 ---
 title: "FAQ"
-description: "Get short answers to the questions people ask most about Gerfaut, its privacy, its backups and Gerfaut Premium, each with the page that goes further."
+description: "Get short answers to the questions people ask most about Gerfaut, its privacy, its notifications and its backups, each with the page that goes further."
 ---
 
 Short answers, each with the page that goes further.
-
-## The apps
 
 <AccordionGroup>
   <Accordion title="Can Gerfaut spend my bitcoin?">
@@ -17,8 +15,8 @@ Short answers, each with the page that goes further.
   <Accordion title="Does it work with my signing device?">
     Yes, if the device or its companion software exports the public side of the wallet as text, a file or a QR code. See [Add a wallet](/wallets/add-a-wallet).
   </Accordion>
-  <Accordion title="Do I need Gerfaut Premium to get notified?">
-    No. Gerfaut notifies you itself, on desktop while it is open and on Android in the background. Gerfaut Premium watches while your devices are off, warns you before a timelock opens and reaches ntfy, Telegram, e-mail or a webhook. See [Check when notifications arrive](/settings/notifications#check-when-notifications-arrive).
+  <Accordion title="Does Gerfaut notify me while it is closed?">
+    Yes on Android, where Live and the background checks keep running after you leave Gerfaut, until you force-stop it. On desktop, Gerfaut notifies you only while it runs, minimised or locked included. Nothing arrives while your device is off. See [Check when notifications arrive](/settings/notifications#check-when-notifications-arrive).
   </Accordion>
   <Accordion title="What does the public server see?">
     The addresses of your wallets and your IP address, plus how long Gerfaut stays connected while notifications are on. Point Gerfaut at your own node to keep both to yourself. See [Backend](/settings/backends-and-your-own-node).
@@ -47,38 +45,6 @@ Short answers, each with the page that goes further.
   </Accordion>
   <Accordion title="Why verify a receive address on my signing device?">
     A compromised computer or phone could show you an address that is not yours. Your signing device is the one place that can confirm it. See [Receive](/everyday-use/receive-addresses).
-  </Accordion>
-</AccordionGroup>
-
-## Gerfaut Premium
-
-<AccordionGroup>
-  <Accordion title="I lost my Premium licence key. Can you find it?">
-    No, the Premium server stores only a hash of it. Select **Change key** on a device that still has [full access](/premium/devices#change-the-licence-key) to get a new one. Without such a device, the paid time is lost.
-  </Accordion>
-  <Accordion title="Someone else has my Premium licence key. What can they do?">
-    Connect a device, which the Premium server announces at once on all your channels. That device sees nothing and changes nothing for ten days, unless you approve it. [Refuse it, then change your licence key](/premium/devices#recover-from-a-stolen-licence-key).
-  </Accordion>
-  <Accordion title="Can I use one Premium licence key on several devices?">
-    Yes, on up to ten. The first device gets full access at once. [Approve each later one](/premium/devices#approve-a-new-device) from a device with full access, or it waits ten days.
-  </Accordion>
-  <Accordion title="What exactly does the Premium server see?">
-    What a watch-only wallet sees: the descriptors and addresses you switch on, the coins and transactions on them, and the channels you add. It never sees a private key, keeps no IP address, and keeps an e-mail address only as a channel. See [Gerfaut Premium](/premium/overview).
-  </Accordion>
-  <Accordion title="Can I cancel a Premium licence key, or get a refund?">
-    Prepaid time runs out on its own, so there is nothing to cancel. Payments are final, except in the cases the [Terms of Sale](https://gerfaut-wallet.com/terms) list. See [Get a licence](/premium/get-a-key).
-  </Accordion>
-  <Accordion title="Which wallets can Gerfaut Premium watch?">
-    Any mainnet wallet in Gerfaut, single address included, that holds 5,000 coins or fewer. See [Watch a wallet](/premium/watch-a-wallet).
-  </Accordion>
-  <Accordion title="What are the limits of a Premium licence key?">
-    Those a person can meet: 21 wallets, ten devices and 30 wallets switched on or changed an hour. Messages stop at five tests or confirmation e-mails an hour or 20 a day, and at 50 e-mail alerts a day. See [Limits](/premium/limits).
-  </Accordion>
-  <Accordion title="Can a webhook point at a machine on my own network?">
-    Only if the internet can reach it, because the Premium server refuses a private or local address. Give the receiver a public name, or use ntfy instead. See [Channels](/premium/channels).
-  </Accordion>
-  <Accordion title="Does Gerfaut Premium work over Tor?">
-    Yes. As soon as one of your backends is a `.onion` address, on any network, the calls to the Premium server go through Tor too. See [Tor](/settings/tor#route-other-requests-through-tor).
   </Accordion>
 </AccordionGroup>
 

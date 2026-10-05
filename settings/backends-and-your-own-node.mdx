@@ -110,4 +110,6 @@ Leave the switch off for a server you do not run. A public server would refuse m
   - **mempool's electrs:** Raise `--electrum-max-subscriptions`, 100 by default.
   - **Fulcrum:** Nothing to change with the default `max_subs_per_ip` of 75,000. Raise it if your configuration sets it below 20,000.
   - **electrs by romanz:** Nothing to change.
+
+  Then turn Live off and on again, so that Gerfaut asks your node for every address at once. After a cut from ElectrumX, it [never asks again on its own](/settings/notifications#make-live-follow-every-address).
 </Accordion>

@@ -122,7 +122,8 @@ Between wallets, Live takes the first address of each wallet, then the second, a
   <Accordion title="Use Live with a server that refuses addresses">
     An Electrum server may take fewer addresses than Live asks it to follow. The others wait for the next sync, until Gerfaut asks that server for all of them again:
 
-    - **After a refusal:** Gerfaut asks again a day later, or an hour later when the server took none.
+    - **After a limit on the number of addresses:** Gerfaut asks again a day later, or an hour later when the server took none.
+    - **After the server refuses one address:** A server can turn down a single address, such as one with a history too long for it. Unlike a limit on the number of addresses, this refusal still holds a day later. Gerfaut asks for that address again only once you change the backend in **Settings** > **Network**, or turn Live off and on again.
     - **After ElectrumX cuts Live off:** ElectrumX does so when the list costs it too much. Gerfaut then asks it for fewer addresses until you change the backend in **Settings** > **Network**, or turn Live off and on again.
 
     On your own node, [raise the subscription limit](/settings/backends-and-your-own-node#raise-the-subscription-limit-of-your-electrum-server) to follow every address.

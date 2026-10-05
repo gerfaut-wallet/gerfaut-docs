@@ -3,7 +3,7 @@ title: "Notifications"
 description: "Get notified when a transaction reaches the mempool and when it confirms, see when each check runs, let Live follow every address and add a widget."
 ---
 
-Gerfaut sends these notifications on its own, with no Gerfaut server in between. It watches the wallets of the network selected in **Settings** > **Network**.
+Gerfaut posts these notifications itself, from your device. It watches the wallets of the network selected in **Settings** > **Network**.
 
 <Warning>
 While notifications run, your backend's operator sees your addresses, how long Gerfaut stays connected and each IP address it connects from. With the `Automatic` server, Gerfaut first connects to the Electrum server of an operator it already syncs with, Blockstream on mainnet. Point Gerfaut at [your own node](/settings/backends-and-your-own-node) to keep all of it to yourself.
@@ -67,7 +67,9 @@ While notifications run, your backend's operator sees your addresses, how long G
     | `Every 15 min`, `Every hour`, `Every 6 hours` | At the next background check, which Android runs at most every 15 minutes, once the phone is online and its battery is not low. | Force-stopping Gerfaut, until you open it again. |
     | `Off` | When Gerfaut syncs while open, at launch or when you sync by hand. | Leaving Gerfaut. |
 
-    While Gerfaut is [disguised as a calculator](/settings/app-lock#disguise-the-app-as-a-calculator-on-android), no notification arrives, whatever the mode. Gerfaut Premium alerts still reach your [channels](/premium/channels).
+    Nothing arrives while the phone is off. Once it is back on, Gerfaut announces what came in meanwhile at its first check.
+
+    While Gerfaut is [disguised as a calculator](/settings/app-lock#disguise-the-app-as-a-calculator-on-android), no notification arrives, whatever the mode.
   </Tab>
 </Tabs>
 

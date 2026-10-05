@@ -9,10 +9,10 @@ Lock Gerfaut so that someone at your unlocked computer or phone sees nothing of 
 
 <Steps>
   <Step title="Select the App lock switch">
-    Open **Settings** > **Security**. The dialog `Turn on the app lock` opens.
+    Open **Settings** > **Security**. Gerfaut opens `Turn on the app lock`.
   </Step>
   <Step title="Pick PIN or Password">
-    Under `Kind`, select `PIN` (four to 12 digits) or `Password` (at least eight characters). Only a PIN opens the calculator disguise on Android.
+    Select `PIN` (four to 12 digits) or `Password` (at least eight characters). Only a PIN opens the calculator disguise on Android.
   </Step>
   <Step title="Enter the secret twice">
     Enter `New PIN` or `New password`, then `Confirm`, and select **Turn on**. Gerfaut asks for the secret each time it opens.
@@ -26,7 +26,7 @@ Lock Gerfaut so that someone at your unlocked computer or phone sees nothing of 
     </Frame>
   </Tab>
   <Tab title="Android">
-    <Frame caption="Gerfaut asks for the secret at every open and every return from the background.">
+    <Frame caption="Once the lock is on, Security adds Change PIN, Lock now and the calculator disguise.">
       <video autoPlay muted loop playsInline preload="metadata" className="phone-video" src="/videos/settings/turn-on-app-lock-android.mp4" aria-label="Turning on the app lock on Android: the App lock switch, PIN, the PIN entered twice, Turn on, then the switch on with Change PIN, Lock now and Disguise the app under it." />
     </Frame>
   </Tab>
@@ -39,7 +39,7 @@ Lock Gerfaut so that someone at your unlocked computer or phone sees nothing of 
     Press `Ctrl+L`, select **Lock** at the bottom of the sidebar, or select **Lock now** in **Settings** > **Security**. Otherwise Gerfaut stays unlocked until you close it.
   </Tab>
   <Tab title="Android">
-    Gerfaut locks each time it goes to the background. Select **Lock now** in **Settings** > **Security** to lock it by hand. While a lock is set, Android keeps Gerfaut out of screenshots and shows a blank card in the recent apps.
+    Gerfaut asks for the secret each time you come back to it, except from a file picker, a save dialog or a share sheet it opened less than ten minutes before. Select **Lock now** in **Settings** > **Security** to lock it by hand. While a lock is set, Android keeps Gerfaut out of screenshots and shows a blank card in the recent apps, or the calculator under the disguise.
   </Tab>
 </Tabs>
 
@@ -74,7 +74,7 @@ With the disguise on, the PIN is the only way into Gerfaut. If you forget it, on
     Clear your recent apps once, because Android may keep an older Gerfaut thumbnail.
   </Step>
   <Step title="Open Gerfaut from the calculator">
-    Type your PIN on the calculator and press `=`. A wrong PIN gives a number like any calculator, with no hint.
+    Type your PIN on the calculator and press `=`. A wrong PIN gives a number like any calculator, with no hint. After three wrong PINs, the right one also gives a number until the [wait](#lock-and-unlock) ends.
   </Step>
 </Steps>
 
@@ -85,7 +85,7 @@ With the disguise on, the PIN is the only way into Gerfaut. If you forget it, on
 Turning the disguise on changes how Gerfaut tells you about transactions:
 
 - **Notifications:** Gerfaut posts none, and clears the ones already in the notification shade.
-- **Live:** Gerfaut turns Live off and sets `Check for transactions` to `Every 15 min`. These background checks post nothing either.
+- **Live:** If Live is on, Gerfaut turns it off and sets `Check for transactions` to `Every 15 min`. Background checks post nothing either.
 - **Widgets:** Gerfaut removes its widgets from your home screen.
 
 In **Settings** > **Notifications**, `New transactions` shows off and both settings stay greyed out while the disguise is on. The line under the switch says why. Once you turn the disguise off, `New transactions` is back as you left it.

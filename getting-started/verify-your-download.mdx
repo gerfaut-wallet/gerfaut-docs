@@ -63,7 +63,7 @@ RWTz3c4gUmglCX5Uvjthigz1ts3TS3ZSdhRNpFgOJRW/Wr4XjGlqTR3O
 
 ## Rebuild it yourself
 
-Rebuild the Windows installer, the Linux packages or the Android APKs of a release from its source, on a Linux machine, and compare them with the published files. Replace `v0.1.0` with the tag of your release.
+Rebuild the Windows installer, the macOS application, the Linux packages or the Android APKs of a release from its source, on a Linux machine, and compare them with the published files. Replace `v0.1.0` with the tag of your release.
 
 <Tabs>
   <Tab title="Windows">
@@ -82,6 +82,39 @@ Rebuild the Windows installer, the Linux packages or the Android APKs of a relea
       </Step>
       <Step title="Read the verdict">
         The script builds `Gerfaut_<version>_x64-setup.exe`, downloads the published one and ends on `==> VERIFIED` when the two are identical, byte for byte.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="macOS">
+    <Steps>
+      <Step title="Prepare a Linux machine">
+        Install Docker or Podman, git and curl. Plan for 8 GB of memory for the container engine and about 20 minutes per build.
+      </Step>
+      <Step title="Download Xcode 26.1.1 from Apple">
+        Sign in with your Apple ID on [Apple's download page](https://developer.apple.com/download/all/?q=Xcode%2026.1.1) and take `Xcode_26.1.1_Apple_silicon.xip`. Check the file:
+
+        ```bash
+        sha256sum Xcode_26.1.1_Apple_silicon.xip
+        ```
+
+        The hash must be `f4c65b01e2807372b61553c71036dbfef492d7c79d4c380a5afb61aa1018e555`.
+      </Step>
+      <Step title="Make the Apple SDK">
+        ```bash
+        git clone https://github.com/gerfaut-wallet/gerfaut-desktop
+        gerfaut-desktop/reproducible/make-apple-sdk.sh Xcode_26.1.1_Apple_silicon.xip
+        ```
+
+        The script checks the file again, writes the SDK into `apple-sdk/` and checks its hashes. The SDK belongs to Apple, so keep your copy to yourself. Read the Xcode licence before you rebuild, because it limits the SDK to computers made by Apple.
+      </Step>
+      <Step title="Run the verification">
+        ```bash
+        gerfaut-desktop/reproducible/verify.sh v0.1.0 \
+            --target macos --macos-sdk apple-sdk
+        ```
+      </Step>
+      <Step title="Read the verdict">
+        The script builds `Gerfaut_<version>_universal.zip`, downloads the published one and ends on `==> VERIFIED` when the two are identical, byte for byte.
       </Step>
     </Steps>
   </Tab>
@@ -137,5 +170,5 @@ With Podman on the desktop builds, put `GERFAUT_ENGINE=podman` in front of `veri
 </Tip>
 
 <Accordion title="Read the full recipe">
-  Each repository explains what is pinned, how the build runs and what to do when the hashes differ: [gerfaut-desktop](https://github.com/gerfaut-wallet/gerfaut-desktop/blob/main/docs/REPRODUCIBLE-BUILDS.md) for Windows and Linux, [gerfaut-mobile](https://github.com/gerfaut-wallet/gerfaut-mobile/blob/main/docs/REPRODUCIBLE-BUILDS.md) for Android.
+  Each repository explains what is pinned, how the build runs and what to do when the hashes differ: [gerfaut-desktop](https://github.com/gerfaut-wallet/gerfaut-desktop/blob/main/docs/REPRODUCIBLE-BUILDS.md) for Windows, macOS and Linux, [gerfaut-mobile](https://github.com/gerfaut-wallet/gerfaut-mobile/blob/main/docs/REPRODUCIBLE-BUILDS.md) for Android.
 </Accordion>

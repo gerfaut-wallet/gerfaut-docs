@@ -37,7 +37,7 @@ RWTz3c4gUmglCX5Uvjthigz1ts3TS3ZSdhRNpFgOJRW/Wr4XjGlqTR3O
         In PowerShell, compute the hash of your file and find its line in the list:
 
         ```powershell
-        (Get-FileHash .\<file>).Hash
+        (Get-FileHash .\<file>).Hash.ToLower()
         Select-String <file> SHA256SUMS
         ```
 
@@ -63,7 +63,7 @@ RWTz3c4gUmglCX5Uvjthigz1ts3TS3ZSdhRNpFgOJRW/Wr4XjGlqTR3O
 
 ## Rebuild it yourself
 
-Rebuild the Windows installer, the macOS application, the Linux packages or the Android APKs of a release from its source, on a Linux machine, and compare them with the published files. Replace `v0.1.0` with the tag of your release.
+Rebuild the installer, the packages or the APKs of a release from its source on a Linux machine, then compare them with the published files. Replace `v0.1.0` with the tag of your release.
 
 <Tabs>
   <Tab title="Windows">
@@ -137,7 +137,7 @@ Rebuild the Windows installer, the macOS application, the Linux packages or the 
   <Tab title="Android">
     <Steps>
       <Step title="Prepare a Linux machine">
-        Install Docker, git, Python 3 and the GitHub CLI, `gh`. Plan for 15 GB of free disk, 8 GB of memory for the container engine and about 30 minutes.
+        Install Docker, git, Python 3 and the GitHub CLI, `gh`. Plan for 15 GB of free disk for the image and a few more for the build, 8 GB of memory for the container engine and about 30 minutes.
       </Step>
       <Step title="Rebuild the APKs">
         ```bash

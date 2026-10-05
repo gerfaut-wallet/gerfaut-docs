@@ -16,7 +16,7 @@ Short answers, each with the page that goes further.
     Yes, if the device or its companion software exports the public side of the wallet as text, a file or a QR code. See [Add a wallet](/wallets/add-a-wallet).
   </Accordion>
   <Accordion title="Does Gerfaut notify me while it is closed?">
-    Yes on Android, where Live and the background checks keep running after you leave Gerfaut, until you force-stop it. On desktop, Gerfaut notifies you only while it runs, minimised or locked included. Nothing arrives while your device is off. See [Check when notifications arrive](/settings/notifications#check-when-notifications-arrive).
+    Yes on Android, where Live and the background checks keep running after you leave Gerfaut, until you force-stop it. On desktop, Gerfaut notifies you only while it runs, minimised or locked included. See [Check when notifications arrive](/settings/notifications#check-when-notifications-arrive).
   </Accordion>
   <Accordion title="What does the public server see?">
     The addresses of your wallets and your IP address, plus how long Gerfaut stays connected while notifications are on. Point Gerfaut at your own node to keep both to yourself. See [Backend](/settings/backends-and-your-own-node).
@@ -39,9 +39,9 @@ Short answers, each with the page that goes further.
   <Accordion title="Gerfaut could not start. What can I do?">
     Select **Try again** first. If the screen comes back, its title says why:
 
-    - **`Gerfaut is already open`:** Another Gerfaut window holds the vault. Switch to it, or close it.
+    - **`Gerfaut is already open`:** On desktop, another Gerfaut window holds the vault. Switch to it, or close it. On Android, wait a moment, then select **Try again**.
     - **`The vault could not be opened`:** On desktop, check that the credential store of your system lets Gerfaut read its vault key.
-    - **`Gerfaut could not start`:** On Android, `The vault is here, but the key that opens it is gone.` follows a phone restore or a move to a new phone. Select **Start over…**, then [restore your last backup](/settings/backup-and-sync#restore-a-backup). Gerfaut sets the old vault aside and deletes nothing.
+    - **`Gerfaut could not start`:** On Android, `The vault is here, but the key that opens it is gone.` follows a phone restore or a move to a new phone. Select **Start over…** and confirm with **Start over**. Gerfaut sets the old vault aside, deletes nothing and opens the page to [restore your last backup](/settings/backup-and-sync#restore-a-backup).
   </Accordion>
   <Accordion title="Why verify a receive address on my signing device?">
     A compromised computer or phone could show you an address that is not yours. Your signing device is the one place that can confirm it. See [Receive](/everyday-use/receive-addresses).

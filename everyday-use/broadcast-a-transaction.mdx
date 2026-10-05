@@ -41,6 +41,19 @@ Nobody can take a transaction back once the network has it. Check the outputs an
   </Step>
 </Steps>
 
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="Gerfaut reads the transaction back before anything leaves. Broadcast stays disabled while an input is unsigned.">
+      <video autoPlay muted loop playsInline preload="metadata" src="/videos/everyday-use/preview-a-transaction-desktop.mp4" aria-label="Previewing a PSBT on desktop: the PSBT pasted, Preview, the diagram, a red caution about a missing signature under Before you send, then Broadcast disabled. Nothing is broadcast." />
+    </Frame>
+  </Tab>
+  <Tab title="Android">
+    <Frame caption="Gerfaut reads the transaction back before anything leaves. Broadcast stays disabled while an input is unsigned.">
+      <video autoPlay muted loop playsInline preload="metadata" className="phone-video" src="/videos/everyday-use/preview-a-transaction-android.mp4" aria-label="Previewing a PSBT on Android: the PSBT pasted, Preview, the diagram, a red caution about a missing signature under Before you send, then Broadcast disabled. Nothing is broadcast." />
+    </Frame>
+  </Tab>
+</Tabs>
+
 ## Check the cautions before you send
 
 Gerfaut lists what it finds under `Before you send`, in red when your bitcoin is at stake and in amber otherwise.

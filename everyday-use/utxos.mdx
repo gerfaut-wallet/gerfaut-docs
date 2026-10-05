@@ -31,6 +31,19 @@ List the coins behind a balance, one unspent output per row.
 - **Status:** `Pending`, then the number of confirmations, then `Confirmed` from six on.
 - **Amount:** The value of the coin.
 
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="Selecting an outpoint chip copies the whole outpoint, transaction id and output index.">
+      <video autoPlay muted loop playsInline preload="metadata" src="/videos/everyday-use/copy-an-outpoint-desktop.mp4" aria-label="Copying an outpoint on desktop: UTXOs in the sidebar, the outpoint chip of the first coin, then the Copied confirmation." />
+    </Frame>
+  </Tab>
+  <Tab title="Android">
+    <Frame caption="Selecting an outpoint chip copies the whole outpoint, transaction id and output index.">
+      <video autoPlay muted loop playsInline preload="metadata" className="phone-video" src="/videos/everyday-use/copy-an-outpoint-android.mp4" aria-label="Copying an outpoint on Android: the UTXOs tab, then the outpoint chip of the first coin, which reads Copied." />
+    </Frame>
+  </Tab>
+</Tabs>
+
 <Tip>
 The list is read-only. Gerfaut never builds a transaction, so it has no coin selection, no freezing and no labels.
 </Tip>

@@ -30,7 +30,8 @@ Deployment goes through the Mintlify GitHub App. Once the app is connected to th
 - Each page is a single MDX file, sorted into one folder per section.
 - `changelog/` restates the `CHANGELOG.md` files of the desktop and Android apps.
 - `images/` holds the screenshots, in `desktop/` and `android/`.
-- `style.css` restyles the callouts, the previous and next buttons, and the Android screenshots.
+- `videos/` holds the short clips that show one action each, sorted by section, in a desktop and an Android version.
+- `style.css` restyles the callouts, the previous and next buttons, and the Android screenshots and clips.
 - `logo/` and `favicon.svg` come from the Gerfaut brand kit.
 
 ## License

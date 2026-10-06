@@ -78,7 +78,7 @@ Gerfaut moves to the next server only when one fails. The next sync starts with 
     - `the server sent an answer longer than 64 MiB`
     - `the server lists more than 10000 transactions for one address`
 
-    Switch that network to an Electrum server. Under `Server`, select one of the public Electrum servers, or [connect your own](#connect-your-own-electrum-server).
+    Switch that network to [your own Electrum server](#connect-your-own-electrum-server). A public Electrum server may refuse the wallet too, since each one caps the transactions it lists for one address. On signet, mempool.space's Electrum server refuses an address with more than 500.
   </Accordion>
   <Accordion title="Fix a sync that reaches another network">
     A sync that fails with `the server is on another network` reached a server of another chain, such as the signet port of your node entered for testnet4. Check which port your node serves for this network, then enter it again.

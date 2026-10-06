@@ -29,7 +29,7 @@ mint broken-links
 
 Everything public happens in English: issues, pull requests and pages. Write in the voice of the existing pages: second person, present tense, one task per section, and the exact labels the apps show.
 
-Security vulnerabilities in the apps are never reported through issues or pull requests: write to info@pandul.fr instead.
+Never report a security vulnerability in an issue or a pull request. Report it privately instead, with the Report a vulnerability button in the Security tab of the repository concerned, or by e-mail to info@pandul.fr.
 
 ## License of contributions
 

@@ -30,10 +30,20 @@ In the `Network` card, select `Mainnet`, `Signet`, `Testnet 4` or `Regtest`. Ger
 ## Use the public servers
 
 <Warning>
-The operator of the public server that answers sees the addresses of your wallets.
+The operator of each public server Gerfaut asks sees the addresses of your wallets and your IP address. While Live runs, it also sees how long Gerfaut stays connected.
 </Warning>
 
-The backend card, such as `Backend · Signet`, opens on `Public API`, with nothing to set up. Under `Server`, keep `Automatic` to let Gerfaut try the public Esplora servers of the network in turn. Select one operator, such as `mempool.space`, to ask only that one.
+The backend card, such as `Backend · Signet`, opens on `Public API`, with nothing to set up. Under `Server`, keep `Automatic`, or select one server, such as `mempool.space`, to make it the only one Gerfaut asks on that network.
+
+With `Automatic`, Gerfaut asks these servers:
+
+| Network | Syncs | Live |
+|---|---|---|
+| `Mainnet` | mempool.space, then blockstream.info, then mempool.emzy.de | Blockstream's Electrum servers, `blockstream.info:700` first |
+| `Signet` | mempool.space, then blockstream.info, then mempool.emzy.de | mempool.space's Electrum server |
+| `Testnet 4` | mempool.space, then mempool.emzy.de | mempool.space's Electrum server |
+
+Gerfaut moves to the next server only when one fails. The next sync starts with the server that answered. Once Live has connected, each sync goes to the Live server first, so your syncs show your addresses to a single operator.
 
 <Tabs>
   <Tab title="Desktop">
@@ -49,6 +59,18 @@ The backend card, such as `Backend · Signet`, opens on `Public API`, with nothi
 </Tabs>
 
 <AccordionGroup>
+  <Accordion title="Know what the public servers allow">
+    Public servers are free and need no account, but they promise nothing. Each operator sets its own limits and can change them at any time.
+
+    - **blockstream.info:** Its web API takes 700 requests an hour from one IP address. Blockstream publishes no limit for its Electrum servers.
+    - **mempool.space:** It publishes no limit. It refuses requests past its limit, and may ban an IP address that keeps going past it.
+    - **mempool.space on signet:** Its Electrum server follows 100 addresses per connection. Live leaves the others to the next sync.
+    - **Shared IP address:** Behind a VPN or a mobile carrier, other people can use up the same limit.
+
+    When a server limits requests, Gerfaut waits as long as the server asks, then asks once more. If the server asks for more than a minute, or refuses again, Gerfaut tries the next one. When none answers, the sync fails and says why.
+
+    On [your own node](#follow-more-addresses-on-your-own-node), no one else sees your addresses and you set the limits.
+  </Accordion>
   <Accordion title="Sync a wallet with tens of thousands of transactions">
     The first sync of a very large wallet, or of one with many large inscriptions, can fail on an Esplora backend. Gerfaut then reports `Sync failed` with a reason such as:
 
@@ -56,7 +78,7 @@ The backend card, such as `Backend · Signet`, opens on `Public API`, with nothi
     - `the server sent an answer longer than 64 MiB`
     - `the server lists more than 10000 transactions for one address`
 
-    Switch that network to an Electrum server. Under `Server`, select one of the public Electrum servers, or [connect your own](#connect-your-own-electrum-server).
+    Switch that network to [your own Electrum server](#connect-your-own-electrum-server). A public Electrum server may refuse the wallet too, since each one caps the transactions it lists for one address. On signet, mempool.space's Electrum server refuses an address with more than 500.
   </Accordion>
   <Accordion title="Fix a sync that reaches another network">
     A sync that fails with `the server is on another network` reached a server of another chain, such as the signet port of your node entered for testnet4. Check which port your node serves for this network, then enter it again.

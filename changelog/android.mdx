@@ -49,8 +49,11 @@ The first release: Gerfaut for Android.
 - Broadcast warns in red when a signature leaves the outputs open (`SIGHASH_NONE` or `SIGHASH_SINGLE`). Whoever relays such a transaction can send that money elsewhere. The page tells you not to send it as it is. When the outputs pay more than the inputs bring, the last check before sending says the network would refuse it.
 - Coming back from a file picker, a save dialog or a share sheet more than ten minutes after it opened asks for the app lock again. That trip used to leave Gerfaut unlocked, however long it lasted.
 - A release build no longer writes the text of an unexpected error to the system log, where it could quote an address.
+- When every wallet is on the selected network, the backup export reads `All wallets (N)` instead of offering a choice of one.
 - In Add a wallet, an input that fits a single network, such as a mainnet address, names that network instead of offering a choice of one.
+- The Policy page reads like the desktop one. Primary paths come first, then recovery and emergency ones, each from the nearest lock to the farthest. One coin counts like several, as in `1 of 1 coin unlocked`. A `Next coin` line gives the wait of the first coin to unlock, in blocks and in days.
 - On the Policy page, a coin that Gerfaut cannot count down before the first sync reads `next known after the first sync` instead of `next in an unknown time`.
+- TalkBack calls the pin icon `Pin`, like the desktop app, instead of `Map pin`.
 
 ### Fixed
 
@@ -85,6 +88,9 @@ The first release: Gerfaut for Android.
 - Gerfaut no longer requires a camera to install. Scanning stays optional.
 - A wallet added on another network opens even when switching to that network fails.
 - On the import screen, the first address belongs to the network you pick and changes when you pick another one. A key added on regtest shows its `bcrt1` address, not the `tb1` address of signet.
+- While `Test the connection` starts the built-in Tor, the Tor card counts up in steps of ten, as in `Starting the built-in Tor… 40%`. The card used to stay still until the test ended.
+- Forgetting a certificate says that syncs with that server fail until you select **Save backend** again and accept it. When the server does not answer at `Save backend`, the note says the same of a server that signs its own certificate. Both texts used to say that Gerfaut would ask again at the next connection, which it does not.
+- On an Esplora server, Live polls every address in turn. It used to start over at the top of the list each time it reconnected, every half hour. It never reached the addresses further down, and a payment to one of them waited for the next sync.
 
 ### Security
 

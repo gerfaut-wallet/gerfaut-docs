@@ -9,7 +9,7 @@ Open a wallet's Policy page to see who can spend, under which condition, and whe
 
 <Tabs>
   <Tab title="Desktop">
-    Select **Policy** in the sidebar. The Overview also shows a digest of the policy under `Total balance`, such as `2 of 3 keys` or `Recovery in 142 days`.
+    Select **Policy** in the sidebar. The Overview also shows a digest of the policy under `Total balance`, such as `2 of 3 keys`, `Recovery in 142 days`, or `Recovery locked` until the first sync.
   </Tab>
   <Tab title="Android">
     On the wallet page, select **More** (the vertical dots in the app bar), then **Policy**.
@@ -20,20 +20,20 @@ Open a wallet's Policy page to see who can spend, under which condition, and whe
 
 The page opens on a plain statement of the policy, such as `2 of 3 keys sign.` A multisig or Miniscript wallet then gets one card per spending path:
 
-- **Path:** `Primary`, `Recovery`, `Emergency` or `Other`. A second primary path reads `Primary B`, and a third timed path `Recovery 3`.
+- **Path:** `Primary`, `Recovery`, `Emergency` or `Other`. The cards come in that order, the nearest lock first within each. A second primary path reads `Primary B`, and a third timed path `Recovery 3`.
 - **Condition:** The signing keys and locks the path needs, such as `Any 2 of Key A, Key B, Key C`. Each signing key is a pill with its fingerprint.
 - **Locks:** Each timelock in blocks and in estimated time, such as `52 560 blocks after the coin arrives ≈ 1 year`.
-- **State:** `Spendable now`, a countdown such as `In 1 432 blocks ≈ 10 days`, `No coins yet`, `Needs a secret` or `Locked`.
-- **Coins:** A relative lock counts per coin, such as `3 of 7 coins unlocked · next in 12 days`, with a progress bar. A countdown turns amber when less than 30 days remain.
+- **State:** `Spendable now`, a countdown such as `In 1 432 blocks ≈ 10 days`, `No coins yet`, `Needs a secret`, or `Locked` until the first sync. It turns amber when less than 30 days remain.
+- **Coins:** A relative lock counts per coin, even a single one, such as `0 of 1 coin unlocked · next in 12 days`. `Next coin` and a progress bar show how long the first coin to unlock still waits. Until the first sync, the count ends in `next known after the first sync`.
 
 <Tabs>
   <Tab title="Desktop">
-    <Frame caption="A spending policy is explained in words, with each path, its signing keys and the state of the timelock on the coins actually held.">
+    <Frame caption="Each spending path gets a card with its signing keys, its locks and where its coins stand.">
       <img src="/images/desktop/policy.webp" alt="The Policy page on desktop for a wallet with a recovery path: the summary sentence, the Primary and Recovery cards, the Keys table and the collapsed Descriptor." />
     </Frame>
   </Tab>
   <Tab title="Android">
-    <Frame caption="The Policy page turns a Miniscript descriptor into a plain sentence about who can spend and when.">
+    <Frame caption="Each spending path gets a card with its signing keys, its locks and where its coins stand.">
       <img src="/images/android/policy.webp" alt="The Policy page on Android: the summary sentence, the Primary and Recovery cards with their signing keys and timelock, the Keys list and the Descriptor disclosure." width="360" />
     </Frame>
   </Tab>

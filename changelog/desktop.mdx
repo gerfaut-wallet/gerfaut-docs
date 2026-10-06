@@ -21,7 +21,7 @@ Gerfaut watches bitcoin wallets it cannot spend from. There is no key generation
 - Balance, transaction history, transaction detail with its inputs and outputs, unspent outputs in a table of their own, and the next receive addresses.
 - A wallet whose descriptor holds a Miniscript policy gets a page for it. The page shows every spending path, who can take it, and the countdown left on the ones that wait for a timelock.
 - Export the history of a wallet as CSV.
-- Broadcast a transaction someone else signed. Paste its hex, open the file a signing device wrote, or scan its QR code. Gerfaut shows what the transaction does before it sends anything.
+- Broadcast a transaction someone else signed. Paste its hex, open the file a signing device wrote, or scan its QR code. Gerfaut shows what the transaction does before it sends anything. When a signature is still missing, the preview reads `Not fully signed` and the `Broadcast` button stays disabled.
 - When no backend confirms a coin a PSBT spends, the preview says so in amber and marks the fee and the input total as what the PSBT claims. Check them on a backend you trust, or on the signing device, before you send.
 - Mainnet, signet, testnet4 and regtest.
 - Public Esplora servers by default, or your own node over Esplora or Electrum.
@@ -61,6 +61,7 @@ Gerfaut watches bitcoin wallets it cannot spend from. There is no key generation
 - In every choice group (unit, price source, theme, Tor, export direction), the chosen option is filled in the accent colour.
 - The hints under `New transactions`, `Check for updates automatically` and `Currency` are shorter.
 - Fiat values group their thousands with a space, like amounts in BTC and sats: `€74 074.07` instead of `€74,074.07`.
+- With the fiat value on, a wallet on signet, testnet4 or regtest shows 0 in your currency, such as `€0.00`. Its coins used to be valued at the price of real bitcoin, but test coins are worth nothing.
 - When every wallet is on the network shown, the backup export reads `All wallets (N)` instead of offering a choice of one.
 - In Add a wallet, an input that fits a single network, such as a mainnet address, names that network instead of offering a choice of one.
 - On the Policy page, a coin that Gerfaut cannot count down before the first sync reads `next known after the first sync` instead of `next in an unknown time`.
@@ -73,6 +74,7 @@ Gerfaut watches bitcoin wallets it cannot spend from. There is no key generation
 - When the system's key store has no vault key while a vault is already on disk, Gerfaut no longer creates a new key that could never open it. The startup screen says the key is missing. `Try again` asks the store again.
 - Restoring a backup whose wallets are all on another network left them out of sight until a restart, with the restored settings hidden too. Gerfaut now moves to the wallets' network and shows everything at once.
 - With `Hide amounts` on, unlocking no longer shows the balances for an instant.
+- When the price source stops answering, amounts show without their fiat value and the `Bitcoin price` card says the source did not answer, as **Settings** already did. Both used to keep the last price they had, however old.
 - A setting the vault cannot save, on a full disk or while an antivirus holds the file, goes back to its saved value with the reason under it. This covers the network, a trusted certificate, the gap limit, a wallet's name or icon, and transaction notifications, whose switch then stays off.
 - A link that nothing on the computer can open says so and shows the address to copy.
 - A wallet page that cannot load says why, with `Try again`. A list of UTXOs that failed to load no longer reads as an empty one.

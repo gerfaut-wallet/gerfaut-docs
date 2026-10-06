@@ -3,34 +3,44 @@ title: "Units and fiat"
 description: "Show every amount in Gerfaut in BTC or in sats, and add its fiat value in one of 30 currencies from CoinGecko, Kraken or mempool.space."
 ---
 
-One unit applies to every amount in Gerfaut. The fiat value is off by default and appears under each amount once you turn it on.
-
-Open **Settings** > **General** and find the `Display` card.
+Pick one unit for every amount, and add a fiat value under each one if you want it. Open **Settings** > **General** and find the `Display` card.
 
 ## Switch between BTC and sats
 
-Under `Unit`, select `BTC` or `sats`. The default is `BTC`.
-
-- **`BTC`:** Every amount shows eight decimals.
-- **`sats`:** Every amount shows none.
+Under `Unit`, select `BTC` (eight decimals, the default) or `sats`.
 
 ## Show the fiat value
 
 <Warning>
-Each price request reaches the source you pick from your own IP address. It carries no wallet data.
+The price source sees your IP address with each price request. With a `.onion` backend, the request goes [through Tor](/settings/tor#route-other-requests-through-tor) instead. It carries no wallet data.
 </Warning>
 
 <Steps>
   <Step title="Select the Fiat value switch">
-    Every amount gains a second line with its value, and the desktop Overview shows the `Bitcoin price` card.
+    Amounts gain a second line with their fiat value. The fiat value is off by default.
   </Step>
   <Step title="Pick the currency">
-    Under `Currency`, the list has two groups. `Every source` holds the seven currencies every price source quotes: EUR, USD, GBP, CHF, JPY, CAD and AUD. `CoinGecko only` holds 23 more, from INR and BRL to KRW and NZD. The default is EUR.
+    Under `Currency`, the seven currencies of `Every source` work with any price source. The 23 others, under `CoinGecko only`, switch the source to CoinGecko. The default is EUR.
   </Step>
   <Step title="Pick the price source">
-    Under `Price source`, select `CoinGecko`, `Kraken` or `mempool.space`. A source that does not quote the chosen currency is greyed out, and a currency from the `CoinGecko only` group switches the source to CoinGecko on its own. The default is CoinGecko.
+    Under `Price source`, select `CoinGecko` (the default), `Kraken` or `mempool.space`.
   </Step>
-  <Step title="Read the rate">
-    Under the controls, a line reads `1 BTC =` followed by the value in your currency and the time of the last update. When the source does not answer, amounts show without fiat until it does.
+  <Step title="Check the rate">
+    A line reads `1 BTC =` with the rate and the time of the last update. When the source does not answer, amounts show without fiat until it does.
   </Step>
 </Steps>
+
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="The unit and the fiat value apply to every amount at once.">
+      <video autoPlay muted loop playsInline preload="metadata" src="/videos/settings/show-sats-and-fiat-desktop.mp4" aria-label="Showing sats and fiat on desktop: sats under Unit, the Fiat value switch, the rate line, then the Overview of a signet wallet in sats, with €0.00 under each amount." />
+    </Frame>
+  </Tab>
+  <Tab title="Android">
+    <Frame caption="The unit and the fiat value apply to every amount at once.">
+      <video autoPlay muted loop playsInline preload="metadata" className="phone-video" src="/videos/settings/show-sats-and-fiat-android.mp4" aria-label="Showing sats and fiat on Android: sats under Unit, the Fiat value switch, the rate line, then the home screen of a signet wallet in sats, with €0.00 under the balance." />
+    </Frame>
+  </Tab>
+</Tabs>
+
+A wallet on a test network, such as signet or testnet4, shows a fiat value of 0, because test coins are worth nothing. A total that includes it counts it as 0.

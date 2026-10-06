@@ -3,92 +3,141 @@ title: "App lock"
 description: "Lock Gerfaut behind a PIN or a password, unlock it with biometrics on Android, and hide it behind a working calculator on your launcher."
 ---
 
-The app lock stops someone at your unlocked computer or holding your unlocked phone. It replaces the whole of Gerfaut rather than covering it, so nothing of a wallet shows before you unlock.
-
-Open **Settings** > **Security** and find the `Security` card.
-
-<Tip>
-The vault that holds your wallet list stays encrypted whether the lock is on or off.
-</Tip>
+Lock Gerfaut so that someone at your unlocked computer or phone sees nothing of your wallets. Your wallet list stays encrypted whether the lock is on or off.
 
 ## Turn on the app lock
 
 <Steps>
   <Step title="Select the App lock switch">
-    The dialog `Turn on the app lock` opens.
+    Open **Settings** > **Security**. Gerfaut opens `Turn on the app lock`.
   </Step>
-  <Step title="Pick the kind of secret">
-    Under `Kind`, select `PIN` (four to 12 digits) or `Password` (at least eight characters). Only a PIN can open the calculator disguise on Android.
+  <Step title="Pick PIN or Password">
+    Select `PIN` (four to 12 digits) or `Password` (at least eight characters). Only a PIN opens the calculator disguise on Android.
   </Step>
   <Step title="Enter the secret twice">
-    Enter `New PIN` or `New password`, then `Confirm`, and select **Turn on**. Gerfaut asks for the secret when it opens.
+    Enter `New PIN` or `New password`, then `Confirm`, and select **Turn on**. Gerfaut asks for the secret each time it opens.
   </Step>
 </Steps>
+
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="The app lock protects an unlocked computer. Lock now locks Gerfaut at once.">
+      <video autoPlay muted loop playsInline preload="metadata" src="/videos/settings/turn-on-app-lock-desktop.mp4" aria-label="Turning on the app lock on desktop: the App lock switch, PIN, the PIN entered twice, Turn on, then the switch on with Change PIN and Lock now under it." />
+    </Frame>
+  </Tab>
+  <Tab title="Android">
+    <Frame caption="Once the lock is on, Security adds Change PIN, Lock now and the calculator disguise.">
+      <video autoPlay muted loop playsInline preload="metadata" className="phone-video" src="/videos/settings/turn-on-app-lock-android.mp4" aria-label="Turning on the app lock on Android: the App lock switch, PIN, the PIN entered twice, Turn on, then the switch on with Change PIN, Lock now and Disguise the app under it." />
+    </Frame>
+  </Tab>
+</Tabs>
 
 ## Lock and unlock
 
 <Tabs>
   <Tab title="Desktop">
-    The window stays unlocked until you close it. To lock it before then, press `Ctrl+L`, select **Lock** at the bottom of the sidebar, or select **Lock now** in the `Security` card.
-
-    <Frame caption="The app lock protects an unlocked computer. The vault stays encrypted whether the lock is on or off.">
-      <img src="/images/desktop/settings-lock.webp" alt="The Security section of the desktop settings: the App lock switch, off, with its explanation." />
-    </Frame>
+    Press `Ctrl+L`, select **Lock** at the bottom of the sidebar, or select **Lock now** in **Settings** > **Security**. Otherwise Gerfaut stays unlocked until you close it.
   </Tab>
   <Tab title="Android">
-    Gerfaut asks again every time it comes back from the background. A file picker or a share sheet that Gerfaut opened itself does not count. Select **Lock now** in the `Security` card to lock it by hand.
-
-    <Frame caption="Gerfaut asks for the secret at every open and every return from the background.">
-      <img src="/images/android/settings-lock.webp" alt="The Security section on Android with the App lock switch, off, and its explanation." width="360" />
-    </Frame>
+    Gerfaut asks for the secret each time you come back to it. Returning within ten minutes from a file picker, a save dialog or a share sheet that Gerfaut opened needs no secret. Select **Lock now** in **Settings** > **Security** to lock it by hand. While a lock is set, Android keeps Gerfaut out of screenshots and shows a blank card in the recent apps, or the calculator under the disguise.
   </Tab>
 </Tabs>
 
-The lock screen reads `Locked`. Enter the secret and select **Unlock**.
-
-- **Wrong attempts:** After three, Gerfaut waits five seconds before the next one, doubles the wait at each failure up to five minutes, and counts it down on screen. Restarting Gerfaut does not shorten it.
-- **Android:** A lock also keeps the task switcher and screenshots from capturing Gerfaut.
+On the `Locked` screen, enter the secret and select **Unlock**. After three wrong attempts, Gerfaut makes you wait five seconds, then doubles the wait at each failure, up to five minutes.
 
 ## Change or turn off the lock
 
-<Steps>
-  <Step title="Select Change PIN or Change password">
-    The dialog asks for the current secret, then the new one twice.
-  </Step>
-  <Step title="Select the App lock switch to turn the lock off">
-    The dialog `Turn off the app lock` asks for the secret once.
-  </Step>
-</Steps>
+Select **Change PIN** or **Change password** to replace the secret. Select the `App lock` switch again to turn the lock off. Both ask for the current secret.
 
 ## Unlock with biometrics on Android
 
 <Steps>
   <Step title="Select the Unlock with biometrics switch">
-    The `Security` card shows it when the phone can ask for a fingerprint or a face.
+    The switch shows when the phone can read a fingerprint or a face.
   </Step>
   <Step title="Enter your PIN or password, then confirm the system prompt">
-    The lock screen then offers **Use fingerprint or face** and fires the prompt on its own. Gerfaut never sees the biometric itself.
+    The lock screen then offers **Use fingerprint or face**. Gerfaut never sees the biometric itself.
   </Step>
 </Steps>
 
 ## Disguise the app as a calculator on Android
 
 <Warning>
-Forget the PIN and Gerfaut cannot be opened: with the disguise on, the PIN is the only way in. A backup made with Gerfaut brings the wallets back into a fresh install, see [Backup and sync](/settings/backup-and-sync).
+With the disguise on, the PIN is the only way into Gerfaut. If you forget it, only a [backup](#start-over-after-a-forgotten-pin-or-password) brings your wallets back.
 </Warning>
 
 <Steps>
   <Step title="Select Disguise the app">
-    It needs a PIN lock in place. The sheet says what changes. The launcher shows a calculator named `Calculator` instead of Gerfaut, notifications and home-screen widgets turn off, and `Settings` > `Apps` on the phone still lists Gerfaut.
+    It needs an app lock of the `PIN` kind. The sheet lists what changes, starting with the launcher, which shows `Calculator` instead of Gerfaut.
   </Step>
   <Step title="Select Turn on the disguise">
-    Then clear your recent apps once, because Android may keep an older Gerfaut thumbnail.
+    Clear your recent apps once, because Android may keep an older Gerfaut thumbnail.
   </Step>
   <Step title="Open Gerfaut from the calculator">
-    Type your PIN on the calculator and press `=`. A wrong PIN shows the number like any calculator would, with no hint. The calculator is real: four operations, percentage, sign and decimal point.
+    Type your PIN on the calculator and press `=`. A wrong PIN gives a number like any calculator, with no hint. After three wrong PINs, the right one also gives a number until the [wait](#lock-and-unlock) ends.
   </Step>
 </Steps>
 
-<Accordion title="Drop the disguise">
-  Open **Settings** > **Security** and select the `Disguise the app` switch again, or turn the app lock off. Both bring Gerfaut back to the launcher.
-</Accordion>
+<Frame caption="The sheet lists everything the disguise changes before you turn it on.">
+  <img src="/images/android/settings-disguise.webp" alt="The Disguise the app sheet over the Security screen on Android: the list of what changes, the warning that the PIN is the only way in, and the Turn on the disguise button." width="360" />
+</Frame>
+
+Turning the disguise on changes how Gerfaut tells you about transactions:
+
+- **Notifications:** Gerfaut posts none, and clears the ones already in the notification shade.
+- **Live:** If Live is on, Gerfaut turns it off and sets `Check for transactions` to `Every 15 min`. Background checks post nothing either.
+- **Widgets:** Gerfaut removes its widgets from your home screen.
+
+In **Settings** > **Notifications**, `New transactions` shows off and both settings stay greyed out while the disguise is on. The line under the switch says why. Once you turn the disguise off, `New transactions` is back as you left it.
+
+<Frame caption="Under the disguise, the notification settings stay greyed out and say why.">
+  <img src="/images/android/settings-notifications-disguised.webp" alt="The Notifications screen on Android under the disguise: New transactions off and greyed out, with the line Off while the app is disguised, Check for transactions on Every 15 min, and Widgets are off while the app is disguised." width="360" />
+</Frame>
+
+## Turn off the disguise
+
+Select the `Disguise the app` switch again, or turn the app lock off. Gerfaut does not restore Live or the widgets on its own:
+
+- **Live:** If you used [Live](/settings/notifications#turn-on-notifications), select `Live` again under `Check for transactions` in **Settings** > **Notifications**.
+- **Widgets:** The disguise removed them from your home screen. [Add each one again](/settings/notifications#put-a-widget-on-your-android-home-screen).
+
+## Start over after a forgotten PIN or password
+
+Nobody can reset a forgotten PIN or password, since Gerfaut keeps no copy of it. Start Gerfaut again on an empty vault, then restore your last [backup](/settings/backup-and-sync#restore-a-backup).
+
+<Note>
+Only the wallets in your backup come back. Add any other wallet again from its descriptor, extended public key or address.
+</Note>
+
+<Tabs>
+  <Tab title="Desktop">
+    <Steps>
+      <Step title="Close Gerfaut">
+        Close every Gerfaut window.
+      </Step>
+      <Step title="Rename the Gerfaut data folder">
+        Rename `com.gerfautwallet.gerfaut`, for example to `com.gerfautwallet.gerfaut.old`. Gerfaut keeps it here:
+
+        - **Windows:** `%APPDATA%\com.gerfautwallet.gerfaut`
+        - **macOS:** `~/Library/Application Support/com.gerfautwallet.gerfaut`
+        - **Linux:** `~/.local/share/com.gerfautwallet.gerfaut`
+      </Step>
+      <Step title="Open Gerfaut and restore the backup">
+        Gerfaut opens on an empty vault, with no lock. Follow [Restore a backup](/settings/backup-and-sync#restore-a-backup).
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Android">
+    <Steps>
+      <Step title="Uninstall Gerfaut">
+        In the Android settings, open the list of apps, select Gerfaut and uninstall it.
+      </Step>
+      <Step title="Install Gerfaut again">
+        Follow [Install on Android](/getting-started/install-android).
+      </Step>
+      <Step title="Restore the backup">
+        Follow [Restore a backup](/settings/backup-and-sync#restore-a-backup).
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>

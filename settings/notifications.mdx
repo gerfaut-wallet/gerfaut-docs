@@ -1,50 +1,232 @@
 ---
 title: "Notifications"
-description: "Get a notification when a sync finds a new transaction, check your wallets on a schedule, and put the price or a balance on your Android home screen."
+description: "Get notified when a transaction reaches the mempool and when it confirms, see when each check runs, let Live follow every address and add a widget."
 ---
 
-Gerfaut tells you when a sync finds a transaction you have not seen. The notification comes from the sync itself, which talks to the same servers as always and nothing else.
+Gerfaut posts each notification from your device, for the wallets of the network selected in **Settings** > **Network**.
 
-Open **Settings** > **Notifications**. Both settings are off by default.
+<Warning>
+While notifications run, your backend's operator sees your addresses, how long Gerfaut stays connected and each IP address it connects from. With the `Automatic` server, Live first connects to the Electrum server of an operator Gerfaut already syncs with, Blockstream on mainnet. Point Gerfaut at [your own node](/settings/backends-and-your-own-node) to keep all of it to yourself.
+</Warning>
 
-## Get notified about new transactions
-
-<Steps>
-  <Step title="Select the New transactions switch">
-    The system asks for permission the first time. If it refuses, the card reads `Notifications are off for Gerfaut in the system settings.`
-  </Step>
-  <Step title="Read the notification">
-    It names the wallet and says `Received 0.01000000 BTC` or `0.00200000 BTC left this wallet`, with `· pending` while the transaction has no block. While amounts are hidden, it only says `New transaction`.
-  </Step>
-</Steps>
-
-<Tip>
-Gerfaut sends at most three notifications per wallet per sync, then one line that counts the rest.
-</Tip>
-
-## Check on a schedule
-
-The schedule stays greyed out while `New transactions` is off.
+## Turn on notifications
 
 <Tabs>
   <Tab title="Desktop">
-    Under `Check while open`, select `5 min`, `15 min` or `1 hour`. Gerfaut syncs every wallet on that rhythm while its window is open.
+    <Steps>
+      <Step title="Select the New transactions switch">
+        Open **Settings** > **Notifications**.
+      </Step>
+      <Step title="Read the Live watch line">
+        The line reads `Connected · Electrum` or `Connected · mempool WebSocket`, followed by the server. Another Esplora backend reads `Polling every minute` instead.
+      </Step>
+      <Step title="Select Send a test notification">
+        A test notification appears. If nothing shows, allow notifications for Gerfaut in the system settings and turn off Do Not Disturb.
+      </Step>
+    </Steps>
+
+    <Frame caption="The Live watch line goes from Connecting to Connected and names the server it listens to.">
+      <video autoPlay muted loop playsInline preload="metadata" src="/videos/settings/turn-on-notifications-desktop.mp4" aria-label="Turning on notifications on desktop: the New transactions switch, the Live watch line on Connecting, then on Connected · mempool WebSocket · mempool.space." />
+    </Frame>
   </Tab>
   <Tab title="Android">
-    Under `Check in the background`, select `Every 15 min`, `Every hour` or `Every 6 hours`. Gerfaut syncs even when it is closed. Android checks at most every 15 minutes and may delay a check to save battery.
+    In step 2, pick how Gerfaut checks:
+
+    - **`Live`:** A connection kept open, which brings a notification within seconds.
+    - **`Every 15 min`, `Every hour` or `Every 6 hours`:** Android checks in the background to save battery, sometimes later than asked.
+    - **`Off`:** Gerfaut checks only while it is open.
+
+    <Steps>
+      <Step title="Select the New transactions switch">
+        Open **Settings** > **Notifications**. On Android 13 and newer, Android asks you to allow notifications the first time.
+      </Step>
+      <Step title="Select Live under Check for transactions">
+        The `Live watch` sheet says what Live costs and what your server learns. Select **Turn on Live**.
+      </Step>
+      <Step title="Let Gerfaut run in the background">
+        If the sheet offers **Ask Android**, select it and allow Gerfaut to ignore battery optimisation. Live still runs if you refuse, less reliably.
+      </Step>
+      <Step title="Follow the steps for your phone">
+        On a Xiaomi, Redmi, POCO, Huawei, Honor, Samsung, OnePlus, Oppo or realme phone, the sheet lists what to change in the phone's own battery manager. Change it, then select **Done**.
+      </Step>
+      <Step title="Read the status line">
+        The line under `Check for transactions` reads `Connected · Electrum` or `Connected · mempool`, followed by the server. Another Esplora backend reads `Polling every minute`. Android shows a permanent notification, `Watching for transactions`.
+      </Step>
+    </Steps>
+
+    <Frame caption="The Live watch sheet says what Live costs and what your server learns. The status line then names the server.">
+      <video autoPlay muted loop playsInline preload="metadata" className="phone-video" src="/videos/settings/turn-on-notifications-android.mp4" aria-label="Turning on notifications on Android: the New transactions switch, Live under Check for transactions, the Live watch sheet, Turn on Live, then the line Connected · Electrum · mempool.space." />
+    </Frame>
+
+    If `Notifications are off for Gerfaut in the system settings.` shows under `New transactions`, select **Open system settings** and allow notifications. Live waits meanwhile, and starts again when you come back to Gerfaut.
+
+    <Frame caption="Gerfaut says so in amber when Android blocks its notifications, with a button to the system settings.">
+      <img src="/images/android/settings-notifications-off.webp" alt="The Notifications screen on Android with New transactions on, the amber line Notifications are off for Gerfaut in the system settings, and the Open system settings button above Check for transactions." width="360" />
+    </Frame>
   </Tab>
 </Tabs>
+
+With no wallet on the selected network, the Live status line reads `Off until you add a wallet.` Live starts with the first wallet you add.
+
+## Check when notifications arrive
+
+<Tabs>
+  <Tab title="Desktop">
+    Gerfaut notifies you within seconds while it runs, open, minimised or locked. Once you close it, nothing arrives. When you open it again, its first sync notifies you of what came in meanwhile.
+
+    <Frame caption="The hint under New transactions says when Gerfaut notifies you: while it is open, minimised or locked.">
+      <img src="/images/desktop/settings-notifications.webp" alt="The Notifications section of the desktop settings: the New transactions switch, off, the Live watch line on Off, and the Send a test notification button." />
+    </Frame>
+  </Tab>
+  <Tab title="Android">
+    | `Check for transactions` | When a notification arrives | What stops it |
+    |---|---|---|
+    | `Live` | Within seconds, with Gerfaut open, in the background, swiped away or after a phone restart. | Force-stopping Gerfaut, until you open it again. |
+    | `Every 15 min`, `Every hour`, `Every 6 hours` | At the next background check, which Android runs at most every 15 minutes, once the phone is online and its battery is not low. | Force-stopping Gerfaut, until you open it again. |
+    | `Off` | When Gerfaut syncs while open, at launch or when you sync by hand. | Leaving Gerfaut. |
+
+    Nothing arrives while the phone is off. Once it is back on, Gerfaut announces what came in meanwhile at its first check.
+
+    While Gerfaut is [disguised as a calculator](/settings/app-lock#disguise-the-app-as-a-calculator-on-android), no notification arrives, whatever the mode.
+
+    <Frame caption="Under Live, a check every 15 minutes stays scheduled for whenever Android stops Live.">
+      <img src="/images/android/settings-notifications.webp" alt="The Notifications screen on Android: New transactions on, Live under Check for transactions, the line Connected · Electrum · mempool.space, an amber note about the addresses checked at the next sync, and the Widgets card." width="360" />
+    </Frame>
+  </Tab>
+</Tabs>
+
+Within seconds holds for the addresses an Electrum server or a mempool instance pushes to Live. Other addresses wait longer, as below.
+
+## Make Live follow every address
+
+Live follows up to 200 addresses per wallet and 2,000 in all, because public servers limit how many addresses one app may follow. On your own node, the [`This is my node`](/settings/backends-and-your-own-node#follow-more-addresses-on-your-own-node) switch raises the limit to 20,000. A payment to an address Live does not follow shows at the next sync: when Gerfaut opens, when you sync by hand, or at the complete sync Live runs once a day.
+
+In each wallet, Live takes the addresses most likely to move first:
+
+- **Coins:** The addresses that hold coins, where a spend shows.
+- **Receive addresses:** The unused ones Gerfaut showed last, as many as the [gap limit](/wallets/add-a-wallet#manage-your-wallets), then as many again past the last one shown.
+- **Change addresses:** The same, on the change side.
+- **The rest:** Older addresses, newest first.
+
+Between wallets, Live takes addresses in rounds: the first address of each wallet, then the second of each, and so on. That way, a large wallet never crowds out the addresses most likely to move in a small one. Some wallets go first:
+
+- **Pinned wallets:** The wallets you [pin](#pin-the-wallets-live-follows-first) come before all the others. Live finishes their rounds before it starts on any other wallet.
+- **Wallets that hold coins:** In each round, they go before the empty wallets.
+
+A server can also refuse some addresses, which then wait for the next sync too.
+
+<AccordionGroup>
+  <Accordion title="Use Live with an Esplora backend">
+    An Esplora backend pushes changes for fewer addresses than an Electrum server. Each minute, Gerfaut reads a few of the other addresses, in turn:
+
+    - **A mempool instance:** A public instance, such as mempool.space, pushes changes for ten addresses per connection on mainnet, and for several hundred on signet and testnet4. Gerfaut reads three of the others each minute. With N addresses taking turns, it reads each one about every N/3 minutes.
+    - **Another Esplora backend:** It pushes nothing. Each minute, Gerfaut reads the two addresses Live takes first, and one of the others. With N addresses taking turns, it reads each one about every N minutes.
+    - **Your own node:** Gerfaut reads 30 addresses a minute instead of three. On a mempool instance, it reads each one about every N/30 minutes. On another Esplora backend, it reads the first two every minute and each of the others about every N/28 minutes.
+    - **A server that limits requests:** Each time it does, Gerfaut waits twice as long between two reads, up to ten minutes. It goes back to once a minute half an hour after the last limit.
+
+    With 300 addresses taking turns, each one waits about 100 minutes between two reads on a mempool instance, and about 300 minutes on another Esplora backend. The next sync reads all of them.
+  </Accordion>
+  <Accordion title="Use Live with a server that refuses addresses">
+    An Electrum server may take fewer addresses than Live asks it to follow. The others wait for the next sync, until Gerfaut asks that server for all of them again:
+
+    - **After a limit on the number of addresses:** Gerfaut asks again a day later, or an hour later when the server took none.
+    - **After the server refuses one address:** A server can turn down a single address, such as one with a history too long for it. Unlike a limit on the number of addresses, this refusal still holds a day later. Gerfaut asks for that address again once Live starts over.
+    - **After ElectrumX cuts Live off:** ElectrumX does so when the list costs it too much. Gerfaut then asks it for fewer addresses until Live starts over.
+
+    Live starts over when you change the backend, the network or the Tor settings, or when Gerfaut or Live restarts. Turning Live off and on again does the same, with the `New transactions` switch on desktop.
+
+    On your own node, [raise the subscription limit](/settings/backends-and-your-own-node#raise-the-subscription-limit-of-your-electrum-server) to follow every address.
+  </Accordion>
+</AccordionGroup>
+
+## See which wallets wait for the next sync
+
+When Live cannot follow every address, a note under the Live status in **Settings** > **Notifications** says how many addresses of how many wallets wait for the next sync. Off your own node, the note points to `This is my node` in **Settings** > **Network**. On your own node, it names the setting to raise when the node refuses addresses.
+
+Each wallet then carries a badge:
+
+- **`Live`:** Live follows every address of the wallet.
+- **`Partly live`:** Live follows the addresses that come first in [its order](#make-live-follow-every-address). The others wait for the next sync.
+- **`At next sync`:** Live follows none of the addresses of the wallet. A payment to it shows at the next sync.
+
+<Tabs>
+  <Tab title="Desktop">
+    The badge shows on the `Live watch` row of the `Watch status` card, on the wallet's Overview, with a count under it such as `40 addresses wait for the next sync.` It also shows on the wallet's row in **Settings** > **Wallets**.
+  </Tab>
+  <Tab title="Android">
+    The badge shows on the wallet's card on the home screen and on its row in **Settings** > **Wallets**. On the wallet page, it sits under the sync line, next to a count such as `40 addresses wait for the next sync.` The permanent notification reads `Connected to your server · some addresses wait for syncs`.
+
+    <Frame caption="Each card on the home screen says how much of the wallet Live follows.">
+      <img src="/images/android/home-live.webp" alt="The Android home screen with two wallet cards: Cold storage with a Partly live badge and Timelock vault with a Live badge." width="360" />
+    </Frame>
+
+    <Frame caption="The wallet page adds how many addresses wait for the next sync.">
+      <img src="/images/android/wallet-live.webp" alt="The Cold storage wallet page on Android: the sync line, the Partly live badge next to 78 addresses wait for the next sync, the total balance and the Transactions tab." width="360" />
+    </Frame>
+  </Tab>
+</Tabs>
+
+## Pin the wallets Live follows first
+
+When Live cannot follow every address, it follows the wallets you pin before the others.
+
+<Note>
+Pinned wallets go before every other wallet. Pinning several large wallets can leave the others to the syncs.
+</Note>
+
+<Steps>
+  <Step title="Open Settings > Wallets">
+    Select **Advanced** under the wallet list.
+  </Step>
+  <Step title="Select the switch of each wallet to pin">
+    The switches sit under `Always watch live first`. Live picks its addresses again at once. Folded, the button reads `Advanced · 1 wallet watched live first`.
+  </Step>
+</Steps>
+
+<Tabs>
+  <Tab title="Desktop">
+    <Frame caption="Each switch under Always watch live first puts one wallet ahead of the others.">
+      <img src="/images/desktop/settings-wallets-advanced.webp" alt="The Wallets section of the desktop settings with Advanced unfolded: Always watch live first and a switch for each of the two wallets, both off." />
+    </Frame>
+  </Tab>
+  <Tab title="Android">
+    <Frame caption="Each switch under Always watch live first puts one wallet ahead of the others.">
+      <img src="/images/android/settings-wallets-advanced.webp" alt="The Wallets screen on Android with Advanced unfolded under the wallet rows: Always watch live first and a switch for each of the two wallets, both off." width="360" />
+    </Frame>
+  </Tab>
+</Tabs>
+
+## Keep Live running on Android
+
+Live keeps running when you leave Gerfaut, swipe it away from the recent apps or restart the phone. A check every 15 minutes stays scheduled under it, for whenever Live stops.
+
+- **Stop:** Select **Stop** on the permanent notification to turn Live off. `Check for transactions` goes back to `Every 15 min`.
+- **Force stop:** Force-stopping Gerfaut in the Android settings ends Live until you open Gerfaut again.
+- **No wallet:** When you remove the last wallet of the selected network, Live stops with its permanent notification. Live starts again when you add a wallet.
+- **Tor:** With a `.onion` backend and the built-in Tor, the Tor client stays active for as long as Live runs, which costs battery.
+- **Disguise:** Turning on the [calculator disguise](/settings/app-lock#disguise-the-app-as-a-calculator-on-android) stops Live. Select `Live` again once you [turn the disguise off](/settings/app-lock#turn-off-the-disguise).
+- **`Stopped by Android. Tap to restart.`:** Select the line to start Live again.
+- **`Battery: restricted`:** Select **Fix** to ask Android for the battery exemption again.
+
+## Read a notification
+
+The notification names the wallet and says what happened, such as `Received 0.01000000 BTC · pending`, then `Received 0.01000000 BTC · confirmed`. Gerfaut sends at most three notifications per wallet at once, then one that counts the rest. A payment no longer coming always gets its own.
+
+- **Hidden amounts:** While [amounts are hidden](/everyday-use/balances-and-history#hide-every-amount), a notification reads like `New transaction · pending`, with no amount.
+- **App lock:** A notification names no wallet and no amount, on desktop while Gerfaut is locked and on Android whenever an app lock is set.
+- **Payment no longer coming:** When an incoming payment leaves the mempool before it confirms, and nothing pays the wallet as much in its place, a notification says so, such as `A pending payment of 0.00150000 BTC is no longer coming`. For a payment that simply left the mempool, Gerfaut waits until two syncs, at least ten minutes apart, have both missed it.
+- **Fee bump:** A payment Gerfaut already announced brings no new notification when its sender bumps the fee.
 
 ## Put a widget on your Android home screen
 
 <Steps>
   <Step title="Hold an empty spot on your home screen">
-    Select **Widgets** and pick Gerfaut.
+    Select **Widgets** and find Gerfaut.
   </Step>
-  <Step title="Pick one of the three widgets">
-    - **Bitcoin price:** The price in your chosen currency, as of the last refresh.
-    - **Balance:** The total of your wallets and up to four of them by name. Balances stay masked as `•••••` until you tick `Show balances on widgets` in the `Widgets` card, and whenever amounts are hidden in Gerfaut.
-    - **Network:** The block height as of the last sync.
+  <Step title="Drag one of the three widgets">
+    - **Bitcoin price:** The price in your currency.
+    - **Balance:** The total of your wallets and up to four of them by name.
+    - **Network:** The block height of the last sync.
   </Step>
 </Steps>
 
@@ -52,10 +234,10 @@ The schedule stays greyed out while `New transactions` is off.
   <img src="/images/android/widget.webp" alt="An Android launcher with the three Gerfaut widgets: Bitcoin price, Balance with masked amounts per wallet, and Network with the block height." width="360" />
 </Frame>
 
-<Tip>
-Nothing private reaches a widget: a name, a balance, a price, a height, never an address or a transaction id.
-</Tip>
+The `Bitcoin price` widget says when Gerfaut fetched the price, such as `as of 09:41`. A price from an earlier day shows its date too, such as `as of Oct 03, 09:41`, or `as of Oct 03` when the widget is too narrow for the time. With a `.onion` backend, the widget [never starts Tor](/settings/tor#route-other-requests-through-tor) for the price alone.
 
-<Accordion title="When a widget refreshes">
-  A widget never syncs on its own. It refreshes when you open Gerfaut and with the background check above. Widgets are off while Gerfaut is disguised as a calculator, see [App lock](/settings/app-lock).
-</Accordion>
+The `Balance` widget shows `•••••` until you select the `Show balances on widgets` switch in the `Widgets` card of **Settings** > **Notifications**, and while you [hide amounts](/everyday-use/balances-and-history#hide-every-amount) in Gerfaut. While an [app lock](/settings/app-lock) is set, it shows no wallet name and no amount. Gerfaut greys out the switch until you remove the lock.
+
+A widget refreshes while Gerfaut is open, and about every 15 minutes in the background while it sits on your home screen. That background refresh fetches the price only, so balances and block height are those of the last sync. A widget never shows an address or a transaction id.
+
+Turning on the [calculator disguise](/settings/app-lock#disguise-the-app-as-a-calculator-on-android) removes the widgets from your home screen. Add them again once you [turn the disguise off](/settings/app-lock#turn-off-the-disguise).

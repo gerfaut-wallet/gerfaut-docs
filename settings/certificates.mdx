@@ -7,7 +7,11 @@ Accept the certificate of your own Electrum server once, by its fingerprint. Ger
 
 ## Accept your server's certificate
 
-Gerfaut opens `This server signs its own certificate` when you select **Save backend** and the server answers. Until you accept the certificate, syncs to that server fail. A `.onion` server skips this step.
+Gerfaut opens `This server signs its own certificate` when you select **Save backend** and the server answers. Until you accept the certificate, syncs with that server fail. A `.onion` server skips this step.
+
+<Note>
+When the server does not answer, Gerfaut saves the backend with `Saved. The server did not answer, so its certificate is unchecked.` Gerfaut never asks about that certificate later. If the server signs its own, select **Save backend** again once it answers.
+</Note>
 
 <Steps>
   <Step title="Print the fingerprint on your server">
@@ -62,4 +66,20 @@ Either whoever runs the server replaced the certificate, or something answers in
 
 ## Forget a certificate
 
-In **Settings** > **Network**, the `Trusted certificates` card lists each host you accepted. Select **Forget** on a line and confirm. Syncs to that host then fail until you accept its certificate again with **Save backend**.
+<Note>
+Once you forget a certificate, syncs with its server fail until you select **Save backend** again and accept the certificate.
+</Note>
+
+<Steps>
+  <Step title="Select Forget on the line of the server">
+    In **Settings** > **Network**, the `Trusted certificates` card lists each server whose certificate you accepted.
+  </Step>
+  <Step title="Confirm">
+    <Tabs>
+      <Tab title="Desktop">Select **Forget it** in `Forget this certificate?`.</Tab>
+      <Tab title="Android">Select **Forget certificate** under the line.</Tab>
+    </Tabs>
+
+    Gerfaut shows `Certificate forgotten` and removes the line.
+  </Step>
+</Steps>

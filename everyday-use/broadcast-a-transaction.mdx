@@ -64,7 +64,7 @@ The first two cautions below mean the transaction may not pay what your signing 
 
 - **Outputs left open:** An input is signed with `SIGHASH_NONE` or `SIGHASH_SINGLE`. Whoever relays or mines the transaction can then send that money elsewhere. Have your signing device sign it again over every output, with `SIGHASH_ALL`.
 - **Input not what the PSBT says:** The PSBT declares another amount or address for a coin than your wallet or the backend knows. The fee your signing device showed may not be the real one. Build the transaction again in your own wallet software.
-- **No signature:** An input carries no signature. The pill then reads `Unsigned` on desktop or `Not fully signed` on Android. Send the transaction back to your signing device.
+- **No signature:** An input carries no signature. The pill then reads `Not fully signed`. Send the transaction back to your signing device.
 - **Input already spent:** The transaction went out before, or another one already took the coin.
 - **Fee rate:** Far above what the chain asks for, often because of a wrong unit in the signing software.
 - **Fee:** More than 10% of what the inputs bring.

@@ -82,7 +82,8 @@ The first release: Gerfaut for Android.
 - A page that fails to load, such as a wallet, its UTXOs, a transaction or the wallet list, says why and offers `Try again`. A list of UTXOs that failed to load no longer reads as an empty one.
 - A refused rename stays in its dialog with the reason. A failed `Load older transactions` says why under the button, instead of in a toast gone before you read it.
 - TalkBack names every switch, field and checkbox, reads errors aloud, says `Hidden amount` instead of reading out dots, and reads a transaction id once.
-- Every small target, the address chips included, is at least 44 dp high.
+- Everything you can select, the address chips included, has a touch area of at least 48 by 48 dp, the minimum Android asks for. Most buttons and fields look the same, because the extra room is invisible padding around them.
+- With `Fiat value` on, a wallet on signet, testnet4 or regtest shows 0 in your currency. Test coins have no price. Gerfaut used to value them at the price of real bitcoin. A zero amount also reads `€0.00` instead of `€0.0000`.
 - The app lock sheet takes only digits for a PIN, on the number keyboard, and counts its length the way Gerfaut does when it saves it.
 - Saving a file to a slow cloud provider no longer freezes the screen.
 - Gerfaut no longer requires a camera to install. Scanning stays optional.

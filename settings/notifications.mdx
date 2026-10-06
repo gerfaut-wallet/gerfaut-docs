@@ -61,7 +61,7 @@ While notifications run, your backend's operator sees your addresses, how long G
     If `Notifications are off for Gerfaut in the system settings.` shows under `New transactions`, select **Open system settings** and allow notifications. Live waits meanwhile, and starts again when you come back to Gerfaut.
 
     <Frame caption="Gerfaut says so in amber when Android blocks its notifications, with a button to the system settings.">
-      <img src="/images/android/settings-notifications-off.webp" alt="The Notifications screen on Android with New transactions on, the amber line Notifications are off for Gerfaut in the system settings, and the Open system settings button above Check for transactions." width="360" />
+      <img src="/images/android/settings-notifications-off.webp" alt="The Notifications screen on Android with New transactions on, the amber line Notifications are off for Gerfaut in the system settings, and the Open system settings button above Show wallet and amount." width="360" />
     </Frame>
   </Tab>
 </Tabs>
@@ -90,7 +90,7 @@ With no wallet on the selected network, the Live status line reads `Off until yo
     While Gerfaut is [disguised as a calculator](/settings/app-lock#disguise-the-app-as-a-calculator-on-android), no notification arrives, whatever the mode.
 
     <Frame caption="Under Live, a check every 15 minutes stays scheduled for whenever Android stops Live.">
-      <img src="/images/android/settings-notifications.webp" alt="The Notifications screen on Android: New transactions on, Live under Check for transactions, the line Connected · Electrum · mempool.space, an amber note about the addresses checked at the next sync, and the Widgets card." width="360" />
+      <img src="/images/android/settings-notifications.webp" alt="The Notifications screen on Android: New transactions and Show wallet and amount on, Live under Check for transactions, the line Connected · Electrum · mempool.space, an amber note about the addresses checked at the next sync, and the Widgets card." width="360" />
     </Frame>
   </Tab>
 </Tabs>
@@ -213,9 +213,24 @@ Live keeps running when you leave Gerfaut, swipe it away from the recent apps or
 The notification names the wallet and says what happened, such as `Received 0.01000000 BTC · pending`, then `Received 0.01000000 BTC · confirmed`. Gerfaut sends at most three notifications per wallet at once, then one that counts the rest. A payment no longer coming always gets its own.
 
 - **Hidden amounts:** While [amounts are hidden](/everyday-use/balances-and-history#hide-every-amount), a notification reads like `New transaction · pending`, with no amount.
-- **App lock:** A notification names no wallet and no amount, on desktop while Gerfaut is locked and on Android whenever an app lock is set.
+- **App lock:** On desktop, a notification names no wallet and no amount while Gerfaut is locked. On Android, the [`Show wallet and amount`](#hide-the-wallet-and-amount-on-android) switch decides it, whether Gerfaut is locked or not.
 - **Payment no longer coming:** When an incoming payment leaves the mempool before it confirms, and nothing pays the wallet as much in its place, a notification says so, such as `A pending payment of 0.00150000 BTC is no longer coming`. For a payment that simply left the mempool, Gerfaut waits until two syncs, at least ten minutes apart, have both missed it.
 - **Fee bump:** A payment Gerfaut already announced brings no new notification when its sender bumps the fee.
+
+## Hide the wallet and amount on Android
+
+<Warning>
+With `Show wallet and amount` on, anyone who sees your phone's lock screen can read which wallet moved and by how much, even while Gerfaut is locked. Android hides that text only if your lock screen settings hide notification content.
+</Warning>
+
+<Steps>
+  <Step title="Open Settings > Notifications">
+    `Show wallet and amount` sits under `New transactions`. It is on by default. Gerfaut greys it out while `New transactions` is off.
+  </Step>
+  <Step title="Select the Show wallet and amount switch">
+    Each notification then carries the title `Gerfaut` and a line such as `New transaction · pending`, with no wallet name and no amount.
+  </Step>
+</Steps>
 
 ## Put a widget on your Android home screen
 

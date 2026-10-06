@@ -55,6 +55,8 @@ The first release: Gerfaut for Android.
 - The Policy page reads like the desktop one. Primary paths come first, then recovery and emergency ones, each from the nearest lock to the farthest. One coin counts like several, as in `1 of 1 coin unlocked`. A `Next coin` line gives the wait of the first coin to unlock, in blocks and in days.
 - On the Policy page, a coin that Gerfaut cannot count down before the first sync reads `next known after the first sync` instead of `next in an unknown time`.
 - TalkBack calls the pin icon `Pin`, like the desktop app, instead of `Map pin`.
+- With `Live` and the `Automatic` backend, syncs go first to the server Live talks to, Blockstream's Electrum server on mainnet. One operator sees your addresses instead of two. When `blockstream.info:700` fails, Live moves to `electrum.blockstream.info:50002` before it falls back to mempool.space.
+- frigate.2140.dev is no longer in the list of public servers. It is a Silent Payments server, of no use to a wallet that only watches. If you picked it, Gerfaut goes back to `Automatic`.
 
 ### Fixed
 

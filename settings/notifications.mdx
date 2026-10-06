@@ -114,7 +114,7 @@ Between wallets, Live takes the first address of each wallet, then the second, a
   <Accordion title="Use Live with an Esplora backend">
     An Esplora backend pushes changes for fewer addresses than an Electrum server. Each minute, Gerfaut reads a few of the other addresses, in turn:
 
-    - **A mempool instance:** A public instance, such as mempool.space, pushes changes for ten addresses per connection on mainnet, and more than 1,000 on signet and testnet4. Gerfaut reads three of the others each minute. With N addresses taking turns, it reads each one about every N/3 minutes.
+    - **A mempool instance:** A public instance, such as mempool.space, pushes changes for ten addresses per connection on mainnet, and for several hundred on signet and testnet4. Gerfaut reads three of the others each minute. With N addresses taking turns, it reads each one about every N/3 minutes.
     - **Another Esplora backend:** It pushes nothing. Each minute, Gerfaut reads the two addresses Live takes first, and one of the others. With N addresses taking turns, it reads each one about every N minutes.
     - **Your own node:** Gerfaut reads 30 addresses a minute instead of three. On a mempool instance, it reads each one about every N/30 minutes. On another Esplora backend, it reads the first two every minute and each of the others about every N/28 minutes.
     - **A server that limits requests:** Each time it does, Gerfaut waits twice as long between two reads, up to ten minutes. It goes back to once a minute half an hour after the last limit.

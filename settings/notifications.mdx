@@ -6,7 +6,7 @@ description: "Get notified when a transaction reaches the mempool and when it co
 Gerfaut posts each notification from your device, for the wallets of the network selected in **Settings** > **Network**.
 
 <Warning>
-While notifications run, your backend's operator sees your addresses, how long Gerfaut stays connected and each IP address it connects from. With the `Automatic` server, Live first connects to the Electrum server of an operator Gerfaut already syncs with, Blockstream on mainnet. Point Gerfaut at [your own node](/settings/backends-and-your-own-node) to keep all of it to yourself.
+While Live runs, your backend's operator sees your addresses, how long Gerfaut stays connected and each IP address it connects from. With the `Automatic` server, that is Blockstream on mainnet and mempool.space on signet and testnet4. Point Gerfaut at [your own node](/settings/backends-and-your-own-node) to keep all of it to yourself.
 </Warning>
 
 ## Turn on notifications
@@ -113,7 +113,7 @@ Between wallets, Live takes addresses in rounds: the first address of each walle
 - **Pinned wallets:** The wallets you [pin](#pin-the-wallets-live-follows-first) come before all the others. Live finishes their rounds before it starts on any other wallet.
 - **Wallets that hold coins:** In each round, they go before the empty wallets.
 
-A server can also refuse some addresses, which then wait for the next sync too.
+A server can also refuse some addresses, which then wait for the next sync too. See [what the public servers allow](/settings/backends-and-your-own-node#use-the-public-servers).
 
 <AccordionGroup>
   <Accordion title="Use Live with an Esplora backend">

@@ -99,7 +99,7 @@ Within seconds holds for the addresses an Electrum server or a mempool instance 
 
 ## Make Live follow every address
 
-Live follows up to 200 addresses per wallet and 2,000 in all, or 20,000 on [your own node](/settings/backends-and-your-own-node#follow-more-addresses-on-your-own-node). A payment to any other address shows at the next sync: when Gerfaut opens, when you sync by hand, or at the complete sync Live runs once a day.
+Live follows up to 200 addresses per wallet and 2,000 in all, because public servers limit how many addresses one app may follow. On your own node, the [`This is my node`](/settings/backends-and-your-own-node#follow-more-addresses-on-your-own-node) switch raises the limit to 20,000. A payment to an address Live does not follow shows at the next sync: when Gerfaut opens, when you sync by hand, or at the complete sync Live runs once a day.
 
 In each wallet, Live takes the addresses most likely to move first:
 
@@ -108,7 +108,12 @@ In each wallet, Live takes the addresses most likely to move first:
 - **Change addresses:** The same, on the change side.
 - **The rest:** Older addresses, newest first.
 
-Between wallets, Live takes the first address of each wallet, then the second, and so on. [Pinned wallets](#pin-the-wallets-live-follows-first) come first, then the wallets that hold coins. A server can also refuse some addresses, which then wait for the next sync too.
+Between wallets, Live takes addresses in rounds: the first address of each wallet, then the second of each, and so on. That way, a large wallet never crowds out the addresses most likely to move in a small one. Some wallets go first:
+
+- **Pinned wallets:** The wallets you [pin](#pin-the-wallets-live-follows-first) come before all the others. Live finishes their rounds before it starts on any other wallet.
+- **Wallets that hold coins:** In each round, they go before the empty wallets.
+
+A server can also refuse some addresses, which then wait for the next sync too.
 
 <AccordionGroup>
   <Accordion title="Use Live with an Esplora backend">

@@ -62,6 +62,8 @@ Gerfaut watches bitcoin wallets it cannot spend from. There is no key generation
 - The hints under `New transactions`, `Check for updates automatically` and `Currency` are shorter.
 - Fiat values group their thousands with a space, like amounts in BTC and sats: `€74 074.07` instead of `€74,074.07`.
 - When every wallet is on the network shown, the backup export reads `All wallets (N)` instead of offering a choice of one.
+- In Add a wallet, an input that fits a single network, such as a mainnet address, names that network instead of offering a choice of one.
+- On the Policy page, a coin that Gerfaut cannot count down before the first sync reads `next known after the first sync` instead of `next in an unknown time`.
 
 ### Fixed
 
@@ -88,6 +90,7 @@ Gerfaut watches bitcoin wallets it cannot spend from. There is no key generation
 - In Add a wallet, a Taproot address no longer leaves a single character on a line of its own.
 - On the Broadcast page, the input and output lists use the same icons as the diagram above them. An output to someone else points away, and change points back.
 - The Tor mode you pick shows as selected at once, instead of about a second later. Turning on `New transactions` shows `Connecting…` while the live watch starts, instead of `Off`.
+- With `New transactions` on and no wallet on the selected network, **Settings** > **Notifications** reads `Off until you add a wallet.` instead of `Off`.
 - When the server itself refuses addresses, **Settings** > **Notifications** says so, instead of blaming Live's own limits.
 - When a server takes only a certain number of your addresses, Live asks it again for all of them a day later, or an hour later when it took none. It used to wait until you changed the server settings or restarted Gerfaut, which could leave Live off for days. Two refusals still hold until you change the server settings or restart Gerfaut. One is a single address the server turns down, such as one with a history too long for it. The other is a cut from an ElectrumX server when Live uses too much of its resources, after which Live asks for fewer addresses.
 - In Add a wallet, the first address belongs to the network you pick and changes when you pick another one. A key added on regtest shows its `bcrt1` address, not the `tb1` address of signet.

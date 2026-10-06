@@ -49,6 +49,8 @@ The first release: Gerfaut for Android.
 - Broadcast warns in red when a signature leaves the outputs open (`SIGHASH_NONE` or `SIGHASH_SINGLE`). Whoever relays such a transaction can send that money elsewhere. The page tells you not to send it as it is. When the outputs pay more than the inputs bring, the last check before sending says the network would refuse it.
 - Coming back from a file picker, a save dialog or a share sheet more than ten minutes after it opened asks for the app lock again. That trip used to leave Gerfaut unlocked, however long it lasted.
 - A release build no longer writes the text of an unexpected error to the system log, where it could quote an address.
+- In Add a wallet, an input that fits a single network, such as a mainnet address, names that network instead of offering a choice of one.
+- On the Policy page, a coin that Gerfaut cannot count down before the first sync reads `next known after the first sync` instead of `next in an unknown time`.
 
 ### Fixed
 
@@ -61,6 +63,7 @@ The first release: Gerfaut for Android.
 - Gerfaut refuses a QR code that announces more than 10,000 parts before it reads it. One such frame used to make Gerfaut quit.
 - Importing a wallet, a transaction or a backup from a file that is too large, such as a video, says so. Gerfaut used to read the whole file first, which could make it quit. A wallet file that is not text says so too.
 - Turning Live off and on again within a few seconds starts it again. It used to stay off until Gerfaut came back to the screen.
+- With Live on, removing your last wallet left the permanent notification on `Connecting…` for good. Live now stops, notification included, while the selected network has no wallet. It starts again when you add one.
 - With the screen off, Live keeps the phone awake while it checks the server and until it has announced a new transaction. The notification then arrives within seconds rather than at the next check. A status that changes nothing keeps nothing awake.
 - When Android refuses to restart Live, Gerfaut waits longer before each new attempt, instead of waking the phone every few minutes.
 - Receive offers a fresh address after every sync, Live's included. It used to keep showing an address that a payment had just reached, until Gerfaut restarted.

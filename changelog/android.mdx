@@ -41,6 +41,7 @@ The first release: Gerfaut for Android.
 - One APK per processor architecture instead of one carrying all three: 50 MB to download on a 64-bit ARM phone rather than 127.
 - Reproducible builds. The APKs come out of a container that pins every tool version, and the same commit always gives the same bytes. Rebuild them yourself and compare: only the signature differs. See [Verify a download](/getting-started/verify-your-download#rebuild-it-yourself).
 - A notice on the home screen when a newer release is out, with a button to the release page and a `Later` button that closes it for that release. Gerfaut asks GitHub for the latest release once a day at most, when you open it. When one of your nodes is a `.onion` address, the request goes through Tor, or not at all when Tor is out of reach. Gerfaut asks nothing while it is disguised. **Settings** > **About** turns the automatic check off and keeps the check on demand.
+- **Settings** > **About** marks a 0.x version as a beta, with a `Report a problem` button that opens the issues of the Android repository. The first page of the welcome tour says that Gerfaut is in public beta.
 
 ### Changed
 

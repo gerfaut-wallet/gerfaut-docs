@@ -2,6 +2,10 @@
 
 User guides for [Gerfaut](https://gerfaut-wallet.com), a watch-only bitcoin wallet. [Mintlify](https://mintlify.com) builds the site, which is meant to be served at [gerfaut-wallet.com/docs](https://gerfaut-wallet.com/docs).
 
+## Status: public beta
+
+Gerfaut is in public beta. The pages a newcomer reads first say so. Report a mistake in these pages in the [issues](https://github.com/gerfaut-wallet/gerfaut-docs/issues) here, and a problem with an app in that app's repository ([desktop](https://github.com/gerfaut-wallet/gerfaut-desktop/issues), [Android](https://github.com/gerfaut-wallet/gerfaut-mobile/issues)).
+
 ## Preview locally
 
 Install the Mintlify CLI (Node.js 20.17 or newer), then run the dev server from the repository root:

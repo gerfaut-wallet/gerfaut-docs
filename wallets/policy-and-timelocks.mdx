@@ -9,7 +9,7 @@ Open a wallet's Policy page to see who can spend, under which condition, and whe
 
 <Tabs>
   <Tab title="Desktop">
-    Select **Policy** in the sidebar. The Overview also shows a digest of the policy under `Total balance`, such as `2 of 3 keys`, `Recovery in 142 days`, or `Recovery locked` until the first sync.
+    Select **Policy** in the sidebar. The Overview also shows a digest of the policy under `Total balance`, such as `2 of 3 keys`, `Recovery in 142 days`, or `Recovery after 1 year` while the wallet holds no coin.
   </Tab>
   <Tab title="Android">
     On the wallet page, select **More** (the vertical dots in the app bar), then **Policy**.
@@ -22,7 +22,7 @@ The page opens on a plain statement of the policy, such as `2 of 3 keys sign.` A
 
 - **Path:** `Primary`, `Recovery`, `Emergency` or `Other`. The cards come in that order, the nearest lock first within each. A second primary path reads `Primary B`, and a third timed path `Recovery 3`.
 - **Condition:** The signing keys and locks the path needs, such as `Any 2 of Key A, Key B, Key C`. Each signing key is a pill with its fingerprint.
-- **Locks:** Each timelock in blocks and in estimated time, such as `52 560 blocks after the coin arrives ≈ 1 year`.
+- **Locks:** Each timelock on a line of its own, such as `52 560 blocks after the coin arrives ≈ 1 year`. A lock at a block height or a date also says how long it still runs.
 - **State:** `Spendable now`, a countdown such as `In 1 432 blocks ≈ 10 days`, `No coins yet`, `Needs a secret`, or `Locked` until the first sync. It turns amber when less than 30 days remain.
 - **Coins:** A relative lock counts per coin, even a single one, such as `0 of 1 coin unlocked · next in 12 days`. `Next coin` and a progress bar show how long the first coin to unlock still waits. Until the first sync, the count ends in `next known after the first sync`.
 

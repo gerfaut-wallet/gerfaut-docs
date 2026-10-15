@@ -43,7 +43,9 @@ With `Automatic`, Gerfaut asks these servers:
 | `Signet` | mempool.space, then blockstream.info, then mempool.emzy.de | mempool.space's Electrum server |
 | `Testnet 4` | mempool.space, then mempool.emzy.de | mempool.space's Electrum server |
 
-Gerfaut moves to the next server only when one fails. The next sync starts with the server that answered. Once Live has connected, each sync goes to the Live server first, so your syncs show your addresses to a single operator.
+Gerfaut moves to the next server only when one fails. The next sync starts with the server that answered. When the Electrum servers of the `Live` column fail, Live moves to the sync servers, in the same order.
+
+Once Live has connected, each sync goes to the Live server first, so your syncs show your addresses to a single operator. A sync that starts before Live connects follows the order above.
 
 <Tabs>
   <Tab title="Desktop">

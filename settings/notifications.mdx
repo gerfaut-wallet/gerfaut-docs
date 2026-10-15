@@ -6,7 +6,7 @@ description: "Get notified when a transaction reaches the mempool and when it co
 Gerfaut posts each notification from your device, for the wallets of the network selected in **Settings** > **Network**.
 
 <Warning>
-While Live runs, your backend's operator sees your addresses, how long Gerfaut stays connected and each IP address it connects from. With the `Automatic` server, that is Blockstream on mainnet and mempool.space on signet and testnet4. Point Gerfaut at [your own node](/settings/backends-and-your-own-node) to keep all of it to yourself.
+While Live runs, your backend's operator sees your addresses, how long Gerfaut stays connected and each IP address it connects from. With the `Automatic` server, that is Blockstream on mainnet and mempool.space on signet and testnet4, unless their Electrum servers fail and Live moves to the next public server. Point Gerfaut at [your own node](/settings/backends-and-your-own-node) to keep all of it to yourself.
 </Warning>
 
 ## Turn on notifications
@@ -82,7 +82,7 @@ With no wallet on the selected network, the Live status line reads `Off until yo
     | `Check for transactions` | When a notification arrives | What stops it |
     |---|---|---|
     | `Live` | Within seconds, with Gerfaut open, in the background, swiped away or after a phone restart. | Force-stopping Gerfaut, until you open it again. |
-    | `Every 15 min`, `Every hour`, `Every 6 hours` | At the next background check, which Android runs at most every 15 minutes, once the phone is online and its battery is not low. | Force-stopping Gerfaut, until you open it again. |
+    | `Every 15 min`, `Every hour`, `Every 6 hours` | At the next background check, at the interval you picked or later, once the phone is online and its battery is not low. | Force-stopping Gerfaut, until you open it again. |
     | `Off` | When Gerfaut syncs while open, at launch or when you sync by hand. | Leaving Gerfaut. |
 
     Nothing arrives while the phone is off. Once it is back on, Gerfaut announces what came in meanwhile at its first check.

@@ -103,20 +103,11 @@
       {
         "tab": "Changelog",
         "icon": "history",
-        "menu": [
+        "groups": [
           {
-            "item": "Desktop",
-            "icon": "monitor",
-            "description": "Windows, macOS and Linux.",
+            "group": "Changelog",
             "pages": [
-              "changelog/desktop"
-            ]
-          },
-          {
-            "item": "Android",
-            "icon": "smartphone",
-            "description": "The Android app.",
-            "pages": [
+              "changelog/desktop",
               "changelog/android"
             ]
           }
@@ -125,20 +116,11 @@
       {
         "tab": "Help",
         "icon": "life-buoy",
-        "menu": [
+        "groups": [
           {
-            "item": "FAQ",
-            "icon": "circle-question-mark",
-            "description": "Short answers to the questions people ask most.",
+            "group": "Help",
             "pages": [
-              "help/faq"
-            ]
-          },
-          {
-            "item": "Contact",
-            "icon": "mail",
-            "description": "A question, a bug or a security report.",
-            "pages": [
+              "help/faq",
               "help/contact"
             ]
           }

@@ -1,6 +1,7 @@
 /* Gerfaut documentation: overrides on top of the Mintlify mint theme.
-   Colors follow the Gerfaut palette; every rule targets a documented
-   Mintlify selector. */
+   Colors follow the Gerfaut palette. Rules target documented Mintlify
+   selectors, except the header and clip rules, which also lean on its
+   markup: check them after a Mintlify update. */
 
 :root {
   --gf-tip: #116b41;
@@ -72,7 +73,31 @@
   border-radius: 12px;
 }
 
-/* The Home group holds one page: no header above it. */
+/* Header: Guides, Changelog and Help sit in the top bar, left of the
+   theme menu, instead of a second row under it. The empty list of navbar
+   links keeps their room, the tab row leaves the flow, and Mintlify's tab
+   height variable drops to zero so the sidebar and anchors follow. */
+
+@media (min-width: 1024px) {
+  :root {
+    --topbar-tabs-height: 0rem !important;
+  }
+
+  #navbar nav[aria-label="Main"] {
+    width: 17.5rem;
+  }
+
+  #navbar div:has(> .nav-tabs) {
+    position: absolute;
+    top: 0;
+    right: 6rem;
+    height: 4rem;
+    padding: 0;
+  }
+}
+
+/* The first group of a tab needs no header: Home holds one page, and the
+   Changelog and Help tabs already name their only group. */
 
 #navigation-items > div:first-child .sidebar-group-header {
   display: none;

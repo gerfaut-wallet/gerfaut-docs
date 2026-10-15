@@ -160,3 +160,123 @@ video.phone-video {
 .frame:not(:has(img[width="360"])):not(:has(video.phone-video)) {
   border: 1px solid var(--gf-border);
 }
+
+/* Clip bar (clip-bar.js): a pause button and a progress track under
+   every clip. The track grows and shows its thumb on hover, on focus,
+   while dragging and while the clip is paused. */
+
+.frame div:has(> video) {
+  flex-direction: column;
+}
+
+.gf-clip-bar {
+  --gf-rail: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0 0.5rem 0 0.125rem;
+}
+
+video.phone-video + .gf-clip-bar {
+  width: 338px;
+  max-width: 94%;
+  margin: 0.75rem auto 0;
+}
+
+.gf-clip-bar__toggle {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 8px;
+  color: var(--gf-text);
+  opacity: 0.7;
+  transition: background-color 150ms ease, color 150ms ease, opacity 150ms ease;
+}
+
+.gf-clip-bar__toggle svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.gf-clip-bar__toggle:hover {
+  background-color: var(--gf-surface-sunken);
+  color: var(--gf-primary);
+  opacity: 1;
+}
+
+.gf-clip-bar__track {
+  position: relative;
+  flex: 1 1 auto;
+  height: 1.25rem;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.gf-clip-bar__track::before,
+.gf-clip-bar__fill {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: var(--gf-rail);
+  border-radius: 999px;
+  transform: translateY(-50%);
+  transition: height 150ms ease;
+}
+
+.gf-clip-bar__track::before {
+  content: "";
+  right: 0;
+  background-color: var(--gf-border);
+}
+
+.gf-clip-bar__fill {
+  width: calc(var(--gf-progress, 0) * 100%);
+  background-color: var(--gf-primary);
+}
+
+.gf-clip-bar__thumb {
+  position: absolute;
+  top: 50%;
+  left: calc(var(--gf-progress, 0) * 100%);
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  background-color: var(--gf-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 150ms ease;
+}
+
+.gf-clip-bar:hover,
+.gf-clip-bar.is-dragging,
+.gf-clip-bar:has(.gf-clip-bar__track:focus-visible) {
+  --gf-rail: 6px;
+}
+
+.gf-clip-bar:hover .gf-clip-bar__thumb,
+.gf-clip-bar.is-paused .gf-clip-bar__thumb,
+.gf-clip-bar.is-dragging .gf-clip-bar__thumb,
+.gf-clip-bar__track:focus-visible .gf-clip-bar__thumb {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.gf-clip-bar__toggle:focus-visible,
+.gf-clip-bar__track:focus-visible {
+  outline: 2px solid var(--gf-primary);
+  outline-offset: 2px;
+}
+
+.gf-clip-bar__track:focus-visible {
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gf-clip-bar *,
+  .gf-clip-bar *::before {
+    transition: none;
+  }
+}

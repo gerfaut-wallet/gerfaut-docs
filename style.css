@@ -72,7 +72,8 @@
   border-radius: 12px;
 }
 
-/* The Home group holds one page: no header above it. */
+/* The first group of a tab needs no header: Home holds one page, and the
+   Changelog and Help tabs already name their only group. */
 
 #navigation-items > div:first-child .sidebar-group-header {
   display: none;

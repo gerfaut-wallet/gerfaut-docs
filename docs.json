@@ -166,5 +166,10 @@
     "socials": {
       "github": "https://github.com/gerfaut-wallet/gerfaut-docs"
     }
+  },
+  "integrations": {
+    "telemetry": {
+      "enabled": false
+    }
   }
 }

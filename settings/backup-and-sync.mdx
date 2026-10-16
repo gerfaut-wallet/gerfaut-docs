@@ -64,7 +64,11 @@ Nobody can recover the password. Someone who copies the file can try passwords o
     Select **Open a file…** (**Open a file** on Android) and pick the `.gerfaut` file. Or select **Scan a QR code** and keep the camera on the code until the counter reaches its total. One loop of the code is enough.
   </Step>
   <Step title="Enter the password">
-    Select **Open backup**. A wrong password reads `Wrong password, or the file is damaged.`
+    Select **Open backup**. When the backup does not open, Gerfaut says why:
+
+    - **`Wrong password, or the file is damaged.`:** Enter the password again. A password shorter than eight characters always reads this, since no backup is sealed under one.
+    - **`This is not a Gerfaut backup, or it is damaged.`:** Check that you opened a `.gerfaut` file or a Gerfaut backup QR code. The password is not in question.
+    - **`This backup was made with a newer version of Gerfaut. Update Gerfaut to open it.`:** Update Gerfaut on [Android](/getting-started/install-android#update-gerfaut) or [desktop](/getting-started/install-desktop#update-gerfaut), then open the backup again.
   </Step>
   <Step title="Pick what to restore">
     Gerfaut ticks every wallet this device does not watch yet, and marks the others `Already watched`. If the backup holds node settings, select the `Apply node settings` switch to take its backends, accepted certificates and gap limit.

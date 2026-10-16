@@ -10,11 +10,11 @@ Give Gerfaut the public side of your wallet: the descriptor, extended public key
 <Steps>
   <Step title="Open the add dialog">
     <Tabs>
-      <Tab title="Desktop">
-        Select the wallet switcher at the top of the sidebar, then **Add a wallet**. Before your first wallet, the sidebar shows **Add a wallet** in its place.
-      </Tab>
       <Tab title="Android">
         Select **Add a wallet** at the bottom of the home screen.
+      </Tab>
+      <Tab title="Desktop">
+        Select the wallet switcher at the top of the sidebar, then **Add a wallet**. Before your first wallet, the sidebar shows **Add a wallet** in its place.
       </Tab>
     </Tabs>
   </Step>
@@ -38,14 +38,14 @@ Give Gerfaut the public side of your wallet: the descriptor, extended public key
     When a QR code names no receive or change path, Gerfaut shows `This QR code carries no receive or change path, so Gerfaut assumes the usual 0/* and 1/*. Compare the first address with your signer.` If `First address` differs, select **Back**. Then paste or import the descriptor your signing device or wallet software exports, which names its paths.
 
     <Tabs>
-      <Tab title="Desktop">
-        <Frame caption="Gerfaut recognizes the format and derives the first address to compare before it stores anything.">
-          <img src="/images/desktop/add-wallet.webp" alt="The Add a wallet dialog on desktop after pasting an extended public key: the Recognized as card with the first address, the SLIP-132 notice, the Advanced button, the Name and Network fields and the Add wallet button." />
-        </Frame>
-      </Tab>
       <Tab title="Android">
         <Frame caption="Gerfaut recognizes the pasted descriptor and shows the first address before anything is stored.">
           <img src="/images/android/add-wallet.webp" alt="The Add a wallet screen on Android after pasting a descriptor: the Recognized as card with the first address, the Name field, the network buttons and the Add wallet button." width="360" />
+        </Frame>
+      </Tab>
+      <Tab title="Desktop">
+        <Frame caption="Gerfaut recognizes the format and derives the first address to compare before it stores anything.">
+          <img src="/images/desktop/add-wallet.webp" alt="The Add a wallet dialog on desktop after pasting an extended public key: the Recognized as card with the first address, the SLIP-132 notice, the Advanced button, the Name and Network fields and the Add wallet button." />
         </Frame>
       </Tab>
     </Tabs>
@@ -56,14 +56,14 @@ Give Gerfaut the public side of your wallet: the descriptor, extended public key
 </Steps>
 
 <Tabs>
-  <Tab title="Desktop">
-    <Frame caption="Gerfaut names the format and the first address before it stores anything, then opens the new wallet synced.">
-      <video autoPlay muted loop playsInline preload="metadata" src="/videos/wallets/add-a-wallet-desktop.mp4" aria-label="Adding a wallet on desktop: Continue, the Recognized as card with the first address, the name Savings typed, Add wallet, then the synced Overview." />
-    </Frame>
-  </Tab>
   <Tab title="Android">
     <Frame caption="Gerfaut names the format and the first address before it stores anything, then opens the new wallet synced.">
       <video autoPlay muted loop playsInline preload="metadata" className="phone-video" src="/videos/wallets/add-a-wallet-android.mp4" aria-label="Adding a wallet on Android: Continue, the Recognized as card with the first address, the name Savings typed, Add wallet, then the synced wallet page." />
+    </Frame>
+  </Tab>
+  <Tab title="Desktop">
+    <Frame caption="Gerfaut names the format and the first address before it stores anything, then opens the new wallet synced.">
+      <video autoPlay muted loop playsInline preload="metadata" src="/videos/wallets/add-a-wallet-desktop.mp4" aria-label="Adding a wallet on desktop: Continue, the Recognized as card with the first address, the name Savings typed, Add wallet, then the synced Overview." />
     </Frame>
   </Tab>
 </Tabs>
@@ -76,7 +76,7 @@ Give Gerfaut the public side of your wallet: the descriptor, extended public key
 
 Open **Settings** > **Wallets**. Each wallet has its own row:
 
-- **Rename:** Select **Rename**, enter the new name and select **Save name**. Selecting the wallet name at the top of its Overview on desktop, or of its page on Android, does the same.
+- **Rename:** Select **Rename**, enter the new name and select **Save name**. Selecting the wallet name at the top of its page on Android, or of its Overview on desktop, does the same.
 - **Icon:** Select **Icon**, then one of seven icons, such as `Key`, `Snowflake` or `Pin`.
 - **Rescan:** Read the wallet again from its first address, change included, up to the `Gap limit` at the top of the section. Raise that limit first for coins further out. Gerfaut then shows the result, such as `Rescanned · 2 new transactions`.
 - **Remove:** Stop watching the wallet once you confirm with **Remove wallet**. Nothing moves on-chain.
@@ -84,14 +84,14 @@ Open **Settings** > **Wallets**. Each wallet has its own row:
 - **Advanced:** Select **Advanced** under the list to pick the wallets [Live follows first](/settings/notifications#pin-the-wallets-live-follows-first) when it cannot follow every address.
 
 <Tabs>
-  <Tab title="Desktop">
-    <Frame caption="Wallets are managed in one list: rescan, rename, reorder or remove, with the gap limit above.">
-      <img src="/images/desktop/settings-wallets.webp" alt="The Wallets section of the desktop settings: the gap limit field and two wallet rows, each with Icon, Rescan, Rename and Remove actions and a drag handle." />
-    </Frame>
-  </Tab>
   <Tab title="Android">
     <Frame caption="Wallets are managed in one list: rescan, rename, reorder or remove, with the gap limit above.">
       <img src="/images/android/settings-wallets.webp" alt="The Wallets screen on Android: the gap limit field and two wallet rows, each with Rename, Icon, Rescan and Remove actions and a drag handle, then Advanced." width="360" />
+    </Frame>
+  </Tab>
+  <Tab title="Desktop">
+    <Frame caption="Wallets are managed in one list: rescan, rename, reorder or remove, with the gap limit above.">
+      <img src="/images/desktop/settings-wallets.webp" alt="The Wallets section of the desktop settings: the gap limit field and two wallet rows, each with Icon, Rescan, Rename and Remove actions and a drag handle." />
     </Frame>
   </Tab>
 </Tabs>

@@ -1,6 +1,6 @@
 ---
 title: "Desktop"
-description: "Read what each release of Gerfaut for Windows, macOS and Linux adds or changes, from the first release on, restated from the desktop repository's changelog."
+description: "Read what each release of Gerfaut for Linux, macOS and Windows adds or changes, from the first release on, restated from the desktop repository's changelog."
 icon: "monitor"
 ---
 
@@ -10,7 +10,7 @@ The source of truth is the [CHANGELOG.md](https://github.com/gerfaut-wallet/gerf
 
 ## 0.1.0
 
-The first release: Gerfaut for Windows, macOS and Linux, as a public beta.
+The first release: Gerfaut for Linux, macOS and Windows, as a public beta.
 
 Gerfaut watches bitcoin wallets it cannot spend from. There is no key generation, no seed handling and no signing anywhere in the code, and no `Send` button in the interface.
 
@@ -53,7 +53,7 @@ Gerfaut watches bitcoin wallets it cannot spend from. There is no key generation
 
 ### Keeping it yours
 
-- Export every wallet into a backup sealed with a password of your own, as a file or as an animated QR code. The same backup restores on another computer or on Android. It holds descriptors and addresses, never a private key. Where you pick the password, Gerfaut warns that someone who copies the file can try passwords offline.
+- Export every wallet into a backup sealed with a password of your own, as a file or as an animated QR code. The same backup restores on Android or on another computer. It holds descriptors and addresses, never a private key. Where you pick the password, Gerfaut warns that someone who copies the file can try passwords offline.
 - A backup can also carry your backend choice, accepted certificates and gap limit. Restoring one shows what they would put in place before anything changes. Gerfaut refuses a backup that a newer Gerfaut wrote, and says so.
 - Fiat value beside the balance, in the currency you pick, from CoinGecko, Kraken or mempool.space. No price source hears from Gerfaut until you turn on `Fiat value`. A wallet on signet, testnet4 or regtest shows 0 in your currency, since test coins are worth nothing.
 - Amounts in BTC or in sats, and a light, dark or system theme.
@@ -64,10 +64,10 @@ Gerfaut watches bitcoin wallets it cannot spend from. There is no key generation
 
 ### Security
 
-- Gerfaut stores the wallet list encrypted, under a key that the operating system's credential store keeps: the Windows Credential Manager, the macOS Keychain or the Secret Service on Linux.
+- Gerfaut stores the wallet list encrypted, under a key that the operating system's credential store keeps: the Secret Service on Linux, the macOS Keychain or the Windows Credential Manager.
 - Lock Gerfaut with a PIN or a password. While it is locked, the vault refuses every command the lock screen does not need, and the window holds no descriptor and no balance. Gerfaut also opens no file dialog while it is locked.
 - When one of your backends is a `.onion` address, the price and the update check go through Tor too. Gerfaut sends neither when Tor is out of reach. It refuses an Electrum host that hides a port, so a `.onion` name never reaches the system resolver.
-- Copying a descriptor keeps it out of the clipboard history and the cloud clipboard on Windows. On macOS and Linux, it stays out of the clipboard managers that honour the same flag. Gerfaut clears it from the clipboard after a minute, unless you copied something else since.
+- Copying a descriptor keeps it out of the clipboard managers that honour its flag on Linux and macOS. On Windows, it stays out of the clipboard history and the cloud clipboard. Gerfaut clears it from the clipboard after a minute, unless you copied something else since.
 - The window calls only Gerfaut's own commands, and opens only the addresses Gerfaut links to: the block explorer, the releases page and the issues page.
 - Gerfaut refuses, before reading it, a file far too large to be a wallet or a transaction. It also refuses an animated QR code that announces more than 5,000 parts, and a sync that reports a transaction worth more than 21 million bitcoin.
 - The Broadcast preview checks each previous transaction it fetches against its transaction id, and adds up amounts with overflow checks. It flags a time lock only when an input's sequence enables it.

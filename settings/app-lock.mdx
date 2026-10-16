@@ -3,7 +3,7 @@ title: "App lock"
 description: "Lock Gerfaut behind a PIN or a password, unlock it with biometrics on Android, and hide it behind a working calculator on your launcher."
 ---
 
-Lock Gerfaut so that someone at your unlocked computer or phone sees nothing of your wallets. Your wallet list stays encrypted whether the lock is on or off.
+Lock Gerfaut so that someone at your unlocked phone or computer sees nothing of your wallets. Your wallet list stays encrypted whether the lock is on or off.
 
 ## Turn on the app lock
 
@@ -20,14 +20,14 @@ Lock Gerfaut so that someone at your unlocked computer or phone sees nothing of 
 </Steps>
 
 <Tabs>
-  <Tab title="Desktop">
-    <Frame caption="The app lock protects an unlocked computer. Lock now locks Gerfaut at once.">
-      <video autoPlay muted loop playsInline preload="metadata" src="/videos/settings/turn-on-app-lock-desktop.mp4" aria-label="Turning on the app lock on desktop: the App lock switch, PIN, the PIN entered twice, Turn on, then the switch on with Change PIN and Lock now under it." />
-    </Frame>
-  </Tab>
   <Tab title="Android">
     <Frame caption="Once the lock is on, Security adds Change PIN, Lock now and the calculator disguise.">
       <video autoPlay muted loop playsInline preload="metadata" className="phone-video" src="/videos/settings/turn-on-app-lock-android.mp4" aria-label="Turning on the app lock on Android: the App lock switch, PIN, the PIN entered twice, Turn on, then the switch on with Change PIN, Lock now and Disguise the app under it." />
+    </Frame>
+  </Tab>
+  <Tab title="Desktop">
+    <Frame caption="The app lock protects an unlocked computer. Lock now locks Gerfaut at once.">
+      <video autoPlay muted loop playsInline preload="metadata" src="/videos/settings/turn-on-app-lock-desktop.mp4" aria-label="Turning on the app lock on desktop: the App lock switch, PIN, the PIN entered twice, Turn on, then the switch on with Change PIN and Lock now under it." />
     </Frame>
   </Tab>
 </Tabs>
@@ -35,13 +35,13 @@ Lock Gerfaut so that someone at your unlocked computer or phone sees nothing of 
 ## Lock and unlock
 
 <Tabs>
-  <Tab title="Desktop">
-    Press `Ctrl+L`, select **Lock** at the bottom of the sidebar, or select **Lock now** in **Settings** > **Security**. Otherwise Gerfaut stays unlocked until you close it.
-  </Tab>
   <Tab title="Android">
     Gerfaut asks for the secret each time you come back to it. Returning within ten minutes from a file picker, a save dialog or a share sheet that Gerfaut opened needs no secret. Select **Lock now** in **Settings** > **Security** to lock it by hand. While a lock is set, Android keeps Gerfaut out of screenshots and shows a blank card in the recent apps, or the calculator under the disguise.
 
     A notification still names the wallet and gives the amount while a lock is set. To hide both, turn off [`Show wallet and amount`](/settings/notifications#hide-the-wallet-and-amount-on-android).
+  </Tab>
+  <Tab title="Desktop">
+    Press `Ctrl+L`, select **Lock** at the bottom of the sidebar, or select **Lock now** in **Settings** > **Security**. Otherwise Gerfaut stays unlocked until you close it.
   </Tab>
 </Tabs>
 
@@ -112,23 +112,6 @@ Only the wallets in your backup come back. Add any other wallet again from its d
 </Note>
 
 <Tabs>
-  <Tab title="Desktop">
-    <Steps>
-      <Step title="Close Gerfaut">
-        Close every Gerfaut window.
-      </Step>
-      <Step title="Rename the Gerfaut data folder">
-        Rename `com.gerfautwallet.gerfaut`, for example to `com.gerfautwallet.gerfaut.old`. Gerfaut keeps it here:
-
-        - **Windows:** `%APPDATA%\com.gerfautwallet.gerfaut`
-        - **macOS:** `~/Library/Application Support/com.gerfautwallet.gerfaut`
-        - **Linux:** `~/.local/share/com.gerfautwallet.gerfaut`
-      </Step>
-      <Step title="Open Gerfaut and restore the backup">
-        Gerfaut opens on an empty vault, with no lock. Follow [Restore a backup](/settings/backup-and-sync#restore-a-backup).
-      </Step>
-    </Steps>
-  </Tab>
   <Tab title="Android">
     <Steps>
       <Step title="Uninstall Gerfaut">
@@ -139,6 +122,23 @@ Only the wallets in your backup come back. Add any other wallet again from its d
       </Step>
       <Step title="Restore the backup">
         Follow [Restore a backup](/settings/backup-and-sync#restore-a-backup).
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Desktop">
+    <Steps>
+      <Step title="Close Gerfaut">
+        Close every Gerfaut window.
+      </Step>
+      <Step title="Rename the Gerfaut data folder">
+        Rename `com.gerfautwallet.gerfaut`, for example to `com.gerfautwallet.gerfaut.old`. Gerfaut keeps it here:
+
+        - **Linux:** `~/.local/share/com.gerfautwallet.gerfaut`
+        - **macOS:** `~/Library/Application Support/com.gerfautwallet.gerfaut`
+        - **Windows:** `%APPDATA%\com.gerfautwallet.gerfaut`
+      </Step>
+      <Step title="Open Gerfaut and restore the backup">
+        Gerfaut opens on an empty vault, with no lock. Follow [Restore a backup](/settings/backup-and-sync#restore-a-backup).
       </Step>
     </Steps>
   </Tab>

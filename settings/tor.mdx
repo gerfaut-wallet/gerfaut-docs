@@ -8,15 +8,6 @@ Gerfaut reaches a backend whose address ends in `.onion` through Tor, with a Tor
 ## Pick which Tor Gerfaut uses
 
 <Tabs>
-  <Tab title="Desktop">
-    - **`Automatic`:** The Tor already running on this machine if it answers, the built-in one otherwise. This is the default.
-    - **`System Tor`:** Only the Tor on this machine, at the `SOCKS address` you enter. Empty means `127.0.0.1:9050`. The Tor Browser listens on `9150`.
-    - **`Built-in`:** Only the built-in Tor.
-
-    <Frame caption="Any .onion backend goes through Tor, either the one already on the machine or the built-in one.">
-      <img src="/images/desktop/settings-tor.webp" alt="The Tor card of the Network section on desktop: Automatic, System Tor and Built-in, the SOCKS address field and the Test the connection button." />
-    </Frame>
-  </Tab>
   <Tab title="Android">
     - **`Automatic`:** Only the built-in Tor, because any app on a phone can answer on the Tor port. This is the default.
     - **`System Tor`:** Only a Tor app running on the phone, such as Orbot.
@@ -24,6 +15,15 @@ Gerfaut reaches a backend whose address ends in `.onion` through Tor, with a Tor
 
     <Frame caption="Any .onion backend goes through Tor, either built in or the one already on the device.">
       <img src="/images/android/settings-tor.webp" alt="The Tor card on Android: the Automatic, System Tor and Built-in buttons and the Test the connection button." width="360" />
+    </Frame>
+  </Tab>
+  <Tab title="Desktop">
+    - **`Automatic`:** The Tor already running on this machine if it answers, the built-in one otherwise. This is the default.
+    - **`System Tor`:** Only the Tor on this machine, at the `SOCKS address` you enter. Empty means `127.0.0.1:9050`. The Tor Browser listens on `9150`.
+    - **`Built-in`:** Only the built-in Tor.
+
+    <Frame caption="Any .onion backend goes through Tor, either the one already on the machine or the built-in one.">
+      <img src="/images/desktop/settings-tor.webp" alt="The Tor card of the Network section on desktop: Automatic, System Tor and Built-in, the SOCKS address field and the Test the connection button." />
     </Frame>
   </Tab>
 </Tabs>
@@ -43,14 +43,14 @@ Gerfaut reaches a backend whose address ends in `.onion` through Tor, with a Tor
 </Steps>
 
 <Tabs>
-  <Tab title="Desktop">
-    <Frame caption="The card says which Tor answered, here the built-in one.">
-      <video autoPlay muted loop playsInline preload="metadata" src="/videos/settings/test-tor-desktop.mp4" aria-label="Testing Tor on desktop: Built-in, Test the connection, the start of the built-in Tor with its percentage, then Reached through the built-in Tor." />
-    </Frame>
-  </Tab>
   <Tab title="Android">
     <Frame caption="The card counts up while the built-in Tor starts, then says which Tor answered.">
       <video autoPlay muted loop playsInline preload="metadata" className="phone-video" src="/videos/settings/test-tor-android.mp4" aria-label="Testing Tor on Android: Built-in, Test the connection, Connecting, Starting the built-in Tor… 40%, then Reached through the built-in Tor." />
+    </Frame>
+  </Tab>
+  <Tab title="Desktop">
+    <Frame caption="The card says which Tor answered, here the built-in one.">
+      <video autoPlay muted loop playsInline preload="metadata" src="/videos/settings/test-tor-desktop.mp4" aria-label="Testing Tor on desktop: Built-in, Test the connection, the start of the built-in Tor with its percentage, then Reached through the built-in Tor." />
     </Frame>
   </Tab>
 </Tabs>

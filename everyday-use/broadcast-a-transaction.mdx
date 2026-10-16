@@ -14,18 +14,18 @@ Nobody can take a transaction back once the network has it. Check the outputs an
 <Steps>
   <Step title="Open the Broadcast page">
     <Tabs>
-      <Tab title="Desktop">
-        Select **Broadcast** in the sidebar.
-
-        <Frame caption="Broadcasting starts from a transaction signed elsewhere. Gerfaut previews it and never signs.">
-          <img src="/images/desktop/broadcast.webp" alt="The Broadcast page on desktop, empty: the Signed transaction field, the accepted formats, the Import a file and Scan a QR code buttons and the Preview button." />
-        </Frame>
-      </Tab>
       <Tab title="Android">
         Select **More**, then **Broadcast**.
 
         <Frame caption="Broadcast takes a finished transaction and hands it to the network without ever signing.">
           <img src="/images/android/broadcast.webp" alt="The Broadcast screen on Android, empty: the Signed transaction or PSBT field, the Import a file and Scan a QR code buttons and the Preview button." width="360" />
+        </Frame>
+      </Tab>
+      <Tab title="Desktop">
+        Select **Broadcast** in the sidebar.
+
+        <Frame caption="Broadcasting starts from a transaction signed elsewhere. Gerfaut previews it and never signs.">
+          <img src="/images/desktop/broadcast.webp" alt="The Broadcast page on desktop, empty: the Signed transaction field, the accepted formats, the Import a file and Scan a QR code buttons and the Preview button." />
         </Frame>
       </Tab>
     </Tabs>
@@ -42,14 +42,14 @@ Nobody can take a transaction back once the network has it. Check the outputs an
 </Steps>
 
 <Tabs>
-  <Tab title="Desktop">
-    <Frame caption="Gerfaut reads the transaction back before anything leaves. Broadcast stays disabled while an input is unsigned.">
-      <video autoPlay muted loop playsInline preload="metadata" src="/videos/everyday-use/preview-a-transaction-desktop.mp4" aria-label="Previewing a PSBT on desktop: the PSBT pasted, Preview, the amber Not fully signed pill, the diagram, a red caution about a missing signature under Before you send, then Broadcast disabled. Nothing is broadcast." />
-    </Frame>
-  </Tab>
   <Tab title="Android">
     <Frame caption="Gerfaut reads the transaction back before anything leaves. Broadcast stays disabled while an input is unsigned.">
       <video autoPlay muted loop playsInline preload="metadata" className="phone-video" src="/videos/everyday-use/preview-a-transaction-android.mp4" aria-label="Previewing a PSBT on Android: the PSBT pasted, Preview, the diagram, a red caution about a missing signature under Before you send, then Broadcast disabled. Nothing is broadcast." />
+    </Frame>
+  </Tab>
+  <Tab title="Desktop">
+    <Frame caption="Gerfaut reads the transaction back before anything leaves. Broadcast stays disabled while an input is unsigned.">
+      <video autoPlay muted loop playsInline preload="metadata" src="/videos/everyday-use/preview-a-transaction-desktop.mp4" aria-label="Previewing a PSBT on desktop: the PSBT pasted, Preview, the amber Not fully signed pill, the diagram, a red caution about a missing signature under Before you send, then Broadcast disabled. Nothing is broadcast." />
     </Frame>
   </Tab>
 </Tabs>
@@ -93,10 +93,10 @@ The status card asks the backend about the transaction every 30 seconds until it
 Gerfaut keeps your last ten broadcasts and lists those of the selected network on the Broadcast page. Forgetting one removes it from the list and leaves the transaction untouched.
 
 <Tabs>
-  <Tab title="Desktop">
-    Select **Refresh** to ask the backend now. Under `Past broadcasts`, select **Check** to follow an older transaction again, or **Forget** to remove it.
-  </Tab>
   <Tab title="Android">
     Select the **Check again** icon to ask the backend now. Under `Recent broadcasts`, select the **Forget this broadcast** icon to remove a transaction.
+  </Tab>
+  <Tab title="Desktop">
+    Select **Refresh** to ask the backend now. Under `Past broadcasts`, select **Check** to follow an older transaction again, or **Forget** to remove it.
   </Tab>
 </Tabs>

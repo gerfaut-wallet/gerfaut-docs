@@ -12,23 +12,6 @@ While Live runs, your backend's operator sees your addresses, how long Gerfaut s
 ## Turn on notifications
 
 <Tabs>
-  <Tab title="Desktop">
-    <Steps>
-      <Step title="Select the New transactions switch">
-        Open **Settings** > **Notifications**.
-      </Step>
-      <Step title="Read the Live watch line">
-        The line reads `Connected · Electrum` or `Connected · mempool WebSocket`, followed by the server. Another Esplora backend reads `Polling every minute` instead.
-      </Step>
-      <Step title="Select Send a test notification">
-        A test notification appears. If nothing shows, allow notifications for Gerfaut in the system settings and turn off Do Not Disturb.
-      </Step>
-    </Steps>
-
-    <Frame caption="The Live watch line goes from Connecting to Connected and names the server it listens to.">
-      <video autoPlay muted loop playsInline preload="metadata" src="/videos/settings/turn-on-notifications-desktop.mp4" aria-label="Turning on notifications on desktop: the New transactions switch, the Live watch line on Connecting, then on Connected · mempool WebSocket · mempool.space." />
-    </Frame>
-  </Tab>
   <Tab title="Android">
     In step 2, pick how Gerfaut checks:
 
@@ -64,6 +47,23 @@ While Live runs, your backend's operator sees your addresses, how long Gerfaut s
       <img src="/images/android/settings-notifications-off.webp" alt="The Notifications screen on Android with New transactions on, the amber line Notifications are off for Gerfaut in the system settings, and the Open system settings button above Show wallet and amount." width="360" />
     </Frame>
   </Tab>
+  <Tab title="Desktop">
+    <Steps>
+      <Step title="Select the New transactions switch">
+        Open **Settings** > **Notifications**.
+      </Step>
+      <Step title="Read the Live watch line">
+        The line reads `Connected · Electrum` or `Connected · mempool WebSocket`, followed by the server. Another Esplora backend reads `Polling every minute` instead.
+      </Step>
+      <Step title="Select Send a test notification">
+        A test notification appears. If nothing shows, allow notifications for Gerfaut in the system settings and turn off Do Not Disturb.
+      </Step>
+    </Steps>
+
+    <Frame caption="The Live watch line goes from Connecting to Connected and names the server it listens to.">
+      <video autoPlay muted loop playsInline preload="metadata" src="/videos/settings/turn-on-notifications-desktop.mp4" aria-label="Turning on notifications on desktop: the New transactions switch, the Live watch line on Connecting, then on Connected · mempool WebSocket · mempool.space." />
+    </Frame>
+  </Tab>
 </Tabs>
 
 With no wallet on the selected network, the Live status line reads `Off until you add a wallet.` Live starts with the first wallet you add.
@@ -71,13 +71,6 @@ With no wallet on the selected network, the Live status line reads `Off until yo
 ## Check when notifications arrive
 
 <Tabs>
-  <Tab title="Desktop">
-    Gerfaut notifies you within seconds while it runs, open, minimised or locked. Once you close it, nothing arrives. When you open it again, its first sync notifies you of what came in meanwhile.
-
-    <Frame caption="The hint under New transactions says when Gerfaut notifies you: while it is open, minimised or locked.">
-      <img src="/images/desktop/settings-notifications.webp" alt="The Notifications section of the desktop settings: the New transactions switch, off, the Live watch line on Off, and the Send a test notification button." />
-    </Frame>
-  </Tab>
   <Tab title="Android">
     | `Check for transactions` | When a notification arrives | What stops it |
     |---|---|---|
@@ -91,6 +84,13 @@ With no wallet on the selected network, the Live status line reads `Off until yo
 
     <Frame caption="Under Live, a check every 15 minutes stays scheduled for whenever Android stops Live.">
       <img src="/images/android/settings-notifications.webp" alt="The Notifications screen on Android: New transactions and Show wallet and amount on, Live under Check for transactions, the line Connected · Electrum · mempool.space, an amber note about the addresses checked at the next sync, and the Widgets card." width="360" />
+    </Frame>
+  </Tab>
+  <Tab title="Desktop">
+    Gerfaut notifies you within seconds while it runs, open, minimised or locked. Once you close it, nothing arrives. When you open it again, its first sync notifies you of what came in meanwhile.
+
+    <Frame caption="The hint under New transactions says when Gerfaut notifies you: while it is open, minimised or locked.">
+      <img src="/images/desktop/settings-notifications.webp" alt="The Notifications section of the desktop settings: the New transactions switch, off, the Live watch line on Off, and the Send a test notification button." />
     </Frame>
   </Tab>
 </Tabs>
@@ -150,9 +150,6 @@ Each wallet then carries a badge:
 - **`At next sync`:** Live follows none of the addresses of the wallet. A payment to it shows at the next sync.
 
 <Tabs>
-  <Tab title="Desktop">
-    The badge shows on the `Live watch` row of the `Watch status` card, on the wallet's Overview, with a count under it such as `40 addresses wait for the next sync.` It also shows on the wallet's row in **Settings** > **Wallets**.
-  </Tab>
   <Tab title="Android">
     The badge shows on the wallet's card on the home screen and on its row in **Settings** > **Wallets**. On the wallet page, it sits under the sync line, next to a count such as `40 addresses wait for the next sync.` The permanent notification reads `Connected to your server · some addresses wait for syncs`.
 
@@ -163,6 +160,9 @@ Each wallet then carries a badge:
     <Frame caption="The wallet page adds how many addresses wait for the next sync.">
       <img src="/images/android/wallet-live.webp" alt="The Cold storage wallet page on Android: the sync line, the Partly live badge next to 78 addresses wait for the next sync, the total balance and the Transactions tab." width="360" />
     </Frame>
+  </Tab>
+  <Tab title="Desktop">
+    The badge shows on the `Live watch` row of the `Watch status` card, on the wallet's Overview, with a count under it such as `40 addresses wait for the next sync.` It also shows on the wallet's row in **Settings** > **Wallets**.
   </Tab>
 </Tabs>
 
@@ -184,14 +184,14 @@ Pinned wallets go before every other wallet. Pinning several large wallets can l
 </Steps>
 
 <Tabs>
-  <Tab title="Desktop">
-    <Frame caption="Each switch under Always watch live first puts one wallet ahead of the others.">
-      <img src="/images/desktop/settings-wallets-advanced.webp" alt="The Wallets section of the desktop settings with Advanced unfolded: Always watch live first and a switch for each of the two wallets, both off." />
-    </Frame>
-  </Tab>
   <Tab title="Android">
     <Frame caption="Each switch under Always watch live first puts one wallet ahead of the others.">
       <img src="/images/android/settings-wallets-advanced.webp" alt="The Wallets screen on Android with Advanced unfolded under the wallet rows: Always watch live first and a switch for each of the two wallets, both off." width="360" />
+    </Frame>
+  </Tab>
+  <Tab title="Desktop">
+    <Frame caption="Each switch under Always watch live first puts one wallet ahead of the others.">
+      <img src="/images/desktop/settings-wallets-advanced.webp" alt="The Wallets section of the desktop settings with Advanced unfolded: Always watch live first and a switch for each of the two wallets, both off." />
     </Frame>
   </Tab>
 </Tabs>
@@ -213,7 +213,7 @@ Live keeps running when you leave Gerfaut, swipe it away from the recent apps or
 The notification names the wallet and says what happened, such as `Received 0.01000000 BTC · pending`, then `Received 0.01000000 BTC · confirmed`. Gerfaut sends at most three notifications per wallet at once, then one that counts the rest. A payment no longer coming always gets its own.
 
 - **Hidden amounts:** While [amounts are hidden](/everyday-use/balances-and-history#hide-every-amount), a notification reads like `New transaction · pending`, with no amount.
-- **App lock:** On desktop, a notification names no wallet and no amount while Gerfaut is locked. On Android, the [`Show wallet and amount`](#hide-the-wallet-and-amount-on-android) switch decides it, whether Gerfaut is locked or not.
+- **App lock:** On Android, the [`Show wallet and amount`](#hide-the-wallet-and-amount-on-android) switch decides whether a notification names the wallet and the amount, locked or not. On desktop, a notification names no wallet and no amount while Gerfaut is locked.
 - **Payment no longer coming:** When an incoming payment leaves the mempool before it confirms, and nothing pays the wallet as much in its place, a notification says so, such as `A pending payment of 0.00150000 BTC is no longer coming`. For a payment that simply left the mempool, Gerfaut waits until two syncs, at least ten minutes apart, have both missed it.
 - **Fee bump:** A payment Gerfaut already announced brings no new notification when its sender bumps the fee.
 

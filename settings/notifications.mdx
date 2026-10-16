@@ -210,12 +210,16 @@ Live keeps running when you leave Gerfaut, swipe it away from the recent apps or
 
 ## Read a notification
 
-The notification names the wallet and says what happened, such as `Received 0.01000000 BTC · pending`, then `Received 0.01000000 BTC · confirmed`. Gerfaut sends at most three notifications per wallet at once, then one that counts the rest. A payment no longer coming always gets its own.
+A notification reads the same on Android and desktop. It names the wallet and says what happened, such as `Received 0.01000000 BTC · pending`, then `Received 0.01000000 BTC · confirmed`.
 
+- **Long wallet name:** A name longer than 64 characters is cut short and ends in `…`.
+- **Several transactions:** Gerfaut sends at most three notifications per wallet at once, then one that counts the rest, such as `2 more transactions`. A payment no longer coming always gets its own.
+- **A burst of notifications:** Gerfaut posts at most 20 notifications a minute. The last one reads `More transactions are coming in. Open Gerfaut to see them.` Payments no longer coming count apart, so a burst of transactions never silences one.
 - **Hidden amounts:** While [amounts are hidden](/everyday-use/balances-and-history#hide-every-amount), a notification reads like `New transaction · pending`, with no amount.
 - **App lock:** On Android, the [`Show wallet and amount`](#hide-the-wallet-and-amount-on-android) switch decides whether a notification names the wallet and the amount, locked or not. On desktop, a notification names no wallet and no amount while Gerfaut is locked.
 - **Payment no longer coming:** When an incoming payment leaves the mempool before it confirms, and nothing pays the wallet as much in its place, a notification says so, such as `A pending payment of 0.00150000 BTC is no longer coming`. For a payment that simply left the mempool, Gerfaut waits until two syncs, at least ten minutes apart, have both missed it.
 - **Fee bump:** A payment Gerfaut already announced brings no new notification when its sender bumps the fee.
+- **Fallback on Android:** When Gerfaut cannot write a notification, it still posts one with no wallet and no amount, such as `More transactions are coming in. Open Gerfaut to see them.`
 
 ## Hide the wallet and amount on Android
 

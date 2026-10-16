@@ -21,7 +21,7 @@ Before opening a pull request, check the project:
 
 ```bash
 mint validate
-mint broken-links
+mint broken-links --check-anchors --check-redirects
 ```
 
 ## How it deploys

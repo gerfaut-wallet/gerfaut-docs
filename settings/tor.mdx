@@ -59,7 +59,7 @@ Gerfaut reaches a backend whose address ends in `.onion` through Tor, with a Tor
 
 With a `.onion` backend, Gerfaut sends these requests through Tor too, and never around it:
 
-- **Update check:** It goes through Tor as soon as one of your backends is a `.onion` address. When Tor cannot be reached, Gerfaut sends nothing.
+- **Update check:** It goes through Tor as soon as one of your backends is a `.onion` address. When Tor cannot be reached, Gerfaut sends nothing. The daily check never starts Tor for itself and waits for a Tor that already runs, such as the built-in one once a sync or Live started it. Until then, it tries again each time you come back to Gerfaut on Android, and at each unlock or within the hour on desktop.
 - **Notifications:** The live connection goes to the backend itself, through Tor.
 - **Price:** The fiat value, and the price chart on desktop, go through Tor as soon as one of your backends is a `.onion` address. When Tor cannot be reached, the price line reads `Tor is not available, so no price was asked.` Amounts then show without fiat.
 - **Price widget on Android:** It never starts Tor for the price alone. While Gerfaut is closed, it fetches the price only through a Tor that already runs, such as the built-in one a sync started, or Orbot under `System Tor`. Otherwise it keeps the last price, with its date.

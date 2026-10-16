@@ -3,7 +3,7 @@ title: "Units and fiat"
 description: "Show every amount in Gerfaut in BTC or in sats, and add its fiat value in one of 30 currencies from CoinGecko, Kraken or mempool.space."
 ---
 
-Pick one unit for every amount, and add a fiat value under each one if you want it. Open **Settings** > **General** and find the `Display` card.
+Pick one unit for every amount, and add its fiat value if you want it. Open **Settings** > **General** and find the `Display` card.
 
 ## Switch between BTC and sats
 
@@ -17,7 +17,7 @@ The price source sees your IP address with each price request. With a `.onion` b
 
 <Steps>
   <Step title="Select the Fiat value switch">
-    Amounts gain a second line with their fiat value. The fiat value is off by default.
+    Amounts gain a second line with their fiat value, except the inputs, the outputs and the fee of a transaction. The fiat value is off by default.
   </Step>
   <Step title="Pick the currency">
     Under `Currency`, the seven currencies of `Every source` work with any price source. The 23 others, under `CoinGecko only`, switch the source to CoinGecko. The default is EUR.
@@ -43,4 +43,4 @@ The price source sees your IP address with each price request. With a `.onion` b
   </Tab>
 </Tabs>
 
-A wallet on a test network, such as signet or testnet4, shows a fiat value of 0, because test coins are worth nothing. A total that includes it counts it as 0.
+A wallet on a test network, such as signet or testnet4, shows a fiat value of 0, because test coins are worth nothing.

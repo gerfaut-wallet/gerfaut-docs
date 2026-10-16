@@ -13,9 +13,11 @@ Check what Gerfaut makes of what you paste, open or scan, and what to confirm be
 | A multipath descriptor with `<0;1>` | `Multipath descriptor (BIP-389)` | Both branches. |
 | Two descriptors on two lines | `Descriptor pair (receive + change)` | Both branches. |
 | An extended public key (`xpub`, `tpub`, or a SLIP-132 `ypub`, `zpub`, `upub`, `vpub`) | `Extended public key` | The `0/*` and `1/*` branches under that extended public key. |
-| A single address | `Single address` | That address only. See [Watch an address](/wallets/watch-an-address). |
-| The export file of another wallet | `Wallet export file` | The descriptor the file holds. When it holds several account types, Gerfaut picks the preferred one and says so. |
+| A single address, or a `bitcoin:` payment link that carries one | `Single address` | That address only. See [Watch an address](/wallets/watch-an-address). |
+| A JSON export of another wallet, with a `descriptor` field or Coldcard's `bip44` to `bip86` accounts | `Wallet export file` | The descriptor the file holds. When it holds several account types, Gerfaut picks the preferred one and says so. |
 | A BSMS record (BIP-129) | `BSMS record` | The multisig descriptor in the record. Gerfaut refuses the file if its first address differs from the one the record promises. |
+
+A text file reads as the descriptors it holds, such as the descriptor file Sparrow exports.
 
 A multisig wallet arrives as a descriptor, pasted, scanned or read from a BSMS record. Every wallet has a [Policy page](/wallets/policy-and-timelocks), where a Miniscript descriptor with timelocks gets one card per spending path.
 

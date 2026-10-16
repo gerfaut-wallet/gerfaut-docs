@@ -72,7 +72,7 @@ The first two cautions below mean the transaction may not pay what your signing 
 <AccordionGroup>
   <Accordion title="Read the amber cautions">
     - **Input not found or not checked:** The backend does not know the coin, or no backend answered. Check the amounts on your signing device.
-    - **Fee unknown:** Gerfaut cannot tell the value of an input, or the outputs pay more than the inputs bring.
+    - **Fee unknown:** Gerfaut cannot work out the fee: the value of a coin is unknown, or the amounts do not add up. When the outputs pay more than coins whose amounts are proven, or more than all the bitcoin there will ever be, the network will refuse the transaction and Broadcast stays disabled. When they pay more than amounts only the PSBT declares, the caution says so and the network decides.
     - **Dust:** An output below 546 sats, which most nodes refuse.
     - **Locktime:** The network does not accept the transaction before a later block or date.
     - **Spends a watched wallet:** The transaction spends coins of a wallet you watch, named in the caution.

@@ -55,8 +55,8 @@
             "group": "Getting started",
             "pages": [
               "getting-started/what-is-gerfaut",
-              "getting-started/install-desktop",
               "getting-started/install-android",
+              "getting-started/install-desktop",
               "getting-started/verify-your-download"
             ]
           },
@@ -115,8 +115,8 @@
           {
             "group": "Changelog",
             "pages": [
-              "changelog/desktop",
-              "changelog/android"
+              "changelog/android",
+              "changelog/desktop"
             ]
           }
         ]

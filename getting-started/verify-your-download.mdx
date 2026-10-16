@@ -33,6 +33,20 @@ RWTz3c4gUmglCX5Uvjthigz1ts3TS3ZSdhRNpFgOJRW/Wr4XjGlqTR3O
   </Step>
   <Step title="Check that your file matches the list">
     <Tabs>
+      <Tab title="Linux">
+        ```bash
+        sha256sum --check SHA256SUMS --ignore-missing
+        ```
+
+        The command prints `OK` after the name of your file.
+      </Tab>
+      <Tab title="macOS">
+        ```bash
+        shasum -a 256 --check SHA256SUMS --ignore-missing
+        ```
+
+        The command prints `OK` after the name of your file.
+      </Tab>
       <Tab title="Windows">
         In PowerShell, compute the hash of your file and find its line in the list:
 
@@ -42,20 +56,6 @@ RWTz3c4gUmglCX5Uvjthigz1ts3TS3ZSdhRNpFgOJRW/Wr4XjGlqTR3O
         ```
 
         The two hashes must be identical, letter for letter.
-      </Tab>
-      <Tab title="macOS">
-        ```bash
-        shasum -a 256 --check SHA256SUMS --ignore-missing
-        ```
-
-        The command prints `OK` after the name of your file.
-      </Tab>
-      <Tab title="Linux">
-        ```bash
-        sha256sum --check SHA256SUMS --ignore-missing
-        ```
-
-        The command prints `OK` after the name of your file.
       </Tab>
     </Tabs>
   </Step>

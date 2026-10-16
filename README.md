@@ -4,7 +4,7 @@ User guides for [Gerfaut](https://gerfaut-wallet.com), a watch-only bitcoin wall
 
 ## Status: public beta
 
-Gerfaut is in public beta. The pages a newcomer reads first say so. Report a mistake in these pages in the [issues](https://github.com/gerfaut-wallet/gerfaut-docs/issues) here, and a problem with an app in that app's repository ([desktop](https://github.com/gerfaut-wallet/gerfaut-desktop/issues), [Android](https://github.com/gerfaut-wallet/gerfaut-mobile/issues)).
+Gerfaut is in public beta. The pages a newcomer reads first say so. Report a mistake in these pages in the [issues](https://github.com/gerfaut-wallet/gerfaut-docs/issues) here, and a problem with an app in that app's repository ([Android](https://github.com/gerfaut-wallet/gerfaut-mobile/issues), [desktop](https://github.com/gerfaut-wallet/gerfaut-desktop/issues)).
 
 ## Preview locally
 
@@ -32,9 +32,9 @@ Deployment goes through the Mintlify GitHub App. Once the app is connected to th
 
 - `docs.json` holds the site configuration: branding, colors, fonts, and navigation.
 - Each page is a single MDX file, sorted into one folder per section.
-- `changelog/` restates the `CHANGELOG.md` files of the desktop and Android apps.
-- `images/` holds the screenshots, in `desktop/` and `android/`.
-- `videos/` holds the short clips that show one action each, sorted by section, in a desktop and an Android version.
+- `changelog/` restates the `CHANGELOG.md` files of the Android and desktop apps.
+- `images/` holds the screenshots, in `android/` and `desktop/`.
+- `videos/` holds the short clips that show one action each, sorted by section, in an Android and a desktop version.
 - `style.css` restyles the callouts, the previous and next buttons, and the Android screenshots and clips.
 - `logo/` and `favicon.svg` come from the Gerfaut brand kit.
 

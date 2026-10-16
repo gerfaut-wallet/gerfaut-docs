@@ -8,11 +8,11 @@ Open a wallet's Policy page to see who can spend, under which condition, and whe
 ## Open the Policy page
 
 <Tabs>
-  <Tab title="Desktop">
-    Select **Policy** in the sidebar. The Overview also shows a digest of the policy under `Total balance`, such as `2 of 3 keys`, `Recovery in 142 days`, or `Recovery after 1 year` while the wallet holds no coin.
-  </Tab>
   <Tab title="Android">
     On the wallet page, select **More** (the vertical dots in the app bar), then **Policy**.
+  </Tab>
+  <Tab title="Desktop">
+    Select **Policy** in the sidebar. The Overview also shows a digest of the policy under `Total balance`, such as `2 of 3 keys`, `Recovery in 142 days`, or `Recovery after 1 year` while the wallet holds no coin.
   </Tab>
 </Tabs>
 
@@ -23,18 +23,18 @@ The page opens on a plain statement of the policy, such as `2 of 3 keys sign.` A
 - **Path:** `Primary`, `Recovery`, `Emergency` or `Other`. The cards come in that order, the nearest lock first within each. A second primary path reads `Primary B`, and a third timed path `Recovery 3`.
 - **Condition:** The signing keys and locks the path needs, such as `Any 2 of Key A, Key B, Key C`. Each signing key is a pill with its fingerprint.
 - **Locks:** Each timelock on a line of its own, such as `52 560 blocks after the coin arrives ≈ 1 year`. A lock at a block height or a date also says how long it still runs.
-- **State:** `Spendable now`, a countdown such as `In 1 432 blocks ≈ 10 days`, `No coins yet`, `Needs a secret`, or `Locked` until the first sync. It turns amber when less than 30 days remain.
+- **State:** `Spendable now`, a countdown such as `In 1 432 blocks ≈ 10 days`, `No coins yet`, `Needs a secret`, or `Locked` until the first sync. It shows in green when the path is open now, and in amber when the path or its next coin opens in less than 30 days.
 - **Coins:** A relative lock counts per coin, even a single one, such as `0 of 1 coin unlocked · next in 12 days`. `Next coin` and a progress bar show how long the first coin to unlock still waits. Until the first sync, the count ends in `next known after the first sync`.
 
 <Tabs>
-  <Tab title="Desktop">
-    <Frame caption="Each spending path gets a card with its signing keys, its locks and where its coins stand.">
-      <img src="/images/desktop/policy.webp" alt="The Policy page on desktop for a wallet with a recovery path: the summary sentence, the Primary and Recovery cards, the Keys table and the collapsed Descriptor." />
-    </Frame>
-  </Tab>
   <Tab title="Android">
     <Frame caption="Each spending path gets a card with its signing keys, its locks and where its coins stand.">
       <img src="/images/android/policy.webp" alt="The Policy page on Android: the summary sentence, the Primary and Recovery cards with their signing keys and timelock, the Keys list and the Descriptor disclosure." width="360" />
+    </Frame>
+  </Tab>
+  <Tab title="Desktop">
+    <Frame caption="Each spending path gets a card with its signing keys, its locks and where its coins stand.">
+      <img src="/images/desktop/policy.webp" alt="The Policy page on desktop for a wallet with a recovery path: the summary sentence, the Primary and Recovery cards, the Keys table and the collapsed Descriptor." />
     </Frame>
   </Tab>
 </Tabs>
@@ -50,14 +50,14 @@ The `Keys` section lists each signing key with its label, fingerprint, origin pa
 Open `Descriptor` to copy the descriptor, written as one `/<0;1>/*` descriptor when the wallet has a receive and a change branch. Gerfaut clears it from the clipboard after one minute. Its policy is written out below, such as `or(pk(Key A),and(pk(Key B),older(52560)))`.
 
 <Tabs>
-  <Tab title="Desktop">
-    <Frame caption="The page shows one card per spending path, then the signing keys and the descriptor to copy.">
-      <video autoPlay muted loop playsInline preload="metadata" src="/videos/wallets/read-a-policy-desktop.mp4" aria-label="Reading a policy on desktop: Policy in the sidebar, the Primary and Recovery cards, the Keys table, then Descriptor opened on the descriptor and its normalized policy." />
-    </Frame>
-  </Tab>
   <Tab title="Android">
     <Frame caption="The page shows one card per spending path, then the signing keys and the descriptor to copy.">
       <video autoPlay muted loop playsInline preload="metadata" className="phone-video" src="/videos/wallets/read-a-policy-android.mp4" aria-label="Reading a policy on Android: More, Policy, the Primary card with Spendable now and the Recovery card with 1 of 1 coin unlocked, the Keys list, then Descriptor opened on the descriptor and its policy." />
+    </Frame>
+  </Tab>
+  <Tab title="Desktop">
+    <Frame caption="The page shows one card per spending path, then the signing keys and the descriptor to copy.">
+      <video autoPlay muted loop playsInline preload="metadata" src="/videos/wallets/read-a-policy-desktop.mp4" aria-label="Reading a policy on desktop: Policy in the sidebar, the Primary and Recovery cards, the Keys table, then Descriptor opened on the descriptor and its normalized policy." />
     </Frame>
   </Tab>
 </Tabs>

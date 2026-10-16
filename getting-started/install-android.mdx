@@ -61,10 +61,10 @@ Replay the tour from **Settings** > **About** > **Show the welcome tour**.
 
 ## Update Gerfaut
 
-Gerfaut asks GitHub for the latest release at most once a day while it is unlocked, and tells you once about each new version.
+Gerfaut asks GitHub for the latest release at most once a day while it is unlocked, starting a day after you first open it. It tells you once about each new version, and never about a pre-release.
 
 <Warning>
-The check reaches GitHub from your IP address and carries no wallet data. With a `.onion` backend, it goes [through Tor](/settings/tor) instead.
+The check reaches GitHub from your IP address and carries no wallet data. With a `.onion` backend, it goes [through Tor](/settings/tor#route-other-requests-through-tor) instead, and waits for Tor rather than start it.
 </Warning>
 
 <Steps>
@@ -76,4 +76,4 @@ The check reaches GitHub from your IP address and carries no wallet data. With a
   </Step>
 </Steps>
 
-To check by hand, select **Check for updates** in **Settings** > **About**. To stop the daily check, turn off the `Check automatically` switch there.
+To check by hand, select **Check for updates** in **Settings** > **About**. A version found this way shows there, and the home screen card no longer announces it. To stop the daily check, turn off the `Check automatically` switch there.

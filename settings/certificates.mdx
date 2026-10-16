@@ -30,14 +30,14 @@ When the server does not answer, Gerfaut saves the backend with `Saved. The serv
 </Steps>
 
 <Tabs>
-  <Tab title="Desktop">
-    <Frame caption="Gerfaut shows the fingerprint and the command that prints it on your server, and saves nothing before Accept and save.">
-      <video autoPlay muted loop playsInline preload="metadata" src="/videos/settings/accept-a-certificate-desktop.mp4" aria-label="Accepting a certificate on desktop: My own Electrum server with its host and port, Save backend, the dialog This server signs its own certificate with the SHA-256 fingerprint, then Accept and save." />
-    </Frame>
-  </Tab>
   <Tab title="Android">
     <Frame caption="Gerfaut shows the fingerprint and the command that prints it on your server, and saves nothing before Accept and save.">
       <video autoPlay muted loop playsInline preload="metadata" className="phone-video" src="/videos/settings/accept-a-certificate-android.mp4" aria-label="Accepting a certificate on Android: My own Electrum server with its host and port, Save backend, the dialog This server signs its own certificate with the SHA-256 fingerprint, then Accept and save." />
+    </Frame>
+  </Tab>
+  <Tab title="Desktop">
+    <Frame caption="Gerfaut shows the fingerprint and the command that prints it on your server, and saves nothing before Accept and save.">
+      <video autoPlay muted loop playsInline preload="metadata" src="/videos/settings/accept-a-certificate-desktop.mp4" aria-label="Accepting a certificate on desktop: My own Electrum server with its host and port, Save backend, the dialog This server signs its own certificate with the SHA-256 fingerprint, then Accept and save." />
     </Frame>
   </Tab>
 </Tabs>
@@ -58,8 +58,8 @@ Either whoever runs the server replaced the certificate, or something answers in
     Then confirm.
 
     <Tabs>
-      <Tab title="Desktop">Select **Yes, trust the new certificate**.</Tab>
       <Tab title="Android">Select **Trust it anyway**.</Tab>
+      <Tab title="Desktop">Select **Yes, trust the new certificate**.</Tab>
     </Tabs>
   </Step>
 </Steps>
@@ -76,8 +76,8 @@ Once you forget a certificate, syncs with its server fail until you select **Sav
   </Step>
   <Step title="Confirm">
     <Tabs>
-      <Tab title="Desktop">Select **Forget it** in `Forget this certificate?`.</Tab>
       <Tab title="Android">Select **Forget certificate** under the line.</Tab>
+      <Tab title="Desktop">Select **Forget it** in `Forget this certificate?`.</Tab>
     </Tabs>
 
     Gerfaut shows `Certificate forgotten` and removes the line.

@@ -40,4 +40,4 @@ Deployment goes through the Mintlify GitHub App. Once the app is connected to th
 
 ## License
 
-The text of this documentation is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International](LICENSE) license (CC BY-SA 4.0). The Gerfaut name and logo are not covered by it.
+The text of this documentation is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International](LICENSE) license (CC BY-SA 4.0). The Gerfaut name and logo are not covered by it. The fonts in `fonts/` are under the SIL Open Font License 1.1, each with its `OFL.txt`.

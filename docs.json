@@ -21,8 +21,12 @@
   },
   "fonts": {
     "family": "Instrument Sans",
+    "source": "/fonts/instrument-sans/InstrumentSans-Variable.woff2",
+    "format": "woff2",
     "heading": {
-      "family": "Bricolage Grotesque"
+      "family": "Bricolage Grotesque",
+      "source": "/fonts/bricolage-grotesque/BricolageGrotesque-Variable.woff2",
+      "format": "woff2"
     }
   },
   "background": {

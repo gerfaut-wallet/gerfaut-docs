@@ -3,6 +3,24 @@
    selectors, except the header and clip rules, which also lean on its
    markup: check them after a Mintlify update. */
 
+/* Fonts: served by gerfaut-wallet.com, never by Google. docs.json can
+   only give one weight per family; these faces declare each variable
+   font's whole range, so bold text uses the real weights. */
+
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("https://gerfaut-wallet.com/fonts/instrument-sans/InstrumentSans-Variable.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("https://gerfaut-wallet.com/fonts/bricolage-grotesque/BricolageGrotesque-Variable.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
 :root {
   --gf-tip: #116b41;
   --gf-tip-surface: #dcf5e6;

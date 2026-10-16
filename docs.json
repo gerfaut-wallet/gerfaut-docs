@@ -20,13 +20,17 @@
     "library": "lucide"
   },
   "fonts": {
-    "family": "Instrument Sans",
-    "source": "/fonts/instrument-sans/InstrumentSans-Variable.woff2",
-    "format": "woff2",
+    "body": {
+      "family": "Instrument Sans",
+      "source": "https://gerfaut-wallet.com/fonts/instrument-sans/InstrumentSans-Variable.woff2",
+      "format": "woff2",
+      "weight": 400
+    },
     "heading": {
       "family": "Bricolage Grotesque",
-      "source": "/fonts/bricolage-grotesque/BricolageGrotesque-Variable.woff2",
-      "format": "woff2"
+      "source": "https://gerfaut-wallet.com/fonts/bricolage-grotesque/BricolageGrotesque-Variable.woff2",
+      "format": "woff2",
+      "weight": 700
     }
   },
   "background": {

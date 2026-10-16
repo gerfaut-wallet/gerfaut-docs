@@ -1,0 +1,37 @@
+name: CI
+
+# The site checked the way Mintlify builds it, on every push to main,
+# every pull request, and on demand (Actions, CI, Run workflow): the
+# build in strict mode, then every internal link, with the anchor after
+# a # and the target of each redirect in docs.json. Without
+# --check-anchors, a link to a heading that no longer exists passes.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # One version of the CLI, so that a new release cannot turn a run
+      # red on its own: it changes here, on purpose.
+      MINT: mint@4.2.1047
+      # No usage data from CI.
+      DO_NOT_TRACK: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24.19.0
+      - name: Validate the build
+        run: npx --yes "$MINT" validate
+      - name: Check the links
+        run: npx --yes "$MINT" broken-links --check-anchors --check-redirects

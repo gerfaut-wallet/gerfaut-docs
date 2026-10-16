@@ -20,9 +20,17 @@
     "library": "lucide"
   },
   "fonts": {
-    "family": "Instrument Sans",
+    "body": {
+      "family": "Instrument Sans",
+      "source": "https://gerfaut-wallet.com/fonts/instrument-sans/InstrumentSans-Variable.woff2",
+      "format": "woff2",
+      "weight": 400
+    },
     "heading": {
-      "family": "Bricolage Grotesque"
+      "family": "Bricolage Grotesque",
+      "source": "https://gerfaut-wallet.com/fonts/bricolage-grotesque/BricolageGrotesque-Variable.woff2",
+      "format": "woff2",
+      "weight": 700
     }
   },
   "background": {
@@ -161,6 +169,11 @@
   "footer": {
     "socials": {
       "github": "https://github.com/gerfaut-wallet/gerfaut-docs"
+    }
+  },
+  "integrations": {
+    "telemetry": {
+      "enabled": false
     }
   }
 }

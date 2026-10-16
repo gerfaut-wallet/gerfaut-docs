@@ -135,13 +135,13 @@ A server can also refuse some addresses, which then wait for the next sync too. 
 
     Live starts over when you change the backend, the network or the Tor settings, or when Gerfaut or Live restarts. Turning Live off and on again does the same, with the `New transactions` switch on desktop.
 
-    On your own node, [raise the subscription limit](/settings/backends-and-your-own-node#raise-the-subscription-limit-of-your-electrum-server) to follow every address.
+    On your own node, after a limit on the number of addresses or a cut from ElectrumX, [raise the subscription limit](/settings/backends-and-your-own-node#raise-the-subscription-limit-of-your-electrum-server) to follow every address.
   </Accordion>
 </AccordionGroup>
 
 ## See which wallets wait for the next sync
 
-When Live cannot follow every address, a note under the Live status in **Settings** > **Notifications** says how many addresses of how many wallets wait for the next sync. Off your own node, the note points to `This is my node` in **Settings** > **Network**. On your own node, it names the setting to raise when the node refuses addresses.
+When Live cannot follow every address, a note under the Live status in **Settings** > **Notifications** says how many addresses of how many wallets wait for the next sync. Off your own node, the note points to `This is my node` in **Settings** > **Network**. On your own node, it names the server setting to raise after a limit on the number of addresses or a cut from ElectrumX, not for one refused address.
 
 Each wallet then carries a badge:
 

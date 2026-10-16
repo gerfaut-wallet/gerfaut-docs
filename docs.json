@@ -8,8 +8,8 @@
     "dark": "#0A5D75"
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg",
+    "light": "https://gerfaut-wallet.com/docs/logo/light.svg",
+    "dark": "https://gerfaut-wallet.com/docs/logo/dark.svg",
     "href": "https://gerfaut-wallet.com"
   },
   "favicon": "/favicon.svg",

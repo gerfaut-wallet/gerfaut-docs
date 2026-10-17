@@ -34,10 +34,10 @@ Nobody can take a transaction back once the network has it. Check the outputs an
     Paste a PSBT (base64 or hex) or a raw transaction (hex), then select **Preview**. **Import a file** takes a `.psbt`, `.txn`, `.tx`, `.txt` or `.hex` file. **Scan a QR code** takes a `crypto-psbt` UR or a BBQr code.
   </Step>
   <Step title="Read the preview">
-    Check the outputs, the fee and every caution under `Before you send`, as in [Check the cautions before you send](#check-the-cautions-before-you-send). When the fee reads `as the PSBT claims`, no backend confirmed the coins it spends, so check the fee on your signing device.
+    Check the outputs, the fee and every caution under `Before you send`, as in [Check the cautions before you send](#check-the-cautions-before-you-send). When the fee reads `as the PSBT claims` or `unproven`, no backend confirmed the coins it spends, so check the fee on your signing device. On a PSBT still missing signatures, `Fee rate` starts with `≈` and reads `once signed`, the rate it pays after your signing device signs it.
   </Step>
   <Step title="Select Broadcast twice">
-    **Broadcast** stays disabled until every input is signed and the pill reads `Ready to broadcast`. It stays disabled when the pill reads `Will be refused`: the network is certain to turn the transaction down, and signing it again would not change that. A coin it spends was already spent in a block, its outputs pay more than its coins are known to hold, or they pay more than the 21 million bitcoin that will ever exist. Select **Broadcast**, read the confirmation and select **Broadcast** again. A status card then follows the transaction, and names the backend that took it on desktop.
+    **Broadcast** stays disabled until every input is signed and the pill reads `Ready to broadcast` or `Already in the mempool`. It stays disabled when the pill reads `Will be refused`: the network is certain to turn the transaction down, and signing it again would not change that. A coin it spends was already spent in a block, its outputs pay more than its coins are known to hold, or they pay more than the 21 million bitcoin that will ever exist. Select **Broadcast**, read the confirmation and select **Broadcast** again. A status card then follows the transaction, and names the backend that took it on desktop.
   </Step>
 </Steps>
 
@@ -65,12 +65,13 @@ The first two cautions below mean the transaction may not pay what your signing 
 - **Outputs left open:** An input is signed with `SIGHASH_NONE` or `SIGHASH_SINGLE`. Whoever relays or mines the transaction can then send that money elsewhere. Have your signing device sign it again over every output, with `SIGHASH_ALL`.
 - **Input not what the PSBT says:** The PSBT declares another amount or address for a coin than your wallet or the backend knows. The fee your signing device showed may not be the real one. Build the transaction again in your own wallet software.
 - **No signature:** An input carries no signature. The pill then reads `Not fully signed`. Send the transaction back to your signing device.
-- **Input already spent:** The transaction went out before, or another one already took the coin. Spent in a block, the coin is gone and the pill reads `Will be refused`. Spent only in the mempool, a replacement can still go through, so Broadcast stays available.
+- **Input already spent:** The transaction is already in a block, or another one took the coin. Spent in a block, the coin is gone and the pill reads `Will be refused`. Spent only in the mempool, or by a transaction the backend cannot show, Broadcast stays available and the network decides.
 - **Fee rate:** Far above what the chain asks for, often because of a wrong unit in the signing software.
 - **Fee:** More than 10% of what the inputs bring.
 
 <AccordionGroup>
   <Accordion title="Read the amber cautions">
+    - **Already in the mempool:** The transaction went out before and waits to be mined. The pill reads `Already in the mempool`. Broadcasting it again does no harm, and the status card then follows it.
     - **Input not found or not checked:** The backend does not know the coin, or no backend answered. Check the amounts on your signing device.
     - **Fee unknown:** Gerfaut cannot work out the fee: the value of a coin is unknown, or the amounts do not add up. When the outputs pay more than coins whose amounts are proven, or more than all the bitcoin there will ever be, the network will refuse the transaction and Broadcast stays disabled. When they pay more than amounts nothing proves, the caution says so and the network decides.
     - **Dust:** An output below 546 sats, which most nodes refuse.
@@ -78,7 +79,7 @@ The first two cautions below mean the transaction may not pay what your signing 
     - **Spends a watched wallet:** The transaction spends coins of a wallet you watch, named in the caution.
   </Accordion>
   <Accordion title="Read a refusal by the node">
-    The preview reads `The network refused this transaction.` followed by the node's own words.
+    The preview reads `The network refused this transaction.` followed by the node's own words. Gerfaut asks the next server only when one cannot be reached, so no other operator sees a refused transaction. To try another node, select another server under `Server` on the [Backend](/settings/backends-and-your-own-node#use-the-public-servers) page.
   </Accordion>
 </AccordionGroup>
 

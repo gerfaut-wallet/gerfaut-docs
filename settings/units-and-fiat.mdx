@@ -1,6 +1,6 @@
 ---
 title: "Units and fiat"
-description: "Show every amount in Gerfaut in BTC or in sats, and add its fiat value in one of 30 currencies from CoinGecko, Kraken or mempool.space."
+description: "Show every amount in Gerfaut in BTC or in sats, and add its fiat value in one of 30 currencies, with the price from mempool.space or CoinGecko."
 ---
 
 Pick one unit for every amount, and add its fiat value if you want it. Open **Settings** > **General** and find the `Display` card.
@@ -12,18 +12,18 @@ Under `Unit`, select `BTC` (eight decimals, the default) or `sats`.
 ## Show the fiat value
 
 <Warning>
-The price source sees your IP address with each price request. With a `.onion` backend, the request goes [through Tor](/settings/tor#route-other-requests-through-tor) instead. It carries no wallet data.
+The price source sees your IP address with each price request. The request carries no wallet data. See [what the price source sees](/help/faq#what-does-the-price-source-see) for when Gerfaut asks, and how Tor changes it.
 </Warning>
 
 <Steps>
   <Step title="Select the Fiat value switch">
     Amounts gain a second line with their fiat value, except the inputs, the outputs and the fee of a transaction. The fiat value is off by default.
   </Step>
-  <Step title="Pick the currency">
-    Under `Currency`, the seven currencies of `Every source` work with any price source. The 23 others, under `CoinGecko only`, switch the source to CoinGecko. The default is EUR.
+  <Step title="Select the currency">
+    Under `Currency`, the seven currencies of `Every source` work with both price sources, EUR by default. The 23 others, under `CoinGecko only`, switch the source to CoinGecko with a line that says why, such as `CoinGecko is the only source that quotes INR.` Selecting one of the seven again keeps CoinGecko until you select `mempool.space`.
   </Step>
-  <Step title="Pick the price source">
-    Under `Price source`, select `CoinGecko` (the default), `Kraken` or `mempool.space`.
+  <Step title="Select the price source">
+    Under `Price source`, keep `mempool.space`, the default, or select `CoinGecko`. With [`Automatic`](/settings/backends-and-your-own-node#use-the-public-servers), mempool.space is one of the public servers Gerfaut syncs with on mainnet.
   </Step>
   <Step title="Check the rate">
     A line reads `1 BTC =` with the rate and the time of the last update. When the source does not answer, amounts show without fiat until it does.
@@ -42,5 +42,7 @@ The price source sees your IP address with each price request. With a `.onion` b
     </Frame>
   </Tab>
 </Tabs>
+
+With CoinGecko as the source, `Powered by CoinGecko` shows once at the bottom of each screen with a price or a fiat amount from CoinGecko. Select it to open CoinGecko's site in your browser. The Android `Bitcoin price` widget shows it too. With mempool.space, nothing shows.
 
 A wallet on a test network, such as signet or testnet4, shows a fiat value of 0, because test coins are worth nothing.

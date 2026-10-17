@@ -243,7 +243,7 @@ With `Show wallet and amount` on, anyone who sees your phone's lock screen can r
     Select **Widgets** and find Gerfaut.
   </Step>
   <Step title="Drag one of the three widgets">
-    - **Bitcoin price:** The price in your currency.
+    - **Bitcoin price:** The price in your currency, from your [price source](/settings/units-and-fiat#show-the-fiat-value).
     - **Balance:** The total of your wallets and up to four of them by name.
     - **Network:** The block height of the last sync.
   </Step>
@@ -253,7 +253,9 @@ With `Show wallet and amount` on, anyone who sees your phone's lock screen can r
   <img src="/images/android/widget.webp" alt="An Android launcher with the three Gerfaut widgets: Bitcoin price, Balance with masked amounts per wallet, and Network with the block height." width="360" />
 </Frame>
 
-The `Bitcoin price` widget says when Gerfaut fetched the price, such as `as of 09:41`. A price from an earlier day shows its date too, such as `as of Oct 03, 09:41`, or `as of Oct 03` when the widget is too narrow for the time. With a `.onion` backend, the widget [never starts Tor](/settings/tor#route-other-requests-through-tor) for the price alone.
+The `Bitcoin price` widget says when Gerfaut fetched the price, such as `as of 09:41`. A price from an earlier day shows its date too, such as `as of Oct 03, 09:41`, or `as of Oct 03` when the widget is too narrow for the time.
+
+With CoinGecko as the price source, the widget also reads `Powered by CoinGecko`. With a `.onion` backend, it [never starts Tor](/settings/tor#route-other-requests-through-tor) for the price alone.
 
 The `Balance` widget shows `•••••` until you select the `Show balances on widgets` switch in the `Widgets` card of **Settings** > **Notifications**, and while you [hide amounts](/everyday-use/balances-and-history#hide-every-amount) in Gerfaut. While an [app lock](/settings/app-lock) is set, it shows no wallet name and no amount. Gerfaut greys out the switch until you remove the lock.
 

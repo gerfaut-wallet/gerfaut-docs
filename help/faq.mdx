@@ -30,11 +30,14 @@ Short answers, each with the page that goes further.
     The addresses of your wallets and your IP address. While Live runs, it also sees how long Gerfaut stays connected. Point Gerfaut at your own node to keep all of it to yourself. See [Backend](/settings/backends-and-your-own-node).
   </Accordion>
   <Accordion title="What does the price source see?">
-    Your IP address, and no wallet data. Gerfaut asks for the price once a minute while it is open with the fiat value on, and in the background for the Android `Bitcoin price` widget.
+    Your IP address, and no wallet data. Gerfaut asks the source in these cases:
 
-    - **mempool.space:** The default source. With `Automatic` and Live off, it is already the first server Gerfaut asks for syncs on mainnet. The price then shows your IP address to no one new.
-    - **CoinGecko:** The source once you select it, or once you pick one of the 23 currencies only CoinGecko quotes.
-    - **A `.onion` backend:** The price request goes [through Tor](/settings/tor#route-other-requests-through-tor). Neither source then sees your IP address.
+    - **Fiat value on:** Once a minute while Gerfaut is open. The desktop Overview also asks for the price history of the range it shows.
+    - **Android `Bitcoin price` widget placed:** Once a minute while Gerfaut is open, and about every 15 minutes in the background, even with the fiat value off.
+
+    The source is mempool.space by default. With `Automatic`, it is one of the public servers Gerfaut syncs with on mainnet. CoinGecko is the source once you select it, or once you select one of the 23 currencies only CoinGecko quotes.
+
+    With a `.onion` backend, every price request goes [through Tor](/settings/tor#route-other-requests-through-tor), and neither source sees your IP address. The widget then fetches the price only through a Tor that already runs, and otherwise keeps the last price.
 
     The fiat value is off by default. See [Units and fiat](/settings/units-and-fiat#show-the-fiat-value).
   </Accordion>

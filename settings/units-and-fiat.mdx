@@ -12,18 +12,18 @@ Under `Unit`, select `BTC` (eight decimals, the default) or `sats`.
 ## Show the fiat value
 
 <Warning>
-The price source sees your IP address with each price request, once a minute while Gerfaut is open and in the background for the Android `Bitcoin price` widget. The request carries no wallet data. With a `.onion` backend, it goes [through Tor](/settings/tor#route-other-requests-through-tor) instead.
+The price source sees your IP address with each price request. The request carries no wallet data. See [what the price source sees](/help/faq#what-does-the-price-source-see) for when Gerfaut asks, and how Tor changes it.
 </Warning>
 
 <Steps>
   <Step title="Select the Fiat value switch">
     Amounts gain a second line with their fiat value, except the inputs, the outputs and the fee of a transaction. The fiat value is off by default.
   </Step>
-  <Step title="Pick the currency">
-    Under `Currency`, the seven currencies of `Every source` work with both price sources, EUR by default. The 23 others, under `CoinGecko only`, switch the source to CoinGecko with a line that says why, such as `CoinGecko is the only source that quotes INR.` Picking one of the seven again keeps CoinGecko until you select `mempool.space`.
+  <Step title="Select the currency">
+    Under `Currency`, the seven currencies of `Every source` work with both price sources, EUR by default. The 23 others, under `CoinGecko only`, switch the source to CoinGecko with a line that says why, such as `CoinGecko is the only source that quotes INR.` Selecting one of the seven again keeps CoinGecko until you select `mempool.space`.
   </Step>
-  <Step title="Pick the price source">
-    Under `Price source`, keep `mempool.space`, the default, or select `CoinGecko`. With [`Automatic`](/settings/backends-and-your-own-node#use-the-public-servers) and Live off, mempool.space is already the first server Gerfaut asks for syncs on mainnet. The price then shows your IP address to no one new.
+  <Step title="Select the price source">
+    Under `Price source`, keep `mempool.space`, the default, or select `CoinGecko`. With [`Automatic`](/settings/backends-and-your-own-node#use-the-public-servers), mempool.space is one of the public servers Gerfaut syncs with on mainnet.
   </Step>
   <Step title="Check the rate">
     A line reads `1 BTC =` with the rate and the time of the last update. When the source does not answer, amounts show without fiat until it does.

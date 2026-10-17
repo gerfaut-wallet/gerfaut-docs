@@ -55,12 +55,16 @@ Select **Change PIN** or **Change password** to replace the secret. Select the `
 
 <Steps>
   <Step title="Select the Unlock with biometrics switch">
-    The switch shows when the phone can read a fingerprint or a face.
+    The switch shows when a fingerprint or a face is set up on the phone.
   </Step>
   <Step title="Enter your PIN or password, then confirm the system prompt">
     From then on, the lock screen opens the system prompt on its own. Select **Use fingerprint or face** to bring it back. Gerfaut never sees the biometric itself.
   </Step>
 </Steps>
+
+Only a biometric that Android rates as strong unlocks Gerfaut. Many face unlocks that use the front camera are rated weak, since a photo can fool them. On a phone with a weak one only, the switch stays greyed out and says why.
+
+When the fingerprints or faces on the phone change, biometrics stop opening Gerfaut, so nobody can add their own finger to get in. Unlock with your PIN or password, then turn the switch on again in **Settings** > **Security**.
 
 ## Disguise the app as a calculator on Android
 
@@ -73,7 +77,7 @@ With the disguise on, the PIN is the only way into Gerfaut. If you forget it, on
     It needs an app lock of the `PIN` kind. The sheet lists what changes, starting with the launcher, which shows `Calculator` instead of Gerfaut.
   </Step>
   <Step title="Select Turn on the disguise">
-    Clear your recent apps once, because Android may keep an older Gerfaut thumbnail.
+    From Android 13, the recent apps keep no picture of Gerfaut while it is disguised. On an older Android, clear your recent apps once, because Android may keep an older Gerfaut thumbnail.
   </Step>
   <Step title="Open Gerfaut from the calculator">
     Type your PIN on the calculator and press `=`. A wrong PIN gives a number like any calculator, with no hint. After three wrong PINs, the right one also gives a number until the [wait](#lock-and-unlock) ends.
@@ -89,6 +93,7 @@ Turning the disguise on changes how Gerfaut tells you about transactions:
 - **Notifications:** Gerfaut posts none, and clears the ones already in the notification shade.
 - **Live:** If Live is on, Gerfaut turns it off and sets `Check for transactions` to `Every 15 min`. Background checks post nothing either.
 - **Widgets:** Gerfaut removes its widgets from your home screen.
+- **Notification history:** If you turned on Android's notification history, it still lists Gerfaut's earlier notifications under its name. Turn the history off in Android's notification settings to clear it.
 
 In **Settings** > **Notifications**, `New transactions` shows off and every notification setting stays greyed out while the disguise is on. The line under the switch says why. Once you turn the disguise off, `New transactions` is back as you left it.
 

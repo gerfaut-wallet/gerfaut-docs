@@ -71,7 +71,7 @@ The first two cautions below mean the transaction may not pay what your signing 
 
 <AccordionGroup>
   <Accordion title="Read the amber cautions">
-    - **Already in the mempool:** The transaction went out before and waits to be mined. The pill reads `Already in the mempool`, and broadcasting it again does no harm.
+    - **Already in the mempool:** The transaction went out before and waits to be mined. The pill reads `Already in the mempool`. Broadcasting it again does no harm, and the status card then follows it.
     - **Input not found or not checked:** The backend does not know the coin, or no backend answered. Check the amounts on your signing device.
     - **Fee unknown:** Gerfaut cannot work out the fee: the value of a coin is unknown, or the amounts do not add up. When the outputs pay more than coins whose amounts are proven, or more than all the bitcoin there will ever be, the network will refuse the transaction and Broadcast stays disabled. When they pay more than amounts nothing proves, the caution says so and the network decides.
     - **Dust:** An output below 546 sats, which most nodes refuse.
@@ -79,7 +79,7 @@ The first two cautions below mean the transaction may not pay what your signing 
     - **Spends a watched wallet:** The transaction spends coins of a wallet you watch, named in the caution.
   </Accordion>
   <Accordion title="Read a refusal by the node">
-    The preview reads `The network refused this transaction.` followed by the node's own words.
+    The preview reads `The network refused this transaction.` followed by the node's own words. Gerfaut asks the next server only when one cannot be reached, so no other operator sees a refused transaction. To try another node, select another server under `Server` on the [Backend](/settings/backends-and-your-own-node#use-the-public-servers) page.
   </Accordion>
 </AccordionGroup>
 

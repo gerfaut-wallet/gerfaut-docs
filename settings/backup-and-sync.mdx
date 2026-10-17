@@ -79,16 +79,9 @@ Nobody can recover the password. Someone who copies the file can try passwords o
 </Steps>
 
 <Accordion title="Restore a backup with a wallet Gerfaut cannot watch">
-  A backup can hold a wallet Gerfaut refuses, such as one without a name or with a descriptor it cannot read. Gerfaut names that wallet and gives the reason.
+  A backup can hold a wallet Gerfaut refuses, such as one without a name or with a descriptor it cannot read. That wallet stays on the list, unticked, with `Cannot be restored` and the reason under its name.
 
-  <Tabs>
-    <Tab title="Android">
-      The restore stops before it adds anything, with a message that names the wallet. Clear its box, then select the **Restore** button again.
-    </Tab>
-    <Tab title="Desktop">
-      The wallet stays on the list, unticked, with `Cannot be restored` and the reason under its name. Gerfaut restores the others. The confirmation then ends with `1 left out: Cold storage`, or with a count when several are left out.
-    </Tab>
-  </Tabs>
+  Gerfaut restores the others. The confirmation then ends with `1 left out: Cold storage`, or with a count when several are left out.
 </Accordion>
 
 <Note>

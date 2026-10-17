@@ -37,7 +37,7 @@ Nobody can recover the password. Someone who copies the file can try passwords o
     Enter it in `Password` and `Confirm password`, then select **Create backup**.
   </Step>
   <Step title="Save the file or show the QR code">
-    Select **Save file…** to write a `.gerfaut` file, or **Save file** and **Share** on Android. Select **Show QR code** to show the backup as an animated QR code.
+    Select **Save file…** to write a `.gerfaut` file, or **Save file** and **Share** on Android. **Share** hands the file to the app you pick in the share sheet, and to no other app. Select **Show QR code** to show the backup as an animated QR code.
   </Step>
 </Steps>
 
@@ -77,6 +77,12 @@ Nobody can recover the password. Someone who copies the file can try passwords o
     It counts the wallets, such as **Restore 2 wallets**. Gerfaut adds the wallets and syncs them.
   </Step>
 </Steps>
+
+<Accordion title="Restore a backup with a wallet Gerfaut cannot watch">
+  A backup can hold a wallet Gerfaut refuses, such as one without a name or with a descriptor it cannot read. That wallet stays on the list, unticked, with `Cannot be restored` and the reason under its name.
+
+  Gerfaut restores the others. The confirmation then ends with `1 left out: Cold storage`, or with a count when several are left out.
+</Accordion>
 
 <Note>
 On Android, Gerfaut keeps its data out of the system backup and out of a transfer to a new phone. Keep a Gerfaut backup for a new phone.

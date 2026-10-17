@@ -47,7 +47,9 @@ Estimated durations assume one block every 10 minutes and carry `≈` or `about`
 
 The `Keys` section lists each signing key with its label, fingerprint, origin path and extended public key.
 
-Open `Descriptor` to copy the descriptor, written as one `/<0;1>/*` descriptor when the wallet has a receive and a change branch. Gerfaut clears it from the clipboard after one minute. Its policy is written out below, such as `or(pk(Key A),and(pk(Key B),older(52560)))`.
+Open `Descriptor` to copy the descriptor, written as one `/<0;1>/*` descriptor when the wallet has a receive and a change branch. Its policy is written out below, such as `or(pk(Key A),and(pk(Key B),older(52560)))`.
+
+Gerfaut clears the descriptor from the clipboard after one minute. On desktop, a toast that starts with `Copied, but Gerfaut could not clear it` means it stays there, so clear your clipboard yourself once you have pasted it.
 
 <Tabs>
   <Tab title="Android">

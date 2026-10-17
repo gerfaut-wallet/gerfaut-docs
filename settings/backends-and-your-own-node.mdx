@@ -43,9 +43,15 @@ With `Automatic`, Gerfaut asks these servers:
 | `Signet` | mempool.space, then blockstream.info, then mempool.emzy.de | mempool.space's Electrum server |
 | `Testnet 4` | mempool.space, then mempool.emzy.de | mempool.space's Electrum server |
 
-Gerfaut moves to the next server only when one fails. The next sync starts with the server that answered. When the Electrum servers of the `Live` column fail, Live moves to the sync servers, in the same order.
+Gerfaut moves to the next server only when one fails. The next sync starts with the server that answered.
 
-Once Live has connected, each sync goes to the Live server first, so your syncs show your addresses to a single operator. The [Broadcast](/everyday-use/broadcast-a-transaction) page sends your transactions to that operator first too. A sync that starts before Live connects follows the order above.
+A server that was down or overloaded while another one answered moves to the end of the list for five minutes. Each new failure doubles that time, up to an hour.
+
+When the Electrum servers of the `Live` column fail, Live moves to the sync servers, in the same order. When the Live server reports no new block for two hours, Gerfaut compares it with another Electrum server of the same operator. Live moves to that server if its own lags two blocks or more.
+
+Once Live has connected, each sync goes to the Live server first, so your syncs show your addresses to a single operator. The [Broadcast](/everyday-use/broadcast-a-transaction) page sends your transactions to that operator first too.
+
+With Live on, the first sync after Gerfaut opens waits up to 20 seconds for Live to connect, so that it reaches the Live server too. Past that wait, it follows the order above.
 
 <Tabs>
   <Tab title="Android">
@@ -72,6 +78,15 @@ Once Live has connected, each sync goes to the Live server first, so your syncs 
     When a server limits requests, Gerfaut waits as long as the server asks, then asks once more. If the server asks for more than a minute, or refuses again, Gerfaut tries the next one. When none answers, the sync fails and says why.
 
     On [your own node](#follow-more-addresses-on-your-own-node), no one else sees your addresses and you set the limits.
+  </Accordion>
+  <Accordion title="Know what a server cannot fake">
+    Gerfaut checks each confirmation a server reports against its block, so a server cannot make up a confirmation for free. The transaction must be in that block. On mainnet, the block header must also carry the work the network asked for at that height.
+
+    - **Electrum:** A confirmation in an older block, covered by the checkpoints built into Gerfaut, must also link block by block to the next checkpoint. No amount of work can forge it.
+    - **Esplora:** A confirmation rests on the work of its block alone. A confirmation in a block from the early years of bitcoin, when blocks took little work, costs a server little to forge.
+    - **Signet and testnet4:** Their blocks take too little work to prove anything, so Gerfaut checks only the easiest target of the network.
+
+    When a proof does not hold, Gerfaut drops that server's answer and asks the next server. If no other server answers, the sync fails with a reason that mentions a `false proof of a confirmation`, which means that server lies or is broken. Try again later, or connect [your own node](#connect-your-own-electrum-server).
   </Accordion>
   <Accordion title="Sync a wallet with tens of thousands of transactions">
     The first sync of a very large wallet, or of one with many large inscriptions, can fail on an Esplora backend. Gerfaut then reports `Sync failed` with a reason such as:
@@ -155,11 +170,11 @@ Leave the switch off for a server you do not run. A public server would refuse m
 </Tabs>
 
 <Accordion title="Raise the subscription limit of your Electrum server">
-  Some server software lets one client follow fewer addresses than Live asks for on your own node:
+  Some server software lets one client follow fewer addresses than Live asks for on your own node. These settings let it follow all 20,000:
 
-  - **ElectrumX:** Raise `COST_SOFT_LIMIT` and `COST_HARD_LIMIT`.
-  - **Blockstream's electrs:** Raise `--electrum-subscription-limit`, 10,000 by default.
-  - **mempool's electrs:** Raise `--electrum-max-subscriptions`, 100 by default.
+  - **ElectrumX:** Set `COST_SOFT_LIMIT=0` and `COST_HARD_LIMIT=0`, or at least `10000` and `50000`. Left at their defaults, ElectrumX slows Live down until 20,000 addresses take more than 15 minutes.
+  - **Blockstream's electrs:** Set `--electrum-subscription-limit 0`, or at least `25000`. The default is 10,000.
+  - **mempool's electrs:** Set `--electrum-max-subscriptions 25000`. Raise `--electrum-txs-limit` too if one of your addresses has more transactions than it allows.
   - **Fulcrum:** Nothing to change with the default `max_subs_per_ip` of 75,000. Raise it if your configuration sets it below 20,000.
   - **electrs by romanz:** Nothing to change.
 

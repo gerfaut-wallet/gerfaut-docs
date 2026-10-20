@@ -21,7 +21,7 @@ jobs:
     env:
       # One version of the CLI, so that a new release cannot turn a run
       # red on its own: it changes here, on purpose.
-      MINT: mint@4.2.1069
+      MINT: mint@4.2.1072
       # No usage data from CI.
       DO_NOT_TRACK: '1'
     steps:
@@ -30,7 +30,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 24.19.0
+          node-version: 24.22.0
       - name: Validate the build
         run: npx --yes "$MINT" validate
       - name: Check the links

@@ -21,7 +21,7 @@ jobs:
     env:
       # One version of the CLI, so that a new release cannot turn a run
       # red on its own: it changes here, on purpose.
-      MINT: mint@4.2.1047
+      MINT: mint@4.2.1069
       # No usage data from CI.
       DO_NOT_TRACK: '1'
     steps:

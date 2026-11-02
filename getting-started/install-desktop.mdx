@@ -23,7 +23,7 @@ Check the file against the signed hash list before you open it. See [Verify a do
 
         - **`.deb`:** For Debian 12, Ubuntu 22.04 and newer.
         - **`.rpm`:** For Fedora.
-        - **`.AppImage`:** For any other distribution with glibc 2.35 or newer, with nothing to install.
+        - **`.AppImage`:** For any other distribution with glibc 2.35 or newer. It needs FUSE, which most desktop distributions already ship.
       </Step>
       <Step title="Install or run it">
         <CodeGroup>
@@ -45,6 +45,30 @@ Check the file against the signed hash list before you open it. See [Verify a do
         The `.deb` and the `.rpm` add Gerfaut to your application menu. The AppImage runs from the folder you saved it in.
       </Step>
     </Steps>
+
+    <Accordion title="The AppImage says Cannot mount AppImage, please check your FUSE setup">
+      The AppImage mounts itself with FUSE, through the `fusermount3` command of the `fuse3` package. Installing `libfuse2` does not help: Gerfaut does not use it.
+
+      Install `fuse3`, then run the AppImage again:
+
+      <CodeGroup>
+      ```bash Debian and Ubuntu
+      sudo apt install fuse3
+      ```
+
+      ```bash Fedora
+      sudo dnf install fuse3
+      ```
+      </CodeGroup>
+
+      When FUSE is not available at all, in a container or some virtual machines, start the AppImage without mounting it. It unpacks into a temporary folder on each launch and deletes it when Gerfaut closes:
+
+      ```bash
+      ./Gerfaut_<version>_amd64.AppImage --appimage-extract-and-run
+      ```
+
+      On Debian, Ubuntu or Fedora, the `.deb` or the `.rpm` avoids the question.
+    </Accordion>
   </Tab>
   <Tab title="macOS">
     <Steps>

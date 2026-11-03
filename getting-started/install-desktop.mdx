@@ -73,17 +73,17 @@ Check the file against the signed hash list before you open it. See [Verify a do
     </Accordion>
 
     <Accordion title="The AppImage says fuse: memory allocation failed">
-      Fix it in one of these ways, the first one that suits you:
+      AppImageLauncher 2.x causes this error, along with `Can't open squashfs image: Bad address` and `execv error: No such file or directory`.
 
-      1. **Install the `.deb` or the `.rpm`:** Run `sudo apt install ./Gerfaut_<version>_amd64.deb`, or `sudo dnf install ./Gerfaut-<version>-1.x86_64.rpm` on Fedora. Open Gerfaut from your application menu.
-      2. **Update AppImageLauncher:** Install its latest release, a 3.0.0 beta or newer, from the [AppImageLauncher release page](https://github.com/TheAssassin/AppImageLauncher/releases).
-      3. **Keep the AppImage:** Start it from its folder with its full path in `TARGET_APPIMAGE`:
+      1. **Check for AppImageLauncher:** Run `command -v AppImageLauncher`. A path such as `/usr/bin/AppImageLauncher` means it is installed. No output means AppImageLauncher is not the cause. Report the error on GitHub, as [Contact](/help/contact#report-a-bug-or-suggest-a-change) explains.
+      2. **Update AppImageLauncher:** Install `v3.0.0-beta-3` or newer from the [AppImageLauncher release page](https://github.com/TheAssassin/AppImageLauncher/releases). Version 3.0 exists only as beta releases, and GitHub lists `v3.0.0-beta-3` as the latest one.
+      3. **Start Gerfaut until you update:** Run the AppImage from its folder with its full path in `TARGET_APPIMAGE`:
 
          ```bash
          TARGET_APPIMAGE="$PWD/Gerfaut_<version>_amd64.AppImage" ./Gerfaut_<version>_amd64.AppImage
          ```
 
-      The terminal also shows `Can't open squashfs image: Bad address` and `execv error: No such file or directory`. AppImageLauncher 2.x causes these three errors, because it cannot start AppImages built with the current AppImage runtime.
+      4. **Or install the `.deb` or the `.rpm`:** Run `sudo apt install ./Gerfaut_<version>_amd64.deb`, or `sudo dnf install ./Gerfaut-<version>-1.x86_64.rpm` on Fedora. They do not go through AppImageLauncher.
     </Accordion>
   </Tab>
   <Tab title="macOS">

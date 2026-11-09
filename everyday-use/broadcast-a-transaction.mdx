@@ -90,6 +90,7 @@ The status card asks the backend about the transaction every 30 seconds until it
 - **`Waiting to be mined`:** The transaction is in the backend's mempool. The desktop pill reads `In the mempool`.
 - **`Confirmed`:** Mined, with the number of confirmations.
 - **`Not seen`:** The backend does not have it. Broadcasting it again does no harm.
+- **`Could not check`:** The last check failed. The card shows why, then the backend's last answer and when it came.
 
 Gerfaut keeps your last ten broadcasts and lists those of the selected network on the Broadcast page. Forgetting one removes it from the list and leaves the transaction untouched.
 

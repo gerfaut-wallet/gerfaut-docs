@@ -1,0 +1,36 @@
+---
+title: "Coming to iPhone"
+description: "See what the Gerfaut iPhone app needs, how its first version reaches you through TestFlight, and what it does differently from the Android app."
+---
+
+Gerfaut for iPhone is built from the same code as the Android app. No version is out yet, and the first one comes through TestFlight.
+
+<Warning>
+Gerfaut has no app on the App Store or TestFlight today. An iPhone app that uses the Gerfaut name now is not Gerfaut, and Gerfaut never asks for a seed phrase.
+</Warning>
+
+## Check your iPhone
+
+Gerfaut needs an iPhone with iOS 15 or newer. Your iPhone shows its version in **Settings** > **General** > **About**.
+
+## Use what works the same
+
+Gerfaut on iPhone keeps these parts of the Android app:
+
+- **Watch-only:** Gerfaut holds no private key and signs nothing. See [What is Gerfaut](/getting-started/what-is-gerfaut).
+- **Notifications:** Gerfaut tells you when a transaction reaches the mempool and when it confirms. See [Notifications](/settings/notifications).
+- **App lock:** A PIN or a password locks Gerfaut, and Face ID unlocks it. See [App lock](/settings/app-lock).
+- **Backups:** Gerfaut exports and restores your wallets in an encrypted backup. See [Backup and sync](/settings/backup-and-sync).
+- **Backend:** Gerfaut syncs with an Electrum or Esplora backend, public or your own. See [Backend](/settings/backends-and-your-own-node).
+- **Tor:** Gerfaut has Tor built in. See [Tor](/settings/tor).
+
+## Plan for what differs from Android
+
+- **Live:** There is no Live watch on iPhone, because iOS lets no app keep a connection open in the background.
+- **Background checks:** iOS wakes Gerfaut to check when it decides. That is never more often than the interval you set under `Check for transactions`, and often less.
+- **Swiped away:** Once you swipe Gerfaut away in the app switcher, iOS runs no background check at all.
+- **Calculator disguise:** The [disguise](/settings/app-lock#disguise-the-app-as-a-calculator-on-android) does not exist on iPhone.
+- **Widgets:** Gerfaut puts no widget on the iPhone home screen.
+- **Broadcast:** The iPhone app has no Broadcast screen and never sends a transaction to the network. To send one, use [Broadcast](/everyday-use/broadcast-a-transaction) on Android or desktop.
+- **Screenshots:** iOS gives Gerfaut no way to block screenshots. While a lock is set, Gerfaut shows a blank card in the app switcher.
+- **Updates:** New versions come through TestFlight or the App Store, so Gerfaut on iPhone never asks GitHub for updates.
